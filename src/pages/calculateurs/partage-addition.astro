@@ -1,0 +1,55 @@
+---
+
+import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
+
+import SplitBillCalculator from '../../components/calculators/SplitBillCalculator.tsx';
+
+import type { BreadcrumbItem, FAQItem, RelatedLink } from '../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+
+  { name: "Accueil", item: "/" },
+
+  { name: "Calculateurs", item: "/calculateurs" },
+
+  { name: "Partage d’addition", item: "/calculateurs/partage-addition" }
+
+];
+
+const faqs: FAQItem[] = [
+
+  { question: "Comment partager une addition ?", answer: "Entrez le montant total, le nombre de personnes et le pourboire si souhaité." },
+
+  { question: "Dois-je inclure le pourboire dans le partage ?", answer: "Oui, le calculateur l'ajoute automatiquement au total." },
+
+  { question: "Comment calculer le pourboire ?", answer: "Choisissez le mode pourcentage ou montant fixe." },
+
+  { question: "Que faire avec les arrondis ?", answer: "L'option arrondi permet d'ajuster, mais des centimes peuvent rester." },
+
+  { question: "Puis-je partager sans pourboire ?", answer: "Oui, laissez le pourboire à 0." },
+
+  { question: "Le partage est-il équitable ?", answer: "Oui, il divise le total également." },
+
+  { question: "Puis-je utiliser pour un groupe ?", answer: "Oui, ajustez le nombre de personnes." },
+
+  { question: "Ce calculateur est-il gratuit ?", answer: "Oui, comme tous nos outils." }
+
+];
+
+const related: RelatedLink[] = [
+
+  { label: "Pourboire", href: "/calculateurs/pourboire", description: "Calculez le pourboire seul." },
+
+  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget." },
+
+  { label: "Épargne automatique", href: "/calculateurs/epargne-automatique", description: "Planifiez votre épargne." }
+
+];
+
+---
+
+<CalculatorLayout title="Calculateur de partage d’addition" description="Partagez facilement l'addition entre amis en incluant le pourboire." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+
+  <SplitBillCalculator client:load />
+
+</CalculatorLayout>

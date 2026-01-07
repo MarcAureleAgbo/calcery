@@ -1,0 +1,67 @@
+---
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import Card from '../../components/ui/Card.astro';
+
+import Container from '../../components/ui/Container.astro';
+
+---
+
+<BaseLayout title="Calculateurs - Calcery" description="Découvrez nos calculateurs simples pour vos besoins quotidiens.">
+
+  <Container>
+
+    <h1>Calculateurs</h1>
+
+    <p>5 outils gratuits, sans inscription.</p>
+
+    <p class="mb-4"><a href="/budget" class="text-blue-600 hover:underline">Voir la catégorie Budget & vie quotidienne</a></p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <Card>
+
+        <h2><a href="/calculateurs/budget-mensuel" class="text-blue-600 hover:underline">Budget mensuel</a></h2>
+
+        <p>Calculez votre budget mensuel pour mieux gérer vos finances.</p>
+
+      </Card>
+
+      <Card>
+
+        <h2><a href="/calculateurs/epargne-automatique" class="text-blue-600 hover:underline">Épargne automatique</a></h2>
+
+        <p>Simulez votre épargne pour atteindre vos objectifs financiers.</p>
+
+      </Card>
+
+      <Card>
+
+        <h2><a href="/calculateurs/pourboire" class="text-blue-600 hover:underline">Pourboire</a></h2>
+
+        <p>Calculez le pourboire et le total pour votre repas.</p>
+
+      </Card>
+
+      <Card>
+
+        <h2><a href="/calculateurs/partage-addition" class="text-blue-600 hover:underline">Partage d’addition</a></h2>
+
+        <p>Partagez l'addition entre amis en incluant le pourboire.</p>
+
+      </Card>
+
+      <Card>
+
+        <h2><a href="/calculateurs/economies-petites-depenses" class="text-blue-600 hover:underline">Économies petites dépenses</a></h2>
+
+        <p>Estimez l'impact de vos petites dépenses répétées.</p>
+
+      </Card>
+
+    </div>
+
+  </Container>
+
+</BaseLayout>

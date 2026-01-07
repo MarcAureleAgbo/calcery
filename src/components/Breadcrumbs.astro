@@ -1,0 +1,57 @@
+---
+
+import type { BreadcrumbItem } from '../lib/types.ts';
+
+export interface Props {
+
+  items: BreadcrumbItem[];
+
+}
+
+const { items } = Astro.props;
+
+const SITE_URL = import.meta.env.SITE_URL || "http://localhost:4321";
+
+const breadcrumbJsonLd = {
+
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  "itemListElement": items.map((item, index) => ({
+
+    "@type": "ListItem",
+
+    "position": index + 1,
+
+    "name": item.name,
+
+    "item": item.item.startsWith('http') ? item.item : `${SITE_URL}${item.item}`
+
+  }))
+
+};
+
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+<nav aria-label="Breadcrumb" class="py-4">
+
+  <ol class="flex items-center space-x-2 text-sm text-gray-600">
+
+    {items.map((item, index) => (
+
+      <li key={index} class="flex items-center">
+
+        {index > 0 && <span class="mx-2">></span>}
+
+        <a href={item.item} class="hover:text-blue-600">{item.name}</a>
+
+      </li>
+
+    ))}
+
+  </ol>
+
+</nav>

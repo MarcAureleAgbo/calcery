@@ -1,0 +1,124 @@
+---
+
+import BaseLayout from './BaseLayout.astro';
+
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+import FAQ from '../components/FAQ.astro';
+
+import Card from '../components/ui/Card.astro';
+
+import Container from '../components/ui/Container.astro';
+
+import type { BreadcrumbItem, FAQItem, RelatedLink } from '../lib/types.ts';
+
+export interface Props {
+
+  title: string;
+
+  description: string;
+
+  breadcrumbs: BreadcrumbItem[];
+
+  faqs?: FAQItem[];
+
+  related?: RelatedLink[];
+
+  updatedAt?: string;
+
+}
+
+const { title, description, breadcrumbs, faqs = [], related = [], updatedAt } = Astro.props;
+
+---
+
+<BaseLayout title={title} description={description}>
+
+  <Container>
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl font-bold mb-4">{title}</h1>
+
+    <p class="text-lg mb-8">{description}</p>
+
+    {updatedAt && <p class="text-sm text-gray-500 mb-4">Dernière mise à jour : {updatedAt}</p>}
+
+    <section class="mb-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Calculateur</h2>
+
+      <slot />
+
+    </section>
+
+    <section class="mb-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Comment ça marche ?</h2>
+
+      <slot name="how-it-works">
+
+        <p>Explication par défaut du fonctionnement.</p>
+
+      </slot>
+
+    </section>
+
+    <section class="mb-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Exemples</h2>
+
+      <slot name="examples">
+
+        <p>Exemples d'utilisation.</p>
+
+      </slot>
+
+    </section>
+
+    <section class="mb-8 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+      <h2 class="text-xl font-semibold mb-2 text-yellow-800">Avertissement</h2>
+      <p class="text-yellow-700">Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.</p>
+    </section>
+
+    {faqs.length > 0 && (
+
+      <section class="mb-8">
+
+        <h2 class="text-2xl font-semibold mb-4">FAQ</h2>
+
+        <FAQ items={faqs} />
+
+      </section>
+
+    )}
+
+    {related.length > 0 && (
+
+      <section class="mb-8">
+
+        <h2 class="text-2xl font-semibold mb-4">Outils associés</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          {related.map((link, index) => (
+
+            <Card key={index}>
+
+              <h3><a href={link.href} class="text-blue-600 hover:underline">{link.label}</a></h3>
+
+              {link.description && <p class="text-gray-700">{link.description}</p>}
+
+            </Card>
+
+          ))}
+
+        </div>
+
+      </section>
+
+    )}
+
+  </Container>
+
+</BaseLayout>

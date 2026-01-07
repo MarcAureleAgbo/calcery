@@ -1,0 +1,27 @@
+---
+
+export interface Props {
+
+  variant?: string;
+
+}
+
+const { variant = 'default' } = Astro.props;
+
+const baseClasses = 'rounded-lg shadow-md p-4';
+
+const variantClasses = {
+
+  default: 'bg-white',
+
+};
+
+const classes = `${baseClasses} ${variantClasses[variant] || variantClasses.default}`;
+
+---
+
+<div class={classes}>
+
+  <slot />
+
+</div>

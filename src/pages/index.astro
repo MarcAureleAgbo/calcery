@@ -1,16 +1,63 @@
 ---
 
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Card from '../components/ui/Card.astro';
+
+import Container from '../components/ui/Container.astro';
+
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+
+  <Container>
+
+    <h1>Calcery – calculateurs simples du quotidien</h1>
+
+    <section class="mb-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Commencer ici</h2>
+
+      <p class="mb-4">Découvrez nos outils pour gérer votre budget et optimiser vos finances.</p>
+
+      <a href="/budget" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg">Explorer Budget & vie quotidienne</a>
+
+    </section>
+
+    <section class="mb-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Nos calculateurs</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <Card>
+
+          <h3><a href="/calculateurs/budget-mensuel" class="text-blue-600 hover:underline">Budget mensuel</a></h3>
+
+          <p>Équilibrez vos revenus et dépenses.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/calculateurs/epargne-automatique" class="text-blue-600 hover:underline">Épargne automatique</a></h3>
+
+          <p>Atteignez vos objectifs d'épargne.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/calculateurs/pourboire" class="text-blue-600 hover:underline">Pourboire</a></h3>
+
+          <p>Calculez le pourboire facilement.</p>
+
+        </Card>
+
+      </div>
+
+    </section>
+
+  </Container>
+
+</BaseLayout>

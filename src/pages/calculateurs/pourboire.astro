@@ -1,0 +1,55 @@
+---
+
+import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
+
+import TipCalculator from '../../components/calculators/TipCalculator.tsx';
+
+import type { BreadcrumbItem, FAQItem, RelatedLink } from '../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+
+  { name: "Accueil", item: "/" },
+
+  { name: "Calculateurs", item: "/calculateurs" },
+
+  { name: "Pourboire", item: "/calculateurs/pourboire" }
+
+];
+
+const faqs: FAQItem[] = [
+
+  { question: "Qu'est-ce qu'un pourboire ?", answer: "Un pourboire est une somme donnée en plus du paiement pour récompenser le service." },
+
+  { question: "Le service est-il inclus en France ?", answer: "Souvent oui, mais le pourboire reste apprécié pour un excellent service." },
+
+  { question: "Combien donner en pourboire ?", answer: "Généralement 5 à 10% du montant, selon la satisfaction." },
+
+  { question: "Comment calculer le pourboire par personne ?", answer: "Divisez le total par le nombre de personnes." },
+
+  { question: "Dois-je arrondir le pourboire ?", answer: "Oui, souvent à l'euro supérieur pour simplifier." },
+
+  { question: "Le pourboire est-il obligatoire ?", answer: "Non, il est optionnel mais recommandé." },
+
+  { question: "Puis-je calculer pour un groupe ?", answer: "Oui, entrez le nombre de personnes." },
+
+  { question: "Ce calculateur est-il gratuit ?", answer: "Oui, comme tous nos outils." }
+
+];
+
+const related: RelatedLink[] = [
+
+  { label: "Partage addition", href: "/calculateurs/partage-addition", description: "Partagez l'addition avec le pourboire." },
+
+  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget." },
+
+  { label: "Économies petites dépenses", href: "/calculateurs/economies-petites-depenses", description: "Économisez au quotidien." }
+
+];
+
+---
+
+<CalculatorLayout title="Calculateur de pourboire" description="Calculez facilement le pourboire et le total à payer pour votre repas." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+
+  <TipCalculator client:load />
+
+</CalculatorLayout>

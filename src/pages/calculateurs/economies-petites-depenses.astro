@@ -1,0 +1,55 @@
+---
+
+import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
+
+import SmallExpensesSavingsCalculator from '../../components/calculators/SmallExpensesSavingsCalculator.tsx';
+
+import type { BreadcrumbItem, FAQItem, RelatedLink } from '../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+
+  { name: "Accueil", item: "/" },
+
+  { name: "Calculateurs", item: "/calculateurs" },
+
+  { name: "Petites dépenses", item: "/calculateurs/economies-petites-depenses" }
+
+];
+
+const faqs: FAQItem[] = [
+
+  { question: "Comment estimer mes économies ?", answer: "Entrez le coût unitaire, la fréquence et l'horizon pour voir l'impact." },
+
+  { question: "Les presets sont-ils précis ?", answer: "Ils sont des exemples moyens, ajustez selon vos habitudes." },
+
+  { question: "Puis-je calculer pour plusieurs habitudes ?", answer: "Calculez une par une pour plus de clarté." },
+
+  { question: "L'horizon est-il réaliste ?", answer: "Oui, il montre l'accumulation sur le temps." },
+
+  { question: "Dois-je arrêter toutes les dépenses ?", answer: "Non, c'est pour prendre conscience et modérer si souhaité." },
+
+  { question: "Puis-je sauvegarder mes calculs ?", answer: "Pas encore, mais nous y travaillons." },
+
+  { question: "Ce calculateur est-il gratuit ?", answer: "Oui, comme tous nos outils." },
+
+  { question: "Comment réduire mes dépenses ?", answer: "Identifiez les habitudes coûteuses et trouvez des alternatives." }
+
+];
+
+const related: RelatedLink[] = [
+
+  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget global." },
+
+  { label: "Épargne automatique", href: "/calculateurs/epargne-automatique", description: "Planifiez votre épargne." },
+
+  { label: "Pourboire", href: "/calculateurs/pourboire", description: "Calculez le pourboire." }
+
+];
+
+---
+
+<CalculatorLayout title="Calculateur d’économies sur petites dépenses" description="Estimez l'impact financier de vos petites dépenses répétées sur le long terme." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+
+  <SmallExpensesSavingsCalculator client:load />
+
+</CalculatorLayout>

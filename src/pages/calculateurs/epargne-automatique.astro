@@ -1,0 +1,55 @@
+---
+
+import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
+
+import SavingsGoalCalculator from '../../components/calculators/SavingsGoalCalculator.tsx';
+
+import type { BreadcrumbItem, FAQItem, RelatedLink } from '../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+
+  { name: "Accueil", item: "/" },
+
+  { name: "Calculateurs", item: "/calculateurs" },
+
+  { name: "Épargne automatique", item: "/calculateurs/epargne-automatique" }
+
+];
+
+const faqs: FAQItem[] = [
+
+  { question: "Qu'est-ce que l'épargne automatique ?", answer: "C'est un système où vous versez régulièrement une somme pour atteindre un objectif." },
+
+  { question: "Comment calculer mon effort mensuel ?", answer: "Entrez votre objectif, durée et épargne initiale. Le calculateur fait le reste." },
+
+  { question: "Le taux d'intérêt est-il garanti ?", answer: "Non, c'est une estimation basée sur le taux annuel fourni." },
+
+  { question: "Puis-je changer mes versements ?", answer: "Oui, mais ajustez en conséquence pour atteindre votre objectif." },
+
+  { question: "Que faire si je n'atteins pas mon objectif ?", answer: "Augmentez vos versements ou prolongez la durée." },
+
+  { question: "L'épargne est-elle imposable ?", answer: "Cela dépend de votre situation fiscale. Consultez un expert." },
+
+  { question: "Puis-je utiliser ce calculateur sans taux ?", answer: "Oui, laissez le taux à 0 pour un calcul simple." },
+
+  { question: "Est-ce gratuit ?", answer: "Oui, tous nos outils sont gratuits." }
+
+];
+
+const related: RelatedLink[] = [
+
+  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget pour épargner plus." },
+
+  { label: "Partage addition", href: "/calculateurs/partage-addition", description: "Partagez l'addition entre amis." },
+
+  { label: "Économies petites dépenses", href: "/calculateurs/economies-petites-depenses", description: "Économisez sur les petites choses." }
+
+];
+
+---
+
+<CalculatorLayout title="Simulateur d’épargne automatique" description="Calculez facilement l'effort mensuel nécessaire pour atteindre votre objectif d'épargne." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+
+  <SavingsGoalCalculator client:load />
+
+</CalculatorLayout>

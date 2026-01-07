@@ -1,0 +1,79 @@
+---
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Card from '../components/ui/Card.astro';
+
+import Container from '../components/ui/Container.astro';
+
+---
+
+<BaseLayout title="Page introuvable - Calcery" description="La page que vous cherchez n'existe pas.">
+
+  <Container>
+
+    <h1>Page introuvable</h1>
+
+    <p>Désolé, la page que vous cherchez n'existe pas ou a été déplacée.</p>
+
+    <section class="mt-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Liens utiles</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <Card>
+
+          <h3><a href="/budget" class="text-blue-600 hover:underline">Budget & vie quotidienne</a></h3>
+
+          <p>Découvrez nos outils de gestion budgétaire.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/calculateurs" class="text-blue-600 hover:underline">Calculateurs</a></h3>
+
+          <p>Accédez à tous nos calculateurs gratuits.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/blog" class="text-blue-600 hover:underline">Blog</a></h3>
+
+          <p>Lisez nos articles sur les finances.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/calculateurs/budget-mensuel" class="text-blue-600 hover:underline">Budget mensuel</a></h3>
+
+          <p>Calculez votre budget mensuel.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/calculateurs/epargne-automatique" class="text-blue-600 hover:underline">Épargne automatique</a></h3>
+
+          <p>Simulez votre épargne.</p>
+
+        </Card>
+
+        <Card>
+
+          <h3><a href="/calculateurs/economies-petites-depenses" class="text-blue-600 hover:underline">Économies petites dépenses</a></h3>
+
+          <p>Maîtrisez vos petites dépenses.</p>
+
+        </Card>
+
+      </div>
+
+    </section>
+
+  </Container>
+
+</BaseLayout>

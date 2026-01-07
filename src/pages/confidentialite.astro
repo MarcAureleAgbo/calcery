@@ -1,0 +1,65 @@
+---
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import { siteConfig } from '../lib/site.ts';
+
+---
+
+<BaseLayout title="Confidentialité - Calcery" description="Politique de confidentialité de Calcery.">
+
+  <h1>Politique de confidentialité</h1>
+
+  <p>Cette politique décrit comment nous collectons et utilisons vos données personnelles.</p>
+
+  <section class="bg-blue-50 p-4 rounded mb-6">
+
+    <h2>Données collectées</h2>
+
+    <p>Nous collectons uniquement les données que vous nous fournissez via le formulaire de contact : nom (optionnel), email et message.</p>
+
+  </section>
+
+  <section class="bg-green-50 p-4 rounded mb-6">
+
+    <h2>Finalité du traitement</h2>
+
+    <p>Les données sont utilisées uniquement pour répondre à vos questions ou suggestions.</p>
+
+  </section>
+
+  <section class="bg-yellow-50 p-4 rounded mb-6">
+
+    <h2>Base légale</h2>
+
+    <p>Le traitement est basé sur votre consentement explicite lors de l'envoi du formulaire.</p>
+
+  </section>
+
+  <section class="bg-red-50 p-4 rounded mb-6">
+
+    <h2>Durée de conservation</h2>
+
+    <p>Les messages sont conservés maximum 12 mois après traitement.</p>
+
+  </section>
+
+  <section class="bg-purple-50 p-4 rounded mb-6">
+
+    <h2>Vos droits RGPD</h2>
+
+    <p>Vous pouvez exercer vos droits d'accès, rectification et suppression en nous contactant à <a href={`mailto:${siteConfig.siteEmail}`} class="text-blue-600 hover:underline">{siteConfig.siteEmail}</a>.</p>
+
+  </section>
+
+  <section class="bg-indigo-50 p-4 rounded">
+
+    <h2>Cookies</h2>
+
+    <p>Le site n'utilise pas de cookies de suivi. Les éventuels cookies techniques sont nécessaires au fonctionnement du site.</p>
+
+    <p>Pour plus d'informations, consultez nos <a href="/mentions-legales" class="text-blue-600 hover:underline">mentions légales</a>.</p>
+
+  </section>
+
+</BaseLayout>

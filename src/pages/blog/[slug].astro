@@ -1,0 +1,58 @@
+---
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import SEO from '../../components/SEO.astro';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts
+    .filter(post => !post.data.draft)
+    .map(post => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+
+---
+
+<BaseLayout title={`${post.data.title} - Calcery`} description={post.data.description}>
+
+  <article class="prose max-w-none">
+
+    <h1>{post.data.title}</h1>
+
+    <p class="text-gray-600">{post.data.description}</p>
+
+    <p class="text-sm text-gray-500">Publié le {new Date(post.data.date).toLocaleDateString('fr-FR')}</p>
+
+    <Content />
+
+  </article>
+
+  <section class="mt-8">
+
+    <h2 class="text-2xl font-semibold mb-4">Outils utiles</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <a href="/calculateurs/budget-mensuel" class="block p-4 border rounded hover:bg-gray-50">Budget mensuel</a>
+
+      <a href="/calculateurs/epargne-automatique" class="block p-4 border rounded hover:bg-gray-50">Épargne automatique</a>
+
+      <a href="/calculateurs/economies-petites-depenses" class="block p-4 border rounded hover:bg-gray-50">Économies petites dépenses</a>
+
+    </div>
+
+  </section>
+
+  <p class="mt-4"><a href="/blog" class="text-blue-600 hover:underline">Retour au blog</a></p>
+
+</BaseLayout>
