@@ -1,43 +1,72 @@
-# Astro Starter Kit: Minimal
+# Calcery
 
-```sh
-npm create astro@latest -- --template minimal
+Calculateurs simples du quotidien - Site web Astro + TypeScript + Tailwind CSS
+
+## 🚀 Déploiement
+
+Ce projet est configuré pour un déploiement sur Cloudflare Pages.
+
+### Prérequis
+
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Développement
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Build
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm run build
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Configuration Cloudflare Pages
 
-## 🧞 Commands
+- **Framework preset**: Astro
+- **Build command**: `npm run build`
+- **Build output directory**: `dist`
+- **Environment variables**:
+  - `SITE_URL`: URL de production (ex: `https://calcery.pages.dev`)
 
-All commands are run from the root of the project, from a terminal:
+## 📁 Structure
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- `src/pages/` - Pages Astro
+- `src/components/` - Composants réutilisables
+- `src/layouts/` - Layouts de page
+- `src/content/` - Contenu blog (Content Collections)
+- `src/lib/` - Utilitaires et types TypeScript
 
-## 👀 Want to learn more?
+## 🛠️ Technologies
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Astro** - Framework web
+- **TypeScript** - Typage
+- **Tailwind CSS** - Styles
+- **React** - Composants interactifs (calculateurs)
+- **Content Collections** - Gestion du blog
+
+## 📄 Pages
+
+- Accueil
+- Calculateurs (5 outils)
+- Blog avec articles
+- Pages légales (mentions, confidentialité, contact)
+
+## 🔍 SEO
+
+- Sitemap automatique
+- Meta tags optimisées
+- Robots.txt
+- Open Graph
+
+## 📧 Contact
+
+Pour toute question : contact@calcery.fr
