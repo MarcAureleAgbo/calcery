@@ -6,6 +6,8 @@ import Card from '../../components/ui/Card.astro';
 
 import Container from '../../components/ui/Container.astro';
 
+import Button from '../../components/ui/Button.astro';
+
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -16,58 +18,42 @@ const sortedPosts = posts.sort((a, b) => new Date(b.data.date).getTime() - new D
 
 <BaseLayout title="Blog - Calcery" description="Articles et conseils sur les calculateurs et la gestion budgétaire.">
 
-  <Container>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary/5 to-secondary/5 py-16">
+    <Container>
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-primary mb-4">Blog Calcery</h1>
+        <p class="text-xl text-gray-700 mb-8">Découvrez nos articles sur la gestion budgétaire, les calculateurs financiers et les conseils pratiques pour mieux gérer votre argent.</p>
+      </div>
+    </Container>
+  </section>
 
-    <h1>Blog</h1>
-
-    <p>Découvrez nos articles sur la gestion budgétaire et les calculateurs financiers.</p>
-
-    <section class="mb-8">
-
-      <h2 class="text-2xl font-semibold mb-4">Articles</h2>
-
-      <div class="space-y-4">
-
+  <!-- Articles -->
+  <section class="py-16">
+    <Container>
+      <h2 class="text-3xl font-semibold text-center mb-12">Tous les articles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {sortedPosts.map(post => (
-
-          <div class="border-b pb-4">
-
-            <h3><a href={`/blog/${post.slug}`} class="text-primary hover:underline text-xl">{post.data.title}</a></h3>
-
-            <p class="text-gray-600">{post.data.description}</p>
-
-            <p class="text-sm text-gray-500">{new Date(post.data.date).toLocaleDateString('fr-FR')}</p>
-
-          </div>
-
-        ))}
-
-      </div>
-
-    </section>
-
-    <section>
-
-      <h2 class="text-2xl font-semibold mb-4">Articles recommandés</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-        {sortedPosts.slice(0, 2).map(post => (
-
-          <Card>
-
-            <h3><a href={`/blog/${post.slug}`} class="text-primary hover:underline">{post.data.title}</a></h3>
-
-            <p>{post.data.description}</p>
-
+          <Card class="p-6 hover:shadow-md transition-shadow">
+            <h3 class="text-xl font-semibold mb-3"><a href={`/blog/${post.slug}`} class="text-primary hover:underline">{post.data.title}</a></h3>
+            <p class="text-gray-700 mb-4">{post.data.description}</p>
+            <p class="text-sm text-gray-500 mb-4">Publié le {new Date(post.data.date).toLocaleDateString('fr-FR')}</p>
+            <Button href={`/blog/${post.slug}`}>Lire l'article</Button>
           </Card>
-
         ))}
-
       </div>
+    </Container>
+  </section>
 
-    </section>
-
-  </Container>
+  <!-- CTA -->
+  <section class="bg-primary py-12">
+    <Container>
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold text-white mb-4">Prêt à optimiser vos finances ?</h2>
+        <p class="text-white/90 mb-6">Commencez par analyser votre budget mensuel.</p>
+        <Button href="/budget" class="bg-white text-primary hover:bg-gray-100">Explorer les outils</Button>
+      </div>
+    </Container>
+  </section>
 
 </BaseLayout>

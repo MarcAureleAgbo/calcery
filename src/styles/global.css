@@ -18,3 +18,40 @@ h3 {
 p {
   @apply text-base leading-relaxed text-gray-700;
 }
+
+/* Prose lite pour articles */
+.prose-lite h1 {
+  @apply text-3xl font-bold mb-4 text-primary;
+}
+
+.prose-lite h2 {
+  @apply text-2xl font-semibold mb-3 mt-8 text-primary;
+}
+
+.prose-lite h3 {
+  @apply text-xl font-medium mb-2 mt-6 text-secondary;
+}
+
+.prose-lite p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose-lite ul, .prose-lite ol {
+  @apply mb-4 pl-6;
+}
+
+.prose-lite li {
+  @apply mb-2;
+}
+
+.prose-lite a {
+  @apply text-primary hover:underline;
+}
+
+.prose-lite blockquote {
+  @apply border-l-4 border-primary pl-4 italic text-gray-600 mb-4;
+}
+
+.prose-lite code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+}

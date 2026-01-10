@@ -36,19 +36,25 @@ const faqs: FAQItem[] = [
 
 ];
 
-const related: RelatedLink[] = [
+const tips: string[] = [
 
-  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget pour épargner plus." },
+  "Définissez un objectif clair et réaliste (ex: 5000€ en 2 ans).",
 
-  { label: "Partage addition", href: "/calculateurs/partage-addition", description: "Partagez l'addition entre amis." },
+  "Automatisez vos versements pour épargner sans y penser.",
 
-  { label: "Économies petites dépenses", href: "/calculateurs/economies-petites-depenses", description: "Économisez sur les petites choses." }
+  "Commencez avec de petits montants pour créer l'habitude.",
+
+  "Augmentez vos versements quand votre salaire augmente.",
+
+  "Choisissez un compte épargne avec un bon taux d'intérêt.",
+
+  "Suivez vos progrès mensuellement pour rester motivé."
 
 ];
 
 ---
 
-<CalculatorLayout title="Simulateur d’épargne automatique" description="Calculez facilement l'effort mensuel nécessaire pour atteindre votre objectif d'épargne." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+<CalculatorLayout title="Calculateur épargne automatique gratuit" description="Calculez votre plan d'épargne pour atteindre vos objectifs financiers." breadcrumbs={breadcrumbs} faqs={faqs} updatedAt="2026-01-07" tips={tips}>
 
   <SavingsGoalCalculator client:load />
 

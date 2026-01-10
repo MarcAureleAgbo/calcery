@@ -29,8 +29,9 @@ const BudgetCalculator: React.FC = () => {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block mb-2 font-semibold">Revenu mensuel net (€)</label>
+          <label htmlFor="revenu" className="block mb-2 font-semibold">Revenu mensuel net (€)</label>
           <input
+            id="revenu"
             type="number"
             min="0"
             step="any"
@@ -39,10 +40,12 @@ const BudgetCalculator: React.FC = () => {
             className="w-full p-2 border border-gray-300 rounded"
             placeholder="Ex: 2500"
           />
+          <p className="text-sm text-gray-500 mt-1">Entrez votre salaire après impôts et charges.</p>
         </div>
         <div>
-          <label className="block mb-2 font-semibold">Dépenses Logement (€)</label>
+          <label htmlFor="logement" className="block mb-2 font-semibold">Dépenses Logement (€)</label>
           <input
+            id="logement"
             type="number"
             min="0"
             step="any"
@@ -51,10 +54,12 @@ const BudgetCalculator: React.FC = () => {
             className="w-full p-2 border border-gray-300 rounded"
             placeholder="Ex: 800"
           />
+          <p className="text-sm text-gray-500 mt-1">Loyer, charges, assurance habitation.</p>
         </div>
         <div>
-          <label className="block mb-2 font-semibold">Dépenses Alimentation (€)</label>
+          <label htmlFor="alimentation" className="block mb-2 font-semibold">Dépenses Alimentation (€)</label>
           <input
+            id="alimentation"
             type="number"
             min="0"
             step="any"
@@ -63,10 +68,12 @@ const BudgetCalculator: React.FC = () => {
             className="w-full p-2 border border-gray-300 rounded"
             placeholder="Ex: 400"
           />
+          <p className="text-sm text-gray-500 mt-1">Courses, restaurants, snacks.</p>
         </div>
         <div>
-          <label className="block mb-2 font-semibold">Dépenses Transport (€)</label>
+          <label htmlFor="transport" className="block mb-2 font-semibold">Dépenses Transport (€)</label>
           <input
+            id="transport"
             type="number"
             min="0"
             step="any"
@@ -75,10 +82,12 @@ const BudgetCalculator: React.FC = () => {
             className="w-full p-2 border border-gray-300 rounded"
             placeholder="Ex: 200"
           />
+          <p className="text-sm text-gray-500 mt-1">Carburant, transports en commun, assurance auto.</p>
         </div>
         <div>
-          <label className="block mb-2 font-semibold">Dépenses Loisirs (€)</label>
+          <label htmlFor="loisirs" className="block mb-2 font-semibold">Dépenses Loisirs (€)</label>
           <input
+            id="loisirs"
             type="number"
             min="0"
             step="any"
@@ -87,10 +96,12 @@ const BudgetCalculator: React.FC = () => {
             className="w-full p-2 border border-gray-300 rounded"
             placeholder="Ex: 150"
           />
+          <p className="text-sm text-gray-500 mt-1">Sorties, hobbies, abonnements.</p>
         </div>
         <div>
-          <label className="block mb-2 font-semibold">Dépenses Autres (€)</label>
+          <label htmlFor="autres" className="block mb-2 font-semibold">Dépenses Autres (€)</label>
           <input
+            id="autres"
             type="number"
             min="0"
             step="any"
@@ -99,23 +110,30 @@ const BudgetCalculator: React.FC = () => {
             className="w-full p-2 border border-gray-300 rounded"
             placeholder="Ex: 100"
           />
+          <p className="text-sm text-gray-500 mt-1">Santé, éducation, imprévus.</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-blue-100 p-4 rounded-lg shadow">
-          <h3 className="font-semibold">Total dépenses</h3>
-          <p className="text-2xl">{totalDepenses.toFixed(2)} €</p>
+      {revenu === 0 ? (
+        <div className="text-center py-8 text-gray-500">
+          <p>Renseignez un montant de revenu pour voir les résultats de votre budget.</p>
         </div>
-        <div className="bg-green-100 p-4 rounded-lg shadow">
-          <h3 className="font-semibold">Reste à vivre</h3>
-          <p className={`text-2xl ${resteAVivre < 0 ? 'text-red-600' : ''}`}>{resteAVivre.toFixed(2)} €</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
+            <h3 className="font-semibold text-red-800">Total dépenses</h3>
+            <p className="text-2xl text-red-600">{totalDepenses.toFixed(2)} €</p>
+          </div>
+          <div className={`p-4 rounded-lg border ${resteAVivre >= 0 ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+            <h3 className={`font-semibold ${resteAVivre >= 0 ? 'text-green-800' : 'text-red-800'}`}>Reste à vivre</h3>
+            <p className={`text-2xl ${resteAVivre >= 0 ? 'text-green-600' : 'text-red-600'}`}>{resteAVivre.toFixed(2)} €</p>
+          </div>
+          <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+            <h3 className="font-semibold text-blue-800">Taux d’épargne</h3>
+            <p className="text-2xl text-blue-600">{tauxEpargne.toFixed(2)} %</p>
+          </div>
         </div>
-        <div className="bg-yellow-100 p-4 rounded-lg shadow">
-          <h3 className="font-semibold">Taux d’épargne</h3>
-          <p className="text-2xl">{tauxEpargne.toFixed(2)} %</p>
-        </div>
-      </div>
+      )}
 
       {resteAVivre < 0 && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">

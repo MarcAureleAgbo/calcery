@@ -36,19 +36,25 @@ const faqs: FAQItem[] = [
 
 ];
 
-const related: RelatedLink[] = [
+const tips: string[] = [
 
-  { label: "Épargne automatique", href: "/calculateurs/epargne-automatique", description: "Calculez votre épargne automatique." },
+  "Incluez tous vos revenus fixes et variables pour une vision complète.",
 
-  { label: "Pourboire", href: "/calculateurs/pourboire", description: "Calculez le pourboire idéal." },
+  "Listez toutes vos dépenses : essentielles (loyer, nourriture) et loisirs.",
 
-  { label: "Économies petites dépenses", href: "/calculateurs/economies-petites-depenses", description: "Économisez sur les petites dépenses." }
+  "Visez un taux d'épargne de 10-20% de vos revenus.",
+
+  "Révisez votre budget chaque mois pour l'ajuster.",
+
+  "Utilisez des applications mobiles pour suivre vos dépenses.",
+
+  "Évitez les achats impulsifs en attendant 24h avant d'acheter."
 
 ];
 
 ---
 
-<CalculatorLayout title="Calculateur budget mensuel gratuit" description="Calculez facilement votre budget mensuel pour mieux gérer vos finances." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+<CalculatorLayout title="Calculateur budget mensuel gratuit" description="Calculez facilement votre budget mensuel pour mieux gérer vos finances." breadcrumbs={breadcrumbs} faqs={faqs} updatedAt="2026-01-07" tips={tips}>
 
   <BudgetCalculator client:load />
 

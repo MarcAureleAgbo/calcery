@@ -36,19 +36,25 @@ const faqs: FAQItem[] = [
 
 ];
 
-const related: RelatedLink[] = [
+const tips: string[] = [
 
-  { label: "Pourboire", href: "/calculateurs/pourboire", description: "Calculez le pourboire seul." },
+  "Incluez le pourboire dans le total pour un partage équitable.",
 
-  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget." },
+  "Arrondissez le montant par personne à l'euro près.",
 
-  { label: "Épargne automatique", href: "/calculateurs/epargne-automatique", description: "Planifiez votre épargne." }
+  "Vérifiez toujours le total de l'addition avant de calculer.",
+
+  "Utilisez ce calculateur pour éviter les disputes entre amis.",
+
+  "Si quelqu'un a commandé plus cher, ajustez manuellement après.",
+
+  "Gardez une photo de l'addition pour référence."
 
 ];
 
 ---
 
-<CalculatorLayout title="Calculateur de partage d’addition" description="Partagez facilement l'addition entre amis en incluant le pourboire." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+<CalculatorLayout title="Calculateur partage addition gratuit" description="Partagez facilement l'addition entre amis, avec ou sans pourboire." breadcrumbs={breadcrumbs} faqs={faqs} updatedAt="2026-01-07" tips={tips}>
 
   <SplitBillCalculator client:load />
 

@@ -2,64 +2,132 @@
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import Card from '../components/ui/Card.astro';
-
 import Container from '../components/ui/Container.astro';
 
 import Button from '../components/ui/Button.astro';
+
+import FeatureCard from '../components/ui/FeatureCard.astro';
+
+import Icon from '../components/ui/Icon.astro';
 
 ---
 
 <BaseLayout>
 
-  <Container>
-
-    <h1>Calcery – calculateurs simples du quotidien</h1>
-
-    <section class="mb-8">
-
-      <h2 class="text-2xl font-semibold mb-4">Commencer ici</h2>
-
-      <p class="mb-4">Découvrez nos outils pour gérer votre budget et optimiser vos finances.</p>
-
-      <Button href="/budget">Explorer Budget & vie quotidienne</Button>
-
-    </section>
-
-    <section class="mb-8">
-
-      <h2 class="text-2xl font-semibold mb-4">Nos calculateurs</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-        <Card>
-
-          <h3><a href="/calculateurs/budget-mensuel" class="text-primary hover:underline">Budget mensuel</a></h3>
-
-          <p>Équilibrez vos revenus et dépenses.</p>
-
-        </Card>
-
-        <Card>
-
-          <h3><a href="/calculateurs/epargne-automatique" class="text-primary hover:underline">Épargne automatique</a></h3>
-
-          <p>Atteignez vos objectifs d'épargne.</p>
-
-        </Card>
-
-        <Card>
-
-          <h3><a href="/calculateurs/pourboire" class="text-primary hover:underline">Pourboire</a></h3>
-
-          <p>Calculez le pourboire facilement.</p>
-
-        </Card>
-
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-primary/5 to-secondary/5 py-16">
+    <Container>
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+          Des calculateurs simples pour mieux gérer ton quotidien
+        </h1>
+        <p class="text-xl text-gray-700 mb-8">
+          Rapide, gratuit, sans inscription. Calcule localement pour ta tranquillité.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button href="/calculateurs">Voir les outils</Button>
+          <Button variant="secondary" href="/budget">Commencer par Budget</Button>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2">
+          <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Gratuit</span>
+          <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm">Sans inscription</span>
+          <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Calcul local</span>
+        </div>
       </div>
+    </Container>
+  </section>
 
-    </section>
+  <!-- OUTILS PHARES -->
+  <section class="py-16">
+    <Container>
+      <h2 class="text-3xl font-semibold text-center mb-12">Outils phares</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+          <Icon name="calculator" class="text-primary mb-4" />
+          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/budget-mensuel" class="text-primary hover:underline">Budget mensuel</a></h3>
+          <p class="text-gray-700">Équilibrez facilement vos revenus et dépenses pour une vision claire.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+          <Icon name="wallet" class="text-primary mb-4" />
+          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/epargne-automatique" class="text-primary hover:underline">Épargne automatique</a></h3>
+          <p class="text-gray-700">Atteignez vos objectifs d'épargne sans effort.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+          <Icon name="calculator" class="text-primary mb-4" />
+          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/pourboire" class="text-primary hover:underline">Pourboire</a></h3>
+          <p class="text-gray-700">Calculez le pourboire idéal en un instant.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+          <Icon name="calculator" class="text-primary mb-4" />
+          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/partage-addition" class="text-primary hover:underline">Partage d'addition</a></h3>
+          <p class="text-gray-700">Répartissez l'addition équitablement entre amis.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+          <Icon name="chart" class="text-primary mb-4" />
+          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/economies-petites-depenses" class="text-primary hover:underline">Économies petites dépenses</a></h3>
+          <p class="text-gray-700">Découvrez l'impact cumulé de vos petites habitudes.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
 
-  </Container>
+  <!-- POURQUOI CALCERY -->
+  <section class="bg-gray-50 py-16">
+    <Container>
+      <h2 class="text-3xl font-semibold text-center mb-12">Pourquoi Calcery ?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <FeatureCard
+          title="Rapide"
+          description="Calculs instantanés sans attendre. Interface fluide pour une expérience optimale."
+          iconName="bolt"
+        />
+        <FeatureCard
+          title="Clair"
+          description="Résultats simples et compréhensibles. Pas de jargon technique."
+          iconName="spark"
+        />
+        <FeatureCard
+          title="Fiable"
+          description="Calculs locaux, aucune donnée stockée. Sécurité et confidentialité garanties."
+          iconName="shield"
+        />
+      </div>
+    </Container>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="py-16">
+    <Container>
+      <h2 class="text-3xl font-semibold text-center mb-12">Comment ça marche</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <h3 class="text-xl font-semibold mb-2">Choisis ton outil</h3>
+          <p class="text-gray-700">Sélectionne le calculateur adapté à tes besoins parmi nos outils spécialisés.</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <h3 class="text-xl font-semibold mb-2">Entre tes données</h3>
+          <p class="text-gray-700">Renseigne simplement tes informations. Tout reste local sur ton appareil.</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <h3 class="text-xl font-semibold mb-2">Obtiens le résultat</h3>
+          <p class="text-gray-700">Visualise immédiatement tes calculs et prends des décisions éclairées.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="bg-primary py-12">
+    <Container>
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold text-white mb-4">Prêt à optimiser tes finances ?</h2>
+        <p class="text-white/90 mb-6">Commence par analyser ton budget mensuel.</p>
+        <Button href="/budget" class="bg-white text-primary hover:bg-gray-100">Explorer Budget & vie quotidienne</Button>
+      </div>
+    </Container>
+  </section>
 
 </BaseLayout>

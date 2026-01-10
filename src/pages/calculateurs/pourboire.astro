@@ -36,19 +36,25 @@ const faqs: FAQItem[] = [
 
 ];
 
-const related: RelatedLink[] = [
+const tips: string[] = [
 
-  { label: "Partage addition", href: "/calculateurs/partage-addition", description: "Partagez l'addition avec le pourboire." },
+  "Le pourboire standard en France est de 5 à 10% du montant.",
 
-  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget." },
+  "Arrondissez le pourboire à l'euro supérieur pour simplifier.",
 
-  { label: "Économies petites dépenses", href: "/calculateurs/economies-petites-depenses", description: "Économisez au quotidien." }
+  "Donnez plus (15%) pour un service vraiment exceptionnel.",
+
+  "Vérifiez si le service est déjà inclus dans l'addition.",
+
+  "Pour les groupes, divisez le total par personne.",
+
+  "Utilisez ce calculateur pour éviter les erreurs de calcul."
 
 ];
 
 ---
 
-<CalculatorLayout title="Calculateur de pourboire" description="Calculez facilement le pourboire et le total à payer pour votre repas." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+<CalculatorLayout title="Calculateur pourboire gratuit" description="Calculez facilement le pourboire et le total de votre repas." breadcrumbs={breadcrumbs} faqs={faqs} updatedAt="2026-01-07" tips={tips}>
 
   <TipCalculator client:load />
 

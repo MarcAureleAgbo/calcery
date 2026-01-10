@@ -36,19 +36,25 @@ const faqs: FAQItem[] = [
 
 ];
 
-const related: RelatedLink[] = [
+const tips: string[] = [
 
-  { label: "Budget mensuel", href: "/calculateurs/budget-mensuel", description: "Gérez votre budget global." },
+  "Identifiez vos habitudes quotidiennes : café, cigarettes, snacks.",
 
-  { label: "Épargne automatique", href: "/calculateurs/epargne-automatique", description: "Planifiez votre épargne." },
+  "Utilisez les presets comme base, puis personnalisez.",
 
-  { label: "Pourboire", href: "/calculateurs/pourboire", description: "Calculez le pourboire." }
+  "Calculez sur 1 an pour voir l'impact réel de l'accumulation.",
+
+  "Remplacez par des alternatives moins chères (ex: café maison).",
+
+  "Suivez vos économies avec une application budgétaire.",
+
+  "Commencez par une petite économie pour gagner en motivation."
 
 ];
 
 ---
 
-<CalculatorLayout title="Calculateur d’économies sur petites dépenses" description="Estimez l'impact financier de vos petites dépenses répétées sur le long terme." breadcrumbs={breadcrumbs} faqs={faqs} related={related} updatedAt="2026-01-07">
+<CalculatorLayout title="Calculateur économies petites dépenses gratuit" description="Estimez l'impact cumulé de vos petites dépenses répétées." breadcrumbs={breadcrumbs} faqs={faqs} updatedAt="2026-01-07" tips={tips}>
 
   <SmallExpensesSavingsCalculator client:load />
 
