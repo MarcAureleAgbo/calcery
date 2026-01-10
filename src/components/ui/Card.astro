@@ -1,19 +1,15 @@
 ---
 
 export interface Props {
-
   variant?: string;
-
 }
 
 const { variant = 'default' } = Astro.props;
 
-const baseClasses = 'rounded-lg shadow-md p-4';
+const baseClasses = 'rounded-lg border border-gray-200 bg-white shadow-sm p-6';
 
 const variantClasses = {
-
-  default: 'bg-white',
-
+  default: '',
 };
 
 const classes = `${baseClasses} ${variantClasses[variant] || variantClasses.default}`;
@@ -21,7 +17,5 @@ const classes = `${baseClasses} ${variantClasses[variant] || variantClasses.defa
 ---
 
 <div class={classes}>
-
   <slot />
-
 </div>

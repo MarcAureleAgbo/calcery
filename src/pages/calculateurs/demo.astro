@@ -2,6 +2,8 @@
 
 import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
 
+import Button from '../../components/ui/Button.astro';
+
 import type { BreadcrumbItem, FAQItem, RelatedLink } from '../../lib/types.ts';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -46,7 +48,7 @@ const related: RelatedLink[] = [
 
     <input type="number" id="b" class="border p-2 mb-4 w-full" />
 
-    <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded">Calculer (simulation)</button>
+    <Button type="button">Calculer (simulation)</Button>
 
     <p id="result" class="mt-4">Résultat : 0</p>
 
