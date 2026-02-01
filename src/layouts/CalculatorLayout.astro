@@ -38,90 +38,95 @@ const { title, description, breadcrumbs = [], faqs = [], updatedAt, tips = [], d
 
 <BaseLayout title={title} description={description}>
 
-  <div class="bg-slate-50 min-h-screen">
+  <div class="bg-white min-h-screen">
 
-    <Container class="py-8">
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-b from-primary/8 via-white to-secondary/8 border-b border-gray-100 py-12">
+      <Container class="py-6">
+        <Breadcrumbs items={breadcrumbs} />
 
-      <Breadcrumbs items={breadcrumbs} />
-
-      <!-- HEADER PREMIUM -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-primary mb-4">{title}</h1>
-        <p class="text-xl text-gray-700 mb-6 max-w-2xl mx-auto">{description}</p>
-        <div class="flex flex-wrap justify-center gap-2 mb-4">
-          <Badge variant="success">Gratuit</Badge>
-          <Badge variant="info">Sans inscription</Badge>
-          <Badge variant="default">Calcul local</Badge>
+        <!-- HEADER PREMIUM -->
+        <div class="text-center mb-8">
+          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">{title}</h1>
+          <p class="text-xl text-gray-600 font-light mb-8 max-w-2xl mx-auto">{description}</p>
+          <div class="flex flex-wrap justify-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">Gratuit</span>
+            <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">Sans inscription</span>
+            <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">Calcul local</span>
+          </div>
+          <p class="text-sm text-gray-600 font-medium">Vos données restent sur votre appareil. Aucune transmission.</p>
         </div>
-        <p class="text-sm text-gray-500">Vos données restent sur votre appareil. Aucune transmission.</p>
-      </div>
+      </Container>
+    </section>
+
+    <Container class="py-12">
 
       <!-- CALCULATEUR -->
-      <div class="max-w-4xl mx-auto mb-12">
-        <Card class="p-8">
-          <h2 class="text-2xl font-semibold mb-6 text-center">Calculateur</h2>
+      <div class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
+          <h2 class="text-2xl font-bold mb-8 text-center text-gray-900">Calculateur</h2>
           <slot />
-        </Card>
+        </div>
       </div>
 
       <!-- CONSEILS RAPIDES -->
       {tips.length > 0 && (
-        <section class="mb-12 max-w-4xl mx-auto">
-          <h2 class="text-2xl font-semibold mb-6 text-center">Conseils rapides</h2>
-          <Card class="p-6">
-            <ul class="space-y-2">
+        <section class="mb-16 max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">💡 Conseils rapides</h2>
+          <div class="bg-primary/5 border-l-4 border-primary rounded-r-lg p-8">
+            <ul class="space-y-3">
               {tips.map((tip, index) => (
-                <li key={index} class="flex items-start">
-                  <span class="text-primary mr-2">•</span>
-                  <span>{tip}</span>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary font-bold text-lg flex-shrink-0">✓</span>
+                  <span class="text-gray-700 leading-relaxed">{tip}</span>
                 </li>
               ))}
             </ul>
-          </Card>
+          </div>
         </section>
       )}
 
       <!-- COMMENT ÇA MARCHE -->
-      <section class="mb-12 max-w-4xl mx-auto">
-        <h2 class="text-2xl font-semibold mb-6 text-center">Comment ça marche ?</h2>
-        <Card class="p-6">
+      <section class="mb-16 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Comment ça marche ?</h2>
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
           <slot name="how-it-works">
-            <p>Explication par défaut du fonctionnement.</p>
+            <p class="text-gray-700">Explication par défaut du fonctionnement.</p>
           </slot>
-        </Card>
+        </div>
       </section>
 
       <!-- EXEMPLES -->
-      <section class="mb-12 max-w-4xl mx-auto">
-        <h2 class="text-2xl font-semibold mb-6 text-center">Exemples</h2>
-        <Card class="p-6">
+      <section class="mb-16 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Exemples</h2>
+        <div class="bg-gradient-to-b from-gray-50 to-white border border-gray-200 rounded-xl p-8 shadow-md">
           <slot name="examples">
-            <p>Exemples d'utilisation.</p>
+            <p class="text-gray-700">Exemples d'utilisation.</p>
           </slot>
-        </Card>
+        </div>
       </section>
 
       <!-- AVERTISSEMENT -->
       {!disableDisclaimer && (
-        <section class="mb-12 max-w-4xl mx-auto">
-          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-            <h2 class="text-xl font-semibold mb-2 text-yellow-800">Avertissement</h2>
-            <p class="text-yellow-700">Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.</p>
+        <section class="mb-16 max-w-4xl mx-auto">
+          <div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-8">
+            <h2 class="text-xl font-semibold mb-3 text-amber-900">⚠️ Avertissement important</h2>
+            <p class="text-amber-800 leading-relaxed">Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.</p>
           </div>
         </section>
       )}
 
       <!-- FAQ -->
       {faqs.length > 0 && (
-        <section class="mb-12 max-w-4xl mx-auto">
-          <h2 class="text-2xl font-semibold mb-6 text-center">FAQ</h2>
-          <Card class="p-6">
+        <section class="mb-16 max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Questions fréquentes</h2>
+          <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
             <FAQ items={faqs} />
-          </Card>
+          </div>
         </section>
       )}
 
-      {updatedAt && <p class="text-sm text-gray-500 text-center">Dernière mise à jour : {updatedAt}</p>}
+      {updatedAt && <p class="text-sm text-gray-500 text-center mb-8">Dernière mise à jour : {updatedAt}</p>}
 
     </Container>
 
