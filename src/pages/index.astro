@@ -29,9 +29,9 @@ import Icon from '../components/ui/IconInline.astro';
           <Button variant="secondary" href="/budget">Commencer par Budget</Button>
         </div>
         <div class="flex flex-wrap justify-center gap-2">
-          <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Gratuit</span>
-          <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm">Sans inscription</span>
-          <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Calcul local</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm cursor-default">Gratuit</span>
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm cursor-default">Sans inscription</span>
+          <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm cursor-default">Calcul local</span>
         </div>
       </div>
     </Container>
@@ -125,7 +125,7 @@ import Icon from '../components/ui/IconInline.astro';
       <div class="text-center">
         <h2 class="text-2xl font-semibold text-white mb-4">Prêt à optimiser tes finances ?</h2>
         <p class="text-white/90 mb-6">Commence par analyser ton budget mensuel.</p>
-        <Button href="/budget" class="bg-white text-primary hover:bg-gray-100">Explorer Budget & vie quotidienne</Button>
+        <Button variant="light" href="/budget">Explorer Budget & vie quotidienne</Button>
       </div>
     </Container>
   </section>
