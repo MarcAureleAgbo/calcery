@@ -1,53 +1,50 @@
 ---
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import Container from '../components/ui/Container.astro';
 import { siteConfig } from '../lib/site.ts';
 
 ---
 
 <BaseLayout title="Mentions légales - Calcery" description="Mentions légales du site Calcery.">
 
-  <h1>Mentions légales</h1>
+  <Container>
+    <div class="max-w-3xl mx-auto py-8">
+      <h1 class="text-4xl font-bold mb-6">Mentions légales</h1>
 
-  <p>Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique.</p>
+      <p class="text-gray-700 mb-8">Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique.</p>
 
-  <section class="bg-blue-50 p-4 rounded mb-6">
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Éditeur du site</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="mb-2"><strong class="text-primary">{siteConfig.editorName}</strong></p>
+          <p class="mb-2 text-gray-700">Adresse : {siteConfig.editorAddress}</p>
+          <p class="text-gray-700">Email : <a href={`mailto:${siteConfig.siteEmail}`} class="text-primary hover:underline">{siteConfig.siteEmail}</a></p>
+        </div>
+      </section>
 
-    <h2>Éditeur du site</h2>
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Hébergement</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="text-gray-700">Le site est hébergé par {siteConfig.hostingProvider}.</p>
+        </div>
+      </section>
 
-    <p><strong>{siteConfig.editorName}</strong></p>
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Propriété intellectuelle</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="text-gray-700">Le contenu du site Calcery est protégé par le droit d'auteur. Toute reproduction est interdite sans autorisation préalable.</p>
+        </div>
+      </section>
 
-    <p>Adresse : {siteConfig.editorAddress}</p>
-
-    <p>Email : <a href={`mailto:${siteConfig.siteEmail}`} class="text-primary hover:underline">{siteConfig.siteEmail}</a></p>
-
-  </section>
-
-  <section class="bg-green-50 p-4 rounded mb-6">
-
-    <h2>Hébergement</h2>
-
-    <p>Le site est hébergé par {siteConfig.hostingProvider}.</p>
-
-  </section>
-
-  <section class="bg-yellow-50 p-4 rounded mb-6">
-
-    <h2>Propriété intellectuelle</h2>
-
-    <p>Le contenu du site Calcery est protégé par le droit d'auteur. Toute reproduction est interdite sans autorisation préalable.</p>
-
-  </section>
-
-  <section class="bg-red-50 p-4 rounded">
-
-    <h2>Responsabilité</h2>
-
-    <p>Les outils de calcul fournis sont indicatifs et ne constituent pas un conseil financier. L'utilisateur est seul responsable de l'utilisation des résultats.</p>
-
-    <p>Dernière mise à jour : {siteConfig.lastUpdated}</p>
-
-  </section>
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Responsabilité</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="mb-4 text-gray-700">Les outils de calcul fournis sont indicatifs et ne constituent pas un conseil financier. L'utilisateur est seul responsable de l'utilisation des résultats.</p>
+          <p class="text-sm text-gray-600">Dernière mise à jour : {siteConfig.lastUpdated}</p>
+        </div>
+      </section>
+    </div>
+  </Container>
 
 </BaseLayout>

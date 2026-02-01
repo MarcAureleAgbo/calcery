@@ -1,8 +1,8 @@
 export const siteConfig = {
   siteName: "Calcery",
-  siteEmail: "contact@exemple.fr",
-  editorName: "[NOM/RAISON SOCIALE]",
-  editorAddress: "[ADRESSE]",
+  siteEmail: "ingridsacla@gmail.com",
+  editorName: "Maison Ellis",
+  editorAddress: "60 Rue François 1er, 75008 Paris, France",
   hostingProvider: "Cloudflare Pages",
-  lastUpdated: "2026-01-07",
+  lastUpdated: "2026-02-01",
 };

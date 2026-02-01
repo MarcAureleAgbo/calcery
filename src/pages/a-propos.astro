@@ -1,53 +1,47 @@
 ---
 
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
 
 ---
 
 <BaseLayout title="À propos - Calcery" description="En savoir plus sur Calcery et notre mission.">
 
-  <h1>À propos</h1>
+  <Container>
+    <div class="max-w-3xl mx-auto py-8">
+      <h1 class="text-4xl font-bold mb-6">À propos de Calcery</h1>
 
-  <p>Calcery est un site dédié aux outils de calcul financier simples et gratuits. Notre mission est de rendre la gestion budgétaire accessible à tous, sans inscription ni complexité.</p>
+      <p class="text-lg text-gray-700 mb-8">Calcery est un site dédié aux outils de calcul financier simples et gratuits. Notre mission est de rendre la gestion budgétaire accessible à tous, sans inscription ni complexité.</p>
 
-  <section class="bg-blue-50 p-4 rounded mb-6">
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Notre mission</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="mb-4 text-gray-700">Nous proposons des calculateurs intuitifs pour :</p>
+          <ul class="list-disc list-inside space-y-2 ml-2 text-gray-700">
+            <li>Équilibrer votre budget mensuel</li>
+            <li>Planifier votre épargne</li>
+            <li>Maîtriser vos dépenses quotidiennes</li>
+            <li>Partager les frais entre amis</li>
+          </ul>
+          <p class="mt-4 text-gray-700">Tous nos outils sont gratuits et fonctionnent directement dans votre navigateur.</p>
+        </div>
+      </section>
 
-    <h2>Notre mission</h2>
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Transparence et responsabilité</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="mb-4 text-gray-700">Nos calculateurs fournissent des résultats indicatifs basés sur les données que vous saisissez. Ils ne constituent pas un conseil financier personnalisé. Nous vous recommandons de vérifier les informations et d'adapter les calculs à votre situation personnelle.</p>
+          <p class="text-gray-700">Le site est financé par des moyens transparents et ne collecte aucune donnée personnelle sans votre consentement explicite.</p>
+        </div>
+      </section>
 
-    <p>Nous proposons des calculateurs intuitifs pour :</p>
-
-    <ul class="list-disc list-inside">
-
-      <li>Équilibrer votre budget mensuel</li>
-
-      <li>Planifier votre épargne</li>
-
-      <li>Maîtriser vos dépenses quotidiennes</li>
-
-      <li>Partager les frais entre amis</li>
-
-    </ul>
-
-    <p>Tous nos outils sont gratuits et fonctionnent directement dans votre navigateur.</p>
-
-  </section>
-
-  <section class="bg-green-50 p-4 rounded mb-6">
-
-    <h2>Transparence</h2>
-
-    <p>Nos calculateurs fournissent des résultats indicatifs basés sur les données que vous saisissez. Ils ne constituent pas un conseil financier personnalisé. Nous vous recommandons de vérifier les informations et d'adapter les calculs à votre situation personnelle.</p>
-
-    <p>Le site est financé par des moyens transparents et ne collecte aucune donnée personnelle sans votre consentement explicite.</p>
-
-  </section>
-
-  <section class="bg-yellow-50 p-4 rounded">
-
-    <h2>Contact</h2>
-
-    <p>Pour toute question ou suggestion, n'hésitez pas à <a href="/contact" class="text-primary hover:underline">nous contacter</a>.</p>
-
-  </section>
+      <section>
+        <h2 class="text-2xl font-semibold mb-4">Vous avez des questions ?</h2>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p class="text-gray-700">Pour toute question ou suggestion, n'hésitez pas à <a href="/contact" class="text-primary hover:underline font-medium">nous contacter</a>.</p>
+        </div>
+      </section>
+    </div>
+  </Container>
 
 </BaseLayout>
