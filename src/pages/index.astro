@@ -15,67 +15,114 @@ import Icon from '../components/ui/IconInline.astro';
 <BaseLayout>
 
   <!-- HERO -->
-  <section class="bg-gradient-to-br from-primary/5 to-secondary/5 py-16">
+  <section class="bg-gradient-to-br from-primary/8 via-white to-secondary/8 py-24 border-b border-gray-100">
     <Container>
       <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
-          Des calculateurs simples pour mieux gérer ton quotidien
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Des calculateurs simples pour mieux gérer votre quotidien
         </h1>
-        <p class="text-xl text-gray-700 mb-8">
-          Rapide, gratuit, sans inscription. Calcule localement pour ta tranquillité.
+        <p class="text-xl text-gray-600 mb-10 font-light">
+          Rapide, gratuit, sans inscription. Calculez localement pour votre tranquillité.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Button href="/calculateurs">Voir les outils</Button>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button href="/calculateurs">Découvrir les outils</Button>
           <Button variant="secondary" href="/budget">Commencer par Budget</Button>
         </div>
-        <div class="flex flex-wrap justify-center gap-2">
-          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm cursor-default">Gratuit</span>
-          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm cursor-default">Sans inscription</span>
-          <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm cursor-default">Calcul local</span>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">Gratuit</span>
+          <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">Sans inscription</span>
+          <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">Calcul local</span>
         </div>
       </div>
     </Container>
   </section>
 
   <!-- OUTILS PHARES -->
-  <section class="py-16">
+  <section class="py-20 bg-white">
     <Container>
-      <h2 class="text-3xl font-semibold text-center mb-12">Outils phares</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-          <Icon name="calculator" class="text-primary mb-4" />
-          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/budget-mensuel" class="text-primary hover:underline">Budget mensuel</a></h3>
-          <p class="text-gray-700">Équilibrez facilement vos revenus et dépenses pour une vision claire.</p>
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 text-center mb-4">Outils phares</h2>
+        <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto">Les calculateurs les plus populaires pour gérer vos finances avec simplicité</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Budget mensuel - highlighted as primary -->
+        <div class="bg-gradient-to-br from-primary/5 to-primary/2 border-2 border-primary/20 rounded-xl p-8 shadow-md hover:shadow-lg hover:border-primary/40 transition-all hover:-translate-y-1">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-primary/10 rounded-lg">
+              <Icon name="calculator" class="text-primary w-6 h-6" />
+            </div>
+            <h3 class="text-2xl font-bold text-primary">Budget mensuel</h3>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">Équilibrez facilement vos revenus et dépenses pour une vision claire de votre situation financière.</p>
+          <a href="/calculateurs/budget-mensuel" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
         </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-          <Icon name="wallet" class="text-primary mb-4" />
-          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/epargne-automatique" class="text-primary hover:underline">Épargne automatique</a></h3>
-          <p class="text-gray-700">Atteignez vos objectifs d'épargne sans effort.</p>
+        
+        <!-- Autres outils -->
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="wallet" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Épargne automatique</h3>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">Atteignez vos objectifs d'épargne sans effort grâce à un système automatisé et efficace.</p>
+          <a href="/calculateurs/epargne-automatique" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
         </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-          <Icon name="calculator" class="text-primary mb-4" />
-          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/pourboire" class="text-primary hover:underline">Pourboire</a></h3>
-          <p class="text-gray-700">Calculez le pourboire idéal en un instant.</p>
+        
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="calculator" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Pourboire</h3>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">Calculez le pourboire idéal en un instant, adapté au service et à vos préférences.</p>
+          <a href="/calculateurs/pourboire" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
         </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-          <Icon name="calculator" class="text-primary mb-4" />
-          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/partage-addition" class="text-primary hover:underline">Partage d'addition</a></h3>
-          <p class="text-gray-700">Répartissez l'addition équitablement entre amis.</p>
+        
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="calculator" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Partage d'addition</h3>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">Répartissez l'addition équitablement entre amis en quelques secondes.</p>
+          <a href="/calculateurs/partage-addition" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
         </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-          <Icon name="chart" class="text-primary mb-4" />
-          <h3 class="text-xl font-semibold mb-2"><a href="/calculateurs/economies-petites-depenses" class="text-primary hover:underline">Économies petites dépenses</a></h3>
-          <p class="text-gray-700">Découvrez l'impact cumulé de vos petites habitudes.</p>
+        
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="chart" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Économies petites dépenses</h3>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">Découvrez l'impact cumulé de vos petites habitudes quotidiennes sur votre épargne.</p>
+          <a href="/calculateurs/economies-petites-depenses" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
         </div>
       </div>
     </Container>
   </section>
 
   <!-- POURQUOI CALCERY -->
-  <section class="bg-gray-50 py-16">
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-20">
     <Container>
-      <h2 class="text-3xl font-semibold text-center mb-12">Pourquoi Calcery ?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 text-center mb-4">Pourquoi Calcery ?</h2>
+        <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto">Une plateforme conçue pour vous offrir la meilleure expérience</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <FeatureCard
           title="Rapide"
           description="Calculs instantanés sans attendre. Interface fluide pour une expérience optimale."
@@ -83,12 +130,12 @@ import Icon from '../components/ui/IconInline.astro';
         />
         <FeatureCard
           title="Clair"
-          description="Résultats simples et compréhensibles. Pas de jargon technique."
+          description="Résultats simples et compréhensibles. Pas de jargon technique, juste des explications pratiques."
           iconName="spark"
         />
         <FeatureCard
-          title="Fiable"
-          description="Calculs locaux, aucune donnée stockée. Sécurité et confidentialité garanties."
+          title="Sécurisé"
+          description="Calculs locaux, aucune donnée stockée. Votre confidentialité et sécurité sont garanties."
           iconName="shield"
         />
       </div>
@@ -96,36 +143,39 @@ import Icon from '../components/ui/IconInline.astro';
   </section>
 
   <!-- COMMENT ÇA MARCHE -->
-  <section class="py-16">
+  <section class="py-20 bg-white">
     <Container>
-      <h2 class="text-3xl font-semibold text-center mb-12">Comment ça marche</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 text-center mb-4">Comment ça marche</h2>
+        <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto">Trois étapes simples pour optimiser vos finances</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
         <div class="text-center">
-          <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
-          <h3 class="text-xl font-semibold mb-2">Choisis ton outil</h3>
-          <p class="text-gray-700">Sélectionne le calculateur adapté à tes besoins parmi nos outils spécialisés.</p>
+          <div class="bg-gradient-to-br from-primary to-primary/80 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-lg">1</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Choisir un outil</h3>
+          <p class="text-gray-700 leading-relaxed">Sélectionnez le calculateur adapté à vos besoins parmi notre sélection d'outils spécialisés.</p>
         </div>
         <div class="text-center">
-          <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
-          <h3 class="text-xl font-semibold mb-2">Entre tes données</h3>
-          <p class="text-gray-700">Renseigne simplement tes informations. Tout reste local sur ton appareil.</p>
+          <div class="bg-gradient-to-br from-secondary to-secondary/80 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-lg">2</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Saisir vos données</h3>
+          <p class="text-gray-700 leading-relaxed">Renseignez simplement vos informations. Tout reste local sur votre appareil, jamais envoyé.</p>
         </div>
         <div class="text-center">
-          <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
-          <h3 class="text-xl font-semibold mb-2">Obtiens le résultat</h3>
-          <p class="text-gray-700">Visualise immédiatement tes calculs et prends des décisions éclairées.</p>
+          <div class="bg-gradient-to-br from-accent to-accent/80 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-lg">3</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Obtenir le résultat</h3>
+          <p class="text-gray-700 leading-relaxed">Visualisez immédiatement vos calculs et prenez des décisions éclairées pour votre avenir.</p>
         </div>
       </div>
     </Container>
   </section>
 
   <!-- CTA FINAL -->
-  <section class="bg-primary py-12">
+  <section class="bg-gradient-to-r from-primary to-primary/90 py-16">
     <Container>
       <div class="text-center">
-        <h2 class="text-2xl font-semibold text-white mb-4">Prêt à optimiser tes finances ?</h2>
-        <p class="text-white/90 mb-6">Commence par analyser ton budget mensuel.</p>
-        <Button variant="light" href="/budget">Explorer Budget & vie quotidienne</Button>
+        <h2 class="text-4xl font-bold text-white mb-4">Prêt à optimiser vos finances ?</h2>
+        <p class="text-white/95 text-lg mb-8 font-light">Commencez par analyser votre budget mensuel — gratuitement et sans engagement.</p>
+        <Button variant="light" href="/budget">Accéder au calculateur</Button>
       </div>
     </Container>
   </section>

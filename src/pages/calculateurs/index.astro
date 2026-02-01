@@ -2,66 +2,107 @@
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-import Card from '../../components/ui/Card.astro';
-
 import Container from '../../components/ui/Container.astro';
+
+import Icon from '../../components/ui/IconInline.astro';
+
+import Button from '../../components/ui/Button.astro';
 
 ---
 
-<BaseLayout title="Calculateurs - Calcery" description="Découvrez nos calculateurs simples pour vos besoins quotidiens.">
+<BaseLayout title="Calculateurs - Calcery" description="Découvrez nos 5 calculateurs simples et gratuits pour gérer votre quotidien.">
 
-  <Container>
+  <!-- HERO -->
+  <section class="bg-gradient-to-b from-primary/8 via-white to-secondary/8 py-20 border-b border-gray-100">
+    <Container>
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">Nos calculateurs</h1>
+        <p class="text-xl text-gray-600 font-light">5 outils gratuits, sans inscription, 100% locaux. Choisissez celui qui vous convient.</p>
+      </div>
+    </Container>
+  </section>
 
-    <h1>Calculateurs</h1>
+  <!-- CALCULATEURS GRID -->
+  <section class="py-20 bg-white">
+    <Container>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Budget - MAIN TOOL -->
+        <div class="bg-gradient-to-br from-primary/5 to-primary/2 border-2 border-primary/20 rounded-xl p-8 shadow-md hover:shadow-lg hover:border-primary/40 transition-all hover:-translate-y-1">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-primary/10 rounded-lg">
+              <Icon name="calculator" class="text-primary w-6 h-6" />
+            </div>
+            <h2 class="text-2xl font-bold text-primary">Budget mensuel</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Analysez facilement votre budget mensuel pour équilibrer vos revenus et dépenses. Prenez le contrôle de vos finances.</p>
+          <Button href="/calculateurs/budget-mensuel">Essayer</Button>
+        </div>
 
-    <p>5 outils gratuits, sans inscription.</p>
+        <!-- Other tools -->
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="wallet" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Épargne automatique</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Simulez votre épargne en fixant un montant régulier. Visualisez comment atteindre vos objectifs financiers.</p>
+          <a href="/calculateurs/epargne-automatique" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
+        </div>
 
-    <p class="mb-4"><a href="/budget" class="text-primary hover:underline">Voir la catégorie Budget & vie quotidienne</a></p>
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="calculator" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Pourboire</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Calculez rapidement le pourboire et le total de votre addition. Parfait pour les repas entre amis.</p>
+          <a href="/calculateurs/pourboire" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
+        </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="calculator" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Partage d'addition</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Partagez l'addition équitablement entre amis. Incluez le pourboire et divisez facilement.</p>
+          <a href="/calculateurs/partage-addition" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
+        </div>
 
-      <Card>
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="chart" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Économies petites dépenses</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Découvrez l'impact cumulé de vos petites habitudes répétées. Économisez sans vous restreindre.</p>
+          <a href="/calculateurs/economies-petites-depenses" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
 
-        <h2><a href="/calculateurs/budget-mensuel" class="text-primary hover:underline">Budget mensuel</a></h2>
-
-        <p>Calculez votre budget mensuel pour mieux gérer vos finances.</p>
-
-      </Card>
-
-      <Card>
-
-        <h2><a href="/calculateurs/epargne-automatique" class="text-primary hover:underline">Épargne automatique</a></h2>
-
-        <p>Simulez votre épargne pour atteindre vos objectifs financiers.</p>
-
-      </Card>
-
-      <Card>
-
-        <h2><a href="/calculateurs/pourboire" class="text-primary hover:underline">Pourboire</a></h2>
-
-        <p>Calculez le pourboire et le total pour votre repas.</p>
-
-      </Card>
-
-      <Card>
-
-        <h2><a href="/calculateurs/partage-addition" class="text-primary hover:underline">Partage d’addition</a></h2>
-
-        <p>Partagez l'addition entre amis en incluant le pourboire.</p>
-
-      </Card>
-
-      <Card>
-
-        <h2><a href="/calculateurs/economies-petites-depenses" class="text-primary hover:underline">Économies petites dépenses</a></h2>
-
-        <p>Estimez l'impact de vos petites dépenses répétées.</p>
-
-      </Card>
-
-    </div>
-
-  </Container>
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-accent/90 to-accent py-16">
+    <Container>
+      <div class="text-center">
+        <h2 class="text-4xl font-bold text-white mb-4">Commencez par le Budget</h2>
+        <p class="text-white/95 text-lg font-light mb-8">C'est notre outil le plus populaire pour comprendre votre situation financière actuelle.</p>
+        <Button variant="light" href="/calculateurs/budget-mensuel">Accéder maintenant</Button>
+      </div>
+    </Container>
+  </section>
 
 </BaseLayout>
