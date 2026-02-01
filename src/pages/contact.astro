@@ -2,35 +2,42 @@
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
 import { siteConfig } from '../lib/site.ts';
 
 ---
 
-<BaseLayout title="Contact - Calcery" description="Contactez-nous pour vos questions.">
+<BaseLayout title="Contact - Calcery" description="Contactez-nous pour vos questions, suggestions ou problèmes techniques.">
 
-  <Container>
-    <div class="max-w-3xl mx-auto py-8">
-      <h1 class="text-4xl font-bold mb-6">Contact</h1>
+  <!-- HERO -->
+  <section class="bg-gradient-to-b from-primary/8 via-white to-secondary/8 py-20 border-b border-gray-100">
+    <Container>
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">Nous contacter</h1>
+        <p class="text-xl text-gray-600 font-light">Vous avez une question ? Un bug ? Une idée ? Nous adorons vos retours.</p>
+      </div>
+    </Container>
+  </section>
 
-      <p class="text-gray-700 mb-8">Vous avez une question ou besoin d'aide ? N'hésitez pas à nous contacter via le formulaire ci-dessous. Un clic sur "Envoyer le message" ouvrira votre client email par défaut.</p>
+  <Container class="py-20">
+    <div class="max-w-3xl mx-auto">
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">Nous contacter</h2>
-
-        <form method="post" class="space-y-4" id="contact-form">
+      <!-- CONTACT FORM -->
+      <section class="mb-16">
+        <form method="post" class="space-y-6" id="contact-form">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom complet *</label>
-            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <label for="name" class="block text-sm font-semibold text-gray-900 mb-3">Nom complet *</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Adresse email *</label>
-            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <label for="email" class="block text-sm font-semibold text-gray-900 mb-3">Adresse email *</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
           </div>
 
           <div>
-            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Sujet *</label>
-            <select id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <label for="subject" class="block text-sm font-semibold text-gray-900 mb-3">Sujet du message *</label>
+            <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
               <option value="">Sélectionnez un sujet</option>
               <option value="question">Question générale</option>
               <option value="bug">Signalement d'un bug</option>
@@ -41,8 +48,8 @@ import { siteConfig } from '../lib/site.ts';
           </div>
 
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-            <textarea id="message" name="message" rows="6" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+            <label for="message" class="block text-sm font-semibold text-gray-900 mb-3">Votre message *</label>
+            <textarea id="message" name="message" rows="7" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white resize-none" placeholder="Décrivez votre question, votre bug ou votre suggestion..."></textarea>
           </div>
 
           <!-- Honeypot field -->
@@ -51,25 +58,52 @@ import { siteConfig } from '../lib/site.ts';
             <input type="text" id="website" name="website">
           </div>
 
-          <button type="submit" class="bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-            Envoyer le message
-          </button>
+          <Button type="submit" class="w-full">Envoyer le message</Button>
+
+          <p class="text-sm text-gray-600 text-center">
+            En soumettant ce formulaire, votre client email s'ouvrira pour envoyer votre message à <a href={`mailto:${siteConfig.siteEmail}`} class="text-primary hover:underline font-medium">{siteConfig.siteEmail}</a>.
+          </p>
         </form>
-
-        <p class="text-sm text-gray-600 mt-6">
-          * Champs obligatoires. En soumettant ce formulaire, votre client email s'ouvrira pour envoyer votre message à <a href={`mailto:${siteConfig.siteEmail}`} class="text-primary hover:underline">{siteConfig.siteEmail}</a>.
-        </p>
       </section>
 
-      <section class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-        <h2 class="text-2xl font-semibold mb-4">Support</h2>
-        <p class="mb-4 text-gray-700">
-          Pour toute question technique ou problème avec nos calculateurs, nous vous invitons à nous contacter directement.
-        </p>
-        <p class="text-gray-700">
-          <strong>Temps de réponse estimé :</strong> 24-48 heures ouvrées.
-        </p>
+      <!-- INFO CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-gradient-to-br from-primary/5 to-primary/2 border border-primary/20 rounded-xl p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">📧 Par email</h2>
+          <p class="text-gray-700 mb-4">La façon la plus simple de nous contacter. Réponse sous 24-48 heures ouvrées.</p>
+          <a href={`mailto:${siteConfig.siteEmail}`} class="text-primary hover:underline font-semibold">
+            {siteConfig.siteEmail}
+          </a>
+        </div>
+
+        <div class="bg-gradient-to-br from-secondary/5 to-secondary/2 border border-secondary/20 rounded-xl p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">📍 Notre adresse</h2>
+          <p class="text-gray-700">
+            <strong>Maison Ellis</strong><br>
+            {siteConfig.editorAddress}
+          </p>
+        </div>
+      </div>
+
+      <!-- SUPPORT SECTION -->
+      <section class="bg-white border border-gray-200 rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Vous avez besoin d'aide ?</h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">🐛 Vous avez trouvé un bug ?</h3>
+            <p>Décrivez-le avec le plus de détails possible (navigateur, device, étapes pour reproduire). Cela nous aide énormément!</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">💡 Vous avez une idée d'amélioration ?</h3>
+            <p>Nous adorons écouter vos suggestions ! Envoyez-nous votre retour pour nous aider à améliorer Calcery.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">🤝 Intéressé par un partenariat ?</h3>
+            <p>Nous sommes ouverts aux collaborations. Discutons-en par email !</p>
+          </div>
+        </div>
       </section>
+
     </div>
   </Container>
 
