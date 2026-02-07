@@ -80,12 +80,12 @@ const tools = post.slug === 'methode-50-30-20' ? [
       {toc.length > 0 && (
         <aside class="lg:w-64 flex-shrink-0">
           <div class="sticky top-8 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-            <h3 class="text-lg font-semibold mb-4 text-primary">Table des matières</h3>
+            <h3 class="text-lg font-semibold mb-4 text-black">Table des matières</h3>
             <nav>
               <ul class="space-y-2">
                 {toc.map(item => (
                   <li key={item.id} class={item.level === 3 ? 'ml-4' : ''}>
-                    <a href={`#${item.id}`} class="text-gray-700 hover:text-primary text-sm">{item.text}</a>
+                    <a href={`#${item.id}`} class="text-gray-700 hover:text-black text-sm">{item.text}</a>
                   </li>
                 ))}
               </ul>
@@ -102,7 +102,7 @@ const tools = post.slug === 'methode-50-30-20' ? [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {tools.map(tool => (
           <Card class="p-6 hover:shadow-md transition-shadow">
-            <h3 class="text-lg font-semibold mb-2"><a href={tool.href} class="text-primary hover:underline">{tool.title}</a></h3>
+            <h3 class="text-lg font-semibold mb-2"><a href={tool.href} class="text-black hover:underline">{tool.title}</a></h3>
             <p class="text-gray-700 mb-4">{tool.desc}</p>
             <Button href={tool.href} class="w-full">Utiliser</Button>
           </Card>
@@ -117,7 +117,7 @@ const tools = post.slug === 'methode-50-30-20' ? [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {relatedPosts.map(related => (
             <Card class="p-6 hover:shadow-md transition-shadow">
-              <h3 class="text-xl font-semibold mb-2"><a href={`/blog/${related.slug}`} class="text-primary hover:underline">{related.data.title}</a></h3>
+              <h3 class="text-xl font-semibold mb-2"><a href={`/blog/${related.slug}`} class="text-black hover:underline">{related.data.title}</a></h3>
               <p class="text-gray-700 mb-4">{related.data.description}</p>
               <p class="text-sm text-gray-500">Publié le {new Date(related.data.date).toLocaleDateString('fr-FR')}</p>
             </Card>
@@ -132,7 +132,7 @@ const tools = post.slug === 'methode-50-30-20' ? [
     )}
 
     <div class="mt-8 text-center">
-      <a href="/blog" class="text-primary hover:underline">Retour au blog</a>
+      <a href="/blog" class="text-black hover:underline">Retour au blog</a>
     </div>
 
   </div>
