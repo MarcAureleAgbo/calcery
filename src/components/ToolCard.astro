@@ -1,0 +1,22 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { icon, title, description, href } = Astro.props;
+---
+
+<a href={href} class="tool-card">
+  <div class="tool-icon">{icon}</div>
+  <h3 class="tool-title">{title}</h3>
+  <p class="tool-description">{description}</p>
+  <span class="tool-link">
+    Essayer
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M5 12h14m-7-7l7 7-7 7" />
+    </svg>
+  </span>
+</a>
