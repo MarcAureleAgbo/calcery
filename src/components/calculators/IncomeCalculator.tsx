@@ -179,7 +179,7 @@ export default function IncomeCalculator() {
         <h3 className="font-semibold text-gray-900 mb-3">💡 Conseils de réduction d'impôts</h3>
         <ul className="text-sm text-gray-700 space-y-2">
           <li>✓ Plan d'épargne retraite (PER) : déductible jusqu'à 10% de vos revenus</li>
-          <li>✓ Assurance vie : rendement sans imposition si < 8 ans</li>
+          <li>✓ Assurance vie : rendement sans imposition si durée 8 ans</li>
           <li>✓ Investissement immobilier : amortissement possible</li>
           <li>✓ Dons aux associations : 66% du montant déductible</li>
           <li>✓ Défiscalisation : Pinel, Girardin, Malraux selon votre région</li>
