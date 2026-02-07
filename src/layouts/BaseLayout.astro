@@ -234,31 +234,29 @@ const {
         observer.observe(card);
       });
     
-      // Basic client-side i18n for FR/EN (MVP)
+      // Client-side i18n for FR/EN with JSON files
       (function() {
-        const translations = {
-          en: {
-            'nav.home': 'Home',
-            'nav.calculateurs': 'Calculators',
-            'nav.blog': 'Blog',
-            'nav.about': 'About',
-            'nav.contact': 'Contact',
-            'hero.title': 'Simple calculators to better manage your daily life',
-            'hero.subtitle': "Quick, free and local tools to help you make informed financial choices.",
-            'cta.title': 'Start with Budget',
-            'cta.subtitle': "It's our most popular tool to understand your financial situation.",
-            'btn.try': 'Try'
+        let translations = { fr: {}, en: {} };
+
+        async function loadTranslations() {
+          try {
+            const [frRes, enRes] = await Promise.all([
+              fetch('/locales/fr.json'),
+              fetch('/locales/en.json')
+            ]);
+            translations.fr = await frRes.json();
+            translations.en = await enRes.json();
+          } catch (err) {
+            console.warn('Failed to load translations:', err);
           }
-        };
+        }
 
         function applyLang(lang) {
           document.documentElement.lang = lang;
           document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            const txt = (translations[lang] && translations[lang][key]);
-            if (txt) {
-              el.innerHTML = txt;
-            }
+            const txt = translations[lang] && translations[lang][key];
+            if (txt) el.textContent = txt;
           });
         }
 
@@ -283,7 +281,13 @@ const {
           applyLang(saved);
         }
 
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initLangSelector); else initLangSelector();
+        loadTranslations().then(() => {
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLangSelector);
+          } else {
+            initLangSelector();
+          }
+        });
       })();
 
       // Feedback tactile
