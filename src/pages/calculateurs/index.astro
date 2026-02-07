@@ -13,10 +13,10 @@ import Button from '../../components/ui/Button.astro';
 <BaseLayout title="Calculateurs - Calcery" description="Découvrez nos 5 calculateurs simples et gratuits pour gérer votre quotidien.">
 
   <!-- HERO -->
-  <section class="bg-gradient-to-b from-primary/8 via-white to-secondary/8 py-20 border-b border-gray-100">
+  <section class="bg-white border-b border-gray-200 py-20">
     <Container>
       <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">Nos calculateurs</h1>
+        <h1 class="text-5xl md:text-6xl font-bold text-black mb-4 leading-tight">Nos calculateurs</h1>
         <p class="text-xl text-gray-600 font-light">5 outils gratuits, sans inscription, 100% locaux. Choisissez celui qui vous convient.</p>
       </div>
     </Container>
@@ -27,12 +27,12 @@ import Button from '../../components/ui/Button.astro';
     <Container>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Budget - MAIN TOOL -->
-        <div class="bg-gradient-to-br from-primary/5 to-primary/2 border-2 border-primary/20 rounded-xl p-8 shadow-md hover:shadow-lg hover:border-primary/40 transition-all hover:-translate-y-1">
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg hover:border-gray-300 transition-all hover:-translate-y-1">
           <div class="flex items-center gap-4 mb-6">
-            <div class="p-3 bg-primary/10 rounded-lg">
-              <Icon name="calculator" class="text-primary w-6 h-6" />
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="calculator" class="text-black w-6 h-6" />
             </div>
-            <h2 class="text-2xl font-bold text-primary">Budget mensuel</h2>
+            <h2 class="text-2xl font-bold text-black">Budget mensuel</h2>
           </div>
           <p class="text-gray-700 mb-8 leading-relaxed">Analysez facilement votre budget mensuel pour équilibrer vos revenus et dépenses. Prenez le contrôle de vos finances.</p>
           <Button href="/calculateurs/budget-mensuel">Essayer</Button>
@@ -47,7 +47,7 @@ import Button from '../../components/ui/Button.astro';
             <h2 class="text-xl font-semibold text-gray-900">Épargne automatique</h2>
           </div>
           <p class="text-gray-700 mb-8 leading-relaxed">Simulez votre épargne en fixant un montant régulier. Visualisez comment atteindre vos objectifs financiers.</p>
-          <a href="/calculateurs/epargne-automatique" class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all gap-1">
+          <a href="/calculateurs/epargne-automatique" class="inline-flex items-center text-black font-semibold hover:gap-2 transition-all gap-1">
             Essayer →
           </a>
         </div>
@@ -90,16 +90,40 @@ import Button from '../../components/ui/Button.astro';
             Essayer →
           </a>
         </div>
-      </div>
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="trending-up" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Intérêts composés</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Visualisez comment votre épargne croît exponentiellement avec l'effet des intérêts composés sur le temps.</p>
+          <a href="/calculateurs/interets-composes" class="inline-flex items-center text-black font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <Icon name="file-text" class="text-gray-700 w-6 h-6" />
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Impôt sur le revenu</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">Estimez votre impôt à payer en fonction de votre revenu et du quotient familial. Découvrez votre taux effectif.</p>
+          <a href="/calculateurs/impot-revenu" class="inline-flex items-center text-black font-semibold hover:gap-2 transition-all gap-1">
+            Essayer →
+          </a>
+        </div>      </div>
     </Container>
   </section>
 
   <!-- CTA -->
-  <section class="bg-gradient-to-r from-accent/90 to-accent py-16">
+  <section class="bg-black py-16">
     <Container>
       <div class="text-center">
         <h2 class="text-4xl font-bold text-white mb-4">Commencez par le Budget</h2>
-        <p class="text-white/95 text-lg font-light mb-8">C'est notre outil le plus populaire pour comprendre votre situation financière actuelle.</p>
+        <p class="text-gray-300 text-lg font-light mb-8">C'est notre outil le plus populaire pour comprendre votre situation financière actuelle.</p>
         <Button variant="light" href="/calculateurs/budget-mensuel">Accéder maintenant</Button>
       </div>
     </Container>

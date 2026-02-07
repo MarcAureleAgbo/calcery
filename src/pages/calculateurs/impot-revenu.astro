@@ -1,0 +1,38 @@
+---
+import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
+import IncomeCalculator from '../../components/calculators/IncomeCalculator.tsx';
+import type { BreadcrumbItem, FAQItem } from '../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: "Accueil", item: "/" },
+  { name: "Calculateurs", item: "/calculateurs" },
+  { name: "Impôt sur le revenu", item: "/calculateurs/impot-revenu" }
+];
+
+const faqs: FAQItem[] = [
+  { question: "Comment l'impôt sur le revenu est-il calculé en France?", answer: "La France utilise un système d'impôt progressif avec des tranches. Vous payez 0%, 11%, 30%, 41%, ou 45% selon votre revenu divisé par le nombre de parts fiscales." },
+  { question: "Qu'est-ce qu'une 'part fiscale'?", answer: "Une part = 1 personne. Les couples mariés/PACS ont 2 parts, plus 0.5 ou 1 par enfant. Plus de parts = moins d'impôts (quotient familial)." },
+  { question: "Quelle est la différence brut/net?", answer: "Brut = salaire avant impôts et cotisations. Net = ce que vous recevez réellement après tout. Les cotisations sociales (~8%) sont aussi prélevées." },
+  { question: "Peut-on réduire son impôt?", answer: "Oui! PER, assurance-vie, investissements immobiliers, dons, etc. Un conseil fiscal peut vous aider à optimiser." },
+  { question: "Ce calcul est-il fiable?", answer: "C'est une estimation basée sur le barème standard. L'impôt final dépend aussi de vos crédits, réductions, et charges spécifiques. Vérifiez votre avis d'imposition officiel." },
+];
+
+const tips = [
+  "Vérifiez votre nombre de parts fiscales : c'est clé pour l'impôt!",
+  "Plus tôt vous payez par prélèvement automatique, mieux c'est pour votre budget.",
+  "Les revenus fonciers et capitaux ont parfois des traitements fiscaux différents.",
+  "Un conjoint au chômage peut réduire aussi l'impôt (quotient familial).",
+  "Consultez un expert-comptable si vos revenus sont complexes (multiples sources).",
+];
+---
+
+<CalculatorLayout 
+  title="Calculateur impôt sur le revenu gratuit | France | Calcery" 
+  description="Estimez rapidement votre impôt sur le revenu pour 2025. Utilisez le quotient familial et découvrez comment réduire vos impôts."
+  breadcrumbs={breadcrumbs} 
+  faqs={faqs}
+  updatedAt="2026-02-07"
+  tips={tips}
+>
+  <IncomeCalculator client:load />
+</CalculatorLayout>

@@ -116,53 +116,64 @@ body.reduce-motion .gradient-orb {
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 50%, #FFFFFF 100%);
 }
 
 .gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.2;
-  animation: orbFloat 25s infinite ease-in-out;
+  filter: blur(80px);
+  opacity: 0.08;
+  animation: orbFloat 35s infinite cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-  top: -300px;
-  right: -150px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, transparent 70%);
+  top: -350px;
+  right: -200px;
   animation-delay: 0s;
 }
 
 .orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  bottom: -250px;
-  left: -100px;
-  animation-delay: -12s;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+  bottom: -300px;
+  left: -150px;
+  animation-delay: -15s;
 }
 
 .orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-  top: 40%;
-  left: 50%;
-  animation-delay: -7s;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+  top: 30%;
+  left: 45%;
+  animation-delay: -8s;
 }
 
 @keyframes orbFloat {
-  0%,
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.05;
+  }
+  25% {
+    transform: translate(150px, -200px) scale(1.2);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(-100px, 150px) scale(0.95);
+    opacity: 0.08;
+  }
+  75% {
+    transform: translate(200px, 100px) scale(1.1);
+    opacity: 0.12;
+  }
   100% {
     transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(120px, -120px) scale(1.15);
-  }
-  66% {
-    transform: translate(-80px, 120px) scale(0.9);
+    opacity: 0.05;
   }
 }
 
@@ -170,17 +181,22 @@ body.reduce-motion .gradient-orb {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle, rgba(156, 163, 175, 0.15) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridMove 60s linear infinite;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 0.5px, transparent 0.5px);
+  background-size: 50px 50px;
+  animation: gridPulse 40s ease-in-out infinite;
+  opacity: 0.6;
 }
 
-@keyframes gridMove {
-  0% {
-    transform: translate(0, 0);
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: blur(0px);
+    transform: scale(1);
   }
-  100% {
-    transform: translate(40px, 40px);
+  50% {
+    opacity: 0.8;
+    filter: blur(0.3px);
+    transform: scale(1.02);
   }
 }
 
@@ -192,28 +208,28 @@ body.reduce-motion .gradient-orb {
 
 .particle {
   position: absolute;
-  width: 3px;
-  height: 3px;
-  background: var(--primary);
+  width: 2px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   opacity: 0;
-  animation: particleRise 20s infinite linear;
-  box-shadow: 0 0 10px var(--primary);
+  animation: particleRise 25s infinite ease-out;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes particleRise {
   0% {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0) scale(1);
     opacity: 0;
   }
-  10% {
-    opacity: 0.4;
+  5% {
+    opacity: 0.5;
   }
-  90% {
-    opacity: 0.4;
+  85% {
+    opacity: 0.5;
   }
   100% {
-    transform: translateY(-100vh) translateX(100px);
+    transform: translateY(-120vh) translateX(80px) scale(0.5);
     opacity: 0;
   }
 }

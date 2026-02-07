@@ -83,8 +83,8 @@ const tools = post.slug === 'methode-50-30-20' ? [
             <h3 class="text-lg font-semibold mb-4 text-black">Table des matières</h3>
             <nav>
               <ul class="space-y-2">
-                {toc.map(item => (
-                  <li key={item.id} class={item.level === 3 ? 'ml-4' : ''}>
+                {toc.map((item, idx) => (
+                  <li class={item.level === 3 ? 'ml-4' : ''}>
                     <a href={`#${item.id}`} class="text-gray-700 hover:text-black text-sm">{item.text}</a>
                   </li>
                 ))}
