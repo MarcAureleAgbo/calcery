@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import Analytics from '../components/Analytics.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
 import { SITE_URL } from '../lib/site';
 
@@ -53,6 +54,7 @@ const t = {
       investing: 'Investissement',
       legalNotice: 'Mentions légales',
       privacy: 'Confidentialité',
+      manageCookies: 'Gérer les cookies',
       rights: 'Tous les droits réservés.',
       madeForYou: 'Créé pour vous',
     },
@@ -81,6 +83,7 @@ const t = {
       investing: 'Investing',
       legalNotice: 'Legal notice',
       privacy: 'Privacy',
+      manageCookies: 'Manage cookies',
       rights: 'All rights reserved.',
       madeForYou: 'Built for you',
     },
@@ -234,6 +237,9 @@ const isCurrentPath = (href: string) => {
             <li><a href={withLocale('/mentions-legales')}>{t.footer.legalNotice}</a></li>
             <li><a href={withLocale('/confidentialite')}>{t.footer.privacy}</a></li>
             <li><a href={withLocale('/contact')}>{t.nav.contact}</a></li>
+            <li>
+              <button type="button" class="text-left hover:underline" data-cookie-settings>{t.footer.manageCookies}</button>
+            </li>
           </ul>
         </div>
       </div>
@@ -248,6 +254,7 @@ const isCurrentPath = (href: string) => {
         <path d="M18 15l-6-6-6 6" />
       </svg>
     </button>
+    <CookieBanner />
 
     <script define:vars={{ currentLocale }}>
       // Device detection
@@ -332,6 +339,12 @@ const isCurrentPath = (href: string) => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+        button.addEventListener('click', () => {
+          window.dispatchEvent(new CustomEvent('calcery:open-cookie-banner'));
+        });
+      });
 
       // Progressive cards reveal on scroll
       const observer = new IntersectionObserver((entries) => {

@@ -1,13 +1,62 @@
-<!DOCTYPE html><html lang="fr"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="alternate" hreflang="fr" href="https://calcery.com/blog/"><link rel="alternate" hreflang="en" href="https://calcery.com/en/blog/"><link rel="alternate" hreflang="x-default" href="https://calcery.com/blog/"><title>Blog - Calcery</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0A0E1A"><meta name="description" content="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne."><link rel="canonical" href="https://calcery.com/blog/"><meta property="og:title" content="Blog - Calcery"><meta property="og:description" content="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne."><meta property="og:type" content="website"><meta property="og:url" content="https://calcery.com/blog/"><meta property="og:site_name" content="Calcery"><meta property="og:image" content="https://calcery.com/og.png"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Blog - Calcery"><meta name="twitter:description" content="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne."><meta name="twitter:image" content="https://calcery.com/og.png"><meta name="twitter:site" content="@calcery"><script async src="https://www.googletagmanager.com/gtag/js?id=G-78C5EBM22T"></script><script>(function(){const GA_ID = "G-78C5EBM22T";
+<!DOCTYPE html><html lang="fr"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="alternate" hreflang="fr" href="https://calcery.com/blog/"><link rel="alternate" hreflang="en" href="https://calcery.com/en/blog/"><link rel="alternate" hreflang="x-default" href="https://calcery.com/blog/"><title>Blog - Calcery</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0A0E1A"><meta name="description" content="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne."><link rel="canonical" href="https://calcery.com/blog/"><meta property="og:title" content="Blog - Calcery"><meta property="og:description" content="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne."><meta property="og:type" content="website"><meta property="og:url" content="https://calcery.com/blog/"><meta property="og:site_name" content="Calcery"><meta property="og:image" content="https://calcery.com/og.png"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Blog - Calcery"><meta name="twitter:description" content="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne."><meta name="twitter:image" content="https://calcery.com/og.png"><meta name="twitter:site" content="@calcery"><script>(function(){const GA_ID = "G-78C5EBM22T";
+const CONSENT_KEY = "calcery_cookie_consent";
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
+      (() => {
+        const SOURCE = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+
+        function ensureDataLayer() {
+          window.dataLayer = window.dataLayer || [];
+          if (!window.gtag) {
+            window.gtag = function gtag() {
+              window.dataLayer.push(arguments);
+            };
+          }
         }
-        gtag('js', new Date());
-        gtag('config', GA_ID);
-      })();</script><link rel="stylesheet" href="/_astro/a-propos.CGUe1vH6.css">
-<link rel="stylesheet" href="/_astro/budget-mensuel.CTeJuXBK.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog" class="is-active" aria-current="page"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/" data-en-path="/en/blog/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog" class="is-active" aria-current="page"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/" data-en-path="/en/blog/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">  <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-4xl text-center"> <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Ressources Calcery</div> <h1 class="mb-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl">Articles et conseils</h1> <p class="text-xl font-light text-gray-600">Des contenus concrets pour mieux piloter votre budget, votre épargne et vos habitudes financières.</p> </div>  </div> </section> <section class="section"> <div class="section-header"> <div class="section-badge">Blog</div> <h2 class="section-title">Derniers articles</h2> <p class="section-subtitle">Des guides courts, actionnables, reliés à vos calculateurs préférés.</p> </div> <div class="grid grid-cols-1 gap-8 md:grid-cols-2"> <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"> <a href="/blog/pourboire-regles-pratiques-voyage" class="block"> <img src="/images/blog/lifestyle-cover.svg" alt="Illustration pourboire et voyage" width="1200" height="630" loading="lazy" decoding="async" class="h-52 w-full object-cover"> </a> <div class="p-8"> <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Vie quotidienne</span> <span>1 min</span> </div> <h3 class="mb-3 text-2xl font-bold text-black"> <a href="/blog/pourboire-regles-pratiques-voyage" class="transition-colors hover:text-gray-700">Pourboire en France et à l&#39;étranger : repères pratiques pour bien calculer</a> </h3> <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">Utilisez des repères simples pour estimer un pourboire cohérent selon le service, le contexte et le pays, sans vous tromper au moment de payer.</p> <div class="flex items-center justify-between"> <p class="text-sm text-gray-500">Publié le <span class="font-medium">10/02/2026</span></p> <a href="/blog/pourboire-regles-pratiques-voyage" class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
+
+        function loadAnalytics() {
+          if (window.__calceryGaLoaded) return;
+
+          window.__calceryGaLoaded = true;
+          ensureDataLayer();
+          window.gtag('js', new Date());
+          window.gtag('consent', 'default', { analytics_storage: 'granted' });
+          window.gtag('config', GA_ID, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+          });
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = SOURCE;
+          document.head.appendChild(script);
+        }
+
+        function readConsent() {
+          try {
+            return localStorage.getItem(CONSENT_KEY);
+          } catch {
+            return null;
+          }
+        }
+
+        if (readConsent() === 'accepted') {
+          loadAnalytics();
+        }
+
+        window.addEventListener('calcery:consent-updated', (event) => {
+          const status = event?.detail?.status;
+          if (status === 'accepted') {
+            loadAnalytics();
+            return;
+          }
+
+          if (status === 'rejected' && window.gtag) {
+            window.gtag('consent', 'update', { analytics_storage: 'denied' });
+          }
+        });
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
+<link rel="stylesheet" href="/_astro/budget-mensuel.DPY2sRzr.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog" class="is-active" aria-current="page"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/" data-en-path="/en/blog/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog" class="is-active" aria-current="page"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/" data-en-path="/en/blog/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">  <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-4xl text-center"> <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Ressources Calcery</div> <h1 class="mb-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl">Articles et conseils</h1> <p class="text-xl font-light text-gray-600">Des contenus concrets pour mieux piloter votre budget, votre épargne et vos habitudes financières.</p> </div>  </div> </section> <section class="section"> <div class="section-header"> <div class="section-badge">Blog</div> <h2 class="section-title">Derniers articles</h2> <p class="section-subtitle">Des guides courts, actionnables, reliés à vos calculateurs préférés.</p> </div> <div class="grid grid-cols-1 gap-8 md:grid-cols-2"> <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"> <a href="/blog/pourboire-regles-pratiques-voyage" class="block"> <img src="/images/blog/lifestyle-cover.svg" alt="Illustration pourboire et voyage" width="1200" height="630" loading="lazy" decoding="async" class="h-52 w-full object-cover"> </a> <div class="p-8"> <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Vie quotidienne</span> <span>1 min</span> </div> <h3 class="mb-3 text-2xl font-bold text-black"> <a href="/blog/pourboire-regles-pratiques-voyage" class="transition-colors hover:text-gray-700">Pourboire en France et à l&#39;étranger : repères pratiques pour bien calculer</a> </h3> <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">Utilisez des repères simples pour estimer un pourboire cohérent selon le service, le contexte et le pays, sans vous tromper au moment de payer.</p> <div class="flex items-center justify-between"> <p class="text-sm text-gray-500">Publié le <span class="font-medium">10/02/2026</span></p> <a href="/blog/pourboire-regles-pratiques-voyage" class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
 Lire
 <span aria-hidden="true">→</span> </a> </div> </div> </article><article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"> <a href="/blog/partage-addition-entre-amis-guide" class="block"> <img src="/images/blog/group-cover.svg" alt="Illustration partage d'addition entre amis" width="1200" height="630" loading="lazy" decoding="async" class="h-52 w-full object-cover"> </a> <div class="p-8"> <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Vie quotidienne</span> <span>1 min</span> </div> <h3 class="mb-3 text-2xl font-bold text-black"> <a href="/blog/partage-addition-entre-amis-guide" class="transition-colors hover:text-gray-700">Partage d&#39;addition entre amis : méthode simple et équitable</a> </h3> <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">Apprenez à partager une addition de manière transparente, gérer le pourboire et éviter les tensions grâce à une méthode claire en groupe.</p> <div class="flex items-center justify-between"> <p class="text-sm text-gray-500">Publié le <span class="font-medium">09/02/2026</span></p> <a href="/blog/partage-addition-entre-amis-guide" class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
 Lire
@@ -31,7 +80,57 @@ Lire
 Lire
 <span aria-hidden="true">→</span> </a> </div> </div> </article><article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"> <a href="/blog/petites-depenses-qui-comptent" class="block"> <img src="/images/blog/lifestyle-cover.svg" alt="Illustration petites depenses et habitudes" width="1200" height="630" loading="lazy" decoding="async" class="h-52 w-full object-cover"> </a> <div class="p-8"> <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Habitudes</span> <span>3 min</span> </div> <h3 class="mb-3 text-2xl font-bold text-black"> <a href="/blog/petites-depenses-qui-comptent" class="transition-colors hover:text-gray-700">Petites dépenses du quotidien : comment les réduire et économiser plus</a> </h3> <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">Découvrez l&#39;impact réel des petites dépenses répétées et mettez en place des actions simples pour économiser davantage sans frustration.</p> <div class="flex items-center justify-between"> <p class="text-sm text-gray-500">Publié le <span class="font-medium">07/01/2026</span></p> <a href="/blog/petites-depenses-qui-comptent" class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
 Lire
-<span aria-hidden="true">→</span> </a> </div> </div> </article> </div> </section>  </main> <footer class="site-footer"> <div class="footer-content"> <div class="footer-brand"> <h3>Calcery</h3> <p> Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications. </p> </div> <div class="footer-section"> <h4>Navigation</h4> <ul class="footer-links"> <li><a href="/">Accueil</a></li> <li><a href="/calculateurs">Calculateurs</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/a-propos">À propos</a></li> </ul> </div> <div class="footer-section"> <h4>Outils populaires</h4> <ul class="footer-links"> <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li> <li><a href="/calculateurs/epargne-automatique">Épargne</a></li> <li><a href="/calculateurs/pourboire">Pourboire</a></li> <li><a href="/calculateurs/interets-composes">Investissement</a></li> </ul> </div> <div class="footer-section"> <h4>Légal</h4> <ul class="footer-links"> <li><a href="/mentions-legales">Mentions légales</a></li> <li><a href="/confidentialite">Confidentialité</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé pour vous</p> </div> </footer> <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut"> <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"> <path d="M18 15l-6-6-6 6"></path> </svg> </button> <script>(function(){const currentLocale = "fr";
+<span aria-hidden="true">→</span> </a> </div> </div> </article> </div> </section>  </main> <footer class="site-footer"> <div class="footer-content"> <div class="footer-brand"> <h3>Calcery</h3> <p> Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications. </p> </div> <div class="footer-section"> <h4>Navigation</h4> <ul class="footer-links"> <li><a href="/">Accueil</a></li> <li><a href="/calculateurs">Calculateurs</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/a-propos">À propos</a></li> </ul> </div> <div class="footer-section"> <h4>Outils populaires</h4> <ul class="footer-links"> <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li> <li><a href="/calculateurs/epargne-automatique">Épargne</a></li> <li><a href="/calculateurs/pourboire">Pourboire</a></li> <li><a href="/calculateurs/interets-composes">Investissement</a></li> </ul> </div> <div class="footer-section"> <h4>Légal</h4> <ul class="footer-links"> <li><a href="/mentions-legales">Mentions légales</a></li> <li><a href="/confidentialite">Confidentialité</a></li> <li><a href="/contact">Contact</a></li> <li> <button type="button" class="text-left hover:underline" data-cookie-settings>Gérer les cookies</button> </li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé pour vous</p> </div> </footer> <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut"> <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"> <path d="M18 15l-6-6-6 6"></path> </svg> </button> <aside id="cookie-banner" class="fixed bottom-4 left-1/2 z-[1100] hidden w-[min(760px,calc(100%-2rem))] -translate-x-1/2 rounded-2xl border border-gray-200 bg-white/95 p-4 shadow-xl backdrop-blur" role="dialog" aria-live="polite" aria-label="Cookies et mesure d’audience"><div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div class="md:max-w-xl"><p class="text-sm font-semibold text-gray-900">Cookies et mesure d’audience</p><p class="mt-1 text-sm text-gray-600">Calcery utilise Google Analytics uniquement avec votre consentement pour mesurer l’audience et améliorer le site.<a href="/confidentialite" class="ml-1 font-medium text-gray-900 underline underline-offset-2 hover:text-black">Politique de confidentialité</a></p></div><div class="flex flex-wrap items-center gap-2"><button id="cookie-reject" type="button" class="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">Refuser</button><button id="cookie-accept" type="button" class="inline-flex min-h-11 items-center justify-center rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Accepter</button></div></div></aside><script>
+        (() => {
+          const KEY = 'calcery_cookie_consent';
+          const banner = document.getElementById('cookie-banner');
+          if (!banner) return;
+
+          const acceptButton = document.getElementById('cookie-accept');
+          const rejectButton = document.getElementById('cookie-reject');
+
+          const emitConsent = (status) => {
+            window.dispatchEvent(new CustomEvent('calcery:consent-updated', { detail: { status } }));
+          };
+
+          const hideBanner = () => {
+            banner.classList.add('hidden');
+          };
+
+          const showBanner = () => {
+            banner.classList.remove('hidden');
+          };
+
+          const saveChoice = (status) => {
+            try {
+              localStorage.setItem(KEY, status);
+              localStorage.setItem(`${KEY}_updated_at`, new Date().toISOString());
+            } catch {
+              // Ignore storage failures.
+            }
+            emitConsent(status);
+            hideBanner();
+          };
+
+          let consent = null;
+          try {
+            consent = localStorage.getItem(KEY);
+          } catch {
+            consent = null;
+          }
+
+          if (!consent) {
+            showBanner();
+          }
+
+          acceptButton?.addEventListener('click', () => saveChoice('accepted'));
+          rejectButton?.addEventListener('click', () => saveChoice('rejected'));
+
+          window.addEventListener('calcery:open-cookie-banner', () => {
+            showBanner();
+          });
+        })();
+      </script> <script>(function(){const currentLocale = "fr";
 
       // Device detection
       const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -115,6 +214,12 @@ Lire
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+        button.addEventListener('click', () => {
+          window.dispatchEvent(new CustomEvent('calcery:open-cookie-banner'));
+        });
+      });
 
       // Progressive cards reveal on scroll
       const observer = new IntersectionObserver((entries) => {

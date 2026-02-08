@@ -6,8 +6,11 @@ export const siteConfig = {
   siteEmail: "ingridsacla@gmail.com",
   editorName: "Maison Ellis",
   editorAddress: "60 Rue François 1er, 75008 Paris, France",
-  hostingProvider: "Cloudflare Pages",
-  lastUpdated: "2026-02-01",
+  hostingProvider: "Cloudflare Pages (Cloudflare, Inc.)",
+  hostingAddress: "101 Townsend St, San Francisco, CA 94107, USA",
+  analyticsProvider: "Google Analytics 4 (Google Ireland Ltd / Google LLC)",
+  analyticsId: "G-78C5EBM22T",
+  lastUpdated: "2026-02-08",
 };
 
 export const SITE_URL = siteConfig.siteUrl.replace(/\/+$/, '');

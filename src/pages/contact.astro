@@ -1,143 +1,144 @@
 ---
-
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
 import Button from '../components/ui/Button.astro';
 import { siteConfig } from '../lib/site.ts';
-
 ---
 
-<BaseLayout title="Contact - Calcery" description="Contactez-nous pour vos questions, suggestions ou problèmes techniques.">
-
-  <!-- HERO -->
-  <section class="bg-white border-b border-gray-200 py-20">
+<BaseLayout
+  title="Contact - Calcery"
+  description="Contactez Calcery pour vos questions, signalements, partenariats et demandes liées aux données personnelles."
+>
+  <section class="border-b border-gray-200 bg-white py-20">
     <Container>
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-bold text-black mb-6 leading-tight">Nous contacter</h1>
-        <p class="text-xl text-gray-600 font-light">Vous avez une question ? Un bug ? Une idée ? Nous adorons vos retours.</p>
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="mb-6 text-5xl font-bold leading-tight text-black md:text-6xl">Nous contacter</h1>
+        <p class="text-xl font-light text-gray-600">Questions, support, partenariat ou demande RGPD : nous vous répondons rapidement.</p>
       </div>
     </Container>
   </section>
 
   <Container class="py-20">
-    <div class="max-w-3xl mx-auto">
-
-      <!-- CONTACT FORM -->
+    <div class="mx-auto max-w-3xl">
       <section class="mb-16">
         <form method="post" class="space-y-6" id="contact-form">
           <div>
-            <label for="name" class="block text-sm font-semibold text-gray-900 mb-3">Nom complet *</label>
-            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
+            <label for="name" class="mb-3 block text-sm font-semibold text-gray-900">Nom complet (optionnel)</label>
+            <input type="text" id="name" name="name" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-semibold text-gray-900 mb-3">Adresse email *</label>
-            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
+            <label for="email" class="mb-3 block text-sm font-semibold text-gray-900">Adresse email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
 
           <div>
-            <label for="subject" class="block text-sm font-semibold text-gray-900 mb-3">Sujet du message *</label>
-            <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
+            <label for="subject" class="mb-3 block text-sm font-semibold text-gray-900">Sujet *</label>
+            <select id="subject" name="subject" required class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary">
               <option value="">Sélectionnez un sujet</option>
               <option value="question">Question générale</option>
               <option value="bug">Signalement d'un bug</option>
               <option value="suggestion">Suggestion d'amélioration</option>
               <option value="partnership">Partenariat</option>
+              <option value="rgpd">Demande RGPD</option>
               <option value="other">Autre</option>
             </select>
           </div>
 
           <div>
-            <label for="message" class="block text-sm font-semibold text-gray-900 mb-3">Votre message *</label>
-            <textarea id="message" name="message" rows="7" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white resize-none" placeholder="Décrivez votre question, votre bug ou votre suggestion..."></textarea>
+            <label for="message" class="mb-3 block text-sm font-semibold text-gray-900">Votre message *</label>
+            <textarea id="message" name="message" rows="7" required class="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Décrivez votre demande avec le plus de détails possible..."></textarea>
           </div>
 
-          <!-- Honeypot field -->
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <label class="flex items-start gap-3 text-sm text-gray-700" for="privacy-consent">
+              <input id="privacy-consent" name="privacy-consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-black focus:ring-black" />
+              <span>
+                J'accepte que mes données de contact soient utilisées pour traiter ma demande, conformément à la
+                <a href="/confidentialite" class="font-medium text-black hover:underline">politique de confidentialité</a>.
+              </span>
+            </label>
+          </div>
+
           <div class="hidden" aria-hidden="true">
             <label for="website">Website</label>
-            <input type="text" id="website" name="website">
+            <input type="text" id="website" name="website" />
           </div>
 
           <Button type="submit" class="w-full">Envoyer le message</Button>
 
-          <p class="text-sm text-gray-600 text-center">
-            En soumettant ce formulaire, votre client email s'ouvrira pour envoyer votre message à <a href={`mailto:${siteConfig.siteEmail}`} class="text-black hover:underline font-medium">{siteConfig.siteEmail}</a>.
+          <p class="text-center text-sm text-gray-600">
+            Le formulaire ouvre votre messagerie et prépare un email vers
+            <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a>.
           </p>
         </form>
       </section>
 
-      <!-- INFO CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <div class="bg-gray-50 border border-gray-200 rounded-xl p-8">
-          <h2 class="text-2xl font-bold text-black mb-4">📧 Par email</h2>
-          <p class="text-gray-700 mb-4">La façon la plus simple de nous contacter. Réponse sous 24-48 heures ouvrées.</p>
-          <a href={`mailto:${siteConfig.siteEmail}`} class="text-black hover:underline font-semibold">
-            {siteConfig.siteEmail}
-          </a>
+      <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-8">
+          <h2 class="mb-4 text-2xl font-bold text-black">Email</h2>
+          <p class="mb-4 text-gray-700">Canal recommandé pour toute demande. Délai moyen de réponse : 24 à 48h ouvrées.</p>
+          <a href={`mailto:${siteConfig.siteEmail}`} class="font-semibold text-black hover:underline">{siteConfig.siteEmail}</a>
         </div>
 
-        <div class="bg-gray-50 border border-gray-200 rounded-xl p-8">
-          <h2 class="text-2xl font-bold text-black mb-4">📍 Notre adresse</h2>
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-8">
+          <h2 class="mb-4 text-2xl font-bold text-black">Adresse de l'éditeur</h2>
           <p class="text-gray-700">
-            <strong>Maison Ellis</strong><br>
+            <strong>{siteConfig.editorName}</strong><br />
             {siteConfig.editorAddress}
           </p>
         </div>
       </div>
 
-      <!-- SUPPORT SECTION -->
-      <section class="bg-white border border-gray-200 rounded-xl p-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">Vous avez besoin d'aide ?</h2>
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Informations utiles</h2>
         <div class="space-y-4 text-gray-700 leading-relaxed">
           <div>
-            <h3 class="font-semibold text-gray-900 mb-2">🐛 Vous avez trouvé un bug ?</h3>
-            <p>Décrivez-le avec le plus de détails possible (navigateur, device, étapes pour reproduire). Cela nous aide énormément!</p>
+            <h3 class="mb-2 font-semibold text-gray-900">Signalement de bug</h3>
+            <p>Précisez votre navigateur, votre appareil et les étapes pour reproduire le problème.</p>
           </div>
           <div>
-            <h3 class="font-semibold text-gray-900 mb-2">💡 Vous avez une idée d'amélioration ?</h3>
-            <p>Nous adorons écouter vos suggestions ! Envoyez-nous votre retour pour nous aider à améliorer Calcery.</p>
+            <h3 class="mb-2 font-semibold text-gray-900">Demande RGPD</h3>
+            <p>Vous pouvez exercer vos droits (accès, suppression, rectification, opposition, limitation, portabilité) via ce formulaire ou par email.</p>
           </div>
           <div>
-            <h3 class="font-semibold text-gray-900 mb-2">🤝 Intéressé par un partenariat ?</h3>
-            <p>Nous sommes ouverts aux collaborations. Discutons-en par email !</p>
+            <h3 class="mb-2 font-semibold text-gray-900">Partenariats et publicité</h3>
+            <p>Pour toute demande liée aux partenariats, affiliations ou publicités, utilisez le sujet "Partenariat".</p>
           </div>
         </div>
       </section>
-
     </div>
   </Container>
-
 </BaseLayout>
 
 <script define:vars={{ email: siteConfig.siteEmail }}>
   const form = document.getElementById('contact-form');
+
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
       const name = document.getElementById('name').value;
       const emailVal = document.getElementById('email').value;
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       const website = document.getElementById('website').value;
-      
-      // Honeypot check
-      if (website) {
-        console.log('Honeypot triggered');
-        return;
-      }
-      
+
+      if (website) return;
+
       const subjectMap = {
         question: 'Question générale',
-        bug: 'Signalement d\'un bug',
-        suggestion: 'Suggestion d\'amélioration',
+        bug: 'Signalement bug',
+        suggestion: 'Suggestion',
         partnership: 'Partenariat',
+        rgpd: 'Demande RGPD',
         other: 'Autre',
       };
-      
-      const emailSubject = `Contact Calcery - ${subjectMap[subject] || subject}`;
-      const emailBody = `Nom: ${name}\nEmail: ${emailVal}\nSujet: ${subjectMap[subject] || subject}\n\nMessage:\n${message}`;
-      
+
+      const finalSubject = subjectMap[subject] || subject;
+      const emailSubject = `Contact Calcery - ${finalSubject}`;
+      const emailBody = `Nom: ${name || 'Non renseigné'}\nEmail: ${emailVal}\nSujet: ${finalSubject}\n\nMessage:\n${message}`;
+
       const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
     });

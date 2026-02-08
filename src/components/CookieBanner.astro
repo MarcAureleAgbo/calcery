@@ -1,0 +1,118 @@
+---
+import { getLocaleFromPath, localizePath } from '../lib/i18n';
+
+const isProd = import.meta.env.PROD;
+const locale = getLocaleFromPath(Astro.url.pathname);
+const privacyPath = localizePath('/confidentialite', locale);
+
+const copy = {
+  fr: {
+    title: 'Cookies et mesure d’audience',
+    body: 'Calcery utilise Google Analytics uniquement avec votre consentement pour mesurer l’audience et améliorer le site.',
+    accept: 'Accepter',
+    reject: 'Refuser',
+    policy: 'Politique de confidentialité',
+  },
+  en: {
+    title: 'Cookies and analytics',
+    body: 'Calcery uses Google Analytics only with your consent to measure traffic and improve the website.',
+    accept: 'Accept',
+    reject: 'Reject',
+    policy: 'Privacy policy',
+  },
+}[locale];
+---
+
+{
+  isProd && (
+    <>
+      <aside
+        id="cookie-banner"
+        class="fixed bottom-4 left-1/2 z-[1100] hidden w-[min(760px,calc(100%-2rem))] -translate-x-1/2 rounded-2xl border border-gray-200 bg-white/95 p-4 shadow-xl backdrop-blur"
+        role="dialog"
+        aria-live="polite"
+        aria-label={copy.title}
+      >
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="md:max-w-xl">
+            <p class="text-sm font-semibold text-gray-900">{copy.title}</p>
+            <p class="mt-1 text-sm text-gray-600">
+              {copy.body}
+              <a href={privacyPath} class="ml-1 font-medium text-gray-900 underline underline-offset-2 hover:text-black">
+                {copy.policy}
+              </a>
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button
+              id="cookie-reject"
+              type="button"
+              class="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+            >
+              {copy.reject}
+            </button>
+            <button
+              id="cookie-accept"
+              type="button"
+              class="inline-flex min-h-11 items-center justify-center rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              {copy.accept}
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <script is:inline>
+        (() => {
+          const KEY = 'calcery_cookie_consent';
+          const banner = document.getElementById('cookie-banner');
+          if (!banner) return;
+
+          const acceptButton = document.getElementById('cookie-accept');
+          const rejectButton = document.getElementById('cookie-reject');
+
+          const emitConsent = (status) => {
+            window.dispatchEvent(new CustomEvent('calcery:consent-updated', { detail: { status } }));
+          };
+
+          const hideBanner = () => {
+            banner.classList.add('hidden');
+          };
+
+          const showBanner = () => {
+            banner.classList.remove('hidden');
+          };
+
+          const saveChoice = (status) => {
+            try {
+              localStorage.setItem(KEY, status);
+              localStorage.setItem(`${KEY}_updated_at`, new Date().toISOString());
+            } catch {
+              // Ignore storage failures.
+            }
+            emitConsent(status);
+            hideBanner();
+          };
+
+          let consent = null;
+          try {
+            consent = localStorage.getItem(KEY);
+          } catch {
+            consent = null;
+          }
+
+          if (!consent) {
+            showBanner();
+          }
+
+          acceptButton?.addEventListener('click', () => saveChoice('accepted'));
+          rejectButton?.addEventListener('click', () => saveChoice('rejected'));
+
+          window.addEventListener('calcery:open-cookie-banner', () => {
+            showBanner();
+          });
+        })();
+      </script>
+    </>
+  )
+}

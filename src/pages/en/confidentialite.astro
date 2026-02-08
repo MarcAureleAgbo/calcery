@@ -4,94 +4,125 @@ import Container from '../../components/ui/Container.astro';
 import { siteConfig } from '../../lib/site.ts';
 ---
 
-<BaseLayout title="Privacy policy - Calcery" description="How Calcery handles and protects your personal data." lang="en">
+<BaseLayout
+  title="Privacy policy - Calcery"
+  description="Calcery privacy policy: data processing, Google Analytics consent, cookie usage, retention periods, legal basis, and GDPR rights."
+  lang="en"
+>
   <section class="border-b border-gray-100 bg-gradient-to-b from-secondary/8 via-white to-primary/8 py-16">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
         <h1 class="mb-4 text-5xl font-bold text-gray-900">Privacy policy</h1>
-        <p class="text-gray-600">Protecting your privacy is a core commitment.</p>
+        <p class="text-gray-600">Clear information about how personal data is processed on Calcery.</p>
       </div>
     </Container>
   </section>
 
   <Container class="py-16">
-    <div class="mx-auto max-w-3xl">
-      <div class="mb-12 rounded-xl border border-gray-200 bg-white p-8">
-        <p class="text-lg leading-relaxed text-gray-700">This privacy policy explains how Calcery collects, uses, and protects personal data. We aim to remain transparent and respectful of your rights.</p>
-      </div>
-
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Data collected</h2>
-        <div class="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/2 p-8">
-          <h3 class="mb-4 font-semibold text-gray-900">Contact form</h3>
-          <p class="mb-4 leading-relaxed text-gray-700">When you contact us, we may collect only:</p>
-          <ul class="ml-4 space-y-2 text-gray-700">
-            <li>• Your name (optional)</li>
-            <li>• Your email address (to reply)</li>
-            <li>• Your message content</li>
-          </ul>
-          <p class="mt-4 leading-relaxed text-gray-700"><strong>Important:</strong> Calculators run locally in your browser. Calculation data is not sent to our servers.</p>
+    <div class="mx-auto max-w-3xl space-y-10">
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">1) Data controller</h2>
+        <div class="space-y-2 text-gray-700">
+          <p><strong>Controller:</strong> {siteConfig.editorName}</p>
+          <p><strong>Address:</strong> {siteConfig.editorAddress}</p>
+          <p><strong>Privacy contact:</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
         </div>
       </section>
 
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Purpose of processing</h2>
-        <div class="rounded-xl border border-gray-200 bg-white p-8">
-          <p class="leading-relaxed text-gray-700">Data is used strictly to:</p>
-          <ul class="mt-4 ml-4 space-y-2 text-gray-700">
-            <li>✓ Reply to your requests</li>
-            <li>✓ Process support inquiries</li>
-            <li>✓ Review product feedback</li>
-          </ul>
-          <p class="mt-4 leading-relaxed text-gray-700">We do not sell, rent, or trade personal data.</p>
+      <section class="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/2 p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">2) Data we collect</h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+          <div>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Contact requests</h3>
+            <ul class="ml-4 list-disc space-y-1">
+              <li>name (if provided),</li>
+              <li>email address,</li>
+              <li>subject and message content.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Audience analytics (consent-based)</h3>
+            <p>We use {siteConfig.analyticsProvider} (ID {siteConfig.analyticsId}) only when you accept analytics cookies.</p>
+          </div>
+          <div>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Technical and security logs</h3>
+            <p>Cloudflare may process technical logs (IP address, browser metadata, security events) to ensure platform reliability and security.</p>
+          </div>
+          <p><strong>Important:</strong> Calculator values are processed locally in your browser and are not transmitted to Calcery servers.</p>
         </div>
       </section>
 
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Legal basis</h2>
-        <div class="rounded-xl border border-secondary/20 bg-gradient-to-br from-secondary/5 to-secondary/2 p-8">
-          <p class="leading-relaxed text-gray-700">Personal data processing is based on your explicit consent when submitting the contact form.</p>
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">3) Purposes and legal bases</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[540px] border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 text-gray-900">
+                <th class="py-2 pr-4 font-semibold">Purpose</th>
+                <th class="py-2 pr-4 font-semibold">Legal basis</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-b border-gray-100">
+                <td class="py-2 pr-4">Responding to contact requests</td>
+                <td class="py-2 pr-4">Consent / pre-contractual steps</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-2 pr-4">Google Analytics traffic measurement</td>
+                <td class="py-2 pr-4">Consent (cookie banner)</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Security, fraud prevention, platform stability</td>
+                <td class="py-2 pr-4">Legitimate interest</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Data retention</h2>
-        <div class="rounded-xl border border-gray-200 bg-white p-8">
-          <p class="mb-4 leading-relaxed text-gray-700"><strong>Messages:</strong> retained up to 12 months after request completion.</p>
-          <p class="leading-relaxed text-gray-700"><strong>Contact details:</strong> retained only as long as necessary to answer your request and meet legal obligations.</p>
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Data recipients</h2>
+        <ul class="ml-4 list-disc space-y-2 text-gray-700 leading-relaxed">
+          <li>{siteConfig.editorName}, as website publisher;</li>
+          <li>{siteConfig.hostingProvider}, as hosting and infrastructure provider;</li>
+          <li>{siteConfig.analyticsProvider}, only if analytics cookies are accepted.</li>
+        </ul>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">5) International transfers</h2>
+        <p class="text-gray-700 leading-relaxed">Some service providers (including Google LLC and Cloudflare Inc.) may process data outside the European Union. These transfers rely on appropriate safeguards such as Standard Contractual Clauses and provider security controls.</p>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Data retention</h2>
+        <ul class="ml-4 list-disc space-y-2 text-gray-700 leading-relaxed">
+          <li>Contact requests: up to 12 months after processing.</li>
+          <li>GA4 analytics data: maximum retention set to 14 months.</li>
+          <li>Cookie consent preference: 6 months, then renewed consent request.</li>
+        </ul>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-gray-50 p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Your rights</h2>
+        <p class="mb-4 text-gray-700 leading-relaxed">Under GDPR, you may request access, rectification, erasure, restriction, portability, objection, and withdrawal of consent.</p>
+        <p class="mb-4 text-gray-700 leading-relaxed">To exercise your rights, contact us at <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a>.</p>
+        <p class="text-gray-700 leading-relaxed">You may also submit a complaint to your local data protection authority (for France: CNIL, <a href="https://www.cnil.fr" class="font-medium text-black hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>).</p>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">8) Cookies and consent settings</h2>
+        <div class="space-y-3 text-gray-700 leading-relaxed">
+          <p>The website uses essential cookies for core functionality and a consent cookie to remember your preference.</p>
+          <p>Analytics cookies are only activated after your explicit consent via the cookie banner.</p>
+          <p>You can update your choice at any time using the <strong>"Manage cookies"</strong> link in the website footer.</p>
         </div>
       </section>
 
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Your rights</h2>
-        <div class="rounded-xl border border-gray-200 bg-gray-50 p-8">
-          <p class="mb-6 leading-relaxed text-gray-700">Depending on your jurisdiction, you may have rights to access, correct, delete, or export your personal data.</p>
-          <p class="leading-relaxed text-gray-700">To exercise your rights, contact us at <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a>.</p>
-        </div>
-      </section>
-
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Cookies</h2>
-        <div class="rounded-xl border border-gray-200 bg-white p-8">
-          <p class="mb-4 leading-relaxed text-gray-700"><strong>Calcery does not use tracking cookies.</strong></p>
-          <p class="leading-relaxed text-gray-700">Technical cookies, if any, are strictly necessary for core website functionality.</p>
-        </div>
-      </section>
-
-      <section class="mb-12">
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Security</h2>
-        <div class="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/2 p-8">
-          <p class="leading-relaxed text-gray-700">We apply appropriate security measures to protect your information from unauthorized access or loss.</p>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="mb-6 text-3xl font-bold text-gray-900">Contact</h2>
-        <div class="rounded-xl border border-gray-200 bg-white p-8 text-center">
-          <p class="mb-4 leading-relaxed text-gray-700">Questions about this policy?</p>
-          <p class="mb-4"><a href={`mailto:${siteConfig.siteEmail}`} class="text-lg font-semibold text-primary hover:underline">{siteConfig.siteEmail}</a></p>
-          <p class="text-sm text-gray-600">Last update: <strong>{siteConfig.lastUpdated}</strong></p>
-        </div>
+      <section class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <h2 class="mb-4 text-3xl font-bold text-gray-900">9) Contact and updates</h2>
+        <p class="text-gray-700">Privacy questions: <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+        <p class="mt-2 text-sm text-gray-600">Last update: <strong>{siteConfig.lastUpdated}</strong></p>
       </section>
     </div>
   </Container>

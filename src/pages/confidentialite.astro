@@ -1,132 +1,128 @@
 ---
-
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
 import { siteConfig } from '../lib/site.ts';
-
 ---
 
-<BaseLayout title="Politique de confidentialité - Calcery" description="Notre politique de confidentialité et comment nous protégeons vos données personnelles.">
-
-  <!-- HERO -->
-  <section class="bg-gradient-to-b from-secondary/8 via-white to-primary/8 py-16 border-b border-gray-100">
+<BaseLayout
+  title="Politique de confidentialité - Calcery"
+  description="Politique de confidentialité Calcery : données collectées, Google Analytics, cookies, base légale, durées de conservation et droits RGPD."
+>
+  <section class="border-b border-gray-100 bg-gradient-to-b from-secondary/8 via-white to-primary/8 py-16">
     <Container>
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-5xl font-bold text-gray-900 mb-4">Politique de confidentialité</h1>
-        <p class="text-gray-600">Votre vie privée est notre priorité absolue.</p>
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="mb-4 text-5xl font-bold text-gray-900">Politique de confidentialité</h1>
+        <p class="text-gray-600">Transparence sur la collecte et l'utilisation de vos données personnelles.</p>
       </div>
     </Container>
   </section>
 
   <Container class="py-16">
-    <div class="max-w-3xl mx-auto">
-
-      <!-- INTRODUCTION -->
-      <div class="mb-12 bg-white border border-gray-200 rounded-xl p-8">
-        <p class="text-lg text-gray-700 leading-relaxed">Cette politique de confidentialité explique comment Calcery collecte, traite et protège vos données personnelles. Nous nous engageons à respecter votre vie privée et à être transparents sur nos pratiques.</p>
-      </div>
-
-      <!-- DONNÉES COLLECTÉES -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">📊 Données collectées</h2>
-        <div class="bg-gradient-to-br from-primary/5 to-primary/2 border border-primary/20 rounded-xl p-8">
-          <h3 class="font-semibold text-gray-900 mb-4">Formulaire de contact</h3>
-          <p class="text-gray-700 mb-4 leading-relaxed">Si vous nous contactez, nous collectons uniquement :</p>
-          <ul class="space-y-2 ml-4 text-gray-700">
-            <li>• <strong>Votre nom</strong> (optionnel)</li>
-            <li>• <strong>Votre email</strong> (pour vous répondre)</li>
-            <li>• <strong>Votre message</strong> (pour comprendre votre demande)</li>
-          </ul>
-          <p class="text-gray-700 mt-4 leading-relaxed"><strong>Important :</strong> Les calculateurs fonctionnent entièrement localement dans votre navigateur. Aucune donnée de calcul n'est envoyée à nos serveurs.</p>
+    <div class="mx-auto max-w-3xl space-y-10">
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">1) Responsable du traitement</h2>
+        <div class="space-y-2 text-gray-700">
+          <p><strong>Responsable :</strong> {siteConfig.editorName}</p>
+          <p><strong>Adresse :</strong> {siteConfig.editorAddress}</p>
+          <p><strong>Contact RGPD :</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
         </div>
       </section>
 
-      <!-- FINALITÉ -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">🎯 Finalité du traitement</h2>
-        <div class="bg-white border border-gray-200 rounded-xl p-8">
-          <p class="text-gray-700 leading-relaxed">Les données que vous nous fournissez sont utilisées <strong>uniquement</strong> pour :</p>
-          <ul class="space-y-2 mt-4 ml-4 text-gray-700">
-            <li>✓ Répondre à vos questions ou demandes</li>
-            <li>✓ Analyser vos suggestions d'amélioration</li>
-            <li>✓ Traiter vos demandes de support</li>
-          </ul>
-          <p class="text-gray-700 mt-4 leading-relaxed">Nous ne vendons, n'échangeons ni ne louons jamais vos données personnelles à des tiers.</p>
-        </div>
-      </section>
-
-      <!-- BASE LÉGALE -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">⚖️ Base légale</h2>
-        <div class="bg-gradient-to-br from-secondary/5 to-secondary/2 border border-secondary/20 rounded-xl p-8">
-          <p class="text-gray-700 leading-relaxed">Le traitement de vos données personnelles est basé sur <strong>votre consentement explicite</strong> lorsque vous soumettez le formulaire de contact. Vous pouvez retirer ce consentement à tout moment.</p>
-        </div>
-      </section>
-
-      <!-- DURÉE CONSERVATION -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">⏱️ Durée de conservation</h2>
-        <div class="bg-white border border-gray-200 rounded-xl p-8">
-          <p class="text-gray-700 mb-4 leading-relaxed"><strong>Messages reçus :</strong> Conservés maximum <strong>12 mois</strong> après traitement complet de votre demande, puis supprimés automatiquement.</p>
-          <p class="text-gray-700 leading-relaxed"><strong>Données de contact :</strong> Conservées aussi longtemps que nécessaire pour répondre à votre demande et assurer la conformité légale.</p>
-        </div>
-      </section>
-
-      <!-- DROITS RGPD -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">🛡️ Vos droits RGPD</h2>
-        <div class="bg-gray-50 border border-gray-200 rounded-xl p-8">
-          <p class="text-gray-700 mb-6 leading-relaxed">Conformément au Règlement Général sur la Protection des Données (RGPD), vous avez les droits suivants :</p>
-          <div class="space-y-4">
-            <div>
-              <h3 class="font-semibold text-gray-900 mb-1">👁️ Droit d'accès</h3>
-              <p class="text-gray-700 text-sm">Accéder aux données que nous détenons à votre sujet</p>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900 mb-1">✏️ Droit de rectification</h3>
-              <p class="text-gray-700 text-sm">Corriger des données inexactes ou incomplètes</p>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900 mb-1">🗑️ Droit à l'oubli</h3>
-              <p class="text-gray-700 text-sm">Demander la suppression de vos données</p>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900 mb-1">⛔ Droit à la portabilité</h3>
-              <p class="text-gray-700 text-sm">Recevoir vos données dans un format structuré</p>
-            </div>
+      <section class="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/2 p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">2) Données collectées</h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+          <div>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Formulaire de contact</h3>
+            <ul class="ml-4 list-disc space-y-1">
+              <li>nom (si renseigné),</li>
+              <li>adresse email,</li>
+              <li>sujet et contenu du message.</li>
+            </ul>
           </div>
-          <p class="text-gray-700 mt-6 leading-relaxed">Pour exercer l'un de ces droits, contactez-nous à <a href={`mailto:${siteConfig.siteEmail}`} class="text-black hover:underline font-medium">{siteConfig.siteEmail}</a> avec la mention "RGPD" dans le sujet.</p>
+          <div>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Mesure d'audience (avec consentement)</h3>
+            <p>Nous utilisons {siteConfig.analyticsProvider} (ID {siteConfig.analyticsId}) pour mesurer la fréquentation du site, les pages vues et les interactions agrégées.</p>
+          </div>
+          <div>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Données techniques</h3>
+            <p>L'hébergeur Cloudflare peut traiter des journaux techniques (adresse IP, user-agent, sécurité réseau) afin d'assurer la disponibilité et la sécurité du service.</p>
+          </div>
+          <p><strong>Important :</strong> Les données saisies dans les calculateurs restent localement dans votre navigateur.</p>
         </div>
       </section>
 
-      <!-- COOKIES -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">🍪 Cookies</h2>
-        <div class="bg-white border border-gray-200 rounded-xl p-8">
-          <p class="text-gray-700 mb-4 leading-relaxed"><strong>Calcery n'utilise pas de cookies de suivi.</strong></p>
-          <p class="text-gray-700 leading-relaxed">Les éventuels cookies techniques utilisés sont strictement nécessaires au fonctionnement du site et ne servent pas à vous identifier ou à vous suivre.</p>
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">3) Finalités et bases légales</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[540px] border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 text-gray-900">
+                <th class="py-2 pr-4 font-semibold">Finalité</th>
+                <th class="py-2 pr-4 font-semibold">Base légale</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-b border-gray-100">
+                <td class="py-2 pr-4">Réponse aux messages de contact</td>
+                <td class="py-2 pr-4">Consentement / mesures précontractuelles</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-2 pr-4">Mesure d'audience Google Analytics</td>
+                <td class="py-2 pr-4">Consentement (bandeau cookies)</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Sécurité, prévention de fraude et disponibilité</td>
+                <td class="py-2 pr-4">Intérêt légitime</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <!-- SÉCURITÉ -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">🔒 Sécurité des données</h2>
-        <div class="bg-gradient-to-br from-primary/5 to-primary/2 border border-primary/20 rounded-xl p-8">
-          <p class="text-gray-700 leading-relaxed">Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données contre l'accès non autorisé, la modification ou la suppression. Cependant, aucun système n'est totalement sécurisé. Si vous avez des préoccupations, n'hésitez pas à nous contacter.</p>
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Destinataires des données</h2>
+        <ul class="ml-4 list-disc space-y-2 text-gray-700 leading-relaxed">
+          <li>{siteConfig.editorName}, en tant qu'éditeur du site ;</li>
+          <li>{siteConfig.hostingProvider}, en tant qu'hébergeur et infrastructure ;</li>
+          <li>{siteConfig.analyticsProvider}, uniquement si vous acceptez les cookies analytiques.</li>
+        </ul>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">5) Transferts hors Union européenne</h2>
+        <p class="text-gray-700 leading-relaxed">Certains prestataires (notamment Google LLC et Cloudflare Inc.) peuvent traiter des données en dehors de l'Union européenne. Ces transferts reposent sur les mécanismes contractuels appropriés (clauses contractuelles types) et les mesures de sécurité prévues par ces fournisseurs.</p>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Durées de conservation</h2>
+        <ul class="ml-4 list-disc space-y-2 text-gray-700 leading-relaxed">
+          <li>Messages de contact : jusqu'à 12 mois après traitement de la demande.</li>
+          <li>Données analytiques GA4 : durée maximale paramétrée à 14 mois.</li>
+          <li>Choix de consentement cookies : 6 mois, puis nouvelle demande.</li>
+        </ul>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-gray-50 p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Vos droits RGPD</h2>
+        <p class="mb-4 text-gray-700 leading-relaxed">Conformément au RGPD, vous disposez des droits suivants : accès, rectification, effacement, opposition, limitation, portabilité et retrait du consentement.</p>
+        <p class="mb-4 text-gray-700 leading-relaxed">Vous pouvez exercer vos droits à l'adresse <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a>.</p>
+        <p class="text-gray-700 leading-relaxed">Si vous estimez que vos droits ne sont pas respectés, vous pouvez également déposer une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="font-medium text-black hover:underline">www.cnil.fr</a>.</p>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">8) Cookies et gestion du consentement</h2>
+        <div class="space-y-3 text-gray-700 leading-relaxed">
+          <p>Le site utilise des cookies strictement nécessaires à son fonctionnement ainsi qu'un cookie de consentement pour mémoriser votre choix.</p>
+          <p>Les cookies analytiques Google Analytics ne sont déposés qu'après acceptation explicite via le bandeau.</p>
+          <p>Vous pouvez modifier votre choix à tout moment via le lien <strong>"Gérer les cookies"</strong> dans le footer.</p>
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section>
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">📧 Nous contacter</h2>
-        <div class="bg-white border border-gray-200 rounded-xl p-8 text-center">
-          <p class="text-gray-700 mb-4 leading-relaxed">Des questions sur cette politique ? Contactez-nous :</p>
-          <p class="mb-4"><a href={`mailto:${siteConfig.siteEmail}`} class="text-primary hover:underline font-semibold text-lg">{siteConfig.siteEmail}</a></p>
-          <p class="text-sm text-gray-600">Dernière mise à jour : <strong>{siteConfig.lastUpdated}</strong></p>
-        </div>
+      <section class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <h2 class="mb-4 text-3xl font-bold text-gray-900">9) Contact et mises à jour</h2>
+        <p class="text-gray-700">Pour toute question liée à vos données personnelles : <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+        <p class="mt-2 text-sm text-gray-600">Dernière mise à jour : <strong>{siteConfig.lastUpdated}</strong></p>
       </section>
-
     </div>
   </Container>
-
 </BaseLayout>

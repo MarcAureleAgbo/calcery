@@ -1,20 +1,66 @@
 ---
 const isProd = import.meta.env.PROD;
 const GA_ID = 'G-78C5EBM22T';
+const CONSENT_KEY = 'calcery_cookie_consent';
 ---
 
 {
   isProd && (
-    <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-      <script is:inline define:vars={{ GA_ID }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
+    <script is:inline define:vars={{ GA_ID, CONSENT_KEY }}>
+      (() => {
+        const SOURCE = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+
+        function ensureDataLayer() {
+          window.dataLayer = window.dataLayer || [];
+          if (!window.gtag) {
+            window.gtag = function gtag() {
+              window.dataLayer.push(arguments);
+            };
+          }
         }
-        gtag('js', new Date());
-        gtag('config', GA_ID);
-      </script>
-    </>
+
+        function loadAnalytics() {
+          if (window.__calceryGaLoaded) return;
+
+          window.__calceryGaLoaded = true;
+          ensureDataLayer();
+          window.gtag('js', new Date());
+          window.gtag('consent', 'default', { analytics_storage: 'granted' });
+          window.gtag('config', GA_ID, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+          });
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = SOURCE;
+          document.head.appendChild(script);
+        }
+
+        function readConsent() {
+          try {
+            return localStorage.getItem(CONSENT_KEY);
+          } catch {
+            return null;
+          }
+        }
+
+        if (readConsent() === 'accepted') {
+          loadAnalytics();
+        }
+
+        window.addEventListener('calcery:consent-updated', (event) => {
+          const status = event?.detail?.status;
+          if (status === 'accepted') {
+            loadAnalytics();
+            return;
+          }
+
+          if (status === 'rejected' && window.gtag) {
+            window.gtag('consent', 'update', { analytics_storage: 'denied' });
+          }
+        });
+      })();
+    </script>
   )
 }

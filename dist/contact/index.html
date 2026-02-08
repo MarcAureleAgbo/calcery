@@ -1,15 +1,118 @@
-<!DOCTYPE html><html lang="fr"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="alternate" hreflang="fr" href="https://calcery.com/contact/"><link rel="alternate" hreflang="en" href="https://calcery.com/en/contact/"><link rel="alternate" hreflang="x-default" href="https://calcery.com/contact/"><title>Contact - Calcery</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0A0E1A"><meta name="description" content="Contactez-nous pour vos questions, suggestions ou problèmes techniques."><link rel="canonical" href="https://calcery.com/contact/"><meta property="og:title" content="Contact - Calcery"><meta property="og:description" content="Contactez-nous pour vos questions, suggestions ou problèmes techniques."><meta property="og:type" content="website"><meta property="og:url" content="https://calcery.com/contact/"><meta property="og:site_name" content="Calcery"><meta property="og:image" content="https://calcery.com/og.png"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Contact - Calcery"><meta name="twitter:description" content="Contactez-nous pour vos questions, suggestions ou problèmes techniques."><meta name="twitter:image" content="https://calcery.com/og.png"><meta name="twitter:site" content="@calcery"><script async src="https://www.googletagmanager.com/gtag/js?id=G-78C5EBM22T"></script><script>(function(){const GA_ID = "G-78C5EBM22T";
+<!DOCTYPE html><html lang="fr"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="alternate" hreflang="fr" href="https://calcery.com/contact/"><link rel="alternate" hreflang="en" href="https://calcery.com/en/contact/"><link rel="alternate" hreflang="x-default" href="https://calcery.com/contact/"><title>Contact - Calcery</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0A0E1A"><meta name="description" content="Contactez Calcery pour vos questions, signalements, partenariats et demandes liées aux données personnelles."><link rel="canonical" href="https://calcery.com/contact/"><meta property="og:title" content="Contact - Calcery"><meta property="og:description" content="Contactez Calcery pour vos questions, signalements, partenariats et demandes liées aux données personnelles."><meta property="og:type" content="website"><meta property="og:url" content="https://calcery.com/contact/"><meta property="og:site_name" content="Calcery"><meta property="og:image" content="https://calcery.com/og.png"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Contact - Calcery"><meta name="twitter:description" content="Contactez Calcery pour vos questions, signalements, partenariats et demandes liées aux données personnelles."><meta name="twitter:image" content="https://calcery.com/og.png"><meta name="twitter:site" content="@calcery"><script>(function(){const GA_ID = "G-78C5EBM22T";
+const CONSENT_KEY = "calcery_cookie_consent";
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
+      (() => {
+        const SOURCE = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+
+        function ensureDataLayer() {
+          window.dataLayer = window.dataLayer || [];
+          if (!window.gtag) {
+            window.gtag = function gtag() {
+              window.dataLayer.push(arguments);
+            };
+          }
         }
-        gtag('js', new Date());
-        gtag('config', GA_ID);
-      })();</script><link rel="stylesheet" href="/_astro/a-propos.CGUe1vH6.css">
-<link rel="stylesheet" href="/_astro/budget-mensuel.CTeJuXBK.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact" class="is-active" aria-current="page"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/contact/" data-en-path="/en/contact/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact" class="is-active" aria-current="page"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/contact/" data-en-path="/en/contact/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">   <section class="bg-white border-b border-gray-200 py-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="text-center max-w-4xl mx-auto"> <h1 class="text-5xl md:text-6xl font-bold text-black mb-6 leading-tight">Nous contacter</h1> <p class="text-xl text-gray-600 font-light">Vous avez une question ? Un bug ? Une idée ? Nous adorons vos retours.</p> </div>  </div> </section> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="max-w-3xl mx-auto"> <!-- CONTACT FORM --> <section class="mb-16"> <form method="post" class="space-y-6" id="contact-form"> <div> <label for="name" class="block text-sm font-semibold text-gray-900 mb-3">Nom complet *</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"> </div> <div> <label for="email" class="block text-sm font-semibold text-gray-900 mb-3">Adresse email *</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"> </div> <div> <label for="subject" class="block text-sm font-semibold text-gray-900 mb-3">Sujet du message *</label> <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"> <option value="">Sélectionnez un sujet</option> <option value="question">Question générale</option> <option value="bug">Signalement d'un bug</option> <option value="suggestion">Suggestion d'amélioration</option> <option value="partnership">Partenariat</option> <option value="other">Autre</option> </select> </div> <div> <label for="message" class="block text-sm font-semibold text-gray-900 mb-3">Votre message *</label> <textarea id="message" name="message" rows="7" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white resize-none" placeholder="Décrivez votre question, votre bug ou votre suggestion..."></textarea> </div> <!-- Honeypot field --> <div class="hidden" aria-hidden="true"> <label for="website">Website</label> <input type="text" id="website" name="website"> </div> <button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 bg-primary text-white hover:bg-primary/90 focus:ring-primary w-full">Envoyer le message</button> <p class="text-sm text-gray-600 text-center">
-En soumettant ce formulaire, votre client email s'ouvrira pour envoyer votre message à <a href="mailto:ingridsacla@gmail.com" class="text-black hover:underline font-medium">ingridsacla@gmail.com</a>.
-</p> </form> </section> <!-- INFO CARDS --> <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"> <div class="bg-gray-50 border border-gray-200 rounded-xl p-8"> <h2 class="text-2xl font-bold text-black mb-4">📧 Par email</h2> <p class="text-gray-700 mb-4">La façon la plus simple de nous contacter. Réponse sous 24-48 heures ouvrées.</p> <a href="mailto:ingridsacla@gmail.com" class="text-black hover:underline font-semibold"> ingridsacla@gmail.com </a> </div> <div class="bg-gray-50 border border-gray-200 rounded-xl p-8"> <h2 class="text-2xl font-bold text-black mb-4">📍 Notre adresse</h2> <p class="text-gray-700"> <strong>Maison Ellis</strong><br> 60 Rue François 1er, 75008 Paris, France </p> </div> </div> <!-- SUPPORT SECTION --> <section class="bg-white border border-gray-200 rounded-xl p-8"> <h2 class="text-3xl font-bold text-gray-900 mb-6">Vous avez besoin d'aide ?</h2> <div class="space-y-4 text-gray-700 leading-relaxed"> <div> <h3 class="font-semibold text-gray-900 mb-2">🐛 Vous avez trouvé un bug ?</h3> <p>Décrivez-le avec le plus de détails possible (navigateur, device, étapes pour reproduire). Cela nous aide énormément!</p> </div> <div> <h3 class="font-semibold text-gray-900 mb-2">💡 Vous avez une idée d'amélioration ?</h3> <p>Nous adorons écouter vos suggestions ! Envoyez-nous votre retour pour nous aider à améliorer Calcery.</p> </div> <div> <h3 class="font-semibold text-gray-900 mb-2">🤝 Intéressé par un partenariat ?</h3> <p>Nous sommes ouverts aux collaborations. Discutons-en par email !</p> </div> </div> </section> </div>  </div>  </main> <footer class="site-footer"> <div class="footer-content"> <div class="footer-brand"> <h3>Calcery</h3> <p> Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications. </p> </div> <div class="footer-section"> <h4>Navigation</h4> <ul class="footer-links"> <li><a href="/">Accueil</a></li> <li><a href="/calculateurs">Calculateurs</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/a-propos">À propos</a></li> </ul> </div> <div class="footer-section"> <h4>Outils populaires</h4> <ul class="footer-links"> <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li> <li><a href="/calculateurs/epargne-automatique">Épargne</a></li> <li><a href="/calculateurs/pourboire">Pourboire</a></li> <li><a href="/calculateurs/interets-composes">Investissement</a></li> </ul> </div> <div class="footer-section"> <h4>Légal</h4> <ul class="footer-links"> <li><a href="/mentions-legales">Mentions légales</a></li> <li><a href="/confidentialite">Confidentialité</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé pour vous</p> </div> </footer> <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut"> <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"> <path d="M18 15l-6-6-6 6"></path> </svg> </button> <script>(function(){const currentLocale = "fr";
+
+        function loadAnalytics() {
+          if (window.__calceryGaLoaded) return;
+
+          window.__calceryGaLoaded = true;
+          ensureDataLayer();
+          window.gtag('js', new Date());
+          window.gtag('consent', 'default', { analytics_storage: 'granted' });
+          window.gtag('config', GA_ID, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+          });
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = SOURCE;
+          document.head.appendChild(script);
+        }
+
+        function readConsent() {
+          try {
+            return localStorage.getItem(CONSENT_KEY);
+          } catch {
+            return null;
+          }
+        }
+
+        if (readConsent() === 'accepted') {
+          loadAnalytics();
+        }
+
+        window.addEventListener('calcery:consent-updated', (event) => {
+          const status = event?.detail?.status;
+          if (status === 'accepted') {
+            loadAnalytics();
+            return;
+          }
+
+          if (status === 'rejected' && window.gtag) {
+            window.gtag('consent', 'update', { analytics_storage: 'denied' });
+          }
+        });
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
+<link rel="stylesheet" href="/_astro/budget-mensuel.DPY2sRzr.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact" class="is-active" aria-current="page"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/contact/" data-en-path="/en/contact/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact" class="is-active" aria-current="page"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/contact/" data-en-path="/en/contact/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">  <section class="border-b border-gray-200 bg-white py-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-4xl text-center"> <h1 class="mb-6 text-5xl font-bold leading-tight text-black md:text-6xl">Nous contacter</h1> <p class="text-xl font-light text-gray-600">Questions, support, partenariat ou demande RGPD : nous vous répondons rapidement.</p> </div>  </div> </section> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-3xl"> <section class="mb-16"> <form method="post" class="space-y-6" id="contact-form"> <div> <label for="name" class="mb-3 block text-sm font-semibold text-gray-900">Nom complet (optionnel)</label> <input type="text" id="name" name="name" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"> </div> <div> <label for="email" class="mb-3 block text-sm font-semibold text-gray-900">Adresse email *</label> <input type="email" id="email" name="email" required autocomplete="email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"> </div> <div> <label for="subject" class="mb-3 block text-sm font-semibold text-gray-900">Sujet *</label> <select id="subject" name="subject" required class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"> <option value="">Sélectionnez un sujet</option> <option value="question">Question générale</option> <option value="bug">Signalement d'un bug</option> <option value="suggestion">Suggestion d'amélioration</option> <option value="partnership">Partenariat</option> <option value="rgpd">Demande RGPD</option> <option value="other">Autre</option> </select> </div> <div> <label for="message" class="mb-3 block text-sm font-semibold text-gray-900">Votre message *</label> <textarea id="message" name="message" rows="7" required class="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Décrivez votre demande avec le plus de détails possible..."></textarea> </div> <div class="rounded-lg border border-gray-200 bg-gray-50 p-4"> <label class="flex items-start gap-3 text-sm text-gray-700" for="privacy-consent"> <input id="privacy-consent" name="privacy-consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-black focus:ring-black"> <span>
+J'accepte que mes données de contact soient utilisées pour traiter ma demande, conformément à la
+<a href="/confidentialite" class="font-medium text-black hover:underline">politique de confidentialité</a>.
+</span> </label> </div> <div class="hidden" aria-hidden="true"> <label for="website">Website</label> <input type="text" id="website" name="website"> </div> <button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 bg-primary text-white hover:bg-primary/90 focus:ring-primary w-full">Envoyer le message</button> <p class="text-center text-sm text-gray-600">
+Le formulaire ouvre votre messagerie et prépare un email vers
+<a href="mailto:ingridsacla@gmail.com" class="font-medium text-black hover:underline">ingridsacla@gmail.com</a>.
+</p> </form> </section> <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2"> <div class="rounded-xl border border-gray-200 bg-gray-50 p-8"> <h2 class="mb-4 text-2xl font-bold text-black">Email</h2> <p class="mb-4 text-gray-700">Canal recommandé pour toute demande. Délai moyen de réponse : 24 à 48h ouvrées.</p> <a href="mailto:ingridsacla@gmail.com" class="font-semibold text-black hover:underline">ingridsacla@gmail.com</a> </div> <div class="rounded-xl border border-gray-200 bg-gray-50 p-8"> <h2 class="mb-4 text-2xl font-bold text-black">Adresse de l'éditeur</h2> <p class="text-gray-700"> <strong>Maison Ellis</strong><br> 60 Rue François 1er, 75008 Paris, France </p> </div> </div> <section class="rounded-xl border border-gray-200 bg-white p-8"> <h2 class="mb-6 text-3xl font-bold text-gray-900">Informations utiles</h2> <div class="space-y-4 text-gray-700 leading-relaxed"> <div> <h3 class="mb-2 font-semibold text-gray-900">Signalement de bug</h3> <p>Précisez votre navigateur, votre appareil et les étapes pour reproduire le problème.</p> </div> <div> <h3 class="mb-2 font-semibold text-gray-900">Demande RGPD</h3> <p>Vous pouvez exercer vos droits (accès, suppression, rectification, opposition, limitation, portabilité) via ce formulaire ou par email.</p> </div> <div> <h3 class="mb-2 font-semibold text-gray-900">Partenariats et publicité</h3> <p>Pour toute demande liée aux partenariats, affiliations ou publicités, utilisez le sujet "Partenariat".</p> </div> </div> </section> </div>  </div>  </main> <footer class="site-footer"> <div class="footer-content"> <div class="footer-brand"> <h3>Calcery</h3> <p> Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications. </p> </div> <div class="footer-section"> <h4>Navigation</h4> <ul class="footer-links"> <li><a href="/">Accueil</a></li> <li><a href="/calculateurs">Calculateurs</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/a-propos">À propos</a></li> </ul> </div> <div class="footer-section"> <h4>Outils populaires</h4> <ul class="footer-links"> <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li> <li><a href="/calculateurs/epargne-automatique">Épargne</a></li> <li><a href="/calculateurs/pourboire">Pourboire</a></li> <li><a href="/calculateurs/interets-composes">Investissement</a></li> </ul> </div> <div class="footer-section"> <h4>Légal</h4> <ul class="footer-links"> <li><a href="/mentions-legales">Mentions légales</a></li> <li><a href="/confidentialite">Confidentialité</a></li> <li><a href="/contact">Contact</a></li> <li> <button type="button" class="text-left hover:underline" data-cookie-settings>Gérer les cookies</button> </li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé pour vous</p> </div> </footer> <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut"> <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"> <path d="M18 15l-6-6-6 6"></path> </svg> </button> <aside id="cookie-banner" class="fixed bottom-4 left-1/2 z-[1100] hidden w-[min(760px,calc(100%-2rem))] -translate-x-1/2 rounded-2xl border border-gray-200 bg-white/95 p-4 shadow-xl backdrop-blur" role="dialog" aria-live="polite" aria-label="Cookies et mesure d’audience"><div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div class="md:max-w-xl"><p class="text-sm font-semibold text-gray-900">Cookies et mesure d’audience</p><p class="mt-1 text-sm text-gray-600">Calcery utilise Google Analytics uniquement avec votre consentement pour mesurer l’audience et améliorer le site.<a href="/confidentialite" class="ml-1 font-medium text-gray-900 underline underline-offset-2 hover:text-black">Politique de confidentialité</a></p></div><div class="flex flex-wrap items-center gap-2"><button id="cookie-reject" type="button" class="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">Refuser</button><button id="cookie-accept" type="button" class="inline-flex min-h-11 items-center justify-center rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Accepter</button></div></div></aside><script>
+        (() => {
+          const KEY = 'calcery_cookie_consent';
+          const banner = document.getElementById('cookie-banner');
+          if (!banner) return;
+
+          const acceptButton = document.getElementById('cookie-accept');
+          const rejectButton = document.getElementById('cookie-reject');
+
+          const emitConsent = (status) => {
+            window.dispatchEvent(new CustomEvent('calcery:consent-updated', { detail: { status } }));
+          };
+
+          const hideBanner = () => {
+            banner.classList.add('hidden');
+          };
+
+          const showBanner = () => {
+            banner.classList.remove('hidden');
+          };
+
+          const saveChoice = (status) => {
+            try {
+              localStorage.setItem(KEY, status);
+              localStorage.setItem(`${KEY}_updated_at`, new Date().toISOString());
+            } catch {
+              // Ignore storage failures.
+            }
+            emitConsent(status);
+            hideBanner();
+          };
+
+          let consent = null;
+          try {
+            consent = localStorage.getItem(KEY);
+          } catch {
+            consent = null;
+          }
+
+          if (!consent) {
+            showBanner();
+          }
+
+          acceptButton?.addEventListener('click', () => saveChoice('accepted'));
+          rejectButton?.addEventListener('click', () => saveChoice('rejected'));
+
+          window.addEventListener('calcery:open-cookie-banner', () => {
+            showBanner();
+          });
+        })();
+      </script> <script>(function(){const currentLocale = "fr";
 
       // Device detection
       const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -93,6 +196,12 @@ En soumettant ce formulaire, votre client email s'ouvrira pour envoyer votre mes
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+        button.addEventListener('click', () => {
+          window.dispatchEvent(new CustomEvent('calcery:open-cookie-banner'));
+        });
+      });
 
       // Progressive cards reveal on scroll
       const observer = new IntersectionObserver((entries) => {
@@ -179,33 +288,32 @@ En soumettant ce formulaire, votre client email s'ouvrira pour envoyer votre mes
     })();</script> </body> </html> <script>(function(){const email = "ingridsacla@gmail.com";
 
   const form = document.getElementById('contact-form');
+
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
       const name = document.getElementById('name').value;
       const emailVal = document.getElementById('email').value;
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       const website = document.getElementById('website').value;
-      
-      // Honeypot check
-      if (website) {
-        console.log('Honeypot triggered');
-        return;
-      }
-      
+
+      if (website) return;
+
       const subjectMap = {
         question: 'Question générale',
-        bug: 'Signalement d\'un bug',
-        suggestion: 'Suggestion d\'amélioration',
+        bug: 'Signalement bug',
+        suggestion: 'Suggestion',
         partnership: 'Partenariat',
+        rgpd: 'Demande RGPD',
         other: 'Autre',
       };
-      
-      const emailSubject = `Contact Calcery - ${subjectMap[subject] || subject}`;
-      const emailBody = `Nom: ${name}\nEmail: ${emailVal}\nSujet: ${subjectMap[subject] || subject}\n\nMessage:\n${message}`;
-      
+
+      const finalSubject = subjectMap[subject] || subject;
+      const emailSubject = `Contact Calcery - ${finalSubject}`;
+      const emailBody = `Nom: ${name || 'Non renseigné'}\nEmail: ${emailVal}\nSujet: ${finalSubject}\n\nMessage:\n${message}`;
+
       const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
     });
