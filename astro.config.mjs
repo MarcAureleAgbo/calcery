@@ -10,5 +10,18 @@ const site = SITE_URL.replace(/\/+$/, '');
 // https://astro.build/config
 export default defineConfig({
   site,
-  integrations: [react(), tailwind(), sitemap()],
+  integrations: [
+    react(),
+    tailwind(),
+    sitemap({
+      filter: (page) => {
+        try {
+          const pathname = new URL(page).pathname;
+          return !pathname.includes('404');
+        } catch {
+          return !page.includes('404');
+        }
+      },
+    }),
+  ],
 });
