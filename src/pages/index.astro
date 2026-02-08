@@ -4,7 +4,6 @@ import Hero from '../components/Hero.astro';
 import ToolCard from '../components/ToolCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import StepCard from '../components/StepCard.astro';
-import AdSpace from '../components/AdSpace.astro';
 
 const baseSiteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
 
@@ -46,8 +45,6 @@ const featuredToolsSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
 
   <Hero />
-
-  <AdSpace placeholder="Insérer code Google AdSense 970x90 ou 728x90" />
 
   <section class="section">
     <div class="section-header">
@@ -125,8 +122,6 @@ const featuredToolsSchema = {
       />
     </div>
   </section>
-
-  <AdSpace placeholder="Insérer code Google AdSense 728x90" />
 
   <section class="section">
     <div class="section-header">

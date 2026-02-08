@@ -121,6 +121,7 @@ const SavingsGoalCalculator: React.FC<SavingsGoalCalculatorProps> = ({ lang = 'f
           <input
             id={`${baseId}-goal`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={goal}
@@ -136,6 +137,7 @@ const SavingsGoalCalculator: React.FC<SavingsGoalCalculatorProps> = ({ lang = 'f
           <input
             id={`${baseId}-months`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="1"
             step="1"
             value={months}
@@ -151,6 +153,7 @@ const SavingsGoalCalculator: React.FC<SavingsGoalCalculatorProps> = ({ lang = 'f
           <input
             id={`${baseId}-initial`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={initial}
@@ -166,6 +169,7 @@ const SavingsGoalCalculator: React.FC<SavingsGoalCalculatorProps> = ({ lang = 'f
           <input
             id={`${baseId}-rate`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={annualRate}

@@ -135,6 +135,7 @@ const SmallExpensesSavingsCalculator: React.FC<SmallExpensesSavingsCalculatorPro
           <input
             id={`${baseId}-unit-cost`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={unitCost}
@@ -168,6 +169,7 @@ const SmallExpensesSavingsCalculator: React.FC<SmallExpensesSavingsCalculatorPro
           <input
             id={`${baseId}-quantity`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={quantity}

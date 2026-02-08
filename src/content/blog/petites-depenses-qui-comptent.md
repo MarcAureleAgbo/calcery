@@ -4,8 +4,6 @@ description: "Découvrez l'impact des petites dépenses répétées et comment l
 date: 2026-01-07
 ---
 
-# Les petites dépenses qui comptent : comment les maîtriser
-
 Les grandes dépenses attirent souvent l'attention, mais ce sont souvent les petites sommes dépensées quotidiennement qui grèvent le plus le budget. Un café à 2€ par jour, une application mobile à 5€ par mois, ou un snack impulsif peuvent sembler anodins, mais leur accumulation représente un montant significatif sur l'année.
 
 ## L'impact des petites dépenses

@@ -4,9 +4,10 @@ export interface Props {
   title: string;
   description: string;
   href: string;
+  ctaLabel?: string;
 }
 
-const { icon, title, description, href } = Astro.props;
+const { icon, title, description, href, ctaLabel = 'Essayer' } = Astro.props;
 ---
 
 <a href={href} class="tool-card">
@@ -14,7 +15,7 @@ const { icon, title, description, href } = Astro.props;
   <h3 class="tool-title">{title}</h3>
   <p class="tool-description">{description}</p>
   <span class="tool-link">
-    Essayer
+    {ctaLabel}
     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
       <path d="M5 12h14m-7-7l7 7-7 7" />
     </svg>

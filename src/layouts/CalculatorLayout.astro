@@ -28,6 +28,9 @@ const {
   lang = 'fr',
 } = Astro.props;
 
+const hasHowItWorks = Astro.slots.has('how-it-works');
+const hasExamples = Astro.slots.has('examples');
+
 const t = {
   fr: {
     free: 'Gratuit',
@@ -36,10 +39,8 @@ const t = {
     privacyNotice: 'Vos données restent sur votre appareil. Aucune transmission.',
     calculator: 'Calculateur',
     quickTips: 'Conseils rapides',
-    howItWorks: 'Comment ça marche ?',
-    howItWorksFallback: 'Explication par défaut du fonctionnement.',
+    howItWorks: 'Comment ça marche',
     examples: 'Exemples',
-    examplesFallback: "Exemples d'utilisation.",
     warningTitle: 'Avertissement important',
     warningText:
       "Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.",
@@ -54,9 +55,7 @@ const t = {
     calculator: 'Calculator',
     quickTips: 'Quick tips',
     howItWorks: 'How it works',
-    howItWorksFallback: 'Default explanation of how this calculator works.',
     examples: 'Examples',
-    examplesFallback: 'Usage examples.',
     warningTitle: 'Important disclaimer',
     warningText:
       'The calculators on this site are provided for informational purposes only. They do not constitute financial, tax, or legal advice. Results are estimates and may vary depending on your personal situation. We recommend consulting a qualified professional for personalized advice.',
@@ -67,41 +66,43 @@ const t = {
 ---
 
 <BaseLayout title={title} description={description} lang={lang}>
-  <div class="bg-white min-h-screen">
-    <section class="bg-gradient-to-b from-primary/8 via-white to-secondary/8 border-b border-gray-100 py-12">
-      <Container class="py-6">
+  <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white pb-10 pt-8">
+    <Container>
+      <div class="mx-auto max-w-5xl">
         <Breadcrumbs items={breadcrumbs} />
 
-        <div class="text-center mb-8">
-          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">{title}</h1>
-          <p class="text-xl text-gray-600 font-light mb-8 max-w-2xl mx-auto">{description}</p>
-          <div class="flex flex-wrap justify-center gap-3 mb-6">
-            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">{t.free}</span>
-            <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">{t.noSignup}</span>
-            <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">{t.localCalculation}</span>
-          </div>
-          <p class="text-sm text-gray-600 font-medium">{t.privacyNotice}</p>
-        </div>
-      </Container>
-    </section>
+        <div class="mt-4 text-center">
+          <h1 class="mb-4 text-4xl font-bold leading-tight text-gray-900 md:text-6xl">{title}</h1>
+          <p class="mx-auto mb-8 max-w-3xl text-lg font-light text-gray-600 md:text-xl">{description}</p>
 
-    <Container class="py-12">
-      <div class="max-w-4xl mx-auto mb-16">
-        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
-          <h2 class="text-2xl font-bold mb-8 text-center text-gray-900">{t.calculator}</h2>
-          <slot />
+          <div class="mb-6 flex flex-wrap justify-center gap-3">
+            <span class="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700">{t.free}</span>
+            <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">{t.noSignup}</span>
+            <span class="rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-700">{t.localCalculation}</span>
+          </div>
+
+          <p class="text-sm font-medium text-gray-600">{t.privacyNotice}</p>
         </div>
       </div>
+    </Container>
+  </section>
+
+  <Container class="py-12">
+    <div class="mx-auto max-w-5xl space-y-14">
+      <section class="rounded-2xl border border-gray-200/80 bg-white/90 p-8 shadow-md backdrop-blur-sm md:p-10">
+        <h2 class="mb-8 text-center text-2xl font-bold text-gray-900">{t.calculator}</h2>
+        <slot />
+      </section>
 
       {tips.length > 0 && (
-        <section class="mb-16 max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.quickTips}</h2>
-          <div class="bg-primary/5 border-l-4 border-primary rounded-r-lg p-8">
-            <ul class="space-y-3">
+        <section>
+          <h2 class="mb-6 text-center text-3xl font-bold text-gray-900">{t.quickTips}</h2>
+          <div class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm">
+            <ul class="space-y-4">
               {tips.map((tip) => (
                 <li class="flex items-start gap-3">
-                  <span class="text-primary font-bold text-lg flex-shrink-0">✓</span>
-                  <span class="text-gray-700 leading-relaxed">{tip}</span>
+                  <span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-black text-sm font-bold text-white">✓</span>
+                  <span class="leading-relaxed text-gray-700">{tip}</span>
                 </li>
               ))}
             </ul>
@@ -109,43 +110,43 @@ const t = {
         </section>
       )}
 
-      <section class="mb-16 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.howItWorks}</h2>
-        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
-          <slot name="how-it-works">
-            <p class="text-gray-700">{t.howItWorksFallback}</p>
-          </slot>
-        </div>
-      </section>
+      {hasHowItWorks && (
+        <section>
+          <h2 class="mb-6 text-center text-3xl font-bold text-gray-900">{t.howItWorks}</h2>
+          <div class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm">
+            <slot name="how-it-works" />
+          </div>
+        </section>
+      )}
 
-      <section class="mb-16 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.examples}</h2>
-        <div class="bg-gradient-to-b from-gray-50 to-white border border-gray-200 rounded-xl p-8 shadow-md">
-          <slot name="examples">
-            <p class="text-gray-700">{t.examplesFallback}</p>
-          </slot>
-        </div>
-      </section>
+      {hasExamples && (
+        <section>
+          <h2 class="mb-6 text-center text-3xl font-bold text-gray-900">{t.examples}</h2>
+          <div class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm">
+            <slot name="examples" />
+          </div>
+        </section>
+      )}
 
       {!disableDisclaimer && (
-        <section class="mb-16 max-w-4xl mx-auto">
-          <div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-8">
-            <h2 class="text-xl font-semibold mb-3 text-amber-900">{t.warningTitle}</h2>
-            <p class="text-amber-800 leading-relaxed">{t.warningText}</p>
+        <section>
+          <div class="rounded-2xl border border-amber-300 bg-amber-50 p-8">
+            <h2 class="mb-3 text-xl font-semibold text-amber-900">{t.warningTitle}</h2>
+            <p class="leading-relaxed text-amber-900/90">{t.warningText}</p>
           </div>
         </section>
       )}
 
       {faqs.length > 0 && (
-        <section class="mb-16 max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.faqTitle}</h2>
-          <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
+        <section>
+          <h2 class="mb-6 text-center text-3xl font-bold text-gray-900">{t.faqTitle}</h2>
+          <div class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm">
             <FAQ items={faqs} />
           </div>
         </section>
       )}
 
-      {updatedAt && <p class="text-sm text-gray-500 text-center mb-8">{t.updatedAt} {updatedAt}</p>}
-    </Container>
-  </div>
+      {updatedAt && <p class="pb-2 text-center text-sm text-gray-500">{t.updatedAt} {updatedAt}</p>}
+    </div>
+  </Container>
 </BaseLayout>

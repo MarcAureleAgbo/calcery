@@ -78,6 +78,7 @@ const TipCalculator: React.FC<TipCalculatorProps> = ({ lang = 'fr' }) => {
           <input
             id={`${baseId}-bill`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={bill}
@@ -94,6 +95,7 @@ const TipCalculator: React.FC<TipCalculatorProps> = ({ lang = 'fr' }) => {
           <input
             id={`${baseId}-people`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="1"
             step="1"
             value={people}
@@ -124,6 +126,7 @@ const TipCalculator: React.FC<TipCalculatorProps> = ({ lang = 'fr' }) => {
         <input
           id={`${baseId}-percent`}
           type="number"
+            onFocus={(event) => event.currentTarget.select()}
           min="0"
           step="any"
           value={percent}

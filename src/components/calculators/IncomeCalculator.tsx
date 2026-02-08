@@ -161,6 +161,7 @@ export default function IncomeCalculator({ lang = 'fr' }: IncomeCalculatorProps)
           />
           <input
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             value={income}
             min="0"
             onChange={(event) => setIncome(Math.max(0, Number(event.target.value) || 0))}
@@ -176,6 +177,7 @@ export default function IncomeCalculator({ lang = 'fr' }: IncomeCalculatorProps)
           <input
             id="nb-parts"
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0.5"
             step="0.5"
             value={nbParts}

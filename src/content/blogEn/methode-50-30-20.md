@@ -4,8 +4,6 @@ description: Learn how to apply the 50/30/20 rule to balance your personal finan
 date: 2026-01-07
 ---
 
-# The 50/30/20 method: a simple framework for budgeting
-
 Budgeting can feel overwhelming, but proven frameworks can make it easier. The 50/30/20 rule offers a practical way to split your net income into three categories: needs, wants, and savings.
 
 ## What is the 50/30/20 rule?

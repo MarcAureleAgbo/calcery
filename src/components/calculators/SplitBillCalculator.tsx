@@ -87,6 +87,7 @@ const SplitBillCalculator: React.FC<SplitBillCalculatorProps> = ({ lang = 'fr' }
           <input
             id={`${baseId}-bill`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={bill}
@@ -102,6 +103,7 @@ const SplitBillCalculator: React.FC<SplitBillCalculatorProps> = ({ lang = 'fr' }
           <input
             id={`${baseId}-people`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="1"
             step="1"
             value={people}
@@ -136,6 +138,7 @@ const SplitBillCalculator: React.FC<SplitBillCalculatorProps> = ({ lang = 'fr' }
           <input
             id={`${baseId}-tip-percent`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={tipPercent}
@@ -147,6 +150,7 @@ const SplitBillCalculator: React.FC<SplitBillCalculatorProps> = ({ lang = 'fr' }
           <input
             id={`${baseId}-tip-amount`}
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={tipAmount}

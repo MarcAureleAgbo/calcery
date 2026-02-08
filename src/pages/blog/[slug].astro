@@ -1,91 +1,85 @@
 ---
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-import SEO from '../../components/SEO.astro';
-
-import Icon from '../../components/ui/IconInline.astro';
-
 import Button from '../../components/ui/Button.astro';
-
 import Card from '../../components/ui/Card.astro';
-
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
 
   return posts
-    .filter(post => !post.data.draft)
-    .map(post => ({
+    .filter((post) => !post.data.draft)
+    .map((post) => ({
       params: { slug: post.slug },
       props: { post },
     }));
 }
 
 const { post } = Astro.props;
-
 const { Content } = await post.render();
 
-// Générer TOC
+const toSlug = (text: string) =>
+  text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
 const toc = post.body
   .split('\n')
-  .filter(line => line.startsWith('## ') || line.startsWith('### '))
-  .map(line => {
+  .filter((line: string) => line.startsWith('## ') || line.startsWith('### '))
+  .map((line: string) => {
     const level = line.startsWith('### ') ? 3 : 2;
     const text = line.replace(/^#{2,3} /, '');
-    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const id = toSlug(text);
     return { level, text, id };
   });
 
-// Articles liés
 const allPosts = await getCollection('blog');
-const relatedPosts = allPosts
-  .filter(p => p.slug !== post.slug && !p.data.draft)
-  .slice(0, 2);
+const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draft).slice(0, 2);
+const readingTime = Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 220));
 
-// Outils utiles selon l'article
-const tools = post.slug === 'methode-50-30-20' ? [
-  { href: '/calculateurs/budget-mensuel', title: 'Budget mensuel', desc: 'Équilibrez vos revenus et dépenses.' },
-  { href: '/calculateurs/epargne-automatique', title: 'Épargne automatique', desc: 'Atteignez vos objectifs d\'épargne.' },
-  { href: '/calculateurs/economies-petites-depenses', title: 'Économies petites dépenses', desc: 'Réduisez vos petites habitudes coûteuses.' }
-] : [
-  { href: '/calculateurs/economies-petites-depenses', title: 'Économies petites dépenses', desc: 'Calculez l\'impact de vos petites dépenses.' },
-  { href: '/calculateurs/budget-mensuel', title: 'Budget mensuel', desc: 'Gérez votre budget global.' },
-  { href: '/calculateurs/epargne-automatique', title: 'Épargne automatique', desc: 'Planifiez votre épargne.' }
-];
-
+const tools =
+  post.slug === 'methode-50-30-20'
+    ? [
+        { href: '/calculateurs/budget-mensuel', title: 'Budget mensuel', desc: 'Équilibrez vos revenus et dépenses.' },
+        { href: '/calculateurs/epargne-automatique', title: 'Épargne automatique', desc: 'Atteignez vos objectifs d\'épargne.' },
+        { href: '/calculateurs/economies-petites-depenses', title: 'Économies petites dépenses', desc: 'Réduisez vos petites habitudes coûteuses.' },
+      ]
+    : [
+        { href: '/calculateurs/economies-petites-depenses', title: 'Économies petites dépenses', desc: 'Calculez l\'impact de vos petites dépenses.' },
+        { href: '/calculateurs/budget-mensuel', title: 'Budget mensuel', desc: 'Gérez votre budget global.' },
+        { href: '/calculateurs/epargne-automatique', title: 'Épargne automatique', desc: 'Planifiez votre épargne.' },
+      ];
 ---
 
 <BaseLayout title={`${post.data.title} - Calcery`} description={post.data.description}>
-
-  <div class="max-w-6xl mx-auto px-4 py-8">
-
-    <div class="flex flex-col lg:flex-row gap-8">
-
-      <!-- Article principal -->
-      <article class="flex-1 prose-lite max-w-none">
-
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <div class="flex flex-col gap-8 lg:flex-row">
+      <article class="prose-lite max-w-none flex-1 rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm">
         <h1>{post.data.title}</h1>
 
-        <p class="text-gray-600 text-lg mb-4">{post.data.description}</p>
+        <p class="mb-4 text-lg text-gray-600">{post.data.description}</p>
 
-        <p class="text-sm text-gray-500 mb-8">Publié le {new Date(post.data.date).toLocaleDateString('fr-FR')}</p>
+        <div class="mb-8 flex flex-wrap items-center gap-3 text-sm text-gray-500">
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Publié le {new Date(post.data.date).toLocaleDateString('fr-FR')}</span>
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">{readingTime} min de lecture</span>
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Équipe Calcery</span>
+        </div>
 
         <Content />
-
       </article>
 
-      <!-- TOC -->
       {toc.length > 0 && (
-        <aside class="lg:w-64 flex-shrink-0">
-          <div class="sticky top-8 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-            <h3 class="text-lg font-semibold mb-4 text-black">Table des matières</h3>
-            <nav>
+        <aside class="lg:w-72 lg:flex-shrink-0">
+          <div class="sticky top-24 rounded-2xl border border-gray-200 bg-white/95 p-5 shadow-sm">
+            <h2 class="mb-4 text-lg font-semibold text-black">Table des matières</h2>
+            <nav aria-label="Table des matières">
               <ul class="space-y-2">
-                {toc.map((item, idx) => (
+                {toc.map((item) => (
                   <li class={item.level === 3 ? 'ml-4' : ''}>
-                    <a href={`#${item.id}`} class="text-gray-700 hover:text-black text-sm">{item.text}</a>
+                    <a href={`#${item.id}`} class="text-sm text-gray-700 hover:text-black">{item.text}</a>
                   </li>
                 ))}
               </ul>
@@ -93,32 +87,29 @@ const tools = post.slug === 'methode-50-30-20' ? [
           </div>
         </aside>
       )}
-
     </div>
 
-    <!-- Outils utiles -->
     <section class="mt-12">
-      <h2 class="text-2xl font-semibold mb-6 text-center">Outils utiles</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {tools.map(tool => (
-          <Card class="p-6 hover:shadow-md transition-shadow">
-            <h3 class="text-lg font-semibold mb-2"><a href={tool.href} class="text-black hover:underline">{tool.title}</a></h3>
-            <p class="text-gray-700 mb-4">{tool.desc}</p>
+      <h2 class="mb-6 text-center text-2xl font-semibold">Outils utiles</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {tools.map((tool) => (
+          <Card class="p-6 transition-shadow hover:shadow-md">
+            <h3 class="mb-2 text-lg font-semibold"><a href={tool.href} class="text-black hover:underline">{tool.title}</a></h3>
+            <p class="mb-4 text-gray-700">{tool.desc}</p>
             <Button href={tool.href} class="w-full">Utiliser</Button>
           </Card>
         ))}
       </div>
     </section>
 
-    <!-- Articles liés -->
     {relatedPosts.length > 0 ? (
       <section class="mt-12">
-        <h2 class="text-2xl font-semibold mb-6 text-center">Articles liés</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {relatedPosts.map(related => (
-            <Card class="p-6 hover:shadow-md transition-shadow">
-              <h3 class="text-xl font-semibold mb-2"><a href={`/blog/${related.slug}`} class="text-black hover:underline">{related.data.title}</a></h3>
-              <p class="text-gray-700 mb-4">{related.data.description}</p>
+        <h2 class="mb-6 text-center text-2xl font-semibold">Articles liés</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {relatedPosts.map((related) => (
+            <Card class="p-6 transition-shadow hover:shadow-md">
+              <h3 class="mb-2 text-xl font-semibold"><a href={`/blog/${related.slug}`} class="text-black hover:underline">{related.data.title}</a></h3>
+              <p class="mb-4 text-gray-700">{related.data.description}</p>
               <p class="text-sm text-gray-500">Publié le {new Date(related.data.date).toLocaleDateString('fr-FR')}</p>
             </Card>
           ))}
@@ -126,7 +117,7 @@ const tools = post.slug === 'methode-50-30-20' ? [
       </section>
     ) : (
       <section class="mt-12 text-center">
-        <h2 class="text-2xl font-semibold mb-4">Découvrez d'autres articles</h2>
+        <h2 class="mb-4 text-2xl font-semibold">Découvrez d'autres articles</h2>
         <Button href="/blog">Voir tous les articles</Button>
       </section>
     )}
@@ -134,7 +125,5 @@ const tools = post.slug === 'methode-50-30-20' ? [
     <div class="mt-8 text-center">
       <a href="/blog" class="text-black hover:underline">Retour au blog</a>
     </div>
-
   </div>
-
 </BaseLayout>

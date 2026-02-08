@@ -160,6 +160,7 @@ const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ lang = 'fr' }) => {
               <input
                 id={field.id}
                 type="number"
+            onFocus={(event) => event.currentTarget.select()}
                 min="0"
                 step="any"
                 value={field.value}

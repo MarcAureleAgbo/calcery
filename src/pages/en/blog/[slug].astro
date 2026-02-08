@@ -18,46 +18,63 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
+const toSlug = (text: string) =>
+  text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
 const toc = post.body
   .split('\n')
   .filter((line: string) => line.startsWith('## ') || line.startsWith('### '))
   .map((line: string) => {
     const level = line.startsWith('### ') ? 3 : 2;
     const text = line.replace(/^#{2,3} /, '');
-    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const id = toSlug(text);
     return { level, text, id };
   });
 
 const allPosts = await getCollection('blogEn');
 const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draft).slice(0, 2);
+const readingTime = Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 220));
 
-const tools = post.slug === 'methode-50-30-20'
-  ? [
-      { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Balance income and expenses clearly.' },
-      { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Plan recurring savings.' },
-      { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Measure recurring small costs.' },
-    ]
-  : [
-      { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Estimate recurring small expenses.' },
-      { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Control your monthly cash flow.' },
-      { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Build a realistic savings plan.' },
-    ];
+const tools =
+  post.slug === 'methode-50-30-20'
+    ? [
+        { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Balance income and expenses clearly.' },
+        { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Plan recurring savings.' },
+        { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Measure recurring small costs.' },
+      ]
+    : [
+        { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Estimate recurring small expenses.' },
+        { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Control your monthly cash flow.' },
+        { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Build a realistic savings plan.' },
+      ];
 ---
 
 <BaseLayout title={`${post.data.title} - Calcery`} description={post.data.description} lang="en">
   <div class="mx-auto max-w-6xl px-4 py-8">
     <div class="flex flex-col gap-8 lg:flex-row">
-      <article class="prose-lite max-w-none flex-1">
+      <article class="prose-lite max-w-none flex-1 rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm">
         <h1>{post.data.title}</h1>
+
         <p class="mb-4 text-lg text-gray-600">{post.data.description}</p>
-        <p class="mb-8 text-sm text-gray-500">Published on {new Date(post.data.date).toLocaleDateString('en-US')}</p>
+
+        <div class="mb-8 flex flex-wrap items-center gap-3 text-sm text-gray-500">
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Published on {new Date(post.data.date).toLocaleDateString('en-US')}</span>
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">{readingTime} min read</span>
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Calcery Team</span>
+        </div>
+
         <Content />
       </article>
 
       {toc.length > 0 && (
-        <aside class="lg:w-64 lg:flex-shrink-0">
-          <div class="sticky top-8 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-            <h3 class="mb-4 text-lg font-semibold text-black">Table of contents</h3>
+        <aside class="lg:w-72 lg:flex-shrink-0">
+          <div class="sticky top-24 rounded-2xl border border-gray-200 bg-white/95 p-5 shadow-sm">
+            <h2 class="mb-4 text-lg font-semibold text-black">Table of contents</h2>
             <nav aria-label="Table of contents">
               <ul class="space-y-2">
                 {toc.map((item) => (

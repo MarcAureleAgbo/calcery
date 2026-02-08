@@ -4,7 +4,6 @@ import Hero from '../../components/Hero.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import FeatureCard from '../../components/FeatureCard.astro';
 import StepCard from '../../components/StepCard.astro';
-import AdSpace from '../../components/AdSpace.astro';
 
 const baseSiteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
 
@@ -48,8 +47,6 @@ const featuredToolsSchema = {
 
   <Hero lang="en" />
 
-  <AdSpace placeholder="Insert Google AdSense 970x90 or 728x90 code" />
-
   <section class="section">
     <div class="section-header">
       <div class="section-badge">Top Tools</div>
@@ -65,36 +62,42 @@ const featuredToolsSchema = {
         title="Monthly budget"
         description="Balance your income and expenses for a clear view of your financial situation."
         href="/en/calculateurs/budget-mensuel"
+        ctaLabel="Try"
       />
       <ToolCard
         icon="📈"
         title="Automatic savings"
         description="Reach your savings goals with a consistent and practical monthly plan."
         href="/en/calculateurs/epargne-automatique"
+        ctaLabel="Try"
       />
       <ToolCard
         icon="🍽️"
         title="Tip calculator"
         description="Calculate the right tip amount instantly based on your preferences."
         href="/en/calculateurs/pourboire"
+        ctaLabel="Try"
       />
       <ToolCard
         icon="👥"
         title="Split bill"
         description="Split the bill fairly between friends in just a few seconds."
         href="/en/calculateurs/partage-addition"
+        ctaLabel="Try"
       />
       <ToolCard
         icon="☕"
         title="Small expense savings"
         description="See how repeated small habits can impact your savings over time."
         href="/en/calculateurs/economies-petites-depenses"
+        ctaLabel="Try"
       />
       <ToolCard
         icon="📊"
         title="Investing"
         description="Estimate your future returns with compound interest and plan ahead."
         href="/en/calculateurs/interets-composes"
+        ctaLabel="Try"
       />
     </div>
   </section>
@@ -126,8 +129,6 @@ const featuredToolsSchema = {
       />
     </div>
   </section>
-
-  <AdSpace placeholder="Insert Google AdSense 728x90 code" />
 
   <section class="section">
     <div class="section-header">

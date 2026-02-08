@@ -127,6 +127,7 @@ export default function CompoundInterestCalculator({ lang = 'fr' }: CompoundInte
           />
           <input
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             value={principal}
             min="0"
             onChange={(event) => setPrincipal(Math.max(0, Number(event.target.value) || 0))}
@@ -149,6 +150,7 @@ export default function CompoundInterestCalculator({ lang = 'fr' }: CompoundInte
           />
           <input
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             step="0.01"
             value={rate}
             min="0"
@@ -172,6 +174,7 @@ export default function CompoundInterestCalculator({ lang = 'fr' }: CompoundInte
           />
           <input
             type="number"
+            onFocus={(event) => event.currentTarget.select()}
             value={years}
             min="1"
             onChange={(event) => setYears(Math.max(1, Number(event.target.value) || 1))}

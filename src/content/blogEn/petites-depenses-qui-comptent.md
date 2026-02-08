@@ -4,8 +4,6 @@ description: Understand the long-term impact of recurring small expenses and how
 date: 2026-01-07
 ---
 
-# Small expenses that add up
-
 Large expenses attract attention, but recurring small purchases often have the biggest long-term impact on budgets. A daily coffee, convenience snacks, or forgotten subscriptions can quietly consume a large annual amount.
 
 ## Why small expenses matter

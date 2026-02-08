@@ -2,15 +2,21 @@
 export interface Props {
   label?: string;
   placeholder?: string;
+  enabled?: boolean;
+  code?: string;
 }
 
 const {
   label = 'Publicité',
   placeholder = 'Espace publicitaire Google AdSense',
+  enabled = false,
+  code = '',
 } = Astro.props;
 ---
 
-<div class="ad-space">
-  <div class="ad-label">{label}</div>
-  <div class="ad-placeholder">{placeholder}</div>
-</div>
+{enabled && (
+  <div class="ad-space">
+    <div class="ad-label">{label}</div>
+    {code ? <Fragment set:html={code} /> : <div class="ad-placeholder">{placeholder}</div>}
+  </div>
+)}

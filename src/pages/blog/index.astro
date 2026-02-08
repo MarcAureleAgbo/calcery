@@ -1,68 +1,61 @@
 ---
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-import Card from '../../components/ui/Card.astro';
-
 import Container from '../../components/ui/Container.astro';
-
-import Button from '../../components/ui/Button.astro';
-
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
-
 const sortedPosts = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
+const getReadingTime = (content: string) => {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 220));
+};
 ---
 
-<BaseLayout title="Blog - Calcery" description="Articles et conseils sur les calculateurs et la gestion budgétaire.">
-
-  <!-- Hero -->
-  <section class="bg-white border-b border-gray-200 py-20">
+<BaseLayout title="Blog - Calcery" description="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne.">
+  <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-20">
     <Container>
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">Articles & conseils</h1>
-        <p class="text-xl text-gray-600 font-light">Découvrez nos articles sur la gestion budgétaire, les techniques d'épargne et les conseils pratiques pour optimiser vos finances.</p>
+      <div class="mx-auto max-w-4xl text-center">
+        <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Ressources Calcery</div>
+        <h1 class="mb-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl">Articles et conseils</h1>
+        <p class="text-xl font-light text-gray-600">Des contenus concrets pour mieux piloter votre budget, votre épargne et vos habitudes financières.</p>
       </div>
     </Container>
   </section>
 
-  <!-- Articles -->
-  <section class="py-20 bg-white">
-    <Container>
-      <div class="mb-16">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Blog</h2>
-        <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto">Les derniers articles pour maîtriser vos finances</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {sortedPosts.map(post => (
-          <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5">
-            <div class="mb-4 flex items-start justify-between">
-              <h3 class="text-2xl font-bold text-black flex-1"><a href={`/blog/${post.slug}`} class="hover:text-gray-700 transition-colors">{post.data.title}</a></h3>
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">Blog</div>
+      <h2 class="section-title">Derniers articles</h2>
+      <p class="section-subtitle">Des guides courts, actionnables, reliés à vos calculateurs préférés.</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {sortedPosts.map((post) => {
+        const readingTime = getReadingTime(post.body);
+        return (
+          <article class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
+            <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+              <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Budget</span>
+              <span>{readingTime} min</span>
             </div>
-            <p class="text-gray-700 mb-6 leading-relaxed line-clamp-3">{post.data.description}</p>
+
+            <h3 class="mb-3 text-2xl font-bold text-black">
+              <a href={`/blog/${post.slug}`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
+            </h3>
+
+            <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">{post.data.description}</p>
+
             <div class="flex items-center justify-between">
               <p class="text-sm text-gray-500">Publié le <span class="font-medium">{new Date(post.data.date).toLocaleDateString('fr-FR')}</span></p>
-              <a href={`/blog/${post.slug}`} class="inline-flex items-center text-black font-semibold hover:gap-2 transition-all gap-1">
-                Lire →
+              <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
+                Lire
+                <span aria-hidden="true">→</span>
               </a>
             </div>
-          </div>
-        ))}
-      </div>
-    </Container>
+          </article>
+        );
+      })}
+    </div>
   </section>
-
-  <!-- CTA -->
-  <section class="bg-black text-white py-16">
-    <Container>
-      <div class="text-center">
-        <h2 class="text-4xl font-bold text-white mb-4">Prêt à optimiser vos finances ?</h2>
-        <p class="text-white/95 text-lg font-light mb-8">Essayez nos calculateurs gratuits et découvrez comment mieux gérer votre budget.</p>
-        <Button variant="light" href="/calculateurs">Accéder aux outils</Button>
-      </div>
-    </Container>
-  </section>
-
 </BaseLayout>
