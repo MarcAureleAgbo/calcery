@@ -1,35 +1,187 @@
-<!DOCTYPE html><html lang="fr"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">---
-<title>Calcery - Des calculateurs simples pour mieux gérer votre quotidien</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0A0E1A"><meta name="description" content="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."><link rel="canonical" href="http://localhost:4321/"><meta property="og:title" content="Calcery - Des calculateurs simples pour mieux gérer votre quotidien"><meta property="og:description" content="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."><meta property="og:type" content="website"><meta property="og:url" content="http://localhost:4321/"><meta property="og:site_name" content="Calcery"><meta property="og:image" content="http://localhost:4321/og.png"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="http://localhost:4321/og.png"><meta name="twitter:site" content="@calcery"><link rel="stylesheet" href="/_astro/a-propos.BcxOQUHX.css">
-<link rel="stylesheet" href="/_astro/budget-mensuel.DysA4_p9.css"></head> <body> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li><a href="/" data-i18n="nav.home">Accueil</a></li> <li><a href="/calculateurs" data-i18n="nav.calculateurs">Calculateurs</a></li> <li><a href="/blog" data-i18n="nav.blog">Blog</a></li> <li><a href="/a-propos" data-i18n="nav.about">À propos</a></li> <li><a href="/contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Lang</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/" data-i18n="nav.home">Accueil</a> <a href="/calculateurs" data-i18n="nav.calculateurs">Calculateurs</a> <a href="/blog" data-i18n="nav.blog">Blog</a> <a href="/a-propos" data-i18n="nav.about">À propos</a> <a href="/contact" class="nav-cta w-full justify-start rounded-full px-6" data-i18n="nav.contact">Contact</a> <div class="p-4"> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue mobile"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main>  <section class="hero"> <div class="hero-content"> <div class="hero-badge"> <span>✨</span> <span>100% Gratuit · Sans Inscription</span> </div> <h1>
-Des calculateurs simples<br>
-pour <span class="gradient-text">mieux gérer</span><br>
-votre quotidien
-</h1> <p class="hero-subtitle">
-Rapide, gratuit, sans inscription. Calculez localement pour votre tranquillité d'esprit avec des outils professionnels et précis.
-</p> <div class="hero-ctas"> <a href="/calculateurs" class="btn btn-primary">
-Découvrir les outils
-<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </a> <a href="/budget" class="btn btn-secondary">Commencer par Budget</a> </div> <div class="hero-features"> <div class="feature-badge"> <span class="feature-icon">⚡</span> <span>Gratuit</span> </div> <div class="feature-badge"> <span class="feature-icon">🔒</span> <span>Sans inscription</span> </div> <div class="feature-badge"> <span class="feature-icon">💻</span> <span>Calcul local</span> </div> </div> </div> </section> <div class="ad-space"> <div class="ad-label">Publicité</div> <div class="ad-placeholder">Insérer code Google AdSense 970x90 ou 728x90</div> </div> <section class="section"> <div class="section-header"> <div class="section-badge">⭐ Nos Outils</div> <h2 class="section-title">Outils phares</h2> <p class="section-subtitle">
+<!DOCTYPE html><html lang="fr"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="alternate" hreflang="fr" href="https://calcery.pages.dev/"><link rel="alternate" hreflang="en" href="https://calcery.pages.dev/en"><link rel="alternate" hreflang="x-default" href="https://calcery.pages.dev/"><title>Calcery - Des calculateurs simples pour mieux gérer votre quotidien</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0A0E1A"><meta name="description" content="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."><link rel="canonical" href="https://calcery.pages.dev/"><meta property="og:title" content="Calcery - Des calculateurs simples pour mieux gérer votre quotidien"><meta property="og:description" content="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."><meta property="og:type" content="website"><meta property="og:url" content="https://calcery.pages.dev/"><meta property="og:site_name" content="Calcery"><meta property="og:image" content="https://calcery.pages.dev/og.png"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Calcery - Des calculateurs simples pour mieux gérer votre quotidien"><meta name="twitter:description" content="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."><meta name="twitter:image" content="https://calcery.pages.dev/og.png"><meta name="twitter:site" content="@calcery"><link rel="stylesheet" href="/_astro/a-propos.CP9nJSHQ.css">
+<link rel="stylesheet" href="/_astro/budget-mensuel.48-7d5P6.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/" class="is-active" aria-current="page"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/" data-en-path="/en"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/" class="is-active" aria-current="page"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/" data-en-path="/en"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calcery","url":"https://calcery.pages.dev/","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Calculateurs simples et gratuits pour mieux gérer votre budget quotidien."}</script> <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Calculateurs financiers Calcery","itemListElement":[{"@type":"ListItem","position":1,"url":"https://calcery.pages.dev/calculateurs/budget-mensuel"},{"@type":"ListItem","position":2,"url":"https://calcery.pages.dev/calculateurs/epargne-automatique"},{"@type":"ListItem","position":3,"url":"https://calcery.pages.dev/calculateurs/pourboire"},{"@type":"ListItem","position":4,"url":"https://calcery.pages.dev/calculateurs/partage-addition"},{"@type":"ListItem","position":5,"url":"https://calcery.pages.dev/calculateurs/economies-petites-depenses"},{"@type":"ListItem","position":6,"url":"https://calcery.pages.dev/calculateurs/interets-composes"}]}</script> <section class="hero"> <div class="hero-content"> <div class="hero-badge"> <span>✨</span> <span>100% Gratuit · Sans Inscription</span> </div> <h1> Des calculateurs simples<br> pour <span class="gradient-text">mieux gérer</span><br> votre quotidien </h1> <p class="hero-subtitle"> Rapide, gratuit, sans inscription. Calculez localement pour votre tranquillité d&#39;esprit avec des outils professionnels et précis. </p> <div class="hero-ctas"> <a href="/calculateurs" class="btn btn-primary"> Découvrir les outils <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </a> <a href="/calculateurs/budget-mensuel" class="btn btn-secondary">Commencer par Budget</a> </div> <div class="hero-features"> <div class="feature-badge"> <span class="feature-icon">⚡</span> <span>Gratuit</span> </div> <div class="feature-badge"> <span class="feature-icon">🔒</span> <span>Sans inscription</span> </div> <div class="feature-badge"> <span class="feature-icon">💻</span> <span>Calcul local</span> </div> </div> </div> </section> <div class="ad-space"> <div class="ad-label">Publicité</div> <div class="ad-placeholder">Insérer code Google AdSense 970x90 ou 728x90</div> </div> <section class="section"> <div class="section-header"> <div class="section-badge">⭐ Nos Outils</div> <h2 class="section-title">Outils phares</h2> <p class="section-subtitle">
 Les calculateurs les plus populaires pour gérer vos finances avec simplicité
-</p> </div> <div class="tools-grid"> <a href="/calculateurs/budget-mensuel" class="tool-card"> <div class="tool-icon">💰</div> <h3 class="tool-title">Budget mensuel</h3> <p class="tool-description">Équilibrez facilement vos revenus et dépenses pour une vision claire de votre situation financière.</p> <span class="tool-link">
+</p> </div> <div class="tools-grid"> <a href="/calculateurs/budget-mensuel" class="tool-card"> <div class="tool-icon" aria-hidden="true">💰</div> <h3 class="tool-title">Budget mensuel</h3> <p class="tool-description">Équilibrez facilement vos revenus et dépenses pour une vision claire de votre situation financière.</p> <span class="tool-link">
 Essayer
-<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/epargne-automatique" class="tool-card"> <div class="tool-icon">📈</div> <h3 class="tool-title">Épargne automatique</h3> <p class="tool-description">Atteignez vos objectifs d&#39;épargne sans effort grâce à un système automatisé et efficace.</p> <span class="tool-link">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/epargne-automatique" class="tool-card"> <div class="tool-icon" aria-hidden="true">📈</div> <h3 class="tool-title">Épargne automatique</h3> <p class="tool-description">Atteignez vos objectifs d&#39;épargne sans effort grâce à un système automatisé et efficace.</p> <span class="tool-link">
 Essayer
-<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/pourboire" class="tool-card"> <div class="tool-icon">🍽️</div> <h3 class="tool-title">Pourboire</h3> <p class="tool-description">Calculez le pourboire idéal en un instant, adapté au service et à vos préférences.</p> <span class="tool-link">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/pourboire" class="tool-card"> <div class="tool-icon" aria-hidden="true">🍽️</div> <h3 class="tool-title">Pourboire</h3> <p class="tool-description">Calculez le pourboire idéal en un instant, adapté au service et à vos préférences.</p> <span class="tool-link">
 Essayer
-<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/partage-addition" class="tool-card"> <div class="tool-icon">👥</div> <h3 class="tool-title">Partage d&#39;addition</h3> <p class="tool-description">Répartissez l&#39;addition équitablement entre amis en quelques secondes.</p> <span class="tool-link">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/partage-addition" class="tool-card"> <div class="tool-icon" aria-hidden="true">👥</div> <h3 class="tool-title">Partage d&#39;addition</h3> <p class="tool-description">Répartissez l&#39;addition équitablement entre amis en quelques secondes.</p> <span class="tool-link">
 Essayer
-<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/economies-petites-depenses" class="tool-card"> <div class="tool-icon">☕</div> <h3 class="tool-title">Économies petites dépenses</h3> <p class="tool-description">Découvrez l&#39;impact cumulé de vos petites habitudes quotidiennes sur votre épargne.</p> <span class="tool-link">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/economies-petites-depenses" class="tool-card"> <div class="tool-icon" aria-hidden="true">☕</div> <h3 class="tool-title">Économies petites dépenses</h3> <p class="tool-description">Découvrez l&#39;impact cumulé de vos petites habitudes quotidiennes sur votre épargne.</p> <span class="tool-link">
 Essayer
-<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/epargne-automatique" class="tool-card"> <div class="tool-icon">📊</div> <h3 class="tool-title">Investissement</h3> <p class="tool-description">Estimez vos rendements futurs avec les intérêts composés et planifiez votre avenir financier.</p> <span class="tool-link">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> <a href="/calculateurs/interets-composes" class="tool-card"> <div class="tool-icon" aria-hidden="true">📊</div> <h3 class="tool-title">Investissement</h3> <p class="tool-description">Estimez vos rendements futurs avec les intérêts composés et planifiez votre avenir financier.</p> <span class="tool-link">
 Essayer
 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </span> </a> </div> </section> <section class="section"> <div class="section-header"> <div class="section-badge">💎 Avantages</div> <h2 class="section-title">Pourquoi Calcery ?</h2> <p class="section-subtitle">
 Une plateforme conçue pour vous offrir la meilleure expérience
-</p> </div> <div class="features-grid"> <div class="feature-card"> <div class="feature-card-icon">⚡</div> <h3 class="feature-card-title">Rapide</h3> <p class="feature-card-description">Calculs instantanés sans attendre. Interface fluide pour une expérience optimale et agréable.</p> </div> <div class="feature-card"> <div class="feature-card-icon">✨</div> <h3 class="feature-card-title">Clair</h3> <p class="feature-card-description">Résultats simples et compréhensibles. Pas de jargon technique, juste des explications pratiques.</p> </div> <div class="feature-card"> <div class="feature-card-icon">🔒</div> <h3 class="feature-card-title">Sécurisé</h3> <p class="feature-card-description">Calculs locaux, aucune donnée stockée. Votre confidentialité et sécurité sont garanties.</p> </div> </div> </section> <div class="ad-space"> <div class="ad-label">Publicité</div> <div class="ad-placeholder">Insérer code Google AdSense 728x90</div> </div> <section class="section"> <div class="section-header"> <div class="section-badge">🚀 Processus</div> <h2 class="section-title">Comment ça marche</h2> <p class="section-subtitle">
+</p> </div> <div class="features-grid"> <div class="feature-card"> <div class="feature-card-icon" aria-hidden="true">⚡</div> <h3 class="feature-card-title">Rapide</h3> <p class="feature-card-description">Calculs instantanés sans attendre. Interface fluide pour une expérience optimale et agréable.</p> </div> <div class="feature-card"> <div class="feature-card-icon" aria-hidden="true">✨</div> <h3 class="feature-card-title">Clair</h3> <p class="feature-card-description">Résultats simples et compréhensibles. Pas de jargon technique, juste des explications pratiques.</p> </div> <div class="feature-card"> <div class="feature-card-icon" aria-hidden="true">🔒</div> <h3 class="feature-card-title">Sécurisé</h3> <p class="feature-card-description">Calculs locaux, aucune donnée stockée. Votre confidentialité et sécurité sont garanties.</p> </div> </div> </section> <div class="ad-space"> <div class="ad-label">Publicité</div> <div class="ad-placeholder">Insérer code Google AdSense 728x90</div> </div> <section class="section"> <div class="section-header"> <div class="section-badge">🚀 Processus</div> <h2 class="section-title">Comment ça marche</h2> <p class="section-subtitle">
 Trois étapes simples pour optimiser vos finances
-</p> </div> <div class="steps-container"> <div class="step-card"> <div class="step-number">1</div> <h3 class="step-title">Choisir un outil</h3> <p class="step-description">Sélectionnez le calculateur adapté à vos besoins parmi notre sélection d&#39;outils spécialisés.</p> </div> <div class="step-card"> <div class="step-number">2</div> <h3 class="step-title">Saisir vos données</h3> <p class="step-description">Renseignez simplement vos informations. Tout reste local sur votre appareil, jamais envoyé.</p> </div> <div class="step-card"> <div class="step-number">3</div> <h3 class="step-title">Obtenir le résultat</h3> <p class="step-description">Visualisez immédiatement vos calculs et prenez des décisions éclairées pour votre avenir.</p> </div> </div> </section> <div class="cta-section section"> <h2>Prêt à optimiser vos finances ?</h2> <p>
-Commencez par analyser votre budget mensuel, gratuitement et sans engagement.
-</p> <a href="/budget" class="btn btn-primary">
-Accéder au calculateur
-<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M5 12h14m-7-7l7 7-7 7"></path> </svg> </a> </div>  </main> <footer class="site-footer"> <div class="footer-content"> <div class="footer-brand"> <h3>Calcery</h3> <p>
-Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications.
-</p> </div> <div class="footer-section"> <h4>Navigation</h4> <ul class="footer-links"> <li><a href="/">Accueil</a></li> <li><a href="/calculateurs">Calculateurs</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/a-propos">À propos</a></li> </ul> </div> <div class="footer-section"> <h4>Outils Populaires</h4> <ul class="footer-links"> <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li> <li><a href="/calculateurs/epargne-automatique">Épargne</a></li> <li><a href="/calculateurs/pourboire">Pourboire</a></li> <li><a href="/calculateurs/epargne-automatique">Investissement</a></li> </ul> </div> <div class="footer-section"> <h4>Légal</h4> <ul class="footer-links"> <li><a href="/mentions-legales">Mentions légales</a></li> <li><a href="/confidentialite">Confidentialité</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé avec ❤️ pour vous</p> </div> </footer> <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut"> <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"> <path d="M18 15l-6-6-6 6"></path> </svg> </button> <script type="module">const m=/Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent),v="ontouchstart"in window||navigator.maxTouchPoints>0;function p(){const e=document.getElementById("particles");if(!e)return;const o=m?20:40;e.innerHTML="";for(let a=0;a<o;a+=1){const s=document.createElement("div");s.className="particle",s.style.left=`${Math.random()*100}%`,s.style.animationDelay=`${Math.random()*20}s`,s.style.animationDuration=`${15+Math.random()*15}s`,e.appendChild(s)}}p();const d=document.getElementById("site-header"),r=document.getElementById("scroll-top");let f=!1;function y(){const e=window.pageYOffset;d&&(e>100?d.classList.add("scrolled"):d.classList.remove("scrolled")),r&&(e>400?r.classList.add("visible"):r.classList.remove("visible")),f=!1}window.addEventListener("scroll",()=>{f||(window.requestAnimationFrame(y),f=!0)},{passive:!0});const u=document.getElementById("mobile-menu-btn"),g=document.getElementById("mobile-menu");u&&g&&u.addEventListener("click",()=>{const e=g.classList.toggle("open");u.setAttribute("aria-expanded",e?"true":"false")});r&&r.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const E=new IntersectionObserver(e=>{e.forEach(o=>{if(o.isIntersecting){const a=o.target;a.style.opacity="1",a.style.transform="translateY(0)"}})},{threshold:m?.05:.1,rootMargin:m?"0px 0px -50px 0px":"0px 0px -100px 0px"});document.querySelectorAll(".tool-card, .feature-card, .step-card").forEach(e=>{e.style.opacity="0",e.style.transform="translateY(30px)",e.style.transition="opacity 0.6s ease, transform 0.6s ease",E.observe(e)});(function(){let e={fr:{},en:{}};async function o(){try{const[t,n]=await Promise.all([fetch("/locales/fr.json"),fetch("/locales/en.json")]);e.fr=await t.json(),e.en=await n.json()}catch(t){console.warn("Failed to load translations:",t)}}function a(t){document.documentElement.lang=t,document.querySelectorAll("[data-i18n]").forEach(n=>{const i=n.getAttribute("data-i18n"),l=e[t]&&e[t][i];l&&(n.textContent=l)})}function s(){const t=document.getElementById("lang-select"),n=document.getElementById("lang-select-mobile"),i=localStorage.getItem("site_lang")||"fr";t&&(t.value=i),n&&(n.value=i);const l=h=>{const c=h.target.value;localStorage.setItem("site_lang",c),a(c),t&&(t.value=c),n&&(n.value=c)};t&&t.addEventListener("change",l),n&&n.addEventListener("change",l),a(i)}o().then(()=>{document.readyState==="loading"?document.addEventListener("DOMContentLoaded",s):s()})})();v&&document.querySelectorAll(".tool-card, .btn, .feature-badge, .mobile-menu-btn").forEach(e=>{e.addEventListener("touchstart",function(){this.style.transform="scale(0.97)"},{passive:!0}),e.addEventListener("touchend",function(){this.style.transform=""},{passive:!0})});navigator.getBattery&&navigator.getBattery().then(e=>{!e.charging&&e.level<.2&&document.body.classList.add("reduce-motion")}).catch(()=>{});</script> </body> </html>
+</p> </div> <div class="steps-container"> <div class="step-card"> <div class="step-number">1</div> <h3 class="step-title">Choisir un outil</h3> <p class="step-description">Sélectionnez le calculateur adapté à vos besoins parmi notre sélection d&#39;outils spécialisés.</p> </div> <div class="step-card"> <div class="step-number">2</div> <h3 class="step-title">Saisir vos données</h3> <p class="step-description">Renseignez simplement vos informations. Tout reste local sur votre appareil, jamais envoyé.</p> </div> <div class="step-card"> <div class="step-number">3</div> <h3 class="step-title">Obtenir le résultat</h3> <p class="step-description">Visualisez immédiatement vos calculs et prenez des décisions éclairées pour votre avenir.</p> </div> </div> </section>  </main> <footer class="site-footer"> <div class="footer-content"> <div class="footer-brand"> <h3>Calcery</h3> <p> Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications. </p> </div> <div class="footer-section"> <h4>Navigation</h4> <ul class="footer-links"> <li><a href="/">Accueil</a></li> <li><a href="/calculateurs">Calculateurs</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/a-propos">À propos</a></li> </ul> </div> <div class="footer-section"> <h4>Outils populaires</h4> <ul class="footer-links"> <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li> <li><a href="/calculateurs/epargne-automatique">Épargne</a></li> <li><a href="/calculateurs/pourboire">Pourboire</a></li> <li><a href="/calculateurs/interets-composes">Investissement</a></li> </ul> </div> <div class="footer-section"> <h4>Légal</h4> <ul class="footer-links"> <li><a href="/mentions-legales">Mentions légales</a></li> <li><a href="/confidentialite">Confidentialité</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé pour vous</p> </div> </footer> <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut"> <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"> <path d="M18 15l-6-6-6 6"></path> </svg> </button> <script>(function(){const currentLocale = "fr";
+
+      // Device detection
+      const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+      // Generate particles according to the device
+      function createParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
+
+        const count = isMobile ? 20 : 40;
+        container.innerHTML = '';
+
+        for (let i = 0; i < count; i += 1) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.animationDelay = `${Math.random() * 20}s`;
+          particle.style.animationDuration = `${15 + Math.random() * 15}s`;
+          container.appendChild(particle);
+        }
+      }
+
+      createParticles();
+
+      // Header scrolled + scroll-to-top button with RAF
+      const header = document.getElementById('site-header');
+      const scrollTop = document.getElementById('scroll-top');
+      let scrollTicking = false;
+
+      function updateOnScroll() {
+        const y = window.pageYOffset;
+
+        if (header) {
+          if (y > 100) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+
+        if (scrollTop) {
+          if (y > 400) {
+            scrollTop.classList.add('visible');
+          } else {
+            scrollTop.classList.remove('visible');
+          }
+        }
+
+        scrollTicking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(updateOnScroll);
+          scrollTicking = true;
+        }
+      }, { passive: true });
+
+      // Mobile menu
+      const menuButton = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Scroll back to top
+      if (scrollTop) {
+        scrollTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // Progressive cards reveal on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            target.style.opacity = '1';
+            target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: isMobile ? 0.05 : 0.1,
+        rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px',
+      });
+
+      document.querySelectorAll('.tool-card, .feature-card, .step-card').forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+
+      // Language selector based on mirrored FR/EN routes
+      function initLangSelector() {
+        const selectors = [
+          document.getElementById('lang-select'),
+          document.getElementById('lang-select-mobile'),
+        ].filter(Boolean);
+
+        if (selectors.length === 0) return;
+
+        const savedLocale = localStorage.getItem('site_lang');
+        if ((savedLocale === 'fr' || savedLocale === 'en') && savedLocale !== currentLocale) {
+          const refSelector = selectors[0];
+          const targetPath = savedLocale === 'en' ? refSelector.dataset.enPath : refSelector.dataset.frPath;
+          if (targetPath) {
+            window.location.replace(`${targetPath}${window.location.search}`);
+            return;
+          }
+        }
+
+        selectors.forEach((sel) => {
+          sel.value = currentLocale;
+          sel.addEventListener('change', (e) => {
+            const target = e.target.value;
+            const frPath = sel.dataset.frPath || '/';
+            const enPath = sel.dataset.enPath || '/en';
+            const nextPath = target === 'en' ? enPath : frPath;
+            localStorage.setItem('site_lang', target);
+            window.location.href = `${nextPath}${window.location.search}`;
+          });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLangSelector);
+      } else {
+        initLangSelector();
+      }
+
+      // Touch feedback
+      if (isTouch) {
+        document.querySelectorAll('.tool-card, .btn, .feature-badge, .mobile-menu-btn').forEach((element) => {
+          element.addEventListener('touchstart', function onTouchStart() {
+            this.style.transform = 'scale(0.97)';
+          }, { passive: true });
+
+          element.addEventListener('touchend', function onTouchEnd() {
+            this.style.transform = '';
+          }, { passive: true });
+        });
+      }
+
+      // Reduced animations on low battery
+      if (navigator.getBattery) {
+        navigator.getBattery().then((battery) => {
+          if (!battery.charging && battery.level < 0.2) {
+            document.body.classList.add('reduce-motion');
+          }
+        }).catch(() => {
+          // Ignore gracefully in unsupported/blocked browsers.
+        });
+      }
+    })();</script> </body> </html>

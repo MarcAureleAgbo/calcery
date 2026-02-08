@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+import { siteConfig } from '../../lib/site.ts';
+---
+
+<BaseLayout title="Legal notice - Calcery" description="Legal notice and publisher information for Calcery." lang="en">
+  <section class="border-b border-gray-200 bg-white py-16">
+    <Container>
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="mb-4 text-5xl font-bold text-gray-900">Legal notice</h1>
+        <p class="text-gray-600">Publisher and legal information for this website.</p>
+      </div>
+    </Container>
+  </section>
+
+  <Container class="py-16">
+    <div class="mx-auto max-w-3xl">
+      <section class="mb-12">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Website publisher</h2>
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-8">
+          <div class="space-y-3 text-gray-800">
+            <div>
+              <p class="mb-1 text-sm text-gray-600">Legal entity</p>
+              <p class="text-lg font-semibold text-black">{siteConfig.editorName}</p>
+            </div>
+            <div>
+              <p class="mb-1 text-sm text-gray-600">Address</p>
+              <p class="text-gray-700">{siteConfig.editorAddress}</p>
+            </div>
+            <div>
+              <p class="mb-1 text-sm text-gray-600">Email</p>
+              <p><a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Hosting</h2>
+        <div class="rounded-xl border border-gray-200 bg-white p-8">
+          <p class="leading-relaxed text-gray-700">This website is hosted by <strong>{siteConfig.hostingProvider}</strong>.</p>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Intellectual property</h2>
+        <div class="rounded-xl border border-gray-200 bg-white p-8">
+          <p class="mb-4 leading-relaxed text-gray-700">Calcery content (texts, visuals, brand assets and source code) is protected by intellectual property laws. Reproduction or redistribution without prior written permission is prohibited.</p>
+          <p class="leading-relaxed text-gray-700">Calculators may be used freely for personal, non-commercial purposes.</p>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Liability disclaimer</h2>
+        <div class="rounded-xl border border-amber-200 bg-amber-50 p-8">
+          <div class="space-y-4 text-gray-800">
+            <div>
+              <h3 class="mb-2 font-semibold text-amber-900">Informational tools</h3>
+              <p class="leading-relaxed text-gray-700">All calculators are provided for informational purposes only and do not constitute financial, tax, or legal advice.</p>
+            </div>
+            <div>
+              <h3 class="mb-2 font-semibold text-amber-900">Estimated results</h3>
+              <p class="leading-relaxed text-gray-700">Results are estimates and may vary depending on your specific situation and applicable rules.</p>
+            </div>
+            <div>
+              <h3 class="mb-2 font-semibold text-amber-900">No guarantee</h3>
+              <p class="leading-relaxed text-gray-700">Calcery cannot be held liable for decisions made solely on these estimates. Consult a qualified professional when necessary.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Personal data</h2>
+        <div class="rounded-xl border border-gray-200 bg-white p-8">
+          <p class="leading-relaxed text-gray-700">For details on personal data processing, consult our <a href="/en/confidentialite" class="font-medium text-primary hover:underline">privacy policy</a>.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="mb-6 text-3xl font-bold text-gray-900">Updates</h2>
+        <div class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+          <p class="mb-2 text-gray-700">This legal notice may be updated at any time.</p>
+          <p class="text-sm text-gray-600">Last update: <strong>{siteConfig.lastUpdated}</strong></p>
+        </div>
+      </section>
+    </div>
+  </Container>
+</BaseLayout>

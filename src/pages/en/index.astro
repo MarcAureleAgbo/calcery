@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import StepCard from '../../components/StepCard.astro';
+import AdSpace from '../../components/AdSpace.astro';
+
+const baseSiteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+
+const webApplicationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Calcery',
+  url: `${baseSiteUrl}/en`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+  },
+  description: 'Simple and free calculators to better manage your daily finances.',
+};
+
+const featuredToolsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Calcery financial calculators',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, url: `${baseSiteUrl}/en/calculateurs/budget-mensuel` },
+    { '@type': 'ListItem', position: 2, url: `${baseSiteUrl}/en/calculateurs/epargne-automatique` },
+    { '@type': 'ListItem', position: 3, url: `${baseSiteUrl}/en/calculateurs/pourboire` },
+    { '@type': 'ListItem', position: 4, url: `${baseSiteUrl}/en/calculateurs/partage-addition` },
+    { '@type': 'ListItem', position: 5, url: `${baseSiteUrl}/en/calculateurs/economies-petites-depenses` },
+    { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}/en/calculateurs/interets-composes` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Calcery - Simple calculators to better manage your daily finances"
+  description="Simple and free calculators to better manage your daily budget, with no signup and no hassle."
+  lang="en"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
+
+  <Hero lang="en" />
+
+  <AdSpace placeholder="Insert Google AdSense 970x90 or 728x90 code" />
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">Top Tools</div>
+      <h2 class="section-title">Featured tools</h2>
+      <p class="section-subtitle">
+        The most popular calculators to handle your finances with clarity
+      </p>
+    </div>
+
+    <div class="tools-grid">
+      <ToolCard
+        icon="💰"
+        title="Monthly budget"
+        description="Balance your income and expenses for a clear view of your financial situation."
+        href="/en/calculateurs/budget-mensuel"
+      />
+      <ToolCard
+        icon="📈"
+        title="Automatic savings"
+        description="Reach your savings goals with a consistent and practical monthly plan."
+        href="/en/calculateurs/epargne-automatique"
+      />
+      <ToolCard
+        icon="🍽️"
+        title="Tip calculator"
+        description="Calculate the right tip amount instantly based on your preferences."
+        href="/en/calculateurs/pourboire"
+      />
+      <ToolCard
+        icon="👥"
+        title="Split bill"
+        description="Split the bill fairly between friends in just a few seconds."
+        href="/en/calculateurs/partage-addition"
+      />
+      <ToolCard
+        icon="☕"
+        title="Small expense savings"
+        description="See how repeated small habits can impact your savings over time."
+        href="/en/calculateurs/economies-petites-depenses"
+      />
+      <ToolCard
+        icon="📊"
+        title="Investing"
+        description="Estimate your future returns with compound interest and plan ahead."
+        href="/en/calculateurs/interets-composes"
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">Benefits</div>
+      <h2 class="section-title">Why Calcery</h2>
+      <p class="section-subtitle">
+        A platform built to deliver a fast and reliable experience
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <FeatureCard
+        icon="⚡"
+        title="Fast"
+        description="Instant calculations with a smooth and efficient interface."
+      />
+      <FeatureCard
+        icon="✨"
+        title="Clear"
+        description="Simple, readable results with practical explanations."
+      />
+      <FeatureCard
+        icon="🔒"
+        title="Private"
+        description="Local processing, no stored data. Your privacy stays protected."
+      />
+    </div>
+  </section>
+
+  <AdSpace placeholder="Insert Google AdSense 728x90 code" />
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">Process</div>
+      <h2 class="section-title">How it works</h2>
+      <p class="section-subtitle">
+        Three simple steps to improve your financial decisions
+      </p>
+    </div>
+
+    <div class="steps-container">
+      <StepCard
+        number={1}
+        title="Pick a tool"
+        description="Choose the calculator that matches your exact need."
+      />
+      <StepCard
+        number={2}
+        title="Enter your data"
+        description="Fill in your values. Everything stays local on your device."
+      />
+      <StepCard
+        number={3}
+        title="Get results"
+        description="See immediate results and make better informed choices."
+      />
+    </div>
+  </section>
+</BaseLayout>

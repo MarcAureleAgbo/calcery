@@ -1,10 +1,76 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
-export default function CompoundInterestCalculator() {
+type Locale = 'fr' | 'en';
+
+interface CompoundInterestCalculatorProps {
+  lang?: Locale;
+}
+
+const messages = {
+  fr: {
+    initialCapital: 'Capital initial',
+    annualRate: 'Taux annuel (%)',
+    duration: 'Durée (années)',
+    compoundingFrequency: 'Fréquence de capitalisation',
+    frequencies: {
+      annually: 'Annuelle',
+      semiannually: 'Semestrielle',
+      quarterly: 'Trimestrielle',
+      monthly: 'Mensuelle',
+      daily: 'Quotidienne',
+    },
+    finalAmount: 'Montant final',
+    earnedInterest: 'Intérêts gagnés',
+    totalReturn: 'Rendement total',
+    formulaTitle: 'Formule utilisée',
+    formulaItems: {
+      final: 'Montant final',
+      principal: 'Capital initial',
+      rate: 'Taux annuel',
+      frequency: 'Fréquence de capitalisation',
+      years: 'Nombre d’années',
+    },
+    copy: 'Copier le résultat',
+    copied: 'Résultat copié.',
+    copyError: 'Copie impossible sur ce navigateur.',
+  },
+  en: {
+    initialCapital: 'Initial capital',
+    annualRate: 'Annual rate (%)',
+    duration: 'Duration (years)',
+    compoundingFrequency: 'Compounding frequency',
+    frequencies: {
+      annually: 'Annually',
+      semiannually: 'Semi-annually',
+      quarterly: 'Quarterly',
+      monthly: 'Monthly',
+      daily: 'Daily',
+    },
+    finalAmount: 'Final amount',
+    earnedInterest: 'Earned interest',
+    totalReturn: 'Total return',
+    formulaTitle: 'Formula used',
+    formulaItems: {
+      final: 'Final amount',
+      principal: 'Initial capital',
+      rate: 'Annual rate',
+      frequency: 'Compounding frequency',
+      years: 'Number of years',
+    },
+    copy: 'Copy result',
+    copied: 'Result copied.',
+    copyError: 'Copy is not available in this browser.',
+  },
+};
+
+export default function CompoundInterestCalculator({ lang = 'fr' }: CompoundInterestCalculatorProps) {
   const [principal, setPrincipal] = useState(10000);
   const [rate, setRate] = useState(5);
   const [years, setYears] = useState(10);
-  const [compounding, setCompounding] = useState('annually');
+  const [compounding, setCompounding] = useState<'annually' | 'semiannually' | 'quarterly' | 'monthly' | 'daily'>('annually');
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
+
+  const t = messages[lang];
 
   const compoundingFrequency = {
     annually: 1,
@@ -27,19 +93,28 @@ export default function CompoundInterestCalculator() {
     };
   }, [principal, rate, years, compounding]);
 
-  const handleShare = () => {
-    const text = `Capital initial: ${principal}€ | Taux: ${rate}% | Durée: ${years}ans | Résultat: ${result.finalAmount}€`;
-    navigator.clipboard.writeText(text);
-    alert('Résultat copié!');
+  const handleShare = async () => {
+    const text =
+      lang === 'fr'
+        ? `Capital initial: ${principal}€ | Taux: ${rate}% | Durée: ${years} ans | Résultat: ${result.finalAmount}€`
+        : `Initial capital: ${principal}€ | Rate: ${rate}% | Duration: ${years} years | Result: ${result.finalAmount}€`;
+
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyState('copied');
+    } catch {
+      setCopyState('error');
+    }
+
+    window.setTimeout(() => setCopyState('idle'), 2200);
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      {/* Inputs */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-6">
+    <div className="mx-auto max-w-2xl space-y-6">
+      <div className="space-y-6 rounded-lg border border-gray-200 bg-white p-6">
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
-            💰 Capital initial: <span className="text-black">{principal.toLocaleString()}€</span>
+          <label className="mb-2 block text-sm font-semibold text-gray-900">
+            {t.initialCapital}: <span className="text-black">{principal.toLocaleString()}€</span>
           </label>
           <input
             type="range"
@@ -47,20 +122,21 @@ export default function CompoundInterestCalculator() {
             max="1000000"
             step="1000"
             value={principal}
-            onChange={(e) => setPrincipal(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            onChange={(event) => setPrincipal(Number(event.target.value))}
+            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200"
           />
           <input
             type="number"
             value={principal}
-            onChange={(e) => setPrincipal(Number(e.target.value))}
-            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            min="0"
+            onChange={(event) => setPrincipal(Math.max(0, Number(event.target.value) || 0))}
+            className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
-            📊 Taux annuel (%): <span className="text-black">{rate.toFixed(2)}%</span>
+          <label className="mb-2 block text-sm font-semibold text-gray-900">
+            {t.annualRate}: <span className="text-black">{rate.toFixed(2)}%</span>
           </label>
           <input
             type="range"
@@ -68,21 +144,22 @@ export default function CompoundInterestCalculator() {
             max="30"
             step="0.1"
             value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            onChange={(event) => setRate(Number(event.target.value))}
+            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200"
           />
           <input
             type="number"
             step="0.01"
             value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
-            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            min="0"
+            onChange={(event) => setRate(Math.max(0, Number(event.target.value) || 0))}
+            className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
-            ⏱️ Durée (ans): <span className="text-black">{years}</span>
+          <label className="mb-2 block text-sm font-semibold text-gray-900">
+            {t.duration}: <span className="text-black">{years}</span>
           </label>
           <input
             type="range"
@@ -90,71 +167,85 @@ export default function CompoundInterestCalculator() {
             max="50"
             step="1"
             value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            onChange={(event) => setYears(Number(event.target.value))}
+            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200"
           />
           <input
             type="number"
             value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
-            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            min="1"
+            onChange={(event) => setYears(Math.max(1, Number(event.target.value) || 1))}
+            className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">🔄 Fréquence de capitalisation</label>
+          <label htmlFor="compounding-frequency" className="mb-2 block text-sm font-semibold text-gray-900">
+            {t.compoundingFrequency}
+          </label>
           <select
+            id="compounding-frequency"
             value={compounding}
-            onChange={(e) => setCompounding(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            onChange={(event) => setCompounding(event.target.value as typeof compounding)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
           >
-            <option value="annually">Annuelle</option>
-            <option value="semiannually">Semestrielle</option>
-            <option value="quarterly">Trimestrielle</option>
-            <option value="monthly">Mensuelle</option>
-            <option value="daily">Quotidienne</option>
+            <option value="annually">{t.frequencies.annually}</option>
+            <option value="semiannually">{t.frequencies.semiannually}</option>
+            <option value="quarterly">{t.frequencies.quarterly}</option>
+            <option value="monthly">{t.frequencies.monthly}</option>
+            <option value="daily">{t.frequencies.daily}</option>
           </select>
         </div>
       </div>
 
-      {/* Results */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6 text-center">
-          <p className="text-gray-600 text-sm font-medium mb-2">Montant final</p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3" aria-live="polite">
+        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
+          <p className="mb-2 text-sm font-medium text-gray-600">{t.finalAmount}</p>
           <p className="text-3xl font-bold text-black">{result.finalAmount}€</p>
         </div>
-        <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6 text-center">
-          <p className="text-gray-600 text-sm font-medium mb-2">Intérêts gagnés</p>
+        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
+          <p className="mb-2 text-sm font-medium text-gray-600">{t.earnedInterest}</p>
           <p className="text-3xl font-bold text-black">+{result.interest}€</p>
         </div>
-        <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6 text-center">
-          <p className="text-gray-600 text-sm font-medium mb-2">Rendement total</p>
+        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
+          <p className="mb-2 text-sm font-medium text-gray-600">{t.totalReturn}</p>
           <p className="text-3xl font-bold text-black">{result.totalReturn}%</p>
         </div>
       </div>
 
-      {/* Formula */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-3">📐 Formule utilisée</h3>
-        <p className="text-sm text-gray-600 font-mono bg-gray-50 p-3 rounded">
-          A = P(1 + r/n)^(nt)
-        </p>
-        <ul className="text-sm text-gray-600 space-y-1 mt-3">
-          <li>• <strong>A</strong> = Montant final</li>
-          <li>• <strong>P</strong> = Capital initial ({principal}€)</li>
-          <li>• <strong>r</strong> = Taux annuel ({rate}%)</li>
-          <li>• <strong>n</strong> = Fréquence de capitalisation ({compoundingFrequency[compounding]})</li>
-          <li>• <strong>t</strong> = Nombre d'années ({years})</li>
+      <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <h3 className="mb-3 font-semibold text-gray-900">{t.formulaTitle}</h3>
+        <p className="rounded bg-gray-50 p-3 font-mono text-sm text-gray-600">A = P(1 + r/n)^(nt)</p>
+        <ul className="mt-3 space-y-1 text-sm text-gray-600">
+          <li>
+            • <strong>A</strong> = {t.formulaItems.final}
+          </li>
+          <li>
+            • <strong>P</strong> = {t.formulaItems.principal} ({principal}€)
+          </li>
+          <li>
+            • <strong>r</strong> = {t.formulaItems.rate} ({rate}%)
+          </li>
+          <li>
+            • <strong>n</strong> = {t.formulaItems.frequency} ({compoundingFrequency[compounding]})
+          </li>
+          <li>
+            • <strong>t</strong> = {t.formulaItems.years} ({years})
+          </li>
         </ul>
       </div>
 
-      {/* Share Button */}
       <button
+        type="button"
         onClick={handleShare}
-        className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition-colors"
+        className="w-full rounded-lg bg-black py-3 font-semibold text-white transition-colors hover:bg-gray-900"
       >
-        📋 Copier le résultat
+        {t.copy}
       </button>
+
+      <p className="text-center text-sm text-gray-600" aria-live="polite">
+        {copyState === 'copied' ? t.copied : copyState === 'error' ? t.copyError : ''}
+      </p>
     </div>
   );
 }

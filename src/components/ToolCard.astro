@@ -10,7 +10,7 @@ const { icon, title, description, href } = Astro.props;
 ---
 
 <a href={href} class="tool-card">
-  <div class="tool-icon">{icon}</div>
+  <div class="tool-icon" aria-hidden="true">{icon}</div>
   <h3 class="tool-title">{title}</h3>
   <p class="tool-description">{description}</p>
   <span class="tool-link">

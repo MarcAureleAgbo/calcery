@@ -5,12 +5,46 @@ import ToolCard from '../components/ToolCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import StepCard from '../components/StepCard.astro';
 import AdSpace from '../components/AdSpace.astro';
+
+const baseSiteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+
+const webApplicationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Calcery',
+  url: `${baseSiteUrl}/`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+  },
+  description: 'Calculateurs simples et gratuits pour mieux gérer votre budget quotidien.',
+};
+
+const featuredToolsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Calculateurs financiers Calcery',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, url: `${baseSiteUrl}/calculateurs/budget-mensuel` },
+    { '@type': 'ListItem', position: 2, url: `${baseSiteUrl}/calculateurs/epargne-automatique` },
+    { '@type': 'ListItem', position: 3, url: `${baseSiteUrl}/calculateurs/pourboire` },
+    { '@type': 'ListItem', position: 4, url: `${baseSiteUrl}/calculateurs/partage-addition` },
+    { '@type': 'ListItem', position: 5, url: `${baseSiteUrl}/calculateurs/economies-petites-depenses` },
+    { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}/calculateurs/interets-composes` },
+  ],
+};
 ---
 
 <BaseLayout
   title="Calcery - Des calculateurs simples pour mieux gérer votre quotidien"
   description="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
+
   <Hero />
 
   <AdSpace placeholder="Insérer code Google AdSense 970x90 ou 728x90" />
@@ -59,7 +93,7 @@ import AdSpace from '../components/AdSpace.astro';
         icon="📊"
         title="Investissement"
         description="Estimez vos rendements futurs avec les intérêts composés et planifiez votre avenir financier."
-        href="/calculateurs/epargne-automatique"
+        href="/calculateurs/interets-composes"
       />
     </div>
   </section>
@@ -122,16 +156,4 @@ import AdSpace from '../components/AdSpace.astro';
     </div>
   </section>
 
-  <div class="cta-section section">
-    <h2>Prêt à optimiser vos finances ?</h2>
-    <p>
-      Commencez par analyser votre budget mensuel, gratuitement et sans engagement.
-    </p>
-    <a href="/budget" class="btn btn-primary">
-      Accéder au calculateur
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M5 12h14m-7-7l7 7-7 7" />
-      </svg>
-    </a>
-  </div>
 </BaseLayout>

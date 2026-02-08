@@ -1,0 +1,43 @@
+---
+import CalculatorLayout from '../../../layouts/CalculatorLayout.astro';
+import BudgetCalculator from '../../../components/calculators/BudgetCalculator.tsx';
+import type { BreadcrumbItem, FAQItem } from '../../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', item: '/en' },
+  { name: 'Calculators', item: '/en/calculateurs' },
+  { name: 'Monthly budget', item: '/en/calculateurs/budget-mensuel' },
+];
+
+const faqs: FAQItem[] = [
+  { question: 'What is a monthly budget?', answer: 'A monthly budget is an estimate of your income and expenses over one month.' },
+  { question: 'Why should I calculate my budget?', answer: 'It helps you control spending, avoid overdrafts and improve savings.' },
+  { question: 'How can I reduce my expenses?', answer: 'Identify your most expensive categories and test lower-cost alternatives.' },
+  { question: 'What is the savings rate?', answer: 'It is the percentage of your income left after expenses.' },
+  { question: 'Can I include variable income?', answer: 'Yes. Use a realistic monthly average for better estimates.' },
+  { question: 'What if my expenses are higher than income?', answer: 'Reduce non-essential costs or increase income where possible.' },
+  { question: 'Is this calculator free?', answer: 'Yes. All tools on Calcery are free.' },
+  { question: 'Can I save my calculations?', answer: 'Not yet, but this feature is planned.' },
+];
+
+const tips: string[] = [
+  'Include all income sources for a complete view.',
+  'Separate fixed expenses from variable expenses.',
+  'Aim for a savings rate between 10% and 20%.',
+  'Review your budget every month and adjust quickly.',
+  'Track spending in real-time to avoid surprises.',
+  'Delay impulse purchases by at least 24 hours.',
+];
+---
+
+<CalculatorLayout
+  title="Free monthly budget calculator"
+  description="Calculate your monthly budget to make better financial decisions."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  updatedAt="2026-02-07"
+  tips={tips}
+  lang="en"
+>
+  <BudgetCalculator client:load lang="en" />
+</CalculatorLayout>

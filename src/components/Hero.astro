@@ -1,42 +1,86 @@
+---
+import { localizePath, type Locale } from '../lib/i18n';
+
+export interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'fr' } = Astro.props;
+
+const t = {
+  fr: {
+    badge: '100% Gratuit · Sans Inscription',
+    line1: 'Des calculateurs simples',
+    line2: 'pour',
+    line2Accent: 'mieux gérer',
+    line3: 'votre quotidien',
+    subtitle:
+      "Rapide, gratuit, sans inscription. Calculez localement pour votre tranquillité d'esprit avec des outils professionnels et précis.",
+    discoverTools: 'Découvrir les outils',
+    startWithBudget: 'Commencer par Budget',
+    free: 'Gratuit',
+    noSignup: 'Sans inscription',
+    local: 'Calcul local',
+  },
+  en: {
+    badge: '100% Free · No Signup',
+    line1: 'Simple calculators',
+    line2: 'to',
+    line2Accent: 'better manage',
+    line3: 'your daily finances',
+    subtitle:
+      'Fast, free, no signup required. Run local calculations for peace of mind with clear and practical tools.',
+    discoverTools: 'Explore tools',
+    startWithBudget: 'Start with Budget',
+    free: 'Free',
+    noSignup: 'No signup',
+    local: 'Local calculation',
+  },
+}[lang];
+
+const calculatorsPath = localizePath('/calculateurs', lang);
+const budgetPath = localizePath('/calculateurs/budget-mensuel', lang);
+---
+
 <section class="hero">
   <div class="hero-content">
     <div class="hero-badge">
       <span>✨</span>
-      <span>100% Gratuit · Sans Inscription</span>
+      <span>{t.badge}</span>
     </div>
 
     <h1>
-      Des calculateurs simples<br />
-      pour <span class="gradient-text">mieux gérer</span><br />
-      votre quotidien
+      {t.line1}<br />
+      {t.line2} <span class="gradient-text">{t.line2Accent}</span><br />
+      {t.line3}
     </h1>
 
     <p class="hero-subtitle">
-      Rapide, gratuit, sans inscription. Calculez localement pour votre tranquillité d'esprit avec des outils professionnels et précis.
+      {t.subtitle}
     </p>
 
     <div class="hero-ctas">
-      <a href="/calculateurs" class="btn btn-primary">
-        Découvrir les outils
+      <a href={calculatorsPath} class="btn btn-primary">
+        {t.discoverTools}
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M5 12h14m-7-7l7 7-7 7" />
         </svg>
       </a>
-      <a href="/budget" class="btn btn-secondary">Commencer par Budget</a>
+      <a href={budgetPath} class="btn btn-secondary">{t.startWithBudget}</a>
     </div>
 
     <div class="hero-features">
       <div class="feature-badge">
         <span class="feature-icon">⚡</span>
-        <span>Gratuit</span>
+        <span>{t.free}</span>
       </div>
       <div class="feature-badge">
         <span class="feature-icon">🔒</span>
-        <span>Sans inscription</span>
+        <span>{t.noSignup}</span>
       </div>
       <div class="feature-badge">
         <span class="feature-icon">💻</span>
-        <span>Calcul local</span>
+        <span>{t.local}</span>
       </div>
     </div>
   </div>

@@ -1,81 +1,104 @@
 ---
-
 import BaseLayout from './BaseLayout.astro';
-
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-
 import FAQ from '../components/FAQ.astro';
-
-import Card from '../components/ui/Card.astro';
-
 import Container from '../components/ui/Container.astro';
-
-import Badge from '../components/ui/Badge.astro';
-
-import type { BreadcrumbItem, FAQItem, RelatedLink } from '../lib/types.ts';
+import type { BreadcrumbItem, FAQItem } from '../lib/types.ts';
+import type { Locale } from '../lib/i18n';
 
 export interface Props {
-
   title: string;
-
   description: string;
-
   breadcrumbs?: BreadcrumbItem[];
-
   faqs?: FAQItem[];
-
   updatedAt?: string;
-
   tips?: string[];
-
   disableDisclaimer?: boolean;
-
+  lang?: Locale;
 }
 
-const { title, description, breadcrumbs = [], faqs = [], updatedAt, tips = [], disableDisclaimer = false } = Astro.props;
+const {
+  title,
+  description,
+  breadcrumbs = [],
+  faqs = [],
+  updatedAt,
+  tips = [],
+  disableDisclaimer = false,
+  lang = 'fr',
+} = Astro.props;
 
+const t = {
+  fr: {
+    free: 'Gratuit',
+    noSignup: 'Sans inscription',
+    localCalculation: 'Calcul local',
+    privacyNotice: 'Vos données restent sur votre appareil. Aucune transmission.',
+    calculator: 'Calculateur',
+    quickTips: 'Conseils rapides',
+    howItWorks: 'Comment ça marche ?',
+    howItWorksFallback: 'Explication par défaut du fonctionnement.',
+    examples: 'Exemples',
+    examplesFallback: "Exemples d'utilisation.",
+    warningTitle: 'Avertissement important',
+    warningText:
+      "Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.",
+    faqTitle: 'Questions fréquentes',
+    updatedAt: 'Dernière mise à jour :',
+  },
+  en: {
+    free: 'Free',
+    noSignup: 'No signup',
+    localCalculation: 'Local calculation',
+    privacyNotice: 'Your data stays on your device. No transmission.',
+    calculator: 'Calculator',
+    quickTips: 'Quick tips',
+    howItWorks: 'How it works',
+    howItWorksFallback: 'Default explanation of how this calculator works.',
+    examples: 'Examples',
+    examplesFallback: 'Usage examples.',
+    warningTitle: 'Important disclaimer',
+    warningText:
+      'The calculators on this site are provided for informational purposes only. They do not constitute financial, tax, or legal advice. Results are estimates and may vary depending on your personal situation. We recommend consulting a qualified professional for personalized advice.',
+    faqTitle: 'Frequently asked questions',
+    updatedAt: 'Last updated:',
+  },
+}[lang];
 ---
 
-<BaseLayout title={title} description={description}>
-
+<BaseLayout title={title} description={description} lang={lang}>
   <div class="bg-white min-h-screen">
-
-    <!-- HERO SECTION -->
     <section class="bg-gradient-to-b from-primary/8 via-white to-secondary/8 border-b border-gray-100 py-12">
       <Container class="py-6">
         <Breadcrumbs items={breadcrumbs} />
 
-        <!-- HEADER PREMIUM -->
         <div class="text-center mb-8">
           <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">{title}</h1>
           <p class="text-xl text-gray-600 font-light mb-8 max-w-2xl mx-auto">{description}</p>
           <div class="flex flex-wrap justify-center gap-3 mb-6">
-            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">Gratuit</span>
-            <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">Sans inscription</span>
-            <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">Calcul local</span>
+            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">{t.free}</span>
+            <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">{t.noSignup}</span>
+            <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">{t.localCalculation}</span>
           </div>
-          <p class="text-sm text-gray-600 font-medium">Vos données restent sur votre appareil. Aucune transmission.</p>
+          <p class="text-sm text-gray-600 font-medium">{t.privacyNotice}</p>
         </div>
       </Container>
     </section>
 
     <Container class="py-12">
-
-      <!-- CALCULATEUR -->
       <div class="max-w-4xl mx-auto mb-16">
         <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
-          <h2 class="text-2xl font-bold mb-8 text-center text-gray-900">Calculateur</h2>
+          <h2 class="text-2xl font-bold mb-8 text-center text-gray-900">{t.calculator}</h2>
           <slot />
         </div>
       </div>
 
-      <!-- CONSEILS RAPIDES -->
       {tips.length > 0 && (
         <section class="mb-16 max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">💡 Conseils rapides</h2>
+          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.quickTips}</h2>
           <div class="bg-primary/5 border-l-4 border-primary rounded-r-lg p-8">
             <ul class="space-y-3">
-              {tips.map((tip, index) => (
+              {tips.map((tip) => (
                 <li class="flex items-start gap-3">
                   <span class="text-primary font-bold text-lg flex-shrink-0">✓</span>
                   <span class="text-gray-700 leading-relaxed">{tip}</span>
@@ -86,50 +109,43 @@ const { title, description, breadcrumbs = [], faqs = [], updatedAt, tips = [], d
         </section>
       )}
 
-      <!-- COMMENT ÇA MARCHE -->
       <section class="mb-16 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Comment ça marche ?</h2>
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.howItWorks}</h2>
         <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
           <slot name="how-it-works">
-            <p class="text-gray-700">Explication par défaut du fonctionnement.</p>
+            <p class="text-gray-700">{t.howItWorksFallback}</p>
           </slot>
         </div>
       </section>
 
-      <!-- EXEMPLES -->
       <section class="mb-16 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Exemples</h2>
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.examples}</h2>
         <div class="bg-gradient-to-b from-gray-50 to-white border border-gray-200 rounded-xl p-8 shadow-md">
           <slot name="examples">
-            <p class="text-gray-700">Exemples d'utilisation.</p>
+            <p class="text-gray-700">{t.examplesFallback}</p>
           </slot>
         </div>
       </section>
 
-      <!-- AVERTISSEMENT -->
       {!disableDisclaimer && (
         <section class="mb-16 max-w-4xl mx-auto">
           <div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-8">
-            <h2 class="text-xl font-semibold mb-3 text-amber-900">⚠️ Avertissement important</h2>
-            <p class="text-amber-800 leading-relaxed">Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.</p>
+            <h2 class="text-xl font-semibold mb-3 text-amber-900">{t.warningTitle}</h2>
+            <p class="text-amber-800 leading-relaxed">{t.warningText}</p>
           </div>
         </section>
       )}
 
-      <!-- FAQ -->
       {faqs.length > 0 && (
         <section class="mb-16 max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Questions fréquentes</h2>
+          <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">{t.faqTitle}</h2>
           <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-md">
             <FAQ items={faqs} />
           </div>
         </section>
       )}
 
-      {updatedAt && <p class="text-sm text-gray-500 text-center mb-8">Dernière mise à jour : {updatedAt}</p>}
-
+      {updatedAt && <p class="text-sm text-gray-500 text-center mb-8">{t.updatedAt} {updatedAt}</p>}
     </Container>
-
   </div>
-
 </BaseLayout>

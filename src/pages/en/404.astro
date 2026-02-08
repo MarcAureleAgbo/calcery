@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Container from '../../components/ui/Container.astro';
+---
+
+<BaseLayout title="Page not found - Calcery" description="The page you are looking for does not exist." lang="en">
+  <Container>
+    <h1>Page not found</h1>
+    <p>Sorry, the page you requested does not exist or was moved.</p>
+
+    <section class="mt-8">
+      <h2 class="mb-4 text-2xl font-semibold">Useful links</h2>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <h3><a href="/en/calculateurs/budget-mensuel" class="text-black hover:underline">Budget</a></h3>
+          <p>Explore our budget tools.</p>
+        </Card>
+
+        <Card>
+          <h3><a href="/en/calculateurs" class="text-black hover:underline">Calculators</a></h3>
+          <p>Access all free calculators.</p>
+        </Card>
+
+        <Card>
+          <h3><a href="/en/blog" class="text-black hover:underline">Blog</a></h3>
+          <p>Read practical finance articles.</p>
+        </Card>
+
+        <Card>
+          <h3><a href="/en/calculateurs/epargne-automatique" class="text-black hover:underline">Savings</a></h3>
+          <p>Model your savings strategy.</p>
+        </Card>
+      </div>
+    </section>
+  </Container>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import CalculatorLayout from '../../../layouts/CalculatorLayout.astro';
+import SplitBillCalculator from '../../../components/calculators/SplitBillCalculator.tsx';
+import type { BreadcrumbItem, FAQItem } from '../../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', item: '/en' },
+  { name: 'Calculators', item: '/en/calculateurs' },
+  { name: 'Split bill', item: '/en/calculateurs/partage-addition' },
+];
+
+const faqs: FAQItem[] = [
+  { question: 'How do I split a bill?', answer: 'Enter the bill amount, number of people, and optional tip.' },
+  { question: 'Can I split with a percentage tip?', answer: 'Yes, choose percentage mode and set your value.' },
+  { question: 'Can I split with a fixed tip amount?', answer: 'Yes, switch to fixed amount mode.' },
+  { question: 'What does round per person do?', answer: 'It rounds each share up to simplify cash settlement.' },
+  { question: 'Can I split without tip?', answer: 'Yes, leave tip at zero.' },
+  { question: 'Is the split equal?', answer: 'Yes, this tool divides the total equally.' },
+  { question: 'Is this calculator free?', answer: 'Yes, all tools on Calcery are free.' },
+  { question: 'Can I save results?', answer: 'Not yet, but this is planned.' },
+];
+
+const tips: string[] = [
+  'Always verify the bill total before splitting.',
+  'Choose percentage mode for restaurant-style tipping.',
+  'Use fixed amount mode for exact tip values.',
+  'Enable rounding when paying cash.',
+  'For unequal consumption, adjust manually after calculation.',
+  'Keep a photo of the receipt for transparency.',
+];
+---
+
+<CalculatorLayout
+  title="Free split bill calculator"
+  description="Split any bill fairly, with optional tip and rounding."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  updatedAt="2026-02-07"
+  tips={tips}
+  lang="en"
+>
+  <SplitBillCalculator client:load lang="en" />
+</CalculatorLayout>

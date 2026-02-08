@@ -1,0 +1,39 @@
+---
+import CalculatorLayout from '../../../layouts/CalculatorLayout.astro';
+import CompoundInterestCalculator from '../../../components/calculators/CompoundInterestCalculator.tsx';
+import type { BreadcrumbItem, FAQItem } from '../../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', item: '/en' },
+  { name: 'Calculators', item: '/en/calculateurs' },
+  { name: 'Compound interest', item: '/en/calculateurs/interets-composes' },
+];
+
+const faqs: FAQItem[] = [
+  { question: 'What is compound interest?', answer: 'Interest earned on both your initial capital and previously earned interest.' },
+  { question: 'How is it different from simple interest?', answer: 'Simple interest grows only on principal, compound interest grows on principal plus interest.' },
+  { question: 'Does compounding frequency matter?', answer: 'Yes. More frequent compounding usually increases final amount.' },
+  { question: 'How long to double money?', answer: 'Rule of 72 is a rough shortcut: 72 divided by annual rate.' },
+  { question: 'Is this forecast guaranteed?', answer: 'No. It is a projection based on assumptions you enter.' },
+];
+
+const tips: string[] = [
+  'Start early to maximize long-term compounding.',
+  'Increase contributions gradually over time.',
+  'Use realistic rates in your assumptions.',
+  'Compare multiple scenarios before deciding.',
+  'Keep inflation in mind when evaluating real returns.',
+];
+---
+
+<CalculatorLayout
+  title="Free compound interest calculator"
+  description="Simulate long-term growth of your savings with compound interest."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  updatedAt="2026-02-07"
+  tips={tips}
+  lang="en"
+>
+  <CompoundInterestCalculator client:load lang="en" />
+</CalculatorLayout>

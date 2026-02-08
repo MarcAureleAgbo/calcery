@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Button from '../../../components/ui/Button.astro';
+import Card from '../../../components/ui/Card.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blogEn');
+
+  return posts
+    .filter((post) => !post.data.draft)
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const toc = post.body
+  .split('\n')
+  .filter((line: string) => line.startsWith('## ') || line.startsWith('### '))
+  .map((line: string) => {
+    const level = line.startsWith('### ') ? 3 : 2;
+    const text = line.replace(/^#{2,3} /, '');
+    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return { level, text, id };
+  });
+
+const allPosts = await getCollection('blogEn');
+const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draft).slice(0, 2);
+
+const tools = post.slug === 'methode-50-30-20'
+  ? [
+      { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Balance income and expenses clearly.' },
+      { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Plan recurring savings.' },
+      { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Measure recurring small costs.' },
+    ]
+  : [
+      { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Estimate recurring small expenses.' },
+      { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Control your monthly cash flow.' },
+      { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Build a realistic savings plan.' },
+    ];
+---
+
+<BaseLayout title={`${post.data.title} - Calcery`} description={post.data.description} lang="en">
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <div class="flex flex-col gap-8 lg:flex-row">
+      <article class="prose-lite max-w-none flex-1">
+        <h1>{post.data.title}</h1>
+        <p class="mb-4 text-lg text-gray-600">{post.data.description}</p>
+        <p class="mb-8 text-sm text-gray-500">Published on {new Date(post.data.date).toLocaleDateString('en-US')}</p>
+        <Content />
+      </article>
+
+      {toc.length > 0 && (
+        <aside class="lg:w-64 lg:flex-shrink-0">
+          <div class="sticky top-8 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+            <h3 class="mb-4 text-lg font-semibold text-black">Table of contents</h3>
+            <nav aria-label="Table of contents">
+              <ul class="space-y-2">
+                {toc.map((item) => (
+                  <li class={item.level === 3 ? 'ml-4' : ''}>
+                    <a href={`#${item.id}`} class="text-sm text-gray-700 hover:text-black">{item.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </aside>
+      )}
+    </div>
+
+    <section class="mt-12">
+      <h2 class="mb-6 text-center text-2xl font-semibold">Useful tools</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {tools.map((tool) => (
+          <Card class="p-6 transition-shadow hover:shadow-md">
+            <h3 class="mb-2 text-lg font-semibold"><a href={tool.href} class="text-black hover:underline">{tool.title}</a></h3>
+            <p class="mb-4 text-gray-700">{tool.desc}</p>
+            <Button href={tool.href} class="w-full">Use tool</Button>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    {relatedPosts.length > 0 ? (
+      <section class="mt-12">
+        <h2 class="mb-6 text-center text-2xl font-semibold">Related articles</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {relatedPosts.map((related) => (
+            <Card class="p-6 transition-shadow hover:shadow-md">
+              <h3 class="mb-2 text-xl font-semibold">
+                <a href={`/en/blog/${related.slug}`} class="text-black hover:underline">{related.data.title}</a>
+              </h3>
+              <p class="mb-4 text-gray-700">{related.data.description}</p>
+              <p class="text-sm text-gray-500">Published on {new Date(related.data.date).toLocaleDateString('en-US')}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+    ) : (
+      <section class="mt-12 text-center">
+        <h2 class="mb-4 text-2xl font-semibold">Explore more articles</h2>
+        <Button href="/en/blog">View all articles</Button>
+      </section>
+    )}
+
+    <div class="mt-8 text-center">
+      <a href="/en/blog" class="text-black hover:underline">Back to blog</a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import CalculatorLayout from '../../../layouts/CalculatorLayout.astro';
+import SavingsGoalCalculator from '../../../components/calculators/SavingsGoalCalculator.tsx';
+import type { BreadcrumbItem, FAQItem } from '../../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', item: '/en' },
+  { name: 'Calculators', item: '/en/calculateurs' },
+  { name: 'Automatic savings', item: '/en/calculateurs/epargne-automatique' },
+];
+
+const faqs: FAQItem[] = [
+  { question: 'What is automatic savings?', answer: 'A recurring contribution plan used to reach a specific goal over time.' },
+  { question: 'How is the monthly effort calculated?', answer: 'Enter your goal, timeline, initial amount, and optional annual rate.' },
+  { question: 'Is the interest rate guaranteed?', answer: 'No. It is an estimate based on the rate you enter.' },
+  { question: 'Can I change contributions later?', answer: 'Yes. Recalculate anytime with updated values.' },
+  { question: 'What if I miss my target?', answer: 'Increase contribution amount or extend the timeline.' },
+  { question: 'Can I use the calculator with 0% rate?', answer: 'Yes. It works as a pure contribution plan with no growth.' },
+  { question: 'Is this calculator free?', answer: 'Yes. All calculators on Calcery are free.' },
+  { question: 'Can I save results?', answer: 'Not yet, but it is on the roadmap.' },
+];
+
+const tips: string[] = [
+  'Define a clear and realistic goal.',
+  'Automate transfers to stay consistent.',
+  'Start small and increase contributions gradually.',
+  'Review your plan monthly and adjust when needed.',
+  'Use conservative rates for realistic projections.',
+  'Track your progress to stay motivated.',
+];
+---
+
+<CalculatorLayout
+  title="Free automatic savings calculator"
+  description="Estimate the monthly contribution needed to reach your savings goal."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  updatedAt="2026-02-07"
+  tips={tips}
+  lang="en"
+>
+  <SavingsGoalCalculator client:load lang="en" />
+</CalculatorLayout>

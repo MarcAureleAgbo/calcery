@@ -1,55 +1,41 @@
 ---
-
 export interface Props {
-
   title: string;
-
   description: string;
-
   canonical?: string;
-
 }
 
 const { title, description, canonical } = Astro.props;
 
-const SITE_URL = import.meta.env.SITE_URL || "http://localhost:4321";
+const SITE_URL = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+const currentPath = Astro.url.pathname.startsWith('/') ? Astro.url.pathname : `/${Astro.url.pathname}`;
 
-const canonicalUrl = canonical || `${SITE_URL}${Astro.url.pathname}`;
-
----
-
+const canonicalUrl = (() => {
+  if (!canonical) return `${SITE_URL}${currentPath}`;
+  if (canonical.startsWith('http://') || canonical.startsWith('https://')) return canonical;
+  return `${SITE_URL}${canonical.startsWith('/') ? canonical : `/${canonical}`}`;
+})();
 ---
 
 <title>{title}</title>
-
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <meta name="theme-color" content="#0A0E1A" />
-
 <meta name="description" content={description} />
-
 <link rel="canonical" href={canonicalUrl} />
 
 <meta property="og:title" content={title} />
-
 <meta property="og:description" content={description} />
-
 <meta property="og:type" content="website" />
-
 <meta property="og:url" content={canonicalUrl} />
-
 <meta property="og:site_name" content="Calcery" />
-
 <meta property="og:image" content={`${SITE_URL}/og.png`} />
-
 <meta property="og:locale" content="fr_FR" />
 
 <meta name="twitter:card" content="summary_large_image" />
-
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={`${SITE_URL}/og.png`} />
-
 <meta name="twitter:site" content="@calcery" />

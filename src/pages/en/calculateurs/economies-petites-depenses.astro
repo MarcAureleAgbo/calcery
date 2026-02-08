@@ -1,0 +1,43 @@
+---
+import CalculatorLayout from '../../../layouts/CalculatorLayout.astro';
+import SmallExpensesSavingsCalculator from '../../../components/calculators/SmallExpensesSavingsCalculator.tsx';
+import type { BreadcrumbItem, FAQItem } from '../../../lib/types.ts';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', item: '/en' },
+  { name: 'Calculators', item: '/en/calculateurs' },
+  { name: 'Small expenses', item: '/en/calculateurs/economies-petites-depenses' },
+];
+
+const faqs: FAQItem[] = [
+  { question: 'How do I estimate savings?', answer: 'Set unit cost, frequency, quantity and horizon to measure total impact.' },
+  { question: 'Are presets exact values?', answer: 'No. Presets are examples you should adjust to your habits.' },
+  { question: 'Can I model several habits?', answer: 'Yes, calculate them one by one and compare totals.' },
+  { question: 'Is long horizon realistic?', answer: 'It illustrates cumulative impact over time.' },
+  { question: 'Should I remove all small expenses?', answer: 'Not necessarily. The goal is awareness and better choices.' },
+  { question: 'Can I save my calculations?', answer: 'Not yet, but it is planned.' },
+  { question: 'Is this free?', answer: 'Yes, all tools on Calcery are free.' },
+  { question: 'How can I reduce small expenses?', answer: 'Start with recurring items and replace the most expensive ones first.' },
+];
+
+const tips: string[] = [
+  'Track one recurring habit at a time.',
+  'Use yearly horizon to see real impact.',
+  'Test cheaper alternatives before cutting everything.',
+  'Set a monthly micro-savings target.',
+  'Automate transfer of saved amount to a savings account.',
+  'Review habits monthly and adjust gradually.',
+];
+---
+
+<CalculatorLayout
+  title="Free small expense savings calculator"
+  description="Estimate the cumulative impact of recurring small expenses."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  updatedAt="2026-02-07"
+  tips={tips}
+  lang="en"
+>
+  <SmallExpensesSavingsCalculator client:load lang="en" />
+</CalculatorLayout>

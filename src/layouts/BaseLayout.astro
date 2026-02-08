@@ -1,22 +1,105 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
-import Button from '../components/ui/Button.astro';
+import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
 
 export interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  lang?: Locale;
 }
 
 const {
   title = 'Calcery - Des calculateurs simples pour mieux gérer votre quotidien',
   description = 'Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications.',
   canonical,
+  lang,
 } = Astro.props;
+
+const currentLocale = lang ?? getLocaleFromPath(Astro.url.pathname);
+const normalizedPath = stripLocalePrefix(Astro.url.pathname).replace(/\/+$/, '') || '/';
+const frSwitchPath = switchLocalePath(Astro.url.pathname, 'fr');
+const enSwitchPath = switchLocalePath(Astro.url.pathname, 'en');
+const siteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+
+const t = {
+  fr: {
+    skipToContent: 'Aller au contenu principal',
+    mainNavigation: 'Navigation principale',
+    nav: {
+      home: 'Accueil',
+      calculators: 'Calculateurs',
+      blog: 'Blog',
+      about: 'À propos',
+      contact: 'Contact',
+    },
+    languageSelector: 'Sélecteur de langue',
+    openMenu: 'Ouvrir le menu',
+    footer: {
+      description: 'Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications.',
+      navigation: 'Navigation',
+      popularTools: 'Outils populaires',
+      legal: 'Légal',
+      monthlyBudget: 'Budget mensuel',
+      savings: 'Épargne',
+      tip: 'Pourboire',
+      investing: 'Investissement',
+      legalNotice: 'Mentions légales',
+      privacy: 'Confidentialité',
+      rights: 'Tous les droits réservés.',
+      madeForYou: 'Créé pour vous',
+    },
+    scrollTop: 'Retour en haut',
+  },
+  en: {
+    skipToContent: 'Skip to main content',
+    mainNavigation: 'Main navigation',
+    nav: {
+      home: 'Home',
+      calculators: 'Calculators',
+      blog: 'Blog',
+      about: 'About',
+      contact: 'Contact',
+    },
+    languageSelector: 'Language selector',
+    openMenu: 'Open menu',
+    footer: {
+      description: 'Simple and free calculators to better manage your daily budget, with no signup and no complications.',
+      navigation: 'Navigation',
+      popularTools: 'Popular Tools',
+      legal: 'Legal',
+      monthlyBudget: 'Monthly budget',
+      savings: 'Savings',
+      tip: 'Tip',
+      investing: 'Investing',
+      legalNotice: 'Legal notice',
+      privacy: 'Privacy',
+      rights: 'All rights reserved.',
+      madeForYou: 'Built for you',
+    },
+    scrollTop: 'Back to top',
+  },
+}[currentLocale];
+
+const navItems = [
+  { href: '/', label: t.nav.home },
+  { href: '/calculateurs', label: t.nav.calculators },
+  { href: '/blog', label: t.nav.blog },
+  { href: '/a-propos', label: t.nav.about },
+  { href: '/contact', label: t.nav.contact },
+];
+
+const withLocale = (href: string) => localizePath(href, currentLocale);
+
+const isCurrentPath = (href: string) => {
+  const normalizedHref = href.replace(/\/+$/, '') || '/';
+  if (normalizedHref === '/') return normalizedPath === '/';
+  return normalizedPath === normalizedHref || normalizedPath.startsWith(`${normalizedHref}/`);
+};
 ---
 
-<html lang="fr">
+<html lang={currentLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
@@ -27,11 +110,16 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="alternate" hreflang="fr" href={`${siteUrl}${frSwitchPath}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${enSwitchPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${frSwitchPath}`} />
 
     <SEO title={title} description={description} canonical={canonical} />
   </head>
 
   <body>
+    <a href="#main-content" class="skip-link">{t.skipToContent}</a>
+
     <div class="animated-background" aria-hidden="true">
       <div class="dot-grid"></div>
       <div class="gradient-orb orb-1"></div>
@@ -41,26 +129,32 @@ const {
     </div>
 
     <header class="site-header" id="site-header">
-      <nav class="site-nav" aria-label="Navigation principale">
-        <a href="/" class="logo">Calcery</a>
+      <nav class="site-nav" aria-label={t.mainNavigation}>
+        <a href={withLocale('/')} class="logo">Calcery</a>
 
         <ul class="nav-links">
-          <li><a href="/" data-i18n="nav.home">Accueil</a></li>
-          <li><a href="/calculateurs" data-i18n="nav.calculateurs">Calculateurs</a></li>
-          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
-          <li><a href="/a-propos" data-i18n="nav.about">À propos</a></li>
-          <li><a href="/contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={withLocale(item.href)}
+                class:list={{ 'is-active': isCurrentPath(item.href) }}
+                aria-current={isCurrentPath(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <div class="ml-4">
-          <label for="lang-select" class="sr-only">Lang</label>
-          <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue">
+          <label for="lang-select" class="sr-only">{t.languageSelector}</label>
+          <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label={t.languageSelector} data-fr-path={frSwitchPath} data-en-path={enSwitchPath}>
             <option value="fr">FR</option>
             <option value="en">EN</option>
           </select>
         </div>
 
-        <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label={t.openMenu} aria-controls="mobile-menu" aria-expanded="false">
           <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -68,13 +162,18 @@ const {
       </nav>
 
       <div class="mobile-menu" id="mobile-menu">
-        <a href="/" data-i18n="nav.home">Accueil</a>
-        <a href="/calculateurs" data-i18n="nav.calculateurs">Calculateurs</a>
-        <a href="/blog" data-i18n="nav.blog">Blog</a>
-        <a href="/a-propos" data-i18n="nav.about">À propos</a>
-        <a href="/contact" class="nav-cta w-full justify-start rounded-full px-6" data-i18n="nav.contact">Contact</a>
+        {navItems.map((item) => (
+          <a
+            href={withLocale(item.href)}
+            class:list={{ 'is-active': isCurrentPath(item.href) }}
+            aria-current={isCurrentPath(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
         <div class="p-4">
-          <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue mobile">
+          <label for="lang-select-mobile" class="sr-only">{t.languageSelector}</label>
+          <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label={t.languageSelector} data-fr-path={frSwitchPath} data-en-path={enSwitchPath}>
             <option value="fr">FR</option>
             <option value="en">EN</option>
           </select>
@@ -82,7 +181,7 @@ const {
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
@@ -91,57 +190,57 @@ const {
         <div class="footer-brand">
           <h3>Calcery</h3>
           <p>
-            Des calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications.
+            {t.footer.description}
           </p>
         </div>
 
         <div class="footer-section">
-          <h4>Navigation</h4>
+          <h4>{t.footer.navigation}</h4>
           <ul class="footer-links">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/calculateurs">Calculateurs</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/a-propos">À propos</a></li>
+            <li><a href={withLocale('/')}>{t.nav.home}</a></li>
+            <li><a href={withLocale('/calculateurs')}>{t.nav.calculators}</a></li>
+            <li><a href={withLocale('/blog')}>{t.nav.blog}</a></li>
+            <li><a href={withLocale('/a-propos')}>{t.nav.about}</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4>Outils Populaires</h4>
+          <h4>{t.footer.popularTools}</h4>
           <ul class="footer-links">
-            <li><a href="/calculateurs/budget-mensuel">Budget mensuel</a></li>
-            <li><a href="/calculateurs/epargne-automatique">Épargne</a></li>
-            <li><a href="/calculateurs/pourboire">Pourboire</a></li>
-            <li><a href="/calculateurs/epargne-automatique">Investissement</a></li>
+            <li><a href={withLocale('/calculateurs/budget-mensuel')}>{t.footer.monthlyBudget}</a></li>
+            <li><a href={withLocale('/calculateurs/epargne-automatique')}>{t.footer.savings}</a></li>
+            <li><a href={withLocale('/calculateurs/pourboire')}>{t.footer.tip}</a></li>
+            <li><a href={withLocale('/calculateurs/interets-composes')}>{t.footer.investing}</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4>Légal</h4>
+          <h4>{t.footer.legal}</h4>
           <ul class="footer-links">
-            <li><a href="/mentions-legales">Mentions légales</a></li>
-            <li><a href="/confidentialite">Confidentialité</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href={withLocale('/mentions-legales')}>{t.footer.legalNotice}</a></li>
+            <li><a href={withLocale('/confidentialite')}>{t.footer.privacy}</a></li>
+            <li><a href={withLocale('/contact')}>{t.nav.contact}</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Calcery. Tous les droits réservés. | Créé avec ❤️ pour vous</p>
+        <p>&copy; 2026 Calcery. {t.footer.rights} | {t.footer.madeForYou}</p>
       </div>
     </footer>
 
-    <button class="scroll-top" id="scroll-top" type="button" aria-label="Retour en haut">
+    <button class="scroll-top" id="scroll-top" type="button" aria-label={t.scrollTop}>
       <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true">
         <path d="M18 15l-6-6-6 6" />
       </svg>
     </button>
 
-    <script>
-      // Détection device
+    <script define:vars={{ currentLocale }}>
+      // Device detection
       const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
       const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-      // Génération des particules selon le device
+      // Generate particles according to the device
       function createParticles() {
         const container = document.getElementById('particles');
         if (!container) return;
@@ -161,7 +260,7 @@ const {
 
       createParticles();
 
-      // Header scrolled + bouton scroll top avec RAF
+      // Header scrolled + scroll-to-top button with RAF
       const header = document.getElementById('site-header');
       const scrollTop = document.getElementById('scroll-top');
       let scrollTicking = false;
@@ -195,7 +294,7 @@ const {
         }
       }, { passive: true });
 
-      // Menu mobile
+      // Mobile menu
       const menuButton = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
 
@@ -204,16 +303,23 @@ const {
           const isOpen = mobileMenu.classList.toggle('open');
           menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
+
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
       }
 
-      // Retour en haut
+      // Scroll back to top
       if (scrollTop) {
         scrollTop.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
 
-      // Révélation progressive des cartes au scroll
+      // Progressive cards reveal on scroll
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -233,64 +339,46 @@ const {
         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(card);
       });
-    
-      // Client-side i18n for FR/EN with JSON files
-      (function() {
-        let translations = { fr: {}, en: {} };
 
-        async function loadTranslations() {
-          try {
-            const [frRes, enRes] = await Promise.all([
-              fetch('/locales/fr.json'),
-              fetch('/locales/en.json')
-            ]);
-            translations.fr = await frRes.json();
-            translations.en = await enRes.json();
-          } catch (err) {
-            console.warn('Failed to load translations:', err);
+      // Language selector based on mirrored FR/EN routes
+      function initLangSelector() {
+        const selectors = [
+          document.getElementById('lang-select'),
+          document.getElementById('lang-select-mobile'),
+        ].filter(Boolean);
+
+        if (selectors.length === 0) return;
+
+        const savedLocale = localStorage.getItem('site_lang');
+        if ((savedLocale === 'fr' || savedLocale === 'en') && savedLocale !== currentLocale) {
+          const refSelector = selectors[0];
+          const targetPath = savedLocale === 'en' ? refSelector.dataset.enPath : refSelector.dataset.frPath;
+          if (targetPath) {
+            window.location.replace(`${targetPath}${window.location.search}`);
+            return;
           }
         }
 
-        function applyLang(lang) {
-          document.documentElement.lang = lang;
-          document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const txt = translations[lang] && translations[lang][key];
-            if (txt) el.textContent = txt;
+        selectors.forEach((sel) => {
+          sel.value = currentLocale;
+          sel.addEventListener('change', (e) => {
+            const target = e.target.value;
+            const frPath = sel.dataset.frPath || '/';
+            const enPath = sel.dataset.enPath || '/en';
+            const nextPath = target === 'en' ? enPath : frPath;
+            localStorage.setItem('site_lang', target);
+            window.location.href = `${nextPath}${window.location.search}`;
           });
-        }
-
-        function initLangSelector() {
-          const sel = document.getElementById('lang-select');
-          const selMobile = document.getElementById('lang-select-mobile');
-          const saved = localStorage.getItem('site_lang') || 'fr';
-          if (sel) sel.value = saved;
-          if (selMobile) selMobile.value = saved;
-
-          const handler = (e) => {
-            const v = e.target.value;
-            localStorage.setItem('site_lang', v);
-            applyLang(v);
-            if (sel) sel.value = v;
-            if (selMobile) selMobile.value = v;
-          };
-
-          if (sel) sel.addEventListener('change', handler);
-          if (selMobile) selMobile.addEventListener('change', handler);
-
-          applyLang(saved);
-        }
-
-        loadTranslations().then(() => {
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initLangSelector);
-          } else {
-            initLangSelector();
-          }
         });
-      })();
+      }
 
-      // Feedback tactile
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLangSelector);
+      } else {
+        initLangSelector();
+      }
+
+      // Touch feedback
       if (isTouch) {
         document.querySelectorAll('.tool-card, .btn, .feature-badge, .mobile-menu-btn').forEach((element) => {
           element.addEventListener('touchstart', function onTouchStart() {
@@ -303,14 +391,14 @@ const {
         });
       }
 
-      // Réduction animations en batterie faible
+      // Reduced animations on low battery
       if (navigator.getBattery) {
         navigator.getBattery().then((battery) => {
           if (!battery.charging && battery.level < 0.2) {
             document.body.classList.add('reduce-motion');
           }
         }).catch(() => {
-          // Ignore proprement les navigateurs qui refusent l'API.
+          // Ignore gracefully in unsupported/blocked browsers.
         });
       }
     </script>

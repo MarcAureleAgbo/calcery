@@ -1,143 +1,213 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useId, useMemo, useState } from 'react';
 
-const BudgetCalculator: React.FC = () => {
-  const [revenu, setRevenu] = useState<number>(0);
-  const [logement, setLogement] = useState<number>(0);
-  const [alimentation, setAlimentation] = useState<number>(0);
+type Locale = 'fr' | 'en';
+
+interface BudgetCalculatorProps {
+  lang?: Locale;
+}
+
+const messages = {
+  fr: {
+    monthlyIncome: 'Revenu mensuel net (€)',
+    housing: 'Dépenses logement (€)',
+    food: 'Dépenses alimentation (€)',
+    transport: 'Dépenses transport (€)',
+    leisure: 'Dépenses loisirs (€)',
+    other: 'Dépenses autres (€)',
+    incomeHelp: 'Entrez votre salaire après impôts et charges.',
+    housingHelp: 'Loyer, charges, assurance habitation.',
+    foodHelp: 'Courses, restaurants, snacks.',
+    transportHelp: 'Carburant, transports en commun, assurance auto.',
+    leisureHelp: 'Sorties, hobbies, abonnements.',
+    otherHelp: 'Santé, éducation, imprévus.',
+    resultsHint: 'Renseignez un montant de revenu pour voir les résultats de votre budget.',
+    totalExpenses: 'Total dépenses',
+    remaining: 'Reste à vivre',
+    savingsRate: 'Taux d’épargne',
+    overspendingWarning: 'Vos dépenses dépassent vos revenus. Pensez à réduire certaines dépenses.',
+    placeholders: {
+      income: 'Ex: 2500',
+      housing: 'Ex: 800',
+      food: 'Ex: 400',
+      transport: 'Ex: 200',
+      leisure: 'Ex: 150',
+      other: 'Ex: 100',
+    },
+  },
+  en: {
+    monthlyIncome: 'Net monthly income (€)',
+    housing: 'Housing expenses (€)',
+    food: 'Food expenses (€)',
+    transport: 'Transport expenses (€)',
+    leisure: 'Leisure expenses (€)',
+    other: 'Other expenses (€)',
+    incomeHelp: 'Enter your salary after taxes and deductions.',
+    housingHelp: 'Rent, utilities, home insurance.',
+    foodHelp: 'Groceries, restaurants, snacks.',
+    transportHelp: 'Fuel, public transport, car insurance.',
+    leisureHelp: 'Entertainment, hobbies, subscriptions.',
+    otherHelp: 'Health, education, unexpected costs.',
+    resultsHint: 'Enter your income amount to see your budget results.',
+    totalExpenses: 'Total expenses',
+    remaining: 'Remaining balance',
+    savingsRate: 'Savings rate',
+    overspendingWarning: 'Your expenses exceed your income. Consider reducing some costs.',
+    placeholders: {
+      income: 'Ex: 2500',
+      housing: 'Ex: 800',
+      food: 'Ex: 400',
+      transport: 'Ex: 200',
+      leisure: 'Ex: 150',
+      other: 'Ex: 100',
+    },
+  },
+};
+
+const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ lang = 'fr' }) => {
+  const [income, setIncome] = useState<number>(0);
+  const [housing, setHousing] = useState<number>(0);
+  const [food, setFood] = useState<number>(0);
   const [transport, setTransport] = useState<number>(0);
-  const [loisirs, setLoisirs] = useState<number>(0);
-  const [autres, setAutres] = useState<number>(0);
+  const [leisure, setLeisure] = useState<number>(0);
+  const [other, setOther] = useState<number>(0);
 
-  const [totalDepenses, setTotalDepenses] = useState<number>(0);
-  const [resteAVivre, setResteAVivre] = useState<number>(0);
-  const [tauxEpargne, setTauxEpargne] = useState<number>(0);
+  const [totalExpenses, setTotalExpenses] = useState<number>(0);
+  const [remaining, setRemaining] = useState<number>(0);
+  const [savingsRate, setSavingsRate] = useState<number>(0);
+
+  const baseId = useId();
+  const t = messages[lang];
 
   useEffect(() => {
-    const depenses = logement + alimentation + transport + loisirs + autres;
-    setTotalDepenses(depenses);
-    const reste = revenu - depenses;
-    setResteAVivre(reste);
-    setTauxEpargne(revenu > 0 ? (reste / revenu) * 100 : 0);
-  }, [revenu, logement, alimentation, transport, loisirs, autres]);
+    const expenses = housing + food + transport + leisure + other;
+    setTotalExpenses(expenses);
+    const balance = income - expenses;
+    setRemaining(balance);
+    setSavingsRate(income > 0 ? (balance / income) * 100 : 0);
+  }, [income, housing, food, transport, leisure, other]);
 
-  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<number>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Math.max(0, parseFloat(e.target.value) || 0);
-    setter(value);
-  };
+  const handleInputChange =
+    (setter: React.Dispatch<React.SetStateAction<number>>) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = Math.max(0, parseFloat(event.target.value) || 0);
+      setter(value);
+    };
+
+  const fields = useMemo(
+    () => [
+      {
+        id: `${baseId}-income`,
+        label: t.monthlyIncome,
+        value: income,
+        setValue: setIncome,
+        placeholder: t.placeholders.income,
+        help: t.incomeHelp,
+      },
+      {
+        id: `${baseId}-housing`,
+        label: t.housing,
+        value: housing,
+        setValue: setHousing,
+        placeholder: t.placeholders.housing,
+        help: t.housingHelp,
+      },
+      {
+        id: `${baseId}-food`,
+        label: t.food,
+        value: food,
+        setValue: setFood,
+        placeholder: t.placeholders.food,
+        help: t.foodHelp,
+      },
+      {
+        id: `${baseId}-transport`,
+        label: t.transport,
+        value: transport,
+        setValue: setTransport,
+        placeholder: t.placeholders.transport,
+        help: t.transportHelp,
+      },
+      {
+        id: `${baseId}-leisure`,
+        label: t.leisure,
+        value: leisure,
+        setValue: setLeisure,
+        placeholder: t.placeholders.leisure,
+        help: t.leisureHelp,
+      },
+      {
+        id: `${baseId}-other`,
+        label: t.other,
+        value: other,
+        setValue: setOther,
+        placeholder: t.placeholders.other,
+        help: t.otherHelp,
+      },
+    ],
+    [baseId, t, income, housing, food, transport, leisure, other],
+  );
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="revenu" className="block mb-2 font-semibold">Revenu mensuel net (€)</label>
-          <input
-            id="revenu"
-            type="number"
-            min="0"
-            step="any"
-            value={revenu}
-            onChange={handleInputChange(setRevenu)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Ex: 2500"
-          />
-          <p className="text-sm text-gray-500 mt-1">Entrez votre salaire après impôts et charges.</p>
-        </div>
-        <div>
-          <label htmlFor="logement" className="block mb-2 font-semibold">Dépenses Logement (€)</label>
-          <input
-            id="logement"
-            type="number"
-            min="0"
-            step="any"
-            value={logement}
-            onChange={handleInputChange(setLogement)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Ex: 800"
-          />
-          <p className="text-sm text-gray-500 mt-1">Loyer, charges, assurance habitation.</p>
-        </div>
-        <div>
-          <label htmlFor="alimentation" className="block mb-2 font-semibold">Dépenses Alimentation (€)</label>
-          <input
-            id="alimentation"
-            type="number"
-            min="0"
-            step="any"
-            value={alimentation}
-            onChange={handleInputChange(setAlimentation)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Ex: 400"
-          />
-          <p className="text-sm text-gray-500 mt-1">Courses, restaurants, snacks.</p>
-        </div>
-        <div>
-          <label htmlFor="transport" className="block mb-2 font-semibold">Dépenses Transport (€)</label>
-          <input
-            id="transport"
-            type="number"
-            min="0"
-            step="any"
-            value={transport}
-            onChange={handleInputChange(setTransport)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Ex: 200"
-          />
-          <p className="text-sm text-gray-500 mt-1">Carburant, transports en commun, assurance auto.</p>
-        </div>
-        <div>
-          <label htmlFor="loisirs" className="block mb-2 font-semibold">Dépenses Loisirs (€)</label>
-          <input
-            id="loisirs"
-            type="number"
-            min="0"
-            step="any"
-            value={loisirs}
-            onChange={handleInputChange(setLoisirs)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Ex: 150"
-          />
-          <p className="text-sm text-gray-500 mt-1">Sorties, hobbies, abonnements.</p>
-        </div>
-        <div>
-          <label htmlFor="autres" className="block mb-2 font-semibold">Dépenses Autres (€)</label>
-          <input
-            id="autres"
-            type="number"
-            min="0"
-            step="any"
-            value={autres}
-            onChange={handleInputChange(setAutres)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Ex: 100"
-          />
-          <p className="text-sm text-gray-500 mt-1">Santé, éducation, imprévus.</p>
-        </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {fields.map((field) => {
+          const hintId = `${field.id}-hint`;
+          return (
+            <div key={field.id}>
+              <label htmlFor={field.id} className="mb-2 block font-semibold">
+                {field.label}
+              </label>
+              <input
+                id={field.id}
+                type="number"
+                min="0"
+                step="any"
+                value={field.value}
+                onChange={handleInputChange(field.setValue)}
+                className="w-full rounded border border-gray-300 p-2"
+                placeholder={field.placeholder}
+                aria-describedby={hintId}
+              />
+              <p id={hintId} className="mt-1 text-sm text-gray-600">
+                {field.help}
+              </p>
+            </div>
+          );
+        })}
       </div>
 
-      {revenu === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          <p>Renseignez un montant de revenu pour voir les résultats de votre budget.</p>
+      {income === 0 ? (
+        <div className="py-8 text-center text-gray-600">
+          <p>{t.resultsHint}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
-            <h3 className="font-semibold text-red-800">Total dépenses</h3>
-            <p className="text-2xl text-red-600">{totalDepenses.toFixed(2)} €</p>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3" aria-live="polite">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+            <h3 className="font-semibold text-red-800">{t.totalExpenses}</h3>
+            <p className="text-2xl text-red-700">{totalExpenses.toFixed(2)} €</p>
           </div>
-          <div className={`p-4 rounded-lg border ${resteAVivre >= 0 ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
-            <h3 className={`font-semibold ${resteAVivre >= 0 ? 'text-green-800' : 'text-red-800'}`}>Reste à vivre</h3>
-            <p className={`text-2xl ${resteAVivre >= 0 ? 'text-green-600' : 'text-red-600'}`}>{resteAVivre.toFixed(2)} €</p>
+          <div
+            className={`rounded-lg border p-4 ${
+              remaining >= 0 ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+            }`}
+          >
+            <h3 className={`font-semibold ${remaining >= 0 ? 'text-green-800' : 'text-red-800'}`}>
+              {t.remaining}
+            </h3>
+            <p className={`text-2xl ${remaining >= 0 ? 'text-green-700' : 'text-red-700'}`}>
+              {remaining.toFixed(2)} €
+            </p>
           </div>
-          <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-            <h3 className="font-semibold text-blue-800">Taux d’épargne</h3>
-            <p className="text-2xl text-blue-600">{tauxEpargne.toFixed(2)} %</p>
+          <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+            <h3 className="font-semibold text-blue-800">{t.savingsRate}</h3>
+            <p className="text-2xl text-blue-700">{savingsRate.toFixed(2)} %</p>
           </div>
         </div>
       )}
 
-      {resteAVivre < 0 && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          <p>Vos dépenses dépassent vos revenus. Pensez à réduire certaines dépenses.</p>
+      {remaining < 0 && (
+        <div className="rounded border border-red-300 bg-red-100 px-4 py-3 text-red-700" role="alert">
+          <p>{t.overspendingWarning}</p>
         </div>
       )}
     </div>
