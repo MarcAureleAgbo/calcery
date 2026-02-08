@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Button from '../../../components/ui/Button.astro';
 import Card from '../../../components/ui/Card.astro';
 import { getCollection } from 'astro:content';
+import { toAbsoluteUrl } from '../../../lib/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blogEn');
@@ -44,9 +45,8 @@ const tags = post.data.tags ?? [];
 const coverImage = post.data.coverImage ?? '/images/blog/default-cover.svg';
 const coverAlt = post.data.coverAlt ?? post.data.title;
 
-const siteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
 const canonicalPath = `/en/blog/${post.slug}`;
-const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const canonicalUrl = toAbsoluteUrl(canonicalPath);
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -57,7 +57,7 @@ const articleSchema = {
   dateModified: new Date(post.data.date).toISOString(),
   inLanguage: 'en',
   url: canonicalUrl,
-  image: `${siteUrl}${coverImage}`,
+  image: toAbsoluteUrl(coverImage),
   author: {
     '@type': 'Organization',
     name: 'Calcery',
@@ -67,7 +67,7 @@ const articleSchema = {
     name: 'Calcery',
     logo: {
       '@type': 'ImageObject',
-      url: `${siteUrl}/og.png`,
+      url: toAbsoluteUrl('/og.png'),
     },
   },
 };

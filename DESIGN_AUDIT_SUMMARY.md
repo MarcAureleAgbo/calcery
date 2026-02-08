@@ -3,7 +3,7 @@
 **Session:** Comprehensive UX/Design Overhaul  
 **Date:** February 1, 2026  
 **Status:** ✅ Complete & Deployed  
-**Production URL:** https://calcery.pages.dev
+**Production URL:** https://calcery.com
 
 ---
 
@@ -246,7 +246,7 @@ This session completed a **comprehensive UX/Design audit and implementation** tr
 - **Status**: ✅ All pages deployed
 
 ### Deployed URL
-- **Production**: https://calcery.pages.dev
+- **Production**: https://calcery.com
 - **HTTP Status**: 200 OK
 - **Sitemap**: Valid XML at `/sitemap.xml`
 - **Robots.txt**: Configured correctly

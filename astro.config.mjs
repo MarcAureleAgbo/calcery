@@ -4,8 +4,10 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
+const site = (process.env.SITE_URL || 'https://calcery.com').replace(/\/+$/, '');
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://calcery.pages.dev',
+  site,
   integrations: [react(), tailwind(), sitemap()],
 });

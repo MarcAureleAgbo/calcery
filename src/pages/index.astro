@@ -4,8 +4,9 @@ import Hero from '../components/Hero.astro';
 import ToolCard from '../components/ToolCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import StepCard from '../components/StepCard.astro';
+import { SITE_URL } from '../lib/site';
 
-const baseSiteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+const baseSiteUrl = SITE_URL;
 
 const webApplicationSchema = {
   '@context': 'https://schema.org',

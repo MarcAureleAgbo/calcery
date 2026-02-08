@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
+import { SITE_URL } from '../lib/site';
 
 export interface Props {
   title?: string;
@@ -25,7 +26,7 @@ const currentLocale = lang ?? getLocaleFromPath(Astro.url.pathname);
 const normalizedPath = stripLocalePrefix(Astro.url.pathname).replace(/\/+$/, '') || '/';
 const frSwitchPath = switchLocalePath(Astro.url.pathname, 'fr');
 const enSwitchPath = switchLocalePath(Astro.url.pathname, 'en');
-const siteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+const siteUrl = SITE_URL;
 
 const t = {
   fr: {

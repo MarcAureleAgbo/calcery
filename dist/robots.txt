@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://calcery.pages.dev/sitemap.xml
+Sitemap: https://calcery.com/sitemap.xml

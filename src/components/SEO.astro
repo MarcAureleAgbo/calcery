@@ -1,4 +1,6 @@
 ---
+import { toAbsoluteUrl } from '../lib/site';
+
 export interface Props {
   title: string;
   description: string;
@@ -10,20 +12,19 @@ export interface Props {
 
 const { title, description, canonical, image, locale = 'fr_FR', type = 'website' } = Astro.props;
 
-const SITE_URL = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
 const currentPath = Astro.url.pathname.startsWith('/') ? Astro.url.pathname : `/${Astro.url.pathname}`;
 
 const canonicalUrl = (() => {
-  if (!canonical) return `${SITE_URL}${currentPath}`;
+  if (!canonical) return toAbsoluteUrl(currentPath);
   if (canonical.startsWith('http://') || canonical.startsWith('https://')) return canonical;
-  return `${SITE_URL}${canonical.startsWith('/') ? canonical : `/${canonical}`}`;
+  return toAbsoluteUrl(canonical);
 })();
 
 const imageUrl = (() => {
-  const fallback = `${SITE_URL}/og.png`;
+  const fallback = toAbsoluteUrl('/og.png');
   if (!image) return fallback;
   if (image.startsWith('http://') || image.startsWith('https://')) return image;
-  return `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`;
+  return toAbsoluteUrl(image);
 })();
 ---
 
