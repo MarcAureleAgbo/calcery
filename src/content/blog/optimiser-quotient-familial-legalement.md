@@ -1,6 +1,6 @@
 ---
-title: Optimiser son quotient familial légalement les bons réflexes
-description: Repères pratiques pour comprendre le quotient familial, éviter les erreurs de déclaration et mieux anticiper son impôt.
+title: "Quotient familial : les bons réflexes pour optimiser son impôt légalement"
+description: "Comprenez le quotient familial, évitez les erreurs de déclaration et anticipez votre impôt avec des repères fiscaux simples et concrets."
 date: 2026-02-08
 category: Fiscalite
 tags:

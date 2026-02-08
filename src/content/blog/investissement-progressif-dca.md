@@ -1,6 +1,6 @@
 ---
-title: Investissement progressif DCA pour lisser le risque
-description: Comprendre la stratégie DCA, ses avantages, ses limites et comment l'appliquer avec régularité pour investir plus sereinement.
+title: "Investissement progressif DCA : lisser le risque avec une méthode régulière"
+description: "Comprenez la stratégie DCA, ses avantages et ses limites pour investir de façon plus sereine grâce à des versements réguliers et disciplinés."
 date: 2026-02-06
 category: Investissement
 tags:

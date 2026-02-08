@@ -1,6 +1,6 @@
 ---
-title: Partage addition entre amis méthode simple et équitable
-description: Comment partager une addition de manière transparente, gérer le pourboire et éviter les tensions en groupe.
+title: "Partage d'addition entre amis : méthode simple et équitable"
+description: "Apprenez à partager une addition de manière transparente, gérer le pourboire et éviter les tensions grâce à une méthode claire en groupe."
 date: 2026-02-09
 category: Vie quotidienne
 tags:

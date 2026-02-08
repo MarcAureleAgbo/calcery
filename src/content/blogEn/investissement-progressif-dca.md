@@ -1,6 +1,6 @@
 ---
-title: Progressive investing with DCA to smooth market timing
-description: Understand the DCA strategy, when it helps, and how to apply it with consistency.
+title: "DCA Investing Guide: Progressive Investing Without Market Timing"
+description: "Understand how dollar-cost averaging works, when it helps, and how to apply a disciplined DCA plan that reduces stress and supports long-term progress."
 date: 2026-02-06
 category: Investing
 tags:

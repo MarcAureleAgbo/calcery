@@ -1,6 +1,6 @@
 ---
-title: Split bill with friends a clear and fair method
-description: Practical method to split bills transparently, include tips, and avoid friction in group payments.
+title: "Split Bill with Friends: Fair Method to Share Costs and Tips"
+description: "Use a clear split-bill method to handle totals, tips, and rounding fairly, so group payments stay transparent and stress-free in any situation."
 date: 2026-02-09
 category: Everyday finance
 tags:

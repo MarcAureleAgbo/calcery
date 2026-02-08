@@ -1,6 +1,6 @@
 ---
-title: Fonds d'urgence combien épargner selon sa situation
-description: Guide pour déterminer un fonds d'urgence adapté à vos charges fixes, votre stabilité de revenu et votre niveau de risque.
+title: "Fonds d'urgence : combien épargner selon votre situation financière"
+description: "Calculez un fonds d'urgence adapté à vos charges fixes, à la stabilité de vos revenus et à votre niveau de risque pour sécuriser votre budget."
 date: 2026-02-04
 category: Epargne
 tags:

@@ -1,6 +1,6 @@
 ---
-title: Calcul impôt sur le revenu méthode simple sans stress
-description: Apprenez à estimer votre impôt sur le revenu avec une méthode claire pour mieux anticiper votre trésorerie annuelle.
+title: "Calcul impôt sur le revenu : méthode simple pour anticiper sereinement"
+description: "Suivez une méthode claire pour estimer votre impôt sur le revenu, prévoir votre trésorerie annuelle et réduire les mauvaises surprises fiscales."
 date: 2026-02-07
 category: Fiscalite
 tags:

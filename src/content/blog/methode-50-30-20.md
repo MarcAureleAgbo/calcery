@@ -1,6 +1,6 @@
 ---
-title: La méthode 50/30/20 pour gérer son budget
-description: Découvrez comment appliquer la règle 50/30/20 pour équilibrer vos finances personnelles.
+title: "La méthode 50/30/20 : guide simple pour équilibrer budget et épargne"
+description: "Appliquez la règle 50/30/20 pour mieux répartir vos revenus entre besoins, envies et épargne, et reprendre le contrôle de votre budget mensuel."
 date: 2026-01-07
 category: Budget
 tags:

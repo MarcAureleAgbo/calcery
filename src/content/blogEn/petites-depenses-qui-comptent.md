@@ -1,6 +1,6 @@
 ---
-title: Small expenses that add up
-description: Understand the long-term impact of recurring small expenses and how to control them.
+title: "Small Expenses That Add Up: How to Cut Daily Money Leaks"
+description: "Identify recurring small expenses, measure their real annual impact, and apply simple habits to reduce daily money leaks without extreme lifestyle changes."
 date: 2026-01-07
 category: Habits
 tags:

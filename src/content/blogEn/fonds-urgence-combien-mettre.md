@@ -1,6 +1,6 @@
 ---
-title: Emergency fund target how much should you save
-description: Practical framework to size your emergency fund based on fixed costs, income stability, and risk profile.
+title: "Emergency Fund Guide: How Much to Save for Financial Security"
+description: "Set the right emergency fund target based on fixed costs, income stability, and risk level, then build it steadily with a practical monthly savings plan."
 date: 2026-02-04
 category: Savings
 tags:

@@ -1,6 +1,6 @@
 ---
-title: Intérêts composés les erreurs qui freinent votre croissance
-description: Découvrez les erreurs les plus fréquentes avec les intérêts composés et comment améliorer vos résultats sur le long terme.
+title: "Intérêts composés : les erreurs qui freinent la croissance de votre capital"
+description: "Identifiez les erreurs courantes avec les intérêts composés et appliquez de meilleurs réflexes pour faire progresser votre capital sur le long terme."
 date: 2026-02-05
 category: Investissement
 tags:

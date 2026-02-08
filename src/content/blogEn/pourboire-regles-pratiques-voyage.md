@@ -1,6 +1,6 @@
 ---
-title: Tipping basics in practice at home and while traveling
-description: Practical tipping guide with simple ranges to decide faster depending on context and service quality.
+title: "Tipping Guide: Practical Rules for Home and Travel"
+description: "Use simple tipping ranges by service quality and local context, then split totals clearly in groups to avoid confusion when paying at home or abroad."
 date: 2026-02-10
 category: Everyday finance
 tags:

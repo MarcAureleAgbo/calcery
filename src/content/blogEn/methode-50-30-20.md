@@ -1,6 +1,6 @@
 ---
-title: The 50/30/20 method for budget planning
-description: Learn how to apply the 50/30/20 rule to balance your personal finances.
+title: "50/30/20 Budget Rule: Practical Guide to Balance Spending and Savings"
+description: "Learn how to apply the 50/30/20 budget rule, adjust ratios to your reality, and build a sustainable plan for essentials, lifestyle, and savings goals."
 date: 2026-01-07
 category: Budget
 tags:

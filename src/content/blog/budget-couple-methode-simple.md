@@ -1,6 +1,6 @@
 ---
-title: Budget couple simple et efficace sans conflit
-description: Comment organiser un budget à deux, répartir les charges équitablement et garder une vision commune des objectifs financiers.
+title: "Budget couple : méthode simple pour gérer les finances à deux sans conflit"
+description: "Découvrez une méthode claire pour organiser vos finances de couple, répartir les charges équitablement et avancer ensemble vers vos objectifs."
 date: 2026-02-02
 category: Budget
 tags:

@@ -1,6 +1,6 @@
 ---
-title: "Les petites dépenses qui comptent : comment les maîtriser"
-description: "Découvrez l'impact des petites dépenses répétées et comment les réduire efficacement."
+title: "Petites dépenses du quotidien : comment les réduire et économiser plus"
+description: "Découvrez l'impact réel des petites dépenses répétées et mettez en place des actions simples pour économiser davantage sans frustration."
 date: 2026-01-07
 category: Habitudes
 tags:

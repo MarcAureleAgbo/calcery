@@ -1,6 +1,6 @@
 ---
-title: Pourboire en pratique repères utiles en France et en voyage
-description: Guide pratique pour estimer un pourboire cohérent selon le contexte, le service et le pays, sans se tromper.
+title: "Pourboire en France et à l'étranger : repères pratiques pour bien calculer"
+description: "Utilisez des repères simples pour estimer un pourboire cohérent selon le service, le contexte et le pays, sans vous tromper au moment de payer."
 date: 2026-02-10
 category: Vie quotidienne
 tags:

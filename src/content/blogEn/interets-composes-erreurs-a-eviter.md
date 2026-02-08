@@ -1,6 +1,6 @@
 ---
-title: Compound interest mistakes that slow your growth
-description: The most common compound interest mistakes and practical ways to improve long-term outcomes.
+title: "Compound Interest Mistakes: 5 Errors That Hurt Long-Term Growth"
+description: "Avoid the most common compound interest mistakes, from late starts to unrealistic return assumptions, and improve your long-term investing outcomes."
 date: 2026-02-05
 category: Investing
 tags:

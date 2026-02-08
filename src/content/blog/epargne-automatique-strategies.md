@@ -1,6 +1,6 @@
 ---
-title: Épargne automatique stratégie progressive pour atteindre ses objectifs
-description: Méthode concrète pour automatiser son épargne, augmenter progressivement les versements et rester constant toute l'année.
+title: "Épargne automatique : stratégie progressive pour atteindre vos objectifs"
+description: "Découvrez comment automatiser votre épargne, augmenter vos versements progressivement et tenir votre plan financier toute l'année sans pression."
 date: 2026-02-03
 category: Epargne
 tags:

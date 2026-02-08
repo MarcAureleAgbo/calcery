@@ -1,6 +1,6 @@
 ---
-title: Budget mensuel mode d'emploi pour mieux gérer son argent
-description: Méthode pas à pas pour construire un budget mensuel réaliste, éviter les découverts et augmenter votre taux d'épargne.
+title: "Budget mensuel : guide pratique pour mieux gérer son argent au quotidien"
+description: "Apprenez à construire un budget mensuel réaliste, éviter les découverts et augmenter votre épargne avec une méthode simple à appliquer chaque mois."
 date: 2026-02-01
 category: Budget
 tags:

@@ -1,6 +1,6 @@
 ---
-title: Couple budget system that stays simple and fair
-description: Practical framework to manage money as a couple, split expenses fairly, and stay aligned on goals.
+title: "Couple Budget Guide: Simple Method to Manage Money Together Without Conflict"
+description: "Learn a practical couple budget system to split shared expenses fairly, align money goals, and run stress-free monthly check-ins together."
 date: 2026-02-02
 category: Budget
 tags:
