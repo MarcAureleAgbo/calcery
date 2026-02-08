@@ -2,6 +2,13 @@
 title: The 50/30/20 method for budget planning
 description: Learn how to apply the 50/30/20 rule to balance your personal finances.
 date: 2026-01-07
+category: Budget
+tags:
+  - monthly budget
+  - 50 30 20 rule
+  - personal finance
+coverImage: /images/blog/budget-cover.svg
+coverAlt: Budget planning illustration
 ---
 
 Budgeting can feel overwhelming, but proven frameworks can make it easier. The 50/30/20 rule offers a practical way to split your net income into three categories: needs, wants, and savings.

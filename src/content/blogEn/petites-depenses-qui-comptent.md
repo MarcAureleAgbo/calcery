@@ -2,6 +2,13 @@
 title: Small expenses that add up
 description: Understand the long-term impact of recurring small expenses and how to control them.
 date: 2026-01-07
+category: Habits
+tags:
+  - small expenses
+  - daily savings
+  - money habits
+coverImage: /images/blog/lifestyle-cover.svg
+coverAlt: Small expenses and daily habits illustration
 ---
 
 Large expenses attract attention, but recurring small purchases often have the biggest long-term impact on budgets. A daily coffee, convenience snacks, or forgotten subscriptions can quietly consume a large annual amount.

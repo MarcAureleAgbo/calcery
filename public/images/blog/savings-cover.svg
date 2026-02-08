@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Savings article cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#052E2B"/>
+      <stop offset="1" stop-color="#064E3B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="24" fill="url(#bg)"/>
+  <circle cx="960" cy="190" r="210" fill="#34D399" fill-opacity="0.18"/>
+  <circle cx="220" cy="500" r="230" fill="#10B981" fill-opacity="0.18"/>
+  <path d="M150 430C250 360 320 320 420 300C520 280 590 240 690 200C770 170 860 160 990 170" stroke="#A7F3D0" stroke-width="14" stroke-linecap="round"/>
+  <text x="130" y="200" fill="#D1FAE5" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="50">Savings Momentum</text>
+  <text x="130" y="265" fill="#99F6E4" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="30">Build consistency, grow confidence</text>
+  <text x="130" y="500" fill="#CCFBF1" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="26">Calcery Blog</text>
+</svg>

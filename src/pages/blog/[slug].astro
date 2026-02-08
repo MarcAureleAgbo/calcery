@@ -39,6 +39,38 @@ const toc = post.body
 const allPosts = await getCollection('blog');
 const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draft).slice(0, 2);
 const readingTime = Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 220));
+const category = post.data.category ?? 'Finance';
+const tags = post.data.tags ?? [];
+const coverImage = post.data.coverImage ?? '/images/blog/default-cover.svg';
+const coverAlt = post.data.coverAlt ?? post.data.title;
+
+const siteUrl = (import.meta.env.SITE_URL || 'https://calcery.pages.dev').replace(/\/+$/, '');
+const canonicalPath = `/blog/${post.slug}`;
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: new Date(post.data.date).toISOString(),
+  dateModified: new Date(post.data.date).toISOString(),
+  inLanguage: 'fr',
+  url: canonicalUrl,
+  image: `${siteUrl}${coverImage}`,
+  author: {
+    '@type': 'Organization',
+    name: 'Calcery',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Calcery',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/og.png`,
+    },
+  },
+};
 
 const tools =
   post.slug === 'methode-50-30-20'
@@ -54,21 +86,44 @@ const tools =
       ];
 ---
 
-<BaseLayout title={`${post.data.title} - Calcery`} description={post.data.description}>
+<BaseLayout
+  title={`${post.data.title} - Calcery`}
+  description={post.data.description}
+  canonical={canonicalPath}
+  image={coverImage}
+  seoType="article"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
   <div class="mx-auto max-w-6xl px-4 py-8">
     <div class="flex flex-col gap-8 lg:flex-row">
       <article class="prose-lite max-w-none flex-1 rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm">
         <h1>{post.data.title}</h1>
 
+        <figure class="article-cover">
+          <img src={coverImage} alt={coverAlt} width="1200" height="630" loading="eager" decoding="async" />
+        </figure>
+
         <p class="mb-4 text-lg text-gray-600">{post.data.description}</p>
 
         <div class="mb-8 flex flex-wrap items-center gap-3 text-sm text-gray-500">
+          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">{category}</span>
           <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Publié le {new Date(post.data.date).toLocaleDateString('fr-FR')}</span>
           <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">{readingTime} min de lecture</span>
           <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Équipe Calcery</span>
         </div>
 
-        <Content />
+        {tags.length > 0 && (
+          <div class="mb-8 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span class="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-600">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <div class="article-body">
+          <Content />
+        </div>
       </article>
 
       {toc.length > 0 && (

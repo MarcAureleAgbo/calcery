@@ -8,6 +8,8 @@ export interface Props {
   description?: string;
   canonical?: string;
   lang?: Locale;
+  image?: string;
+  seoType?: 'website' | 'article';
 }
 
 const {
@@ -15,6 +17,8 @@ const {
   description = 'Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications.',
   canonical,
   lang,
+  image,
+  seoType = 'website',
 } = Astro.props;
 
 const currentLocale = lang ?? getLocaleFromPath(Astro.url.pathname);
@@ -114,7 +118,14 @@ const isCurrentPath = (href: string) => {
     <link rel="alternate" hreflang="en" href={`${siteUrl}${enSwitchPath}`} />
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}${frSwitchPath}`} />
 
-    <SEO title={title} description={description} canonical={canonical} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      image={image}
+      type={seoType}
+      locale={currentLocale === 'en' ? 'en_US' : 'fr_FR'}
+    />
   </head>
 
   <body>

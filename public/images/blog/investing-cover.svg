@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Investing article cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E1B4B"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="24" fill="url(#bg)"/>
+  <rect x="120" y="120" width="960" height="390" rx="20" fill="#EEF2FF" fill-opacity="0.08"/>
+  <path d="M170 430L330 360L450 390L580 290L700 320L860 220L1020 250" stroke="#C4B5FD" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="170" cy="430" r="11" fill="#DDD6FE"/>
+  <circle cx="330" cy="360" r="11" fill="#DDD6FE"/>
+  <circle cx="450" cy="390" r="11" fill="#DDD6FE"/>
+  <circle cx="580" cy="290" r="11" fill="#DDD6FE"/>
+  <circle cx="700" cy="320" r="11" fill="#DDD6FE"/>
+  <circle cx="860" cy="220" r="11" fill="#DDD6FE"/>
+  <circle cx="1020" cy="250" r="11" fill="#DDD6FE"/>
+  <text x="160" y="210" fill="#E0E7FF" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="48">Investing Clarity</text>
+  <text x="160" y="485" fill="#C7D2FE" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="26">Calcery Blog</text>
+</svg>

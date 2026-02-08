@@ -2,6 +2,13 @@
 title: La méthode 50/30/20 pour gérer son budget
 description: Découvrez comment appliquer la règle 50/30/20 pour équilibrer vos finances personnelles.
 date: 2026-01-07
+category: Budget
+tags:
+  - budget mensuel
+  - methode 50 30 20
+  - gestion budget
+coverImage: /images/blog/budget-cover.svg
+coverAlt: Illustration budget 50 30 20
 ---
 
 La gestion budgétaire peut sembler complexe, mais des méthodes éprouvées existent pour simplifier le processus. La règle 50/30/20, proposée par la sénatrice américaine Elizabeth Warren, offre une approche équilibrée pour répartir ses revenus. Cette méthode divise vos dépenses en trois catégories principales : besoins essentiels, envies et épargne.

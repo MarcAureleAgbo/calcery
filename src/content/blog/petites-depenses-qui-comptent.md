@@ -2,6 +2,13 @@
 title: "Les petites dépenses qui comptent : comment les maîtriser"
 description: "Découvrez l'impact des petites dépenses répétées et comment les réduire efficacement."
 date: 2026-01-07
+category: Habitudes
+tags:
+  - petites depenses
+  - economies quotidiennes
+  - budget
+coverImage: /images/blog/lifestyle-cover.svg
+coverAlt: Illustration petites depenses et habitudes
 ---
 
 Les grandes dépenses attirent souvent l'attention, mais ce sont souvent les petites sommes dépensées quotidiennement qui grèvent le plus le budget. Un café à 2€ par jour, une application mobile à 5€ par mois, ou un snack impulsif peuvent sembler anodins, mais leur accumulation représente un montant significatif sur l'année.

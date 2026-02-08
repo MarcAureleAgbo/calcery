@@ -33,25 +33,42 @@ const getReadingTime = (content: string) => {
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
       {sortedPosts.map((post) => {
         const readingTime = getReadingTime(post.body);
+        const coverImage = post.data.coverImage ?? '/images/blog/default-cover.svg';
+        const coverAlt = post.data.coverAlt ?? post.data.title;
+        const category = post.data.category ?? 'Finance';
         return (
-          <article class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
-            <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
-              <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Budget</span>
-              <span>{readingTime} min</span>
-            </div>
+          <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
+            <a href={`/blog/${post.slug}`} class="block">
+              <img
+                src={coverImage}
+                alt={coverAlt}
+                width="1200"
+                height="630"
+                loading="lazy"
+                decoding="async"
+                class="h-52 w-full object-cover"
+              />
+            </a>
 
-            <h3 class="mb-3 text-2xl font-bold text-black">
-              <a href={`/blog/${post.slug}`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
-            </h3>
+            <div class="p-8">
+              <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">{category}</span>
+                <span>{readingTime} min</span>
+              </div>
 
-            <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">{post.data.description}</p>
+              <h3 class="mb-3 text-2xl font-bold text-black">
+                <a href={`/blog/${post.slug}`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
+              </h3>
 
-            <div class="flex items-center justify-between">
-              <p class="text-sm text-gray-500">Publié le <span class="font-medium">{new Date(post.data.date).toLocaleDateString('fr-FR')}</span></p>
-              <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
-                Lire
-                <span aria-hidden="true">→</span>
-              </a>
+              <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">{post.data.description}</p>
+
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-gray-500">Publié le <span class="font-medium">{new Date(post.data.date).toLocaleDateString('fr-FR')}</span></p>
+                <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
+                  Lire
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
             </div>
           </article>
         );
