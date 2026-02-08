@@ -21,7 +21,7 @@ npm run preview
 - Framework preset: `Astro`
 - Build command: `npm run build`
 - Build output directory: `dist`
-- Variable d'environnement: `SITE_URL` (ex: `https://calcery.com`)
+- URL du site centralisée: `site.config.mjs` (`SITE_URL`)
 
 ## 🎨 Personnalisation rapide des couleurs
 
