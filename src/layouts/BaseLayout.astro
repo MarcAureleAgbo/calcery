@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
+import Analytics from '../components/Analytics.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
 import { SITE_URL } from '../lib/site';
 
@@ -127,6 +128,7 @@ const isCurrentPath = (href: string) => {
       type={seoType}
       locale={currentLocale === 'en' ? 'en_US' : 'fr_FR'}
     />
+    <Analytics />
   </head>
 
   <body>
