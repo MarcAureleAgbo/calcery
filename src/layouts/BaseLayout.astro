@@ -107,6 +107,9 @@ const isCurrentPath = (href: string) => {
   if (normalizedHref === '/') return normalizedPath === '/';
   return normalizedPath === normalizedHref || normalizedPath.startsWith(`${normalizedHref}/`);
 };
+
+const legalPagesWithHeaderOffset = new Set(['/mentions-legales', '/confidentialite', '/contact']);
+const applyLegalHeaderOffset = legalPagesWithHeaderOffset.has(normalizedPath);
 ---
 
 <html lang={currentLocale}>
@@ -136,7 +139,7 @@ const isCurrentPath = (href: string) => {
     <Adsense />
   </head>
 
-  <body>
+  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset }}>
     <a href="#main-content" class="skip-link">{t.skipToContent}</a>
 
     <div class="animated-background" aria-hidden="true">
@@ -200,7 +203,7 @@ const isCurrentPath = (href: string) => {
       </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" class:list={{ 'legal-main-offset': applyLegalHeaderOffset }}>
       <slot />
     </main>
 

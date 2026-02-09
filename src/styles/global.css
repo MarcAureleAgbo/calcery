@@ -108,6 +108,22 @@ main {
   z-index: 1;
 }
 
+/* Legal/contact pages: compensate fixed header overlap and normalize hero heading */
+body.legal-page-layout main.legal-main-offset {
+  padding-top: clamp(5rem, 7vw, 6rem);
+}
+
+body.legal-page-layout main.legal-main-offset > section:first-of-type h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+  line-height: 1.12;
+}
+
+@media (max-width: 768px) {
+  body.legal-page-layout main.legal-main-offset {
+    padding-top: 4.8rem;
+  }
+}
+
 /* Support prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *,
