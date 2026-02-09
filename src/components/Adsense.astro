@@ -1,50 +1,61 @@
 ---
 const isProd = import.meta.env.PROD;
 const CONSENT_KEY = 'calcery_cookie_consent';
-const ADSENSE_SRC =
-  'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882';
+const ADSENSE_CLIENT = 'ca-pub-8558147642222882';
+const ADSENSE_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
 ---
 
 {
   isProd && (
-    <script is:inline define:vars={{ CONSENT_KEY, ADSENSE_SRC }}>
-      (() => {
-        function loadAdsense() {
-          if (window.__calceryAdsenseLoaded) return;
-
-          const existing = document.querySelector(`script[src="${ADSENSE_SRC}"]`);
-          if (existing) {
-            window.__calceryAdsenseLoaded = true;
-            return;
+    <>
+      <script async src={ADSENSE_SRC} crossorigin="anonymous"></script>
+      <script is:inline define:vars={{ CONSENT_KEY }}>
+        (() => {
+          function hasAcceptedConsent() {
+            try {
+              return localStorage.getItem(CONSENT_KEY) === 'accepted';
+            } catch {
+              return false;
+            }
           }
 
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = ADSENSE_SRC;
-          script.setAttribute('crossorigin', 'anonymous');
-          document.head.appendChild(script);
-          window.__calceryAdsenseLoaded = true;
-        }
+          function initializeAdsenseSlots() {
+            if (!hasAcceptedConsent()) return;
 
-        function readConsent() {
-          try {
-            return localStorage.getItem(CONSENT_KEY);
-          } catch {
-            return null;
+            const slots = document.querySelectorAll('ins.adsbygoogle:not([data-calcery-adsense-initialized])');
+            if (!slots.length) return;
+
+            slots.forEach((slot) => {
+              slot.setAttribute('data-calcery-adsense-initialized', 'true');
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch {
+                slot.removeAttribute('data-calcery-adsense-initialized');
+              }
+            });
           }
-        }
 
-        if (readConsent() === 'accepted') {
-          loadAdsense();
-        }
-
-        window.addEventListener('calcery:consent-updated', (event) => {
-          const status = event?.detail?.status;
-          if (status === 'accepted') {
-            loadAdsense();
+          function onReady() {
+            initializeAdsenseSlots();
           }
-        });
-      })();
-    </script>
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', onReady, { once: true });
+          } else {
+            onReady();
+          }
+
+          if (!window.__calceryAdsenseConsentListenerAttached) {
+            window.addEventListener('calcery:consent-updated', (event) => {
+              const status = event?.detail?.status;
+              if (status === 'accepted') {
+                initializeAdsenseSlots();
+              }
+            });
+            window.__calceryAdsenseConsentListenerAttached = true;
+          }
+        })();
+      </script>
+    </>
   )
 }

@@ -55,47 +55,54 @@ const CONSENT_KEY = "calcery_cookie_consent";
           }
         });
       })();
-    })();</script><script>(function(){const CONSENT_KEY = "calcery_cookie_consent";
-const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882";
+    })();</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882" crossorigin="anonymous"></script><script>(function(){const CONSENT_KEY = "calcery_cookie_consent";
 
-      (() => {
-        function loadAdsense() {
-          if (window.__calceryAdsenseLoaded) return;
-
-          const existing = document.querySelector(`script[src="${ADSENSE_SRC}"]`);
-          if (existing) {
-            window.__calceryAdsenseLoaded = true;
-            return;
+        (() => {
+          function hasAcceptedConsent() {
+            try {
+              return localStorage.getItem(CONSENT_KEY) === 'accepted';
+            } catch {
+              return false;
+            }
           }
 
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = ADSENSE_SRC;
-          script.setAttribute('crossorigin', 'anonymous');
-          document.head.appendChild(script);
-          window.__calceryAdsenseLoaded = true;
-        }
+          function initializeAdsenseSlots() {
+            if (!hasAcceptedConsent()) return;
 
-        function readConsent() {
-          try {
-            return localStorage.getItem(CONSENT_KEY);
-          } catch {
-            return null;
+            const slots = document.querySelectorAll('ins.adsbygoogle:not([data-calcery-adsense-initialized])');
+            if (!slots.length) return;
+
+            slots.forEach((slot) => {
+              slot.setAttribute('data-calcery-adsense-initialized', 'true');
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch {
+                slot.removeAttribute('data-calcery-adsense-initialized');
+              }
+            });
           }
-        }
 
-        if (readConsent() === 'accepted') {
-          loadAdsense();
-        }
-
-        window.addEventListener('calcery:consent-updated', (event) => {
-          const status = event?.detail?.status;
-          if (status === 'accepted') {
-            loadAdsense();
+          function onReady() {
+            initializeAdsenseSlots();
           }
-        });
-      })();
-    })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', onReady, { once: true });
+          } else {
+            onReady();
+          }
+
+          if (!window.__calceryAdsenseConsentListenerAttached) {
+            window.addEventListener('calcery:consent-updated', (event) => {
+              const status = event?.detail?.status;
+              if (status === 'accepted') {
+                initializeAdsenseSlots();
+              }
+            });
+            window.__calceryAdsenseConsentListenerAttached = true;
+          }
+        })();
+      })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
 <link rel="stylesheet" href="/_astro/budget-mensuel.BEssjTMy.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog" class="is-active" aria-current="page"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/methode-50-30-20/" data-en-path="/en/blog/methode-50-30-20/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog" class="is-active" aria-current="page"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/methode-50-30-20/" data-en-path="/en/blog/methode-50-30-20/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"La méthode 50/30/20 : guide simple pour équilibrer budget et épargne","description":"Appliquez la règle 50/30/20 pour mieux répartir vos revenus entre besoins, envies et épargne, et reprendre le contrôle de votre budget mensuel.","datePublished":"2026-01-07T00:00:00.000Z","dateModified":"2026-01-07T00:00:00.000Z","inLanguage":"fr","url":"https://calcery.com/blog/methode-50-30-20","image":"https://calcery.com/images/blog/budget-cover.svg","author":{"@type":"Organization","name":"Calcery"},"publisher":{"@type":"Organization","name":"Calcery","logo":{"@type":"ImageObject","url":"https://calcery.com/og.png"}}}</script> <div class="mx-auto max-w-6xl px-4 py-8"> <div class="flex flex-col gap-8 lg:flex-row"> <article class="prose-lite max-w-none flex-1 rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm"> <h1>La méthode 50/30/20 : guide simple pour équilibrer budget et épargne</h1> <figure class="article-cover"> <img src="/images/blog/budget-cover.svg" alt="Illustration budget 50 30 20" width="1200" height="630" loading="eager" decoding="async"> </figure> <p class="mb-4 text-lg text-gray-600">Appliquez la règle 50/30/20 pour mieux répartir vos revenus entre besoins, envies et épargne, et reprendre le contrôle de votre budget mensuel.</p> <div class="mb-8 flex flex-wrap items-center gap-3 text-sm text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Budget</span> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Publié le 07/01/2026</span> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">3 min de lecture</span> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Équipe Calcery</span> </div> <div class="mb-8 flex flex-wrap gap-2"> <span class="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-600">budget mensuel</span><span class="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-600">methode 50 30 20</span><span class="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-600">gestion budget</span> </div> <div class="article-body"> <p>La gestion budgétaire peut sembler complexe, mais des méthodes éprouvées existent pour simplifier le processus. La règle 50/30/20, proposée par la sénatrice américaine Elizabeth Warren, offre une approche équilibrée pour répartir ses revenus. Cette méthode divise vos dépenses en trois catégories principales : besoins essentiels, envies et épargne.</p>
 <h2 id="quest-ce-que-la-règle-503020">Qu’est-ce que la règle 50/30/20 ?</h2>
 <p>La méthode 50/30/20 suggère de répartir vos revenus nets (après impôts) de la manière suivante :</p>

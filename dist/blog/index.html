@@ -55,47 +55,54 @@ const CONSENT_KEY = "calcery_cookie_consent";
           }
         });
       })();
-    })();</script><script>(function(){const CONSENT_KEY = "calcery_cookie_consent";
-const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882";
+    })();</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882" crossorigin="anonymous"></script><script>(function(){const CONSENT_KEY = "calcery_cookie_consent";
 
-      (() => {
-        function loadAdsense() {
-          if (window.__calceryAdsenseLoaded) return;
-
-          const existing = document.querySelector(`script[src="${ADSENSE_SRC}"]`);
-          if (existing) {
-            window.__calceryAdsenseLoaded = true;
-            return;
+        (() => {
+          function hasAcceptedConsent() {
+            try {
+              return localStorage.getItem(CONSENT_KEY) === 'accepted';
+            } catch {
+              return false;
+            }
           }
 
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = ADSENSE_SRC;
-          script.setAttribute('crossorigin', 'anonymous');
-          document.head.appendChild(script);
-          window.__calceryAdsenseLoaded = true;
-        }
+          function initializeAdsenseSlots() {
+            if (!hasAcceptedConsent()) return;
 
-        function readConsent() {
-          try {
-            return localStorage.getItem(CONSENT_KEY);
-          } catch {
-            return null;
+            const slots = document.querySelectorAll('ins.adsbygoogle:not([data-calcery-adsense-initialized])');
+            if (!slots.length) return;
+
+            slots.forEach((slot) => {
+              slot.setAttribute('data-calcery-adsense-initialized', 'true');
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch {
+                slot.removeAttribute('data-calcery-adsense-initialized');
+              }
+            });
           }
-        }
 
-        if (readConsent() === 'accepted') {
-          loadAdsense();
-        }
-
-        window.addEventListener('calcery:consent-updated', (event) => {
-          const status = event?.detail?.status;
-          if (status === 'accepted') {
-            loadAdsense();
+          function onReady() {
+            initializeAdsenseSlots();
           }
-        });
-      })();
-    })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', onReady, { once: true });
+          } else {
+            onReady();
+          }
+
+          if (!window.__calceryAdsenseConsentListenerAttached) {
+            window.addEventListener('calcery:consent-updated', (event) => {
+              const status = event?.detail?.status;
+              if (status === 'accepted') {
+                initializeAdsenseSlots();
+              }
+            });
+            window.__calceryAdsenseConsentListenerAttached = true;
+          }
+        })();
+      })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
 <link rel="stylesheet" href="/_astro/budget-mensuel.BEssjTMy.css"></head> <body> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog" class="is-active" aria-current="page"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/" data-en-path="/en/blog/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog" class="is-active" aria-current="page"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/blog/" data-en-path="/en/blog/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content">  <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-4xl text-center"> <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Ressources Calcery</div> <h1 class="mb-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl">Articles et conseils</h1> <p class="text-xl font-light text-gray-600">Des contenus concrets pour mieux piloter votre budget, votre épargne et vos habitudes financières.</p> </div>  </div> </section> <section class="section"> <div class="section-header"> <div class="section-badge">Blog</div> <h2 class="section-title">Derniers articles</h2> <p class="section-subtitle">Des guides courts, actionnables, reliés à vos calculateurs préférés.</p> </div> <div class="grid grid-cols-1 gap-8 md:grid-cols-2"> <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"> <a href="/blog/pourboire-regles-pratiques-voyage" class="block"> <img src="/images/blog/lifestyle-cover.svg" alt="Illustration pourboire et voyage" width="1200" height="630" loading="lazy" decoding="async" class="h-52 w-full object-cover"> </a> <div class="p-8"> <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Vie quotidienne</span> <span>1 min</span> </div> <h3 class="mb-3 text-2xl font-bold text-black"> <a href="/blog/pourboire-regles-pratiques-voyage" class="transition-colors hover:text-gray-700">Pourboire en France et à l&#39;étranger : repères pratiques pour bien calculer</a> </h3> <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">Utilisez des repères simples pour estimer un pourboire cohérent selon le service, le contexte et le pays, sans vous tromper au moment de payer.</p> <div class="flex items-center justify-between"> <p class="text-sm text-gray-500">Publié le <span class="font-medium">10/02/2026</span></p> <a href="/blog/pourboire-regles-pratiques-voyage" class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
 Lire
 <span aria-hidden="true">→</span> </a> </div> </div> </article><article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"> <a href="/blog/partage-addition-entre-amis-guide" class="block"> <img src="/images/blog/group-cover.svg" alt="Illustration partage d'addition entre amis" width="1200" height="630" loading="lazy" decoding="async" class="h-52 w-full object-cover"> </a> <div class="p-8"> <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"> <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">Vie quotidienne</span> <span>1 min</span> </div> <h3 class="mb-3 text-2xl font-bold text-black"> <a href="/blog/partage-addition-entre-amis-guide" class="transition-colors hover:text-gray-700">Partage d&#39;addition entre amis : méthode simple et équitable</a> </h3> <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">Apprenez à partager une addition de manière transparente, gérer le pourboire et éviter les tensions grâce à une méthode claire en groupe.</p> <div class="flex items-center justify-between"> <p class="text-sm text-gray-500">Publié le <span class="font-medium">09/02/2026</span></p> <a href="/blog/partage-addition-entre-amis-guide" class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">

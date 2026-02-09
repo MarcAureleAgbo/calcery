@@ -55,47 +55,54 @@ const CONSENT_KEY = "calcery_cookie_consent";
           }
         });
       })();
-    })();</script><script>(function(){const CONSENT_KEY = "calcery_cookie_consent";
-const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882";
+    })();</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8558147642222882" crossorigin="anonymous"></script><script>(function(){const CONSENT_KEY = "calcery_cookie_consent";
 
-      (() => {
-        function loadAdsense() {
-          if (window.__calceryAdsenseLoaded) return;
-
-          const existing = document.querySelector(`script[src="${ADSENSE_SRC}"]`);
-          if (existing) {
-            window.__calceryAdsenseLoaded = true;
-            return;
+        (() => {
+          function hasAcceptedConsent() {
+            try {
+              return localStorage.getItem(CONSENT_KEY) === 'accepted';
+            } catch {
+              return false;
+            }
           }
 
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = ADSENSE_SRC;
-          script.setAttribute('crossorigin', 'anonymous');
-          document.head.appendChild(script);
-          window.__calceryAdsenseLoaded = true;
-        }
+          function initializeAdsenseSlots() {
+            if (!hasAcceptedConsent()) return;
 
-        function readConsent() {
-          try {
-            return localStorage.getItem(CONSENT_KEY);
-          } catch {
-            return null;
+            const slots = document.querySelectorAll('ins.adsbygoogle:not([data-calcery-adsense-initialized])');
+            if (!slots.length) return;
+
+            slots.forEach((slot) => {
+              slot.setAttribute('data-calcery-adsense-initialized', 'true');
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch {
+                slot.removeAttribute('data-calcery-adsense-initialized');
+              }
+            });
           }
-        }
 
-        if (readConsent() === 'accepted') {
-          loadAdsense();
-        }
-
-        window.addEventListener('calcery:consent-updated', (event) => {
-          const status = event?.detail?.status;
-          if (status === 'accepted') {
-            loadAdsense();
+          function onReady() {
+            initializeAdsenseSlots();
           }
-        });
-      })();
-    })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', onReady, { once: true });
+          } else {
+            onReady();
+          }
+
+          if (!window.__calceryAdsenseConsentListenerAttached) {
+            window.addEventListener('calcery:consent-updated', (event) => {
+              const status = event?.detail?.status;
+              if (status === 'accepted') {
+                initializeAdsenseSlots();
+              }
+            });
+            window.__calceryAdsenseConsentListenerAttached = true;
+          }
+        })();
+      })();</script><link rel="stylesheet" href="/_astro/a-propos.C6XaopbT.css">
 <link rel="stylesheet" href="/_astro/budget-mensuel.BEssjTMy.css"></head> <body class="legal-page-layout"> <a href="#main-content" class="skip-link">Aller au contenu principal</a> <div class="animated-background" aria-hidden="true"> <div class="dot-grid"></div> <div class="gradient-orb orb-1"></div> <div class="gradient-orb orb-2"></div> <div class="gradient-orb orb-3"></div> <div class="particles" id="particles"></div> </div> <header class="site-header" id="site-header"> <nav class="site-nav" aria-label="Navigation principale"> <a href="/" class="logo">Calcery</a> <ul class="nav-links"> <li> <a href="/"> Accueil </a> </li><li> <a href="/calculateurs"> Calculateurs </a> </li><li> <a href="/blog"> Blog </a> </li><li> <a href="/a-propos"> À propos </a> </li><li> <a href="/contact" class="is-active" aria-current="page"> Contact </a> </li> </ul> <div class="ml-4"> <label for="lang-select" class="sr-only">Sélecteur de langue</label> <select id="lang-select" class="border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/contact/" data-en-path="/en/contact/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false"> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </nav> <div class="mobile-menu" id="mobile-menu"> <a href="/"> Accueil </a><a href="/calculateurs"> Calculateurs </a><a href="/blog"> Blog </a><a href="/a-propos"> À propos </a><a href="/contact" class="is-active" aria-current="page"> Contact </a> <div class="p-4"> <label for="lang-select-mobile" class="sr-only">Sélecteur de langue</label> <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label="Sélecteur de langue" data-fr-path="/contact/" data-en-path="/en/contact/"> <option value="fr">FR</option> <option value="en">EN</option> </select> </div> </div> </header> <main id="main-content" class="legal-main-offset">  <section class="border-b border-gray-200 bg-white py-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-4xl text-center"> <h1 class="mb-6 text-5xl font-bold leading-tight text-black md:text-6xl">Nous contacter</h1> <p class="text-xl font-light text-gray-600">Questions, support, partenariat ou demande RGPD : nous vous répondons rapidement.</p> </div>  </div> </section> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  <div class="mx-auto max-w-3xl"> <section class="mb-16"> <form method="post" class="space-y-6" id="contact-form"> <div> <label for="name" class="mb-3 block text-sm font-semibold text-gray-900">Nom complet (optionnel)</label> <input type="text" id="name" name="name" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"> </div> <div> <label for="email" class="mb-3 block text-sm font-semibold text-gray-900">Adresse email *</label> <input type="email" id="email" name="email" required autocomplete="email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"> </div> <div> <label for="subject" class="mb-3 block text-sm font-semibold text-gray-900">Sujet *</label> <select id="subject" name="subject" required class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"> <option value="">Sélectionnez un sujet</option> <option value="question">Question générale</option> <option value="bug">Signalement d'un bug</option> <option value="suggestion">Suggestion d'amélioration</option> <option value="partnership">Partenariat</option> <option value="rgpd">Demande RGPD</option> <option value="other">Autre</option> </select> </div> <div> <label for="message" class="mb-3 block text-sm font-semibold text-gray-900">Votre message *</label> <textarea id="message" name="message" rows="7" required class="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Décrivez votre demande avec le plus de détails possible..."></textarea> </div> <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700"> <p><strong>Responsable de traitement :</strong> Maison Ellis (Sacla Medesse Emmanuella Ingrid)</p> <p><strong>RCS :</strong> RCS Paris 938 302 239</p> <p><strong>Adresse :</strong> 60 rue François Ier, 75008 Paris</p> <p class="mt-2">Les données transmises via ce formulaire sont utilisées uniquement pour traiter votre demande de contact.</p> </div> <div class="rounded-lg border border-gray-200 bg-gray-50 p-4"> <label class="flex items-start gap-3 text-sm text-gray-700" for="privacy-consent"> <input id="privacy-consent" name="privacy-consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-black focus:ring-black"> <span>
 J'accepte que mes données de contact soient utilisées pour traiter ma demande, conformément à la
 <a href="/confidentialite" class="font-medium text-black hover:underline">politique de confidentialité</a>.
