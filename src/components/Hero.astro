@@ -17,7 +17,6 @@ const t = {
     subtitle:
       "Rapide, gratuit, sans inscription. Calculez localement pour votre tranquillité d'esprit avec des outils professionnels et précis.",
     discoverTools: 'Découvrir les outils',
-    startWithBudget: 'Commencer par Budget',
     free: 'Gratuit',
     noSignup: 'Sans inscription',
     local: 'Calcul local',
@@ -31,7 +30,6 @@ const t = {
     subtitle:
       'Fast, free, no signup required. Run local calculations for peace of mind with clear and practical tools.',
     discoverTools: 'Explore tools',
-    startWithBudget: 'Start with Budget',
     free: 'Free',
     noSignup: 'No signup',
     local: 'Local calculation',
@@ -39,7 +37,6 @@ const t = {
 }[lang];
 
 const calculatorsPath = localizePath('/calculateurs', lang);
-const budgetPath = localizePath('/calculateurs/budget-mensuel', lang);
 ---
 
 <section class="hero">
@@ -66,7 +63,6 @@ const budgetPath = localizePath('/calculateurs/budget-mensuel', lang);
           <path d="M5 12h14m-7-7l7 7-7 7" />
         </svg>
       </a>
-      <a href={budgetPath} class="btn btn-secondary">{t.startWithBudget}</a>
     </div>
 
     <div class="hero-features">
