@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Calcery favicon">
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g transform="translate(0 2)">
+    <rect x="123" y="141" width="252" height="230" rx="64" ry="64" fill="none" stroke="#202126" stroke-width="30"/>
+    <rect x="332" y="191" width="82" height="130" fill="#ffffff"/>
+  </g>
+</svg>
