@@ -6,14 +6,14 @@ import { siteConfig } from '../../lib/site.ts';
 
 <BaseLayout
   title="Legal notice - Calcery"
-  description="Calcery legal notice: publisher identity, Cloudflare hosting, intellectual property, analytics, cookies, monetization, and liability disclaimer."
+  description="Legal notice for calcery.com: publisher Maison Ellis, legal representative, RCS registration, domiciliation, Cloudflare hosting, cookies, and liability."
   lang="en"
 >
   <section class="border-b border-gray-200 bg-white py-16">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
         <h1 class="mb-4 text-5xl font-bold text-gray-900">Legal notice</h1>
-        <p class="text-gray-600">Publisher and legal information for the Calcery website.</p>
+        <p class="text-gray-600">Legal information for calcery.com.</p>
       </div>
     </Container>
   </section>
@@ -22,17 +22,27 @@ import { siteConfig } from '../../lib/site.ts';
     <div class="mx-auto max-w-3xl space-y-10">
       <section class="rounded-xl border border-gray-200 bg-gray-50 p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">1) Website publisher</h2>
-        <div class="space-y-3 text-gray-700">
-          <p><strong>Publisher:</strong> {siteConfig.editorName}</p>
-          <p><strong>Address:</strong> {siteConfig.editorAddress}</p>
+        <div class="space-y-3 text-gray-700 leading-relaxed">
+          <p>The website <strong>https://calcery.com</strong> is published by <strong>{siteConfig.editorName}</strong>, a sole proprietorship.</p>
+          <p><strong>Legal representative:</strong> {siteConfig.legalRepresentative}</p>
+          <p><strong>Company registration:</strong> {siteConfig.rcsNumber}</p>
+          <p><strong>Registered office:</strong> {siteConfig.editorAddress}</p>
+          <p><strong>Business activity:</strong> {siteConfig.companyActivity}</p>
+          <p><strong>Domiciliation:</strong> {siteConfig.domiciliationProvider} ({siteConfig.domiciliationRcs})</p>
           <p><strong>Email:</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
-          <p><strong>Publication director:</strong> {siteConfig.editorName}</p>
-          <p><strong>Website:</strong> <a href={siteConfig.siteUrl} class="font-medium text-black hover:underline">{siteConfig.siteUrl}</a></p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">2) Hosting provider</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">2) Publication director</h2>
+        <div class="space-y-3 text-gray-700">
+          <p><strong>Publication director:</strong> {siteConfig.legalRepresentative}</p>
+          <p><strong>Contact:</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+        </div>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">3) Hosting provider</h2>
         <div class="space-y-3 text-gray-700">
           <p><strong>Provider:</strong> {siteConfig.hostingProvider}</p>
           <p><strong>Address:</strong> {siteConfig.hostingAddress}</p>
@@ -41,49 +51,49 @@ import { siteConfig } from '../../lib/site.ts';
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">3) Intellectual property</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Intellectual property</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
-          <p>All content on Calcery (texts, visual assets, layout, code, and branding elements) is protected by applicable intellectual property laws.</p>
-          <p>No reproduction, distribution, or reuse is allowed without prior written permission.</p>
+          <p>All content on Calcery (texts, design, source code, logos, and visual assets) is protected by applicable intellectual property laws.</p>
+          <p>No reproduction, distribution, extraction, or reuse is allowed without prior written permission.</p>
           <p>Calculators are provided for personal and informational use only.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Advertising and affiliate disclosure</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">5) Cookies and analytics</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
-          <p>The website may display affiliate links and, in the future, advertising placements including Google Adsense.</p>
-          <p>When an affiliate link generates a commission, this does not increase the price paid by users.</p>
-          <p>Calcery keeps editorial independence and clearly identifies sponsored content when applicable.</p>
+          <p>Calcery uses Google Analytics 4 (ID: <strong>{siteConfig.analyticsId}</strong>) only after explicit consent through the cookie banner.</p>
+          <p>Calculator inputs are processed locally in your browser and are not sent to Calcery servers.</p>
+          <p>For full details, please read the <a href="/en/confidentialite" class="font-medium text-black hover:underline">privacy policy</a>.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">5) Personal data and cookies</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Advertising and affiliate disclosure</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
-          <p>Calcery uses Google Analytics 4 (ID: <strong>{siteConfig.analyticsId}</strong>) only after explicit consent through the cookie banner.</p>
-          <p>Calculator inputs are processed locally in your browser and are not sent to Calcery servers.</p>
-          <p>For full details on data processing and your rights, read the <a href="/en/confidentialite" class="font-medium text-black hover:underline">privacy policy</a>.</p>
+          <p>The website may include affiliate links and advertising placements, including Google Adsense.</p>
+          <p>When an affiliate link generates a commission, this does not increase the user price.</p>
+          <p>Calcery maintains editorial independence and clearly identifies sponsored content when applicable.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-amber-200 bg-amber-50 p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Liability disclaimer</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Liability disclaimer</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
           <p>All content and calculator outputs are provided for informational purposes only and do not constitute financial, tax, legal, or investment advice.</p>
-          <p>Users remain responsible for decisions made from information published on this site.</p>
-          <p>Calcery is not liable for direct or indirect damages resulting from use of the website.</p>
+          <p>Users remain solely responsible for decisions made based on website information.</p>
+          <p>{siteConfig.editorName} is not liable for direct or indirect damages resulting from use of the website.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Applicable law</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">8) Applicable law</h2>
         <p class="text-gray-700 leading-relaxed">This legal notice is governed by French law. In case of dispute, French courts shall have jurisdiction unless mandatory law provides otherwise.</p>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8 text-center">
-        <h2 class="mb-4 text-3xl font-bold text-gray-900">8) Updates</h2>
-        <p class="text-gray-700">This legal notice may be updated at any time to reflect regulatory or product changes.</p>
+        <h2 class="mb-4 text-3xl font-bold text-gray-900">9) Updates</h2>
+        <p class="text-gray-700">This legal notice may be updated at any time to reflect legal or product changes.</p>
         <p class="mt-2 text-sm text-gray-600">Last update: <strong>{siteConfig.lastUpdated}</strong></p>
       </section>
     </div>

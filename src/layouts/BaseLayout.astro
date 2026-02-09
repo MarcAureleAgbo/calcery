@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import Analytics from '../components/Analytics.astro';
+import Adsense from '../components/Adsense.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
 import { SITE_URL } from '../lib/site';
@@ -53,7 +54,7 @@ const t = {
       tip: 'Pourboire',
       investing: 'Investissement',
       legalNotice: 'Mentions légales',
-      privacy: 'Confidentialité',
+      privacy: 'Politique de confidentialité',
       manageCookies: 'Gérer les cookies',
       rights: 'Tous les droits réservés.',
       madeForYou: 'Créé pour vous',
@@ -82,7 +83,7 @@ const t = {
       tip: 'Tip',
       investing: 'Investing',
       legalNotice: 'Legal notice',
-      privacy: 'Privacy',
+      privacy: 'Privacy policy',
       manageCookies: 'Manage cookies',
       rights: 'All rights reserved.',
       madeForYou: 'Built for you',
@@ -132,6 +133,7 @@ const isCurrentPath = (href: string) => {
       locale={currentLocale === 'en' ? 'en_US' : 'fr_FR'}
     />
     <Analytics />
+    <Adsense />
   </head>
 
   <body>
@@ -245,7 +247,7 @@ const isCurrentPath = (href: string) => {
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Calcery. {t.footer.rights} | {t.footer.madeForYou}</p>
+        <p>&copy; 2026 Maison Ellis. {t.footer.rights} | {t.footer.madeForYou}</p>
       </div>
     </footer>
 

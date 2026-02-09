@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/ui/Container.astro';
+import { siteConfig } from '../../lib/site.ts';
 ---
 
-<BaseLayout title="About - Calcery" description="Learn more about Calcery, our mission and our commitment to transparent financial tools." lang="en">
+<BaseLayout title="About - Calcery" description="Learn more about Calcery, its mission, and the publisher Maison Ellis." lang="en">
   <section class="border-b border-gray-200 bg-white py-20">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
@@ -40,7 +41,7 @@ import Container from '../../components/ui/Container.astro';
               <span class="flex-shrink-0 text-2xl font-bold text-black">✓</span>
               <div>
                 <h4 class="mb-1 font-semibold text-black">Spending control</h4>
-                <p class="text-gray-700">Measure recurring habits and improve your decisions over time.</p>
+                <p class="text-gray-700">Measure recurring habits and improve decisions over time.</p>
               </div>
             </li>
             <li class="flex gap-4">
@@ -57,25 +58,40 @@ import Container from '../../components/ui/Container.astro';
       </section>
 
       <section class="mb-16">
+        <h2 class="mb-8 text-4xl font-bold text-black">Website publisher</h2>
+
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-8">
+          <div class="space-y-3 text-gray-700 leading-relaxed">
+            <p>The website <strong>calcery.com</strong> is published by <strong>{siteConfig.editorName}</strong>.</p>
+            <p><strong>Legal representative:</strong> {siteConfig.legalRepresentative}</p>
+            <p><strong>Company registration:</strong> {siteConfig.rcsNumber}</p>
+            <p><strong>Address:</strong> {siteConfig.editorAddress}</p>
+            <p><strong>Business activity:</strong> {siteConfig.companyActivity}</p>
+            <p><strong>Domiciliation:</strong> {siteConfig.domiciliationProvider} ({siteConfig.domiciliationRcs})</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16">
         <h2 class="mb-8 text-4xl font-bold text-black">Transparency and responsibility</h2>
 
         <div class="mb-8 rounded-xl border border-gray-200 bg-gray-50 p-8">
           <h3 class="mb-6 text-2xl font-bold text-black">How our calculators work</h3>
           <div class="space-y-4 leading-relaxed text-gray-700">
             <p>Our tools provide <strong>informational estimates</strong> based on the values you enter. They are not personalized financial advice.</p>
-            <p>Calculations are executed directly in your browser. No server-side processing is required for the core tool logic.</p>
+            <p>Calculations run directly in your browser. No server-side processing is required for calculator inputs.</p>
             <p>We recommend that you:</p>
             <ul class="ml-2 list-inside list-disc space-y-2">
               <li>Cross-check values with official documents</li>
               <li>Adjust calculations to your personal situation</li>
-              <li>Consult a professional before major decisions</li>
+              <li>Consult a qualified professional before major decisions</li>
             </ul>
           </div>
         </div>
 
         <div class="rounded-xl border border-gray-200 bg-gray-50 p-8">
           <h3 class="mb-4 text-2xl font-bold text-black">Privacy first</h3>
-          <p class="leading-relaxed text-gray-700">Calcery does not collect personal data without a valid legal basis. Your calculations stay private on your device. Google Analytics is activated only after consent. Read our <a href="/en/confidentialite" class="font-medium text-black hover:underline">privacy policy</a> for full details.</p>
+          <p class="leading-relaxed text-gray-700">Calcery does not collect personal data without a valid legal basis. Google Analytics is activated only after consent. Read our <a href="/en/confidentialite" class="font-medium text-black hover:underline">privacy policy</a> for details.</p>
         </div>
       </section>
 
@@ -85,7 +101,7 @@ import Container from '../../components/ui/Container.astro';
           <p class="mb-6 text-lg text-gray-700">Questions, suggestions, or bug reports are welcome.</p>
           <p class="mb-8 text-gray-700">You can <a href="/en/contact" class="font-semibold text-black hover:underline">send us a message</a> anytime.</p>
           <div class="text-sm text-gray-600">
-            <p><strong>Maison Ellis</strong><br />60 Rue François 1er<br />75008 Paris, France</p>
+            <p><strong>{siteConfig.editorName}</strong><br />{siteConfig.editorAddress}</p>
           </div>
         </div>
       </section>

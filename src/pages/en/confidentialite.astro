@@ -6,14 +6,14 @@ import { siteConfig } from '../../lib/site.ts';
 
 <BaseLayout
   title="Privacy policy - Calcery"
-  description="Calcery privacy policy: data processing, Google Analytics consent, cookie usage, retention periods, legal basis, and GDPR rights."
+  description="Privacy policy for Calcery: data controller Maison Ellis, processing purposes, GA4 consent, retention periods, and GDPR rights."
   lang="en"
 >
   <section class="border-b border-gray-100 bg-gradient-to-b from-secondary/8 via-white to-primary/8 py-16">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
         <h1 class="mb-4 text-5xl font-bold text-gray-900">Privacy policy</h1>
-        <p class="text-gray-600">Clear information about how personal data is processed on Calcery.</p>
+        <p class="text-gray-600">Transparent information on how your personal data is handled.</p>
       </div>
     </Container>
   </section>
@@ -24,8 +24,11 @@ import { siteConfig } from '../../lib/site.ts';
         <h2 class="mb-5 text-3xl font-bold text-gray-900">1) Data controller</h2>
         <div class="space-y-2 text-gray-700">
           <p><strong>Controller:</strong> {siteConfig.editorName}</p>
+          <p><strong>Legal representative:</strong> {siteConfig.legalRepresentative}</p>
+          <p><strong>Company registration:</strong> {siteConfig.rcsNumber}</p>
           <p><strong>Address:</strong> {siteConfig.editorAddress}</p>
           <p><strong>Privacy contact:</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+          <p><strong>Postal contact:</strong> {siteConfig.editorName}, {siteConfig.editorAddress}</p>
         </div>
       </section>
 
@@ -46,7 +49,7 @@ import { siteConfig } from '../../lib/site.ts';
           </div>
           <div>
             <h3 class="mb-2 text-lg font-semibold text-gray-900">Technical and security logs</h3>
-            <p>Cloudflare may process technical logs (IP address, browser metadata, security events) to ensure platform reliability and security.</p>
+            <p>Cloudflare may process technical logs (IP address, user agent, and security events) to ensure website reliability and security.</p>
           </div>
           <p><strong>Important:</strong> Calculator values are processed locally in your browser and are not transmitted to Calcery servers.</p>
         </div>
@@ -64,7 +67,7 @@ import { siteConfig } from '../../lib/site.ts';
             </thead>
             <tbody class="text-gray-700">
               <tr class="border-b border-gray-100">
-                <td class="py-2 pr-4">Responding to contact requests</td>
+                <td class="py-2 pr-4">Replying to contact requests</td>
                 <td class="py-2 pr-4">Consent / pre-contractual steps</td>
               </tr>
               <tr class="border-b border-gray-100">
@@ -72,7 +75,7 @@ import { siteConfig } from '../../lib/site.ts';
                 <td class="py-2 pr-4">Consent (cookie banner)</td>
               </tr>
               <tr>
-                <td class="py-2 pr-4">Security, fraud prevention, platform stability</td>
+                <td class="py-2 pr-4">Security, fraud prevention, and availability</td>
                 <td class="py-2 pr-4">Legitimate interest</td>
               </tr>
             </tbody>
@@ -83,7 +86,7 @@ import { siteConfig } from '../../lib/site.ts';
       <section class="rounded-xl border border-gray-200 bg-white p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Data recipients</h2>
         <ul class="ml-4 list-disc space-y-2 text-gray-700 leading-relaxed">
-          <li>{siteConfig.editorName}, as website publisher;</li>
+          <li>{siteConfig.editorName}, as website publisher and controller;</li>
           <li>{siteConfig.hostingProvider}, as hosting and infrastructure provider;</li>
           <li>{siteConfig.analyticsProvider}, only if analytics cookies are accepted.</li>
         </ul>
@@ -91,14 +94,14 @@ import { siteConfig } from '../../lib/site.ts';
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">5) International transfers</h2>
-        <p class="text-gray-700 leading-relaxed">Some service providers (including Google LLC and Cloudflare Inc.) may process data outside the European Union. These transfers rely on appropriate safeguards such as Standard Contractual Clauses and provider security controls.</p>
+        <p class="text-gray-700 leading-relaxed">Some service providers (including Google LLC and Cloudflare Inc.) may process data outside the European Union. These transfers rely on appropriate safeguards such as Standard Contractual Clauses and provider security measures.</p>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Data retention</h2>
         <ul class="ml-4 list-disc space-y-2 text-gray-700 leading-relaxed">
-          <li>Contact requests: up to 12 months after processing.</li>
-          <li>GA4 analytics data: maximum retention set to 14 months.</li>
+          <li>Contact requests: up to 12 months after request resolution.</li>
+          <li>GA4 analytics data: maximum retention configured to 14 months.</li>
           <li>Cookie consent preference: 6 months, then renewed consent request.</li>
         </ul>
       </section>
@@ -106,16 +109,16 @@ import { siteConfig } from '../../lib/site.ts';
       <section class="rounded-xl border border-gray-200 bg-gray-50 p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Your rights</h2>
         <p class="mb-4 text-gray-700 leading-relaxed">Under GDPR, you may request access, rectification, erasure, restriction, portability, objection, and withdrawal of consent.</p>
-        <p class="mb-4 text-gray-700 leading-relaxed">To exercise your rights, contact us at <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a>.</p>
-        <p class="text-gray-700 leading-relaxed">You may also submit a complaint to your local data protection authority (for France: CNIL, <a href="https://www.cnil.fr" class="font-medium text-black hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>).</p>
+        <p class="mb-4 text-gray-700 leading-relaxed">To exercise your rights, contact <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a> or write to {siteConfig.editorName}, {siteConfig.editorAddress}.</p>
+        <p class="text-gray-700 leading-relaxed">You may also file a complaint with your local data protection authority (for France: CNIL, <a href="https://www.cnil.fr" class="font-medium text-black hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>).</p>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">8) Cookies and consent settings</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
-          <p>The website uses essential cookies for core functionality and a consent cookie to remember your preference.</p>
-          <p>Analytics cookies are only activated after your explicit consent via the cookie banner.</p>
-          <p>You can update your choice at any time using the <strong>"Manage cookies"</strong> link in the website footer.</p>
+          <p>The website uses essential cookies for core functionality and a consent cookie to store your preference.</p>
+          <p>Analytics cookies are enabled only after explicit consent via the cookie banner.</p>
+          <p>You can update your choice at any time using the <strong>"Manage cookies"</strong> link in the footer.</p>
         </div>
       </section>
 

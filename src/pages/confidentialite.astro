@@ -6,13 +6,13 @@ import { siteConfig } from '../lib/site.ts';
 
 <BaseLayout
   title="Politique de confidentialité - Calcery"
-  description="Politique de confidentialité Calcery : données collectées, Google Analytics, cookies, base légale, durées de conservation et droits RGPD."
+  description="Politique de confidentialité Calcery : responsable Maison Ellis, finalités, Google Analytics 4, conservation des données et droits RGPD."
 >
   <section class="border-b border-gray-100 bg-gradient-to-b from-secondary/8 via-white to-primary/8 py-16">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
         <h1 class="mb-4 text-5xl font-bold text-gray-900">Politique de confidentialité</h1>
-        <p class="text-gray-600">Transparence sur la collecte et l'utilisation de vos données personnelles.</p>
+        <p class="text-gray-600">Transparence sur la collecte, l'utilisation et la protection de vos données personnelles.</p>
       </div>
     </Container>
   </section>
@@ -23,8 +23,11 @@ import { siteConfig } from '../lib/site.ts';
         <h2 class="mb-5 text-3xl font-bold text-gray-900">1) Responsable du traitement</h2>
         <div class="space-y-2 text-gray-700">
           <p><strong>Responsable :</strong> {siteConfig.editorName}</p>
+          <p><strong>Responsable légale :</strong> {siteConfig.legalRepresentative}</p>
+          <p><strong>RCS :</strong> {siteConfig.rcsNumber}</p>
           <p><strong>Adresse :</strong> {siteConfig.editorAddress}</p>
           <p><strong>Contact RGPD :</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+          <p><strong>Adresse courrier RGPD :</strong> {siteConfig.editorName}, {siteConfig.editorAddress}</p>
         </div>
       </section>
 
@@ -44,8 +47,8 @@ import { siteConfig } from '../lib/site.ts';
             <p>Nous utilisons {siteConfig.analyticsProvider} (ID {siteConfig.analyticsId}) pour mesurer la fréquentation du site, les pages vues et les interactions agrégées.</p>
           </div>
           <div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900">Données techniques</h3>
-            <p>L'hébergeur Cloudflare peut traiter des journaux techniques (adresse IP, user-agent, sécurité réseau) afin d'assurer la disponibilité et la sécurité du service.</p>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">Données techniques et sécurité</h3>
+            <p>Notre hébergeur Cloudflare peut traiter des journaux techniques (adresse IP, agent utilisateur, événements de sécurité) afin d'assurer la disponibilité et la sécurité du site.</p>
           </div>
           <p><strong>Important :</strong> Les données saisies dans les calculateurs restent localement dans votre navigateur.</p>
         </div>
@@ -105,7 +108,7 @@ import { siteConfig } from '../lib/site.ts';
       <section class="rounded-xl border border-gray-200 bg-gray-50 p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Vos droits RGPD</h2>
         <p class="mb-4 text-gray-700 leading-relaxed">Conformément au RGPD, vous disposez des droits suivants : accès, rectification, effacement, opposition, limitation, portabilité et retrait du consentement.</p>
-        <p class="mb-4 text-gray-700 leading-relaxed">Vous pouvez exercer vos droits à l'adresse <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a>.</p>
+        <p class="mb-4 text-gray-700 leading-relaxed">Vous pouvez exercer vos droits à l'adresse <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a> ou par courrier à {siteConfig.editorName}, {siteConfig.editorAddress}.</p>
         <p class="text-gray-700 leading-relaxed">Si vous estimez que vos droits ne sont pas respectés, vous pouvez également déposer une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="font-medium text-black hover:underline">www.cnil.fr</a>.</p>
       </section>
 

@@ -6,13 +6,13 @@ import { siteConfig } from '../lib/site.ts';
 
 <BaseLayout
   title="Mentions légales - Calcery"
-  description="Mentions légales de Calcery : éditeur, hébergement Cloudflare, propriété intellectuelle, monétisation, cookies et responsabilité."
+  description="Mentions légales de calcery.com : éditeur Maison Ellis, responsable légale, RCS, domiciliation, hébergement Cloudflare, cookies et responsabilité."
 >
   <section class="border-b border-gray-200 bg-white py-16">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
         <h1 class="mb-4 text-5xl font-bold text-gray-900">Mentions légales</h1>
-        <p class="text-gray-600">Informations légales du site conformément à la loi n° 2004-575 du 21 juin 2004 (LCEN).</p>
+        <p class="text-gray-600">Informations légales du site calcery.com conformément à la loi n° 2004-575 du 21 juin 2004 (LCEN).</p>
       </div>
     </Container>
   </section>
@@ -21,17 +21,27 @@ import { siteConfig } from '../lib/site.ts';
     <div class="mx-auto max-w-3xl space-y-10">
       <section class="rounded-xl border border-gray-200 bg-gray-50 p-8">
         <h2 class="mb-5 text-3xl font-bold text-gray-900">1) Éditeur du site</h2>
-        <div class="space-y-3 text-gray-700">
-          <p><strong>Nom de l'éditeur :</strong> {siteConfig.editorName}</p>
-          <p><strong>Adresse :</strong> {siteConfig.editorAddress}</p>
+        <div class="space-y-3 text-gray-700 leading-relaxed">
+          <p>Le site <strong>https://calcery.com</strong> est édité par <strong>{siteConfig.editorName}</strong>, entreprise individuelle.</p>
+          <p><strong>Responsable légale :</strong> {siteConfig.legalRepresentative}</p>
+          <p><strong>RCS :</strong> {siteConfig.rcsNumber}</p>
+          <p><strong>Siège social :</strong> {siteConfig.editorAddress}</p>
+          <p><strong>Activité :</strong> {siteConfig.companyActivity}</p>
+          <p><strong>Domiciliation :</strong> {siteConfig.domiciliationProvider} ({siteConfig.domiciliationRcs})</p>
           <p><strong>Email :</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
-          <p><strong>Directeur de publication :</strong> {siteConfig.editorName}</p>
-          <p><strong>Site :</strong> <a href={siteConfig.siteUrl} class="font-medium text-black hover:underline">{siteConfig.siteUrl}</a></p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">2) Hébergement</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">2) Directeur de publication</h2>
+        <div class="space-y-3 text-gray-700">
+          <p><strong>Directeur de publication :</strong> {siteConfig.legalRepresentative}</p>
+          <p><strong>Contact :</strong> <a href={`mailto:${siteConfig.siteEmail}`} class="font-medium text-black hover:underline">{siteConfig.siteEmail}</a></p>
+        </div>
+      </section>
+
+      <section class="rounded-xl border border-gray-200 bg-white p-8">
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">3) Hébergement</h2>
         <div class="space-y-3 text-gray-700">
           <p><strong>Hébergeur :</strong> {siteConfig.hostingProvider}</p>
           <p><strong>Adresse :</strong> {siteConfig.hostingAddress}</p>
@@ -40,7 +50,7 @@ import { siteConfig } from '../lib/site.ts';
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">3) Propriété intellectuelle</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Propriété intellectuelle</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
           <p>L'ensemble des contenus présents sur Calcery (textes, design, code, logos, éléments graphiques) est protégé par le droit de la propriété intellectuelle.</p>
           <p>Toute reproduction, diffusion, extraction ou réutilisation, totale ou partielle, sans autorisation préalable écrite est interdite.</p>
@@ -49,39 +59,39 @@ import { siteConfig } from '../lib/site.ts';
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">4) Publicité et affiliation</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">5) Cookies et mesure d'audience</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
-          <p>Le site peut intégrer des liens d'affiliation et, à terme, des encarts publicitaires (notamment Google Adsense).</p>
-          <p>Lorsqu'un lien d'affiliation génère une commission, cela n'entraîne aucun surcoût pour l'utilisateur.</p>
-          <p>Calcery s'engage à conserver une ligne éditoriale indépendante et à indiquer clairement tout contenu sponsorisé.</p>
+          <p>Calcery utilise Google Analytics 4 (ID : <strong>{siteConfig.analyticsId}</strong>) uniquement après consentement explicite via le bandeau cookies.</p>
+          <p>Les calculateurs fonctionnent localement dans le navigateur : les données de calcul ne sont pas envoyées aux serveurs de Calcery.</p>
+          <p>Pour plus d'informations, consultez la <a href="/confidentialite" class="font-medium text-black hover:underline">politique de confidentialité</a>.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">5) Données personnelles et cookies</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Publicité et affiliation</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
-          <p>Calcery utilise Google Analytics 4 (ID: <strong>{siteConfig.analyticsId}</strong>) uniquement après consentement via le bandeau cookies.</p>
-          <p>Les calculateurs fonctionnent en local dans le navigateur : les données saisies pour les calculs ne sont pas envoyées aux serveurs de Calcery.</p>
-          <p>Pour plus de détails sur les traitements, les durées de conservation et vos droits, consultez la <a href="/confidentialite" class="font-medium text-black hover:underline">politique de confidentialité</a>.</p>
+          <p>Le site peut intégrer des liens d'affiliation et des encarts publicitaires (notamment Google Adsense).</p>
+          <p>Lorsqu'un lien d'affiliation génère une commission, cela n'entraîne aucun surcoût pour l'utilisateur.</p>
+          <p>Calcery conserve une ligne éditoriale indépendante et identifie clairement tout contenu sponsorisé.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-amber-200 bg-amber-50 p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">6) Limitation de responsabilité</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Limitation de responsabilité</h2>
         <div class="space-y-3 text-gray-700 leading-relaxed">
           <p>Les informations et résultats affichés sont fournis à titre indicatif et ne constituent pas un conseil financier, fiscal, juridique ou d'investissement.</p>
           <p>L'utilisateur reste seul responsable de l'utilisation des informations diffusées sur le site.</p>
-          <p>Calcery ne pourra être tenu responsable des dommages directs ou indirects liés à l'utilisation du site.</p>
+          <p>{siteConfig.editorName} ne pourra être tenu responsable des dommages directs ou indirects liés à l'utilisation du site.</p>
         </div>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 class="mb-5 text-3xl font-bold text-gray-900">7) Droit applicable</h2>
+        <h2 class="mb-5 text-3xl font-bold text-gray-900">8) Droit applicable</h2>
         <p class="text-gray-700 leading-relaxed">Les présentes mentions légales sont régies par le droit français. En cas de litige, et à défaut de résolution amiable, les juridictions françaises seront compétentes.</p>
       </section>
 
       <section class="rounded-xl border border-gray-200 bg-white p-8 text-center">
-        <h2 class="mb-4 text-3xl font-bold text-gray-900">8) Mise à jour</h2>
+        <h2 class="mb-4 text-3xl font-bold text-gray-900">9) Mise à jour</h2>
         <p class="text-gray-700">Ces mentions légales peuvent être modifiées à tout moment pour refléter l'évolution du site ou du cadre réglementaire.</p>
         <p class="mt-2 text-sm text-gray-600">Dernière mise à jour : <strong>{siteConfig.lastUpdated}</strong></p>
       </section>

@@ -50,6 +50,13 @@ import { siteConfig } from '../lib/site.ts';
             <textarea id="message" name="message" rows="7" required class="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Décrivez votre demande avec le plus de détails possible..."></textarea>
           </div>
 
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
+            <p><strong>Responsable de traitement :</strong> {siteConfig.editorName} ({siteConfig.legalRepresentative})</p>
+            <p><strong>RCS :</strong> {siteConfig.rcsNumber}</p>
+            <p><strong>Adresse :</strong> {siteConfig.editorAddress}</p>
+            <p class="mt-2">Les données transmises via ce formulaire sont utilisées uniquement pour traiter votre demande de contact.</p>
+          </div>
+
           <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
             <label class="flex items-start gap-3 text-sm text-gray-700" for="privacy-consent">
               <input id="privacy-consent" name="privacy-consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-black focus:ring-black" />
@@ -87,6 +94,7 @@ import { siteConfig } from '../lib/site.ts';
             <strong>{siteConfig.editorName}</strong><br />
             {siteConfig.editorAddress}
           </p>
+          <p class="mt-2 text-sm text-gray-600">Domiciliation : {siteConfig.domiciliationProvider} ({siteConfig.domiciliationRcs})</p>
         </div>
       </div>
 
