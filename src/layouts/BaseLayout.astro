@@ -6,7 +6,7 @@ import Adsense from '../components/Adsense.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
 import { SITE_URL } from '../lib/site';
-import { getCalculatorRoute } from '../lib/calculator-taxonomy';
+import { CATEGORIES, getCalculatorRoute, getCategoryRoute, getCalculatorsByCategory } from '../lib/calculator-taxonomy';
 
 export interface Props {
   title?: string;
@@ -104,31 +104,39 @@ const navItems = [
   { href: '/contact', label: t.nav.contact },
 ];
 
-const categoryLinks =
-  currentLocale === 'en'
-    ? [
-        { href: '/en/finance', label: 'Finance' },
-        { href: '/en/health', label: 'Health' },
-        { href: '/en/real-estate', label: 'Real estate' },
-        { href: '/en/daily-life', label: 'Daily life' },
-        { href: '/en/home', label: 'Home' },
-        { href: '/en/education', label: 'Education' },
-      ]
-    : [
-        { href: '/fr/finance', label: 'Finance' },
-        { href: '/fr/sante', label: 'Santé' },
-        { href: '/fr/immobilier', label: 'Immobilier' },
-        { href: '/fr/vie-pratique', label: 'Vie pratique' },
-        { href: '/fr/maison-travaux', label: 'Maison & travaux' },
-        { href: '/fr/education', label: 'Éducation' },
-      ];
+const categoryLabelByKey = {
+  fr: {
+    finance: 'Finance',
+    health: 'Sante',
+    realEstate: 'Immobilier',
+    dailyLife: 'Vie pratique',
+    home: 'Maison & travaux',
+    education: 'Education',
+  },
+  en: {
+    finance: 'Finance',
+    health: 'Health',
+    realEstate: 'Real estate',
+    dailyLife: 'Daily life',
+    home: 'Home',
+    education: 'Education',
+  },
+};
+
+const categoryLinks = CATEGORIES.map((category) => ({
+  key: category.key,
+  href: getCategoryRoute(currentLocale, category.key),
+  label: categoryLabelByKey[currentLocale][category.key],
+  tools: getCalculatorsByCategory(category.key).map((calculator) => ({
+    href: getCalculatorRoute(currentLocale, calculator.slug),
+    label: calculator.name[currentLocale],
+  })),
+}));
 
 const withLocale = (href: string) => localizePath(href, currentLocale);
 
-const isCalculatorCategoryPath =
-  currentLocale === 'en'
-    ? /^\/(finance|health|real-estate|daily-life|home|education)(\/|$)/.test(normalizedPath)
-    : /^\/(finance|sante|immobilier|vie-pratique|maison-travaux|education)(\/|$)/.test(normalizedPath);
+const categorySlugs = CATEGORIES.map((category) => category.slug[currentLocale]);
+const isCalculatorCategoryPath = categorySlugs.some((slug) => normalizedPath === `/${slug}` || normalizedPath.startsWith(`/${slug}/`));
 
 const isCurrentPath = (href: string) => {
   const normalizedHref = (stripLocalePrefix(href).replace(/\/+$/, '') || '/');
@@ -205,13 +213,31 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
                 </a>
                 <div class="nav-dropdown-menu" aria-label={t.nav.categories}>
                   {categoryLinks.map((category) => (
-                    <a
-                      href={category.href}
-                      class:list={{ 'is-active': isCurrentPath(category.href) }}
-                      aria-current={isCurrentPath(category.href) ? 'page' : undefined}
-                    >
-                      {category.label}
-                    </a>
+                    <div class="nav-dropdown-group">
+                      <a
+                        href={category.href}
+                        class:list={{ 'nav-dropdown-category': true, 'is-active': isCurrentPath(category.href) }}
+                        aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+                      >
+                        {category.label}
+                      </a>
+
+                      {category.tools.length > 0 ? (
+                        <div class="nav-dropdown-tools">
+                          {category.tools.map((tool) => (
+                            <a
+                              href={tool.href}
+                              class:list={{ 'nav-dropdown-tool': true, 'is-active': isCurrentPath(tool.href) }}
+                              aria-current={isCurrentPath(tool.href) ? 'page' : undefined}
+                            >
+                              {tool.label}
+                            </a>
+                          ))}
+                        </div>
+                      ) : (
+                        <span class="nav-dropdown-empty">{currentLocale === 'en' ? 'Soon' : 'Bientot'}</span>
+                      )}
+                    </div>
                   ))}
                 </div>
               </li>
@@ -257,13 +283,31 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
         <div class="mobile-categories">
           <p class="mobile-categories-title">{t.nav.categories}</p>
           {categoryLinks.map((category) => (
-            <a
-              href={category.href}
-              class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
-              aria-current={isCurrentPath(category.href) ? 'page' : undefined}
-            >
-              {category.label}
-            </a>
+            <div class="mobile-category-group">
+              <a
+                href={category.href}
+                class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
+                aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+              >
+                {category.label}
+              </a>
+
+              {category.tools.length > 0 ? (
+                <div class="mobile-category-tools">
+                  {category.tools.map((tool) => (
+                    <a
+                      href={tool.href}
+                      class:list={{ 'mobile-category-tool': true, 'is-active': isCurrentPath(tool.href) }}
+                      aria-current={isCurrentPath(tool.href) ? 'page' : undefined}
+                    >
+                      {tool.label}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <span class="mobile-category-empty">{currentLocale === 'en' ? 'Soon' : 'Bientot'}</span>
+              )}
+            </div>
           ))}
         </div>
         <div class="p-4">
