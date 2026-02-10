@@ -28,11 +28,11 @@ Méthode simple:
 - bon service: 8 à 12%
 - service exceptionnel: 15%+
 
-Le [calculateur pourboire](/calculateurs/pourboire) permet de vérifier instantanément le total et le montant par personne.
+Le [calculateur pourboire](/fr/vie-pratique/pourboire) permet de vérifier instantanément le total et le montant par personne.
 
 ## Pour les groupes
 
-Quand plusieurs personnes paient, définissez d'abord le pourcentage, puis divisez le total final. Le [calculateur partage d'addition](/calculateurs/partage-addition) simplifie la répartition.
+Quand plusieurs personnes paient, définissez d'abord le pourcentage, puis divisez le total final. Le [calculateur partage d'addition](/fr/vie-pratique/partage-addition) simplifie la répartition.
 
 ## Erreurs fréquentes
 

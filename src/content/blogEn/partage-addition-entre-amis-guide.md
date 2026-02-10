@@ -23,11 +23,11 @@ Two common options:
 - equal split
 - weighted split based on consumption
 
-Use the [split bill calculator](/en/calculateurs/partage-addition) for a fast and transparent result.
+Use the [split bill calculator](/en/daily-life/partage-addition) for a fast and transparent result.
 
 ## Rule 3: handle tip explicitly
 
-Decide tip policy first, then apply the same split rule. For quick checks, use the [tip calculator](/en/calculateurs/pourboire).
+Decide tip policy first, then apply the same split rule. For quick checks, use the [tip calculator](/en/daily-life/pourboire).
 
 ## Rule 4: define rounding
 

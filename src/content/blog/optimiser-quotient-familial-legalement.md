@@ -33,7 +33,7 @@ Ces cas peuvent modifier le nombre de parts et l'estimation finale.
 3. Simulez deux versions si votre situation peut évoluer.
 4. Comparez l'impact mensuel sur votre budget.
 
-Le [calculateur d'impôt](/calculateurs/impot-revenu) est utile pour obtenir rapidement un ordre de grandeur.
+Le [calculateur d'impôt](/fr/finance/impot-revenu) est utile pour obtenir rapidement un ordre de grandeur.
 
 ## Bonnes pratiques
 

@@ -23,7 +23,7 @@ Tax household shares can materially impact outcomes. Validate your current famil
 
 ## Step 3: run scenario ranges
 
-Use the [income tax calculator](/en/calculateurs/impot-revenu) with three versions:
+Use the [income tax calculator](/en/finance/impot-revenu) with three versions:
 - conservative
 - base
 - high

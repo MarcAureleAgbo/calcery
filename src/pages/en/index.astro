@@ -5,6 +5,7 @@ import ToolCard from '../../components/ToolCard.astro';
 import FeatureCard from '../../components/FeatureCard.astro';
 import StepCard from '../../components/StepCard.astro';
 import { SITE_URL } from '../../lib/site';
+import { getCalculatorRoute } from '../../lib/calculator-taxonomy';
 
 const baseSiteUrl = SITE_URL;
 
@@ -28,12 +29,12 @@ const featuredToolsSchema = {
   '@type': 'ItemList',
   name: 'Calcery financial calculators',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, url: `${baseSiteUrl}/en/calculateurs/budget-mensuel` },
-    { '@type': 'ListItem', position: 2, url: `${baseSiteUrl}/en/calculateurs/epargne-automatique` },
-    { '@type': 'ListItem', position: 3, url: `${baseSiteUrl}/en/calculateurs/pourboire` },
-    { '@type': 'ListItem', position: 4, url: `${baseSiteUrl}/en/calculateurs/partage-addition` },
-    { '@type': 'ListItem', position: 5, url: `${baseSiteUrl}/en/calculateurs/economies-petites-depenses` },
-    { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}/en/calculateurs/interets-composes` },
+    { '@type': 'ListItem', position: 1, url: `${baseSiteUrl}${getCalculatorRoute('en', 'budget-mensuel')}` },
+    { '@type': 'ListItem', position: 2, url: `${baseSiteUrl}${getCalculatorRoute('en', 'epargne-automatique')}` },
+    { '@type': 'ListItem', position: 3, url: `${baseSiteUrl}${getCalculatorRoute('en', 'pourboire')}` },
+    { '@type': 'ListItem', position: 4, url: `${baseSiteUrl}${getCalculatorRoute('en', 'partage-addition')}` },
+    { '@type': 'ListItem', position: 5, url: `${baseSiteUrl}${getCalculatorRoute('en', 'economies-petites-depenses')}` },
+    { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}${getCalculatorRoute('en', 'interets-composes')}` },
   ],
 };
 ---
@@ -62,42 +63,42 @@ const featuredToolsSchema = {
         icon="💰"
         title="Monthly budget"
         description="Balance your income and expenses for a clear view of your financial situation."
-        href="/en/calculateurs/budget-mensuel"
+        href={getCalculatorRoute('en', 'budget-mensuel')}
         ctaLabel="Try"
       />
       <ToolCard
         icon="📈"
         title="Automatic savings"
         description="Reach your savings goals with a consistent and practical monthly plan."
-        href="/en/calculateurs/epargne-automatique"
+        href={getCalculatorRoute('en', 'epargne-automatique')}
         ctaLabel="Try"
       />
       <ToolCard
         icon="🍽️"
         title="Tip calculator"
         description="Calculate the right tip amount instantly based on your preferences."
-        href="/en/calculateurs/pourboire"
+        href={getCalculatorRoute('en', 'pourboire')}
         ctaLabel="Try"
       />
       <ToolCard
         icon="👥"
         title="Split bill"
         description="Split the bill fairly between friends in just a few seconds."
-        href="/en/calculateurs/partage-addition"
+        href={getCalculatorRoute('en', 'partage-addition')}
         ctaLabel="Try"
       />
       <ToolCard
         icon="☕"
         title="Small expense savings"
         description="See how repeated small habits can impact your savings over time."
-        href="/en/calculateurs/economies-petites-depenses"
+        href={getCalculatorRoute('en', 'economies-petites-depenses')}
         ctaLabel="Try"
       />
       <ToolCard
         icon="📊"
         title="Investing"
         description="Estimate your future returns with compound interest and plan ahead."
-        href="/en/calculateurs/interets-composes"
+        href={getCalculatorRoute('en', 'interets-composes')}
         ctaLabel="Try"
       />
     </div>

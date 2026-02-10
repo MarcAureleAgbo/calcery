@@ -23,7 +23,7 @@ Consistency matters as much as return. Small recurring amounts can produce stron
 
 ## Mistake 3: unrealistic assumptions
 
-Overly optimistic return assumptions can lead to poor planning. Test conservative, base, and optimistic cases with the [compound interest calculator](/en/calculateurs/interets-composes).
+Overly optimistic return assumptions can lead to poor planning. Test conservative, base, and optimistic cases with the [compound interest calculator](/en/finance/interets-composes).
 
 ## Mistake 4: ignoring inflation
 

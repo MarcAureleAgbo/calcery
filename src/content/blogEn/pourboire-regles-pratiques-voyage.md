@@ -27,11 +27,11 @@ In some countries tipping is expected; in others, less common. Adapting to local
 - good service: 8% to 12%
 - exceptional service: 15%+
 
-Use the [tip calculator](/en/calculateurs/pourboire) for instant totals and per-person amounts.
+Use the [tip calculator](/en/daily-life/pourboire) for instant totals and per-person amounts.
 
 ## For groups
 
-Agree on tip percentage first, then split the final amount with the [split bill calculator](/en/calculateurs/partage-addition).
+Agree on tip percentage first, then split the final amount with the [split bill calculator](/en/daily-life/partage-addition).
 
 ## Conclusion
 

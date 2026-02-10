@@ -20,7 +20,7 @@ Imaginons une personne qui dépense 5€ par jour en moyenne pour des achats imp
 - Par mois : 150€
 - Par an : 1825€
 
-Ces dépenses, apparemment mineures, équivalent à un salaire mensuel supplémentaire. Utilisez notre [calculateur d'économies sur petites dépenses](/calculateurs/economies-petites-depenses) pour estimer l'impact de vos habitudes.
+Ces dépenses, apparemment mineures, équivalent à un salaire mensuel supplémentaire. Utilisez notre [calculateur d'économies sur petites dépenses](/fr/vie-pratique/economies-petites-depenses) pour estimer l'impact de vos habitudes.
 
 ## Les principales catégories de petites dépenses
 
@@ -48,7 +48,7 @@ Notez pendant une semaine toutes vos dépenses inférieures à 10€. Utilisez u
 Passez en revue vos transactions des derniers mois pour identifier les patterns.
 
 ### 3. Utilisez des outils de suivi
-Notre [calculateur de budget mensuel](/calculateurs/budget-mensuel) peut vous aider à catégoriser vos dépenses.
+Notre [calculateur de budget mensuel](/fr/finance/budget-mensuel) peut vous aider à catégoriser vos dépenses.
 
 ## Stratégies pour réduire les petites dépenses
 
@@ -107,4 +107,4 @@ Impliquez-les dans le suivi et partagez les économies réalisées.
 
 ## Conclusion
 
-Maîtriser les petites dépenses permet de dégager des ressources significatives pour vos projets importants. Commencez par identifier vos habitudes avec notre [calculateur d'économies sur petites dépenses](/calculateurs/economies-petites-depenses), puis appliquez progressivement des changements simples. La clé du succès réside dans la constance et la motivation.
+Maîtriser les petites dépenses permet de dégager des ressources significatives pour vos projets importants. Commencez par identifier vos habitudes avec notre [calculateur d'économies sur petites dépenses](/fr/vie-pratique/economies-petites-depenses), puis appliquez progressivement des changements simples. La clé du succès réside dans la constance et la motivation.

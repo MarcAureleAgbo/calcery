@@ -23,11 +23,11 @@ Deux options principales:
 - partage égalitaire
 - partage pondéré selon consommation
 
-Le [calculateur partage d'addition](/calculateurs/partage-addition) est idéal pour un split rapide et transparent.
+Le [calculateur partage d'addition](/fr/vie-pratique/partage-addition) est idéal pour un split rapide et transparent.
 
 ## Règle 3: traiter le pourboire séparément
 
-Décidez d'abord si le pourboire est inclus ou non, puis appliquez le même mode de répartition. Si besoin, utilisez le [calculateur pourboire](/calculateurs/pourboire).
+Décidez d'abord si le pourboire est inclus ou non, puis appliquez le même mode de répartition. Si besoin, utilisez le [calculateur pourboire](/fr/vie-pratique/pourboire).
 
 ## Règle 4: gérer les arrondis
 

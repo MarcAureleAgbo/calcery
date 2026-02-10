@@ -26,7 +26,7 @@ Example:
 - months 4 to 6: 110 EUR
 - months 7 to 12: 140 EUR
 
-Use the [automatic savings calculator](/en/calculateurs/epargne-automatique) to test scenarios.
+Use the [automatic savings calculator](/en/finance/epargne-automatique) to test scenarios.
 
 ## Tie savings to a concrete goal
 

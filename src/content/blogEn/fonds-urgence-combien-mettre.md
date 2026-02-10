@@ -30,7 +30,7 @@ Count only essential costs:
 - healthcare
 - non-negotiable family expenses
 
-Use the [monthly budget calculator](/en/calculateurs/budget-mensuel) to isolate that core amount.
+Use the [monthly budget calculator](/en/finance/budget-mensuel) to isolate that core amount.
 
 ## Build steadily
 

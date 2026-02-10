@@ -9,6 +9,8 @@ import type { Locale } from '../lib/i18n';
 export interface Props {
   title: string;
   description: string;
+  metaTitle?: string;
+  metaDescription?: string;
   breadcrumbs?: BreadcrumbItem[];
   faqs?: FAQItem[];
   updatedAt?: string;
@@ -20,6 +22,8 @@ export interface Props {
 const {
   title,
   description,
+  metaTitle = title,
+  metaDescription = description,
   breadcrumbs = [],
   faqs = [],
   updatedAt,
@@ -65,7 +69,7 @@ const t = {
 }[lang];
 ---
 
-<BaseLayout title={title} description={description} lang={lang}>
+<BaseLayout title={metaTitle} description={metaDescription} lang={lang}>
   <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white pb-10 pt-8">
     <Container>
       <div class="mx-auto max-w-5xl">

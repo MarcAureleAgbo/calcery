@@ -26,7 +26,7 @@ Cette répartition permet de couvrir les dépenses indispensables tout en laissa
 
 ### 1. Calculez vos revenus nets mensuels
 
-Commencez par déterminer votre revenu mensuel net. Pour un salaire de 2500€ brut, après déductions, vous pourriez avoir environ 2000€ net. Utilisez notre [calculateur de budget mensuel](/calculateurs/budget-mensuel) pour estimer précisément vos revenus.
+Commencez par déterminer votre revenu mensuel net. Pour un salaire de 2500€ brut, après déductions, vous pourriez avoir environ 2000€ net. Utilisez notre [calculateur de budget mensuel](/fr/finance/budget-mensuel) pour estimer précisément vos revenus.
 
 ### 2. Identifiez vos besoins essentiels (50%)
 
@@ -57,7 +57,7 @@ L'épargne inclut :
 - Objectifs spécifiques (voyage, achat)
 - Remboursement de dettes
 
-Utilisez notre [simulateur d'épargne automatique](/calculateurs/epargne-automatique) pour planifier vos objectifs.
+Utilisez notre [simulateur d'épargne automatique](/fr/finance/epargne-automatique) pour planifier vos objectifs.
 
 ## Exemple concret
 
@@ -108,4 +108,4 @@ Oui, mais les besoins essentiels seront plus élevés. Ajustez en conséquence.
 
 ## Conclusion
 
-La méthode 50/30/20 offre un cadre simple pour gérer son budget efficacement. En combinant cette approche avec nos outils de calcul, vous pouvez prendre le contrôle de vos finances. Commencez par analyser votre situation actuelle avec notre [calculateur de budget mensuel](/calculateurs/budget-mensuel) et ajustez progressivement vos habitudes.
+La méthode 50/30/20 offre un cadre simple pour gérer son budget efficacement. En combinant cette approche avec nos outils de calcul, vous pouvez prendre le contrôle de vos finances. Commencez par analyser votre situation actuelle avec notre [calculateur de budget mensuel](/fr/finance/budget-mensuel) et ajustez progressivement vos habitudes.

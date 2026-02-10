@@ -26,7 +26,7 @@ This structure helps you cover essentials while still building financial resilie
 
 ### 1. Calculate your monthly net income
 
-Start from your take-home income (after taxes and mandatory deductions). Use our [monthly budget calculator](/en/calculateurs/budget-mensuel) to estimate your baseline.
+Start from your take-home income (after taxes and mandatory deductions). Use our [monthly budget calculator](/en/finance/budget-mensuel) to estimate your baseline.
 
 ### 2. Define your needs (50%)
 
@@ -57,7 +57,7 @@ Savings can include:
 - Short-term projects
 - Debt repayment
 
-Use our [automatic savings calculator](/en/calculateurs/epargne-automatique) to design a realistic contribution plan.
+Use our [automatic savings calculator](/en/finance/epargne-automatique) to design a realistic contribution plan.
 
 ## Example
 

@@ -23,7 +23,7 @@ Le nombre de parts modifie fortement le résultat final. Vérifiez votre situati
 
 ## Étape 3: simuler plusieurs scénarios
 
-Utilisez le [calculateur impôt sur le revenu](/calculateurs/impot-revenu) avec trois hypothèses:
+Utilisez le [calculateur impôt sur le revenu](/fr/finance/impot-revenu) avec trois hypothèses:
 - prudente
 - centrale
 - haute

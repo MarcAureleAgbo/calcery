@@ -6,6 +6,7 @@ import Adsense from '../components/Adsense.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
 import { SITE_URL } from '../lib/site';
+import { getCalculatorRoute } from '../lib/calculator-taxonomy';
 
 export interface Props {
   title?: string;
@@ -30,6 +31,7 @@ const normalizedPath = stripLocalePrefix(Astro.url.pathname).replace(/\/+$/, '')
 const frSwitchPath = switchLocalePath(Astro.url.pathname, 'fr');
 const enSwitchPath = switchLocalePath(Astro.url.pathname, 'en');
 const siteUrl = SITE_URL;
+const calculatorsLandingPath = currentLocale === 'en' ? '/en/finance' : '/fr/finance';
 
 const t = {
   fr: {
@@ -94,7 +96,7 @@ const t = {
 
 const navItems = [
   { href: '/', label: t.nav.home },
-  { href: '/calculateurs', label: t.nav.calculators },
+  { href: calculatorsLandingPath, label: t.nav.calculators },
   { href: '/blog', label: t.nav.blog },
   { href: '/a-propos', label: t.nav.about },
   { href: '/contact', label: t.nav.contact },
@@ -102,8 +104,15 @@ const navItems = [
 
 const withLocale = (href: string) => localizePath(href, currentLocale);
 
+const isCalculatorCategoryPath =
+  currentLocale === 'en'
+    ? /^\/(finance|health|real-estate|daily-life|home|education)(\/|$)/.test(normalizedPath)
+    : /^\/(finance|sante|immobilier|vie-pratique|maison-travaux|education)(\/|$)/.test(normalizedPath);
+
 const isCurrentPath = (href: string) => {
-  const normalizedHref = href.replace(/\/+$/, '') || '/';
+  const normalizedHref = (stripLocalePrefix(href).replace(/\/+$/, '') || '/');
+  const normalizedCalculatorHref = stripLocalePrefix(calculatorsLandingPath).replace(/\/+$/, '') || '/';
+  if (normalizedHref === normalizedCalculatorHref && isCalculatorCategoryPath) return true;
   if (normalizedHref === '/') return normalizedPath === '/';
   return normalizedPath === normalizedHref || normalizedPath.startsWith(`${normalizedHref}/`);
 };
@@ -228,7 +237,7 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
           <h4>{t.footer.navigation}</h4>
           <ul class="footer-links">
             <li><a href={withLocale('/')}>{t.nav.home}</a></li>
-            <li><a href={withLocale('/calculateurs')}>{t.nav.calculators}</a></li>
+            <li><a href={calculatorsLandingPath}>{t.nav.calculators}</a></li>
             <li><a href={withLocale('/blog')}>{t.nav.blog}</a></li>
             <li><a href={withLocale('/a-propos')}>{t.nav.about}</a></li>
           </ul>
@@ -237,10 +246,10 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
         <div class="footer-section">
           <h4>{t.footer.popularTools}</h4>
           <ul class="footer-links">
-            <li><a href={withLocale('/calculateurs/budget-mensuel')}>{t.footer.monthlyBudget}</a></li>
-            <li><a href={withLocale('/calculateurs/epargne-automatique')}>{t.footer.savings}</a></li>
-            <li><a href={withLocale('/calculateurs/pourboire')}>{t.footer.tip}</a></li>
-            <li><a href={withLocale('/calculateurs/interets-composes')}>{t.footer.investing}</a></li>
+            <li><a href={getCalculatorRoute(currentLocale, 'budget-mensuel')}>{t.footer.monthlyBudget}</a></li>
+            <li><a href={getCalculatorRoute(currentLocale, 'epargne-automatique')}>{t.footer.savings}</a></li>
+            <li><a href={getCalculatorRoute(currentLocale, 'pourboire')}>{t.footer.tip}</a></li>
+            <li><a href={getCalculatorRoute(currentLocale, 'interets-composes')}>{t.footer.investing}</a></li>
           </ul>
         </div>
 

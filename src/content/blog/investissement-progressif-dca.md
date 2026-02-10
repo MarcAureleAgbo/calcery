@@ -24,7 +24,7 @@ Vous n'essayez pas de trouver le meilleur point d'entrée. Vous avancez réguli�
 3. Automatisez l'opération.
 4. Revoyez la stratégie tous les trimestres, pas tous les jours.
 
-Le [calculateur intérêts composés](/calculateurs/interets-composes) permet de projeter l'impact d'une contribution régulière sur plusieurs horizons.
+Le [calculateur intérêts composés](/fr/finance/interets-composes) permet de projeter l'impact d'une contribution régulière sur plusieurs horizons.
 
 ## Avantages principaux
 
@@ -41,7 +41,7 @@ Le [calculateur intérêts composés](/calculateurs/interets-composes) permet de
 
 ## DCA et budget personnel
 
-Le DCA fonctionne mieux avec un budget clair et une épargne de précaution en place. Commencez par sécuriser votre base avec le [calculateur budget](/calculateurs/budget-mensuel) et le [plan d'épargne](/calculateurs/epargne-automatique).
+Le DCA fonctionne mieux avec un budget clair et une épargne de précaution en place. Commencez par sécuriser votre base avec le [calculateur budget](/fr/finance/budget-mensuel) et le [plan d'épargne](/fr/finance/epargne-automatique).
 
 ## Conclusion
 

@@ -4,6 +4,7 @@ import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
 import { getCollection } from 'astro:content';
 import { toAbsoluteUrl } from '../../lib/site';
+import { getCalculatorRoute } from '../../lib/calculator-taxonomy';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -75,14 +76,14 @@ const articleSchema = {
 const tools =
   post.slug === 'methode-50-30-20'
     ? [
-        { href: '/calculateurs/budget-mensuel', title: 'Budget mensuel', desc: 'Équilibrez vos revenus et dépenses.' },
-        { href: '/calculateurs/epargne-automatique', title: 'Épargne automatique', desc: 'Atteignez vos objectifs d\'épargne.' },
-        { href: '/calculateurs/economies-petites-depenses', title: 'Économies petites dépenses', desc: 'Réduisez vos petites habitudes coûteuses.' },
+        { href: getCalculatorRoute('fr', 'budget-mensuel'), title: 'Budget mensuel', desc: 'Équilibrez vos revenus et dépenses.' },
+        { href: getCalculatorRoute('fr', 'epargne-automatique'), title: 'Épargne automatique', desc: 'Atteignez vos objectifs d\'épargne.' },
+        { href: getCalculatorRoute('fr', 'economies-petites-depenses'), title: 'Économies petites dépenses', desc: 'Réduisez vos petites habitudes coûteuses.' },
       ]
     : [
-        { href: '/calculateurs/economies-petites-depenses', title: 'Économies petites dépenses', desc: 'Calculez l\'impact de vos petites dépenses.' },
-        { href: '/calculateurs/budget-mensuel', title: 'Budget mensuel', desc: 'Gérez votre budget global.' },
-        { href: '/calculateurs/epargne-automatique', title: 'Épargne automatique', desc: 'Planifiez votre épargne.' },
+        { href: getCalculatorRoute('fr', 'economies-petites-depenses'), title: 'Économies petites dépenses', desc: 'Calculez l\'impact de vos petites dépenses.' },
+        { href: getCalculatorRoute('fr', 'budget-mensuel'), title: 'Budget mensuel', desc: 'Gérez votre budget global.' },
+        { href: getCalculatorRoute('fr', 'epargne-automatique'), title: 'Épargne automatique', desc: 'Planifiez votre épargne.' },
       ];
 ---
 

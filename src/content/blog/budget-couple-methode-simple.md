@@ -26,11 +26,11 @@ Le meilleur modèle est celui que vous pouvez tenir dans la durée.
 
 Créez une liste unique: logement, énergie, alimentation, transport, assurance, abonnements partagés. Puis définissez qui paie quoi, et à quelle date.
 
-Le [calculateur budget mensuel](/calculateurs/budget-mensuel) permet d'avoir une base chiffrée commune.
+Le [calculateur budget mensuel](/fr/finance/budget-mensuel) permet d'avoir une base chiffrée commune.
 
 ## 3) Définir un objectif d'épargne à deux
 
-Un projet commun (voyage, apport, fonds d'urgence) renforce l'alignement. Utilisez le [calculateur d'épargne automatique](/calculateurs/epargne-automatique) pour fixer un effort mensuel réaliste.
+Un projet commun (voyage, apport, fonds d'urgence) renforce l'alignement. Utilisez le [calculateur d'épargne automatique](/fr/finance/epargne-automatique) pour fixer un effort mensuel réaliste.
 
 ## 4) Prévoir une zone de liberté individuelle
 

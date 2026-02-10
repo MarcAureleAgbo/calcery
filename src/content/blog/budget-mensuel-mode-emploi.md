@@ -20,7 +20,7 @@ Commencez par séparer vos flux en trois blocs:
 - charges fixes (logement, abonnements, assurances)
 - charges variables (courses, transport, loisirs)
 
-Vous pouvez utiliser le [calculateur budget mensuel](/calculateurs/budget-mensuel) pour avoir une base en quelques minutes.
+Vous pouvez utiliser le [calculateur budget mensuel](/fr/finance/budget-mensuel) pour avoir une base en quelques minutes.
 
 ## Étape 2: définir vos limites par catégorie
 
@@ -33,7 +33,7 @@ Exemple de repères:
 
 ## Étape 3: prévoir une épargne automatique
 
-Sans automatisation, l'épargne passe souvent en dernier. Programmez un virement en début de mois, même modeste. Le [calculateur d'épargne automatique](/calculateurs/epargne-automatique) vous aide à transformer un objectif en montant mensuel concret.
+Sans automatisation, l'épargne passe souvent en dernier. Programmez un virement en début de mois, même modeste. Le [calculateur d'épargne automatique](/fr/finance/epargne-automatique) vous aide à transformer un objectif en montant mensuel concret.
 
 ## Étape 4: piloter chaque semaine
 
@@ -53,4 +53,4 @@ Cette routine réduit fortement le stress financier.
 
 ## Conclusion
 
-Un budget mensuel utile est un budget vivant. Testez, corrigez, puis stabilisez votre méthode sur 2 à 3 mois. Pour aller plus loin, combinez le [calculateur budget](/calculateurs/budget-mensuel) avec le [calculateur petites dépenses](/calculateurs/economies-petites-depenses) afin d'identifier rapidement les zones d'optimisation.
+Un budget mensuel utile est un budget vivant. Testez, corrigez, puis stabilisez votre méthode sur 2 à 3 mois. Pour aller plus loin, combinez le [calculateur budget](/fr/finance/budget-mensuel) avec le [calculateur petites dépenses](/fr/vie-pratique/economies-petites-depenses) afin d'identifier rapidement les zones d'optimisation.

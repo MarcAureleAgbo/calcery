@@ -26,7 +26,7 @@ Exemple:
 - mois 4 à 6: 110 €
 - mois 7 à 12: 140 €
 
-Le [calculateur d'épargne automatique](/calculateurs/epargne-automatique) vous aide à simuler rapidement différents scénarios.
+Le [calculateur d'épargne automatique](/fr/finance/epargne-automatique) vous aide à simuler rapidement différents scénarios.
 
 ## Lier l'épargne à un objectif concret
 

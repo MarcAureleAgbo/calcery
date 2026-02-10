@@ -31,7 +31,7 @@ They adjust taxable burden to household composition. Revenue is assessed through
 3. simulate alternative scenarios if status may change
 4. translate results into monthly budget adjustments
 
-Use the [income tax calculator](/en/calculateurs/impot-revenu) for quick first-pass estimates.
+Use the [income tax calculator](/en/finance/impot-revenu) for quick first-pass estimates.
 
 ## Conclusion
 

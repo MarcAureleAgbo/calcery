@@ -1,0 +1,55 @@
+---
+import CalculatorLayout from '../../../layouts/CalculatorLayout.astro';
+import BudgetCalculator from '../../../components/calculators/BudgetCalculator';
+import SavingsGoalCalculator from '../../../components/calculators/SavingsGoalCalculator';
+import CompoundInterestCalculator from '../../../components/calculators/CompoundInterestCalculator';
+import IncomeCalculator from '../../../components/calculators/IncomeCalculator';
+import SmallExpensesSavingsCalculator from '../../../components/calculators/SmallExpensesSavingsCalculator';
+import TipCalculator from '../../../components/calculators/TipCalculator';
+import SplitBillCalculator from '../../../components/calculators/SplitBillCalculator';
+import {
+  getCalculatorStaticPaths,
+  getCategoryRoute,
+  getCalculatorRoute,
+  type CategoryDefinition,
+  type CalculatorDefinition,
+} from '../../../lib/calculator-taxonomy';
+import type { BreadcrumbItem } from '../../../lib/types';
+
+export function getStaticPaths() {
+  return getCalculatorStaticPaths('fr');
+}
+
+interface Props {
+  category: CategoryDefinition;
+  calculator: CalculatorDefinition;
+}
+
+const { category, calculator } = Astro.props as Props;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Accueil', item: '/' },
+  { name: category.name.fr, item: getCategoryRoute('fr', category.key) },
+  { name: calculator.name.fr, item: getCalculatorRoute('fr', calculator.slug) },
+];
+---
+
+<CalculatorLayout
+  title={calculator.title.fr}
+  description={calculator.description.fr}
+  metaTitle={calculator.metaTitle.fr}
+  metaDescription={calculator.metaDescription.fr}
+  breadcrumbs={breadcrumbs}
+  faqs={calculator.faqs.fr}
+  updatedAt={calculator.updatedAt}
+  tips={calculator.tips.fr}
+  lang="fr"
+>
+  {calculator.slug === 'budget-mensuel' && <BudgetCalculator client:load lang="fr" />}
+  {calculator.slug === 'epargne-automatique' && <SavingsGoalCalculator client:load lang="fr" />}
+  {calculator.slug === 'interets-composes' && <CompoundInterestCalculator client:load lang="fr" />}
+  {calculator.slug === 'impot-revenu' && <IncomeCalculator client:load lang="fr" />}
+  {calculator.slug === 'economies-petites-depenses' && <SmallExpensesSavingsCalculator client:load lang="fr" />}
+  {calculator.slug === 'pourboire' && <TipCalculator client:load lang="fr" />}
+  {calculator.slug === 'partage-addition' && <SplitBillCalculator client:load lang="fr" />}
+</CalculatorLayout>

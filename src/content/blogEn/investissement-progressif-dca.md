@@ -24,7 +24,7 @@ You stop trying to predict the perfect entry point. Regular investing smooths en
 3. automate execution
 4. review quarterly, not daily
 
-Use the [compound interest calculator](/en/calculateurs/interets-composes) to project long-term effects.
+Use the [compound interest calculator](/en/finance/interets-composes) to project long-term effects.
 
 ## Strengths
 

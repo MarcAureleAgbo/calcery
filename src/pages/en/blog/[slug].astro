@@ -4,6 +4,7 @@ import Button from '../../../components/ui/Button.astro';
 import Card from '../../../components/ui/Card.astro';
 import { getCollection } from 'astro:content';
 import { toAbsoluteUrl } from '../../../lib/site';
+import { getCalculatorRoute } from '../../../lib/calculator-taxonomy';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blogEn');
@@ -75,14 +76,14 @@ const articleSchema = {
 const tools =
   post.slug === 'methode-50-30-20'
     ? [
-        { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Balance income and expenses clearly.' },
-        { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Plan recurring savings.' },
-        { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Measure recurring small costs.' },
+        { href: getCalculatorRoute('en', 'budget-mensuel'), title: 'Monthly budget', desc: 'Balance income and expenses clearly.' },
+        { href: getCalculatorRoute('en', 'epargne-automatique'), title: 'Automatic savings', desc: 'Plan recurring savings.' },
+        { href: getCalculatorRoute('en', 'economies-petites-depenses'), title: 'Small expense savings', desc: 'Measure recurring small costs.' },
       ]
     : [
-        { href: '/en/calculateurs/economies-petites-depenses', title: 'Small expense savings', desc: 'Estimate recurring small expenses.' },
-        { href: '/en/calculateurs/budget-mensuel', title: 'Monthly budget', desc: 'Control your monthly cash flow.' },
-        { href: '/en/calculateurs/epargne-automatique', title: 'Automatic savings', desc: 'Build a realistic savings plan.' },
+        { href: getCalculatorRoute('en', 'economies-petites-depenses'), title: 'Small expense savings', desc: 'Estimate recurring small expenses.' },
+        { href: getCalculatorRoute('en', 'budget-mensuel'), title: 'Monthly budget', desc: 'Control your monthly cash flow.' },
+        { href: getCalculatorRoute('en', 'epargne-automatique'), title: 'Automatic savings', desc: 'Build a realistic savings plan.' },
       ];
 ---
 

@@ -23,7 +23,7 @@ La régularité compte autant que le rendement. Même un petit versement mensuel
 
 ## Erreur 3: utiliser des hypothèses irréalistes
 
-Des rendements trop optimistes faussent vos décisions. Testez plusieurs scénarios avec le [calculateur intérêts composés](/calculateurs/interets-composes): prudent, médian, ambitieux.
+Des rendements trop optimistes faussent vos décisions. Testez plusieurs scénarios avec le [calculateur intérêts composés](/fr/finance/interets-composes): prudent, médian, ambitieux.
 
 ## Erreur 4: ignorer l'inflation
 

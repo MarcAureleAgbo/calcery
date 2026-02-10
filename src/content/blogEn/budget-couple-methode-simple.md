@@ -26,11 +26,11 @@ Pick the model you can maintain long term.
 
 List all shared costs in one place: housing, utilities, groceries, mobility, insurance, subscriptions. Then define who pays what and when.
 
-The [monthly budget calculator](/en/calculateurs/budget-mensuel) helps build a shared financial snapshot.
+The [monthly budget calculator](/en/finance/budget-mensuel) helps build a shared financial snapshot.
 
 ## 3) set one shared savings goal
 
-A shared project improves consistency: emergency buffer, travel, down payment. Use the [automatic savings calculator](/en/calculateurs/epargne-automatique) to define a realistic monthly contribution.
+A shared project improves consistency: emergency buffer, travel, down payment. Use the [automatic savings calculator](/en/finance/epargne-automatique) to define a realistic monthly contribution.
 
 ## 4) protect personal freedom
 

@@ -20,7 +20,7 @@ Split your cash flow into three blocks:
 - fixed costs (housing, subscriptions, insurance)
 - variable costs (food, transport, lifestyle)
 
-Use the [monthly budget calculator](/en/calculateurs/budget-mensuel) to build your baseline quickly.
+Use the [monthly budget calculator](/en/finance/budget-mensuel) to build your baseline quickly.
 
 ## Step 2: set category limits
 
@@ -33,7 +33,7 @@ Typical ranges:
 
 ## Step 3: automate savings
 
-Without automation, savings usually come last. Schedule a transfer at the beginning of each month, even if small. The [automatic savings calculator](/en/calculateurs/epargne-automatique) turns your target into a concrete monthly amount.
+Without automation, savings usually come last. Schedule a transfer at the beginning of each month, even if small. The [automatic savings calculator](/en/finance/epargne-automatique) turns your target into a concrete monthly amount.
 
 ## Step 4: review weekly
 

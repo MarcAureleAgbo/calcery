@@ -20,7 +20,7 @@ If you spend 5€ per day on impulse purchases:
 - Per month: ~150€
 - Per year: ~1,825€
 
-Use our [small expense savings calculator](/en/calculateurs/economies-petites-depenses) to estimate your own patterns.
+Use our [small expense savings calculator](/en/daily-life/economies-petites-depenses) to estimate your own patterns.
 
 ## Common categories
 
@@ -51,7 +51,7 @@ Scan the last 2–3 months and identify recurring patterns.
 
 ### 3. Categorize and prioritize
 
-Use our [monthly budget calculator](/en/calculateurs/budget-mensuel) to structure categories.
+Use our [monthly budget calculator](/en/finance/budget-mensuel) to structure categories.
 
 ## Practical reduction strategies
 

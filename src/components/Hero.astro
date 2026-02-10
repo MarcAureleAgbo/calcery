@@ -1,5 +1,5 @@
 ---
-import { localizePath, type Locale } from '../lib/i18n';
+import type { Locale } from '../lib/i18n';
 
 export interface Props {
   lang?: Locale;
@@ -36,7 +36,7 @@ const t = {
   },
 }[lang];
 
-const calculatorsPath = localizePath('/calculateurs', lang);
+const calculatorsPath = lang === 'en' ? '/en/finance' : '/fr/finance';
 ---
 
 <section class="hero">

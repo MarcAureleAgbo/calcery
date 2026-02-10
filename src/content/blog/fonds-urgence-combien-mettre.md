@@ -30,11 +30,11 @@ Additionnez uniquement les dépenses essentielles:
 - santé
 - charges familiales incompressibles
 
-Le [calculateur budget mensuel](/calculateurs/budget-mensuel) aide à isoler ce socle indispensable.
+Le [calculateur budget mensuel](/fr/finance/budget-mensuel) aide à isoler ce socle indispensable.
 
 ## Construire le fonds sans bloquer sa vie
 
-Mettez en place un versement automatique dédié. Même 50 à 100 € par mois font la différence si vous restez constant. Simulez votre plan sur le [calculateur d'épargne](/calculateurs/epargne-automatique).
+Mettez en place un versement automatique dédié. Même 50 à 100 € par mois font la différence si vous restez constant. Simulez votre plan sur le [calculateur d'épargne](/fr/finance/epargne-automatique).
 
 ## Où placer ce fonds?
 
