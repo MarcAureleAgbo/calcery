@@ -6,6 +6,12 @@ import sitemap from '@astrojs/sitemap';
 import { SITE_URL } from './site.config.mjs';
 
 const site = SITE_URL.replace(/\/+$/, '');
+const LEGACY_CALCULATOR_PATHS = [
+  /^\/calculateurs(\/|$)/,
+  /^\/en\/calculateurs(\/|$)/,
+  /^\/(budget-mensuel|epargne-automatique|interets-composes|impot-revenu|economies-petites-depenses|pourboire|partage-addition)\/?$/,
+  /^\/en\/(budget-mensuel|epargne-automatique|interets-composes|impot-revenu|economies-petites-depenses|pourboire|partage-addition)\/?$/,
+];
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,9 +23,12 @@ export default defineConfig({
       filter: (page) => {
         try {
           const pathname = new URL(page).pathname;
-          return !pathname.includes('404');
+          if (pathname.includes('404')) return false;
+          if (LEGACY_CALCULATOR_PATHS.some((pattern) => pattern.test(pathname))) return false;
+          return true;
         } catch {
-          return !page.includes('404');
+          if (page.includes('404')) return false;
+          return !LEGACY_CALCULATOR_PATHS.some((pattern) => pattern.test(page));
         }
       },
     }),

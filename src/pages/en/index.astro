@@ -37,6 +37,45 @@ const featuredToolsSchema = {
     { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}${getCalculatorRoute('en', 'interets-composes')}` },
   ],
 };
+
+const categoryCards = [
+  {
+    icon: '💼',
+    title: 'Finance',
+    description: 'Budgeting, savings, tax and investing simulations.',
+    href: '/en/finance',
+  },
+  {
+    icon: '🏥',
+    title: 'Health',
+    description: 'Category ready for upcoming health-focused calculators.',
+    href: '/en/health',
+  },
+  {
+    icon: '🏠',
+    title: 'Real estate',
+    description: 'Upcoming simulations for housing budgets and planning.',
+    href: '/en/real-estate',
+  },
+  {
+    icon: '🧭',
+    title: 'Daily life',
+    description: 'Tip, split bill and recurring small-expense calculators.',
+    href: '/en/daily-life',
+  },
+  {
+    icon: '🛠️',
+    title: 'Home',
+    description: 'Future tools for renovation and home project decisions.',
+    href: '/en/home',
+  },
+  {
+    icon: '🎓',
+    title: 'Education',
+    description: 'Upcoming calculators for study planning and progress tracking.',
+    href: '/en/education',
+  },
+];
 ---
 
 <BaseLayout
@@ -48,6 +87,28 @@ const featuredToolsSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
 
   <Hero lang="en" />
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">🗂️ Categories</div>
+      <h2 class="section-title">Our calculator categories</h2>
+      <p class="section-subtitle">
+        Browse key topics to quickly access the tools that match your goal.
+      </p>
+    </div>
+
+    <div class="tools-grid">
+      {categoryCards.map((category) => (
+        <ToolCard
+          icon={category.icon}
+          title={category.title}
+          description={category.description}
+          href={category.href}
+          ctaLabel="Explore"
+        />
+      ))}
+    </div>
+  </section>
 
   <section class="section">
     <div class="section-header">

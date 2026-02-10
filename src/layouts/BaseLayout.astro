@@ -40,6 +40,7 @@ const t = {
     nav: {
       home: 'Accueil',
       calculators: 'Calculateurs',
+      categories: 'Catégories',
       blog: 'Blog',
       about: 'À propos',
       contact: 'Contact',
@@ -69,6 +70,7 @@ const t = {
     nav: {
       home: 'Home',
       calculators: 'Calculators',
+      categories: 'Categories',
       blog: 'Blog',
       about: 'About',
       contact: 'Contact',
@@ -101,6 +103,25 @@ const navItems = [
   { href: '/a-propos', label: t.nav.about },
   { href: '/contact', label: t.nav.contact },
 ];
+
+const categoryLinks =
+  currentLocale === 'en'
+    ? [
+        { href: '/en/finance', label: 'Finance' },
+        { href: '/en/health', label: 'Health' },
+        { href: '/en/real-estate', label: 'Real estate' },
+        { href: '/en/daily-life', label: 'Daily life' },
+        { href: '/en/home', label: 'Home' },
+        { href: '/en/education', label: 'Education' },
+      ]
+    : [
+        { href: '/fr/finance', label: 'Finance' },
+        { href: '/fr/sante', label: 'Santé' },
+        { href: '/fr/immobilier', label: 'Immobilier' },
+        { href: '/fr/vie-pratique', label: 'Vie pratique' },
+        { href: '/fr/maison-travaux', label: 'Maison & travaux' },
+        { href: '/fr/education', label: 'Éducation' },
+      ];
 
 const withLocale = (href: string) => localizePath(href, currentLocale);
 
@@ -173,15 +194,38 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
 
         <ul class="nav-links">
           {navItems.map((item) => (
-            <li>
-              <a
-                href={withLocale(item.href)}
-                class:list={{ 'is-active': isCurrentPath(item.href) }}
-                aria-current={isCurrentPath(item.href) ? 'page' : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
+            item.href === calculatorsLandingPath ? (
+              <li class="nav-dropdown">
+                <a
+                  href={item.href}
+                  class:list={{ 'is-active': isCurrentPath(item.href) }}
+                  aria-current={isCurrentPath(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+                <div class="nav-dropdown-menu" aria-label={t.nav.categories}>
+                  {categoryLinks.map((category) => (
+                    <a
+                      href={category.href}
+                      class:list={{ 'is-active': isCurrentPath(category.href) }}
+                      aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+                    >
+                      {category.label}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={withLocale(item.href)}
+                  class:list={{ 'is-active': isCurrentPath(item.href) }}
+                  aria-current={isCurrentPath(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            )
           ))}
         </ul>
 
@@ -210,6 +254,18 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
             {item.label}
           </a>
         ))}
+        <div class="mobile-categories">
+          <p class="mobile-categories-title">{t.nav.categories}</p>
+          {categoryLinks.map((category) => (
+            <a
+              href={category.href}
+              class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
+              aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+            >
+              {category.label}
+            </a>
+          ))}
+        </div>
         <div class="p-4">
           <label for="lang-select-mobile" class="sr-only">{t.languageSelector}</label>
           <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label={t.languageSelector} data-fr-path={frSwitchPath} data-en-path={enSwitchPath}>

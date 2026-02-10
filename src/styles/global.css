@@ -338,6 +338,10 @@ body.reduce-motion .gradient-orb {
   align-items: center;
 }
 
+.nav-links > li {
+  position: relative;
+}
+
 .nav-links a {
   color: var(--text-secondary);
   text-decoration: none;
@@ -379,6 +383,51 @@ body.reduce-motion .gradient-orb {
   width: 100%;
 }
 
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 220px;
+  padding: 0.45rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 20px 30px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: grid;
+  gap: 0.15rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 12;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu a {
+  min-height: auto;
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.nav-dropdown-menu a::after {
+  display: none;
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a.is-active {
+  background: rgba(15, 23, 42, 0.08);
+}
+
 .site-header.scrolled .logo {
   color: #ffffff;
 }
@@ -393,6 +442,22 @@ body.reduce-motion .gradient-orb {
 
 .site-header.scrolled .nav-links a:hover,
 .site-header.scrolled .nav-links a.is-active {
+  color: #ffffff;
+}
+
+.site-header.scrolled .nav-dropdown-menu {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(17, 24, 39, 0.94);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+}
+
+.site-header.scrolled .nav-dropdown-menu a {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.site-header.scrolled .nav-dropdown-menu a:hover,
+.site-header.scrolled .nav-dropdown-menu a.is-active {
+  background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
 }
 
@@ -474,6 +539,26 @@ body.reduce-motion .gradient-orb {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.mobile-categories {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.6rem 0 0.35rem;
+}
+
+.mobile-categories-title {
+  margin: 0;
+  padding: 0.35rem 1.25rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.mobile-category-link {
+  padding-left: 2rem !important;
+  color: rgba(255, 255, 255, 0.86);
 }
 
 /* ═══════════════════════════════════════════════════════════════════

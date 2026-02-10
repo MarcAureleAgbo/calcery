@@ -37,6 +37,45 @@ const featuredToolsSchema = {
     { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}${getCalculatorRoute('fr', 'interets-composes')}` },
   ],
 };
+
+const categoryCards = [
+  {
+    icon: '💼',
+    title: 'Finance',
+    description: 'Budget, épargne, impôt et simulation d’investissement.',
+    href: '/fr/finance',
+  },
+  {
+    icon: '🏥',
+    title: 'Santé',
+    description: 'Catégorie en préparation pour vos futurs calculateurs santé.',
+    href: '/fr/sante',
+  },
+  {
+    icon: '🏠',
+    title: 'Immobilier',
+    description: 'Simulations liées à l’achat, aux coûts et aux scénarios logement.',
+    href: '/fr/immobilier',
+  },
+  {
+    icon: '🧭',
+    title: 'Vie pratique',
+    description: 'Pourboire, partage d’addition et petites dépenses du quotidien.',
+    href: '/fr/vie-pratique',
+  },
+  {
+    icon: '🛠️',
+    title: 'Maison & travaux',
+    description: 'Futurs outils pour piloter vos projets maison et travaux.',
+    href: '/fr/maison-travaux',
+  },
+  {
+    icon: '🎓',
+    title: 'Éducation',
+    description: 'Prochainement: calculateurs dédiés à l’apprentissage et la progression.',
+    href: '/fr/education',
+  },
+];
 ---
 
 <BaseLayout
@@ -47,6 +86,28 @@ const featuredToolsSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
 
   <Hero />
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">🗂️ Catégories</div>
+      <h2 class="section-title">Nos catégories de calculateurs</h2>
+      <p class="section-subtitle">
+        Explorez les grandes thématiques pour accéder rapidement aux outils adaptés.
+      </p>
+    </div>
+
+    <div class="tools-grid">
+      {categoryCards.map((category) => (
+        <ToolCard
+          icon={category.icon}
+          title={category.title}
+          description={category.description}
+          href={category.href}
+          ctaLabel="Explorer"
+        />
+      ))}
+    </div>
+  </section>
 
   <section class="section">
     <div class="section-header">
