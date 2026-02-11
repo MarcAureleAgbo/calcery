@@ -31,7 +31,7 @@ const normalizedPath = stripLocalePrefix(Astro.url.pathname).replace(/\/+$/, '')
 const frSwitchPath = switchLocalePath(Astro.url.pathname, 'fr');
 const enSwitchPath = switchLocalePath(Astro.url.pathname, 'en');
 const siteUrl = SITE_URL;
-const calculatorsLandingPath = currentLocale === 'en' ? '/en/finance' : '/fr/finance';
+const calculatorsLandingPath = currentLocale === 'en' ? '/en/calculators' : '/fr/calculateurs';
 
 const t = {
   fr: {
@@ -139,6 +139,7 @@ const withLocale = (href: string) => localizePath(href, currentLocale);
 
 const categorySlugs = CATEGORIES.map((category) => category.slug[currentLocale]);
 const isCalculatorCategoryPath = categorySlugs.some((slug) => normalizedPath === `/${slug}` || normalizedPath.startsWith(`/${slug}/`));
+const isCalculatorsHubPath = normalizedPath === '/calculateurs' || normalizedPath === '/calculators';
 
 const isCurrentPath = (href: string) => {
   const normalizedHref = (stripLocalePrefix(href).replace(/\/+$/, '') || '/');
@@ -187,7 +188,7 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
     <Adsense />
   </head>
 
-  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset, 'category-page-layout': isCalculatorCategoryPath, 'mentions-hero-fix': applyMentionsHeroFix, 'about-hero-fix': applyAboutHeroFix }}>
+  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset, 'category-page-layout': isCalculatorCategoryPath || isCalculatorsHubPath, 'mentions-hero-fix': applyMentionsHeroFix, 'about-hero-fix': applyAboutHeroFix }}>
     <a href="#main-content" class="skip-link">{t.skipToContent}</a>
 
     <div class="animated-background" aria-hidden="true">

@@ -691,8 +691,8 @@ export function getCalculatorStaticPaths(locale: Locale) {
 }
 
 export const LEGACY_REDIRECTS: Array<{ from: string; to: string }> = [
-  { from: '/calculateurs', to: '/fr/finance' },
-  { from: '/en/calculateurs', to: '/en/finance' },
+  { from: '/calculateurs', to: '/fr/calculateurs' },
+  { from: '/en/calculateurs', to: '/en/calculators' },
   { from: '/budget-mensuel', to: '/fr/finance/budget-mensuel' },
   { from: '/epargne-automatique', to: '/fr/finance/epargne-automatique' },
   { from: '/interets-composes', to: '/fr/finance/interets-composes' },
@@ -707,7 +707,7 @@ export const LEGACY_REDIRECTS: Array<{ from: string; to: string }> = [
   { from: '/calculateurs/economies-petites-depenses', to: '/fr/vie-pratique/economies-petites-depenses' },
   { from: '/calculateurs/pourboire', to: '/fr/vie-pratique/pourboire' },
   { from: '/calculateurs/partage-addition', to: '/fr/vie-pratique/partage-addition' },
-  { from: '/calculateurs/demo', to: '/fr/finance' },
+  { from: '/calculateurs/demo', to: '/fr/calculateurs' },
   { from: '/en/budget-mensuel', to: '/en/finance/budget-mensuel' },
   { from: '/en/epargne-automatique', to: '/en/finance/epargne-automatique' },
   { from: '/en/interets-composes', to: '/en/finance/interets-composes' },
@@ -722,5 +722,5 @@ export const LEGACY_REDIRECTS: Array<{ from: string; to: string }> = [
   { from: '/en/calculateurs/economies-petites-depenses', to: '/en/daily-life/economies-petites-depenses' },
   { from: '/en/calculateurs/pourboire', to: '/en/daily-life/pourboire' },
   { from: '/en/calculateurs/partage-addition', to: '/en/daily-life/partage-addition' },
-  { from: '/en/calculateurs/demo', to: '/en/finance' },
+  { from: '/en/calculateurs/demo', to: '/en/calculators' },
 ];

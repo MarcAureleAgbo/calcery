@@ -1,7 +1,7 @@
-/calculateurs /fr/finance 301
-/calculateurs/ /fr/finance 301
-/en/calculateurs /en/finance 301
-/en/calculateurs/ /en/finance 301
+/calculateurs /fr/calculateurs 301
+/calculateurs/ /fr/calculateurs 301
+/en/calculateurs /en/calculators 301
+/en/calculateurs/ /en/calculators 301
 /budget-mensuel /fr/finance/budget-mensuel 301
 /budget-mensuel/ /fr/finance/budget-mensuel 301
 /epargne-automatique /fr/finance/epargne-automatique 301
@@ -30,8 +30,8 @@
 /calculateurs/pourboire/ /fr/vie-pratique/pourboire 301
 /calculateurs/partage-addition /fr/vie-pratique/partage-addition 301
 /calculateurs/partage-addition/ /fr/vie-pratique/partage-addition 301
-/calculateurs/demo /fr/finance 301
-/calculateurs/demo/ /fr/finance 301
+/calculateurs/demo /fr/calculateurs 301
+/calculateurs/demo/ /fr/calculateurs 301
 /en/budget-mensuel /en/finance/budget-mensuel 301
 /en/budget-mensuel/ /en/finance/budget-mensuel 301
 /en/epargne-automatique /en/finance/epargne-automatique 301
@@ -60,5 +60,5 @@
 /en/calculateurs/pourboire/ /en/daily-life/pourboire 301
 /en/calculateurs/partage-addition /en/daily-life/partage-addition 301
 /en/calculateurs/partage-addition/ /en/daily-life/partage-addition 301
-/en/calculateurs/demo /en/finance 301
-/en/calculateurs/demo/ /en/finance 301
+/en/calculateurs/demo /en/calculators 301
+/en/calculateurs/demo/ /en/calculators 301

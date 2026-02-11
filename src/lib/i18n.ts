@@ -72,6 +72,18 @@ export function localizePath(path: string, locale: Locale): string {
 }
 
 export function switchLocalePath(pathname: string, locale: Locale): string {
+  if (pathname === '/fr/calculateurs' || pathname === '/fr/calculateurs/') {
+    return locale === 'fr' ? '/fr/calculateurs' : '/en/calculators';
+  }
+
+  if (pathname === '/en/calculators' || pathname === '/en/calculators/') {
+    return locale === 'en' ? '/en/calculators' : '/fr/calculateurs';
+  }
+
+  if (pathname === '/en/calculateurs' || pathname === '/en/calculateurs/') {
+    return locale === 'en' ? '/en/calculators' : '/fr/calculateurs';
+  }
+
   const frCategoryMatch = pathname.match(/^\/fr\/([^/]+)(\/.*)?$/);
   if (frCategoryMatch && FR_CATEGORY_SEGMENTS.has(frCategoryMatch[1])) {
     const currentCategory = frCategoryMatch[1];
