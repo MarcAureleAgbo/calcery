@@ -27,29 +27,6 @@ const breadcrumbs: BreadcrumbItem[] = [
   { name: 'Home', item: '/en' },
   { name: category.name.en, item: getCategoryRoute('en', category.key) },
 ];
-
-const primaryCtaHref = calculators.length
-  ? getCalculatorRoute('en', calculators[0].slug)
-  : getCategoryRoute('en', 'finance');
-
-const summarizeParagraph = (text: string, maxSentences = 2) => {
-  const sentences = text
-    .split('. ')
-    .map((sentence) => sentence.trim())
-    .filter(Boolean);
-  if (sentences.length === 0) return '';
-  if (sentences.length <= maxSentences) return text;
-  const summary = sentences.slice(0, maxSentences).join('. ');
-  return summary.endsWith('.') ? summary : `${summary}.`;
-};
-
-const introParagraph = summarizeParagraph(category.seoText.en[0] ?? '', 2);
-const contextParagraph = summarizeParagraph(category.seoText.en[1] ?? '', 1);
-const highlights = calculators.length > 0
-  ? calculators
-      .slice(0, 4)
-      .map((calculator) => `${calculator.name.en}: ${calculator.description.en}`)
-  : category.seoText.en.slice(0, 3).map((paragraph) => summarizeParagraph(paragraph, 1));
 ---
 
 <BaseLayout
@@ -63,46 +40,13 @@ const highlights = calculators.length > 0
         <Breadcrumbs items={breadcrumbs} />
 
         <div class="mt-6 text-center">
-          <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Category</div>
           <h1 class="mb-4 text-4xl font-bold leading-tight text-black md:text-6xl">{category.h1.en}</h1>
           <p class="mx-auto max-w-3xl text-lg font-light text-gray-600 md:text-xl">{category.description.en}</p>
         </div>
       </div>
     </Container>
   </section>
-
-  <section class="section">
-    <div class="section-header">
-      <div class="section-badge">Quick guide</div>
-      <h2 class="section-title">What matters in the {category.name.en} category</h2>
-      <p class="section-subtitle">A concise overview before choosing a calculator.</p>
-    </div>
-
-    <div class="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1.35fr_1fr]">
-      <article class="rounded-2xl border border-gray-200/90 bg-white/95 p-8 shadow-sm">
-        <h3 class="text-xl font-semibold text-gray-900">Overview</h3>
-        {introParagraph && <p class="mt-4 leading-relaxed text-gray-700">{introParagraph}</p>}
-        {contextParagraph && <p class="mt-3 leading-relaxed text-gray-600">{contextParagraph}</p>}
-      </article>
-
-      <aside class="rounded-2xl border border-gray-200/90 bg-white/95 p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-gray-900">Key points</h3>
-        <ul class="mt-4 space-y-3">
-          {highlights.map((point) => (
-            <li class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm leading-relaxed text-gray-700">{point}</li>
-          ))}
-        </ul>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-header">
-      <div class="section-badge">Tools</div>
-      <h2 class="section-title">Calculators in this category</h2>
-      <p class="section-subtitle">Access the currently available tools for this topic.</p>
-    </div>
-
+  <section class="section pt-12">
     {calculators.length > 0 ? (
       <div class="tools-grid">
         {calculators.map((calculator) => (
@@ -121,9 +65,5 @@ const highlights = calculators.length > 0
         <p class="mt-2">New calculators will be published here soon.</p>
       </div>
     )}
-
-    <div class="mt-8 text-center">
-      <a href={primaryCtaHref} class="btn btn-primary inline-flex">{category.ctaLabel.en}</a>
-    </div>
   </section>
 </BaseLayout>
