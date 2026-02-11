@@ -104,6 +104,8 @@ const navItems = [
   { href: '/contact', label: t.nav.contact },
 ];
 
+const mobilePrimaryItems = navItems.filter((item) => item.href === '/' || item.href === calculatorsLandingPath);
+
 const categoryLabelByKey = {
   fr: {
     finance: 'Finance',
@@ -185,7 +187,7 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
     <Adsense />
   </head>
 
-  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset, 'mentions-hero-fix': applyMentionsHeroFix, 'about-hero-fix': applyAboutHeroFix }}>
+  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset, 'category-page-layout': isCalculatorCategoryPath, 'mentions-hero-fix': applyMentionsHeroFix, 'about-hero-fix': applyAboutHeroFix }}>
     <a href="#main-content" class="skip-link">{t.skipToContent}</a>
 
     <div class="animated-background" aria-hidden="true">
@@ -271,7 +273,7 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
       </nav>
 
       <div class="mobile-menu" id="mobile-menu">
-        {navItems.map((item) => (
+        {mobilePrimaryItems.map((item) => (
           <a
             href={withLocale(item.href)}
             class:list={{ 'is-active': isCurrentPath(item.href) }}
@@ -283,31 +285,13 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
         <div class="mobile-categories">
           <p class="mobile-categories-title">{t.nav.categories}</p>
           {categoryLinks.map((category) => (
-            <div class="mobile-category-group">
-              <a
-                href={category.href}
-                class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
-                aria-current={isCurrentPath(category.href) ? 'page' : undefined}
-              >
-                {category.label}
-              </a>
-
-              {category.tools.length > 0 ? (
-                <div class="mobile-category-tools">
-                  {category.tools.map((tool) => (
-                    <a
-                      href={tool.href}
-                      class:list={{ 'mobile-category-tool': true, 'is-active': isCurrentPath(tool.href) }}
-                      aria-current={isCurrentPath(tool.href) ? 'page' : undefined}
-                    >
-                      {tool.label}
-                    </a>
-                  ))}
-                </div>
-              ) : (
-                <span class="mobile-category-empty">{currentLocale === 'en' ? 'Soon' : 'Bientot'}</span>
-              )}
-            </div>
+            <a
+              href={category.href}
+              class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
+              aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+            >
+              {category.label}
+            </a>
           ))}
         </div>
         <div class="p-4">
