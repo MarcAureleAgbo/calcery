@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run verify:sitemap",
     "preview": "astro preview",
     "astro": "astro",
     "test:analytics:dev": "node scripts/check-analytics-dev.mjs",
-    "test:adsense:dev": "node scripts/check-adsense-dev.mjs"
+    "test:adsense:dev": "node scripts/check-adsense-dev.mjs",
+    "verify:sitemap": "node scripts/verify-sitemap.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
