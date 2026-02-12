@@ -627,9 +627,54 @@ body.reduce-motion .gradient-orb {
   border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
+.mobile-calc-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-calc-header {
+  display: flex;
+  align-items: stretch;
+}
+
+.mobile-parent-link {
+  flex: 1;
+  border-bottom: none !important;
+}
+
+.mobile-calc-toggle {
+  width: 52px;
+  min-height: 48px;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mobile-calc-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-calc-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.mobile-calc-toggle[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+
 .mobile-categories {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.6rem 0 0.35rem;
+  display: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.3rem 0;
+}
+
+.mobile-categories.open {
+  display: block;
 }
 
 .mobile-categories-title {
@@ -646,6 +691,10 @@ body.reduce-motion .gradient-orb {
   padding-left: 2rem !important;
   color: rgba(255, 255, 255, 0.86);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.mobile-categories .mobile-category-link:last-child {
+  border-bottom: none !important;
 }
 
 @media (max-width: 1280px) {

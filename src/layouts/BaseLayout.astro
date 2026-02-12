@@ -104,10 +104,6 @@ const navItems = [
   { href: '/contact', label: t.nav.contact },
 ];
 
-const mobilePrimaryItems = navItems.filter(
-  (item) => item.href === '/' || item.href === calculatorsLandingPath || item.href === '/blog',
-);
-
 const categoryLabelByKey = {
   fr: {
     finance: 'Finance',
@@ -151,6 +147,7 @@ const isCurrentPath = (href: string) => {
   if (normalizedHref === '/') return normalizedPath === '/';
   return normalizedPath === normalizedHref || normalizedPath.startsWith(`${normalizedHref}/`);
 };
+const mobileCalculatorsExpandedByDefault = isCurrentPath(calculatorsLandingPath);
 
 const legalPagesWithHeaderOffset = new Set(['/mentions-legales', '/confidentialite', '/contact']);
 const applyLegalHeaderOffset = legalPagesWithHeaderOffset.has(normalizedPath);
@@ -277,26 +274,51 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
       </nav>
 
       <div class="mobile-menu" id="mobile-menu">
-        {mobilePrimaryItems.map((item) => (
-          <a
-            href={withLocale(item.href)}
-            class:list={{ 'is-active': isCurrentPath(item.href) }}
-            aria-current={isCurrentPath(item.href) ? 'page' : undefined}
-          >
-            {item.label}
-          </a>
-        ))}
-        <div class="mobile-categories">
-          {categoryLinks.map((category) => (
+        {navItems.map((item) => (
+          item.href === calculatorsLandingPath ? (
+            <div class="mobile-calc-group">
+              <div class="mobile-calc-header">
+                <a
+                  href={item.href}
+                  class:list={{ 'mobile-parent-link': true, 'is-active': isCurrentPath(item.href) }}
+                  aria-current={isCurrentPath(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+                <button
+                  type="button"
+                  id="mobile-calc-toggle"
+                  class="mobile-calc-toggle"
+                  aria-controls="mobile-categories-panel"
+                  aria-expanded={mobileCalculatorsExpandedByDefault ? 'true' : 'false'}
+                >
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M3 6l5 5 5-5" />
+                  </svg>
+                </button>
+              </div>
+              <div class:list={{ 'mobile-categories': true, open: mobileCalculatorsExpandedByDefault }} id="mobile-categories-panel">
+                {categoryLinks.map((category) => (
+                  <a
+                    href={category.href}
+                    class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
+                    aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+                  >
+                    {category.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
             <a
-              href={category.href}
-              class:list={{ 'mobile-category-link': true, 'is-active': isCurrentPath(category.href) }}
-              aria-current={isCurrentPath(category.href) ? 'page' : undefined}
+              href={withLocale(item.href)}
+              class:list={{ 'is-active': isCurrentPath(item.href) }}
+              aria-current={isCurrentPath(item.href) ? 'page' : undefined}
             >
-              {category.label}
+              {item.label}
             </a>
-          ))}
-        </div>
+          )
+        ))}
         <div class="p-4">
           <label for="lang-select-mobile" class="sr-only">{t.languageSelector}</label>
           <select id="lang-select-mobile" class="w-full border rounded-md px-2 py-1 text-sm" aria-label={t.languageSelector} data-fr-path={frSwitchPath} data-en-path={enSwitchPath}>
@@ -427,6 +449,25 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
       // Mobile menu
       const menuButton = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
+      const mobileCalcToggle = document.getElementById('mobile-calc-toggle');
+      const mobileCategoriesPanel = document.getElementById('mobile-categories-panel');
+
+      let collapseMobileCalculatorCategories = null;
+
+      if (mobileCalcToggle && mobileCategoriesPanel) {
+        const setMobileCalculatorCategoriesExpanded = (expanded) => {
+          mobileCategoriesPanel.classList.toggle('open', expanded);
+          mobileCalcToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        };
+
+        collapseMobileCalculatorCategories = () => setMobileCalculatorCategoriesExpanded(false);
+
+        mobileCalcToggle.addEventListener('click', (event) => {
+          event.preventDefault();
+          const nextState = !mobileCategoriesPanel.classList.contains('open');
+          setMobileCalculatorCategoriesExpanded(nextState);
+        });
+      }
 
       if (menuButton && mobileMenu) {
         menuButton.addEventListener('click', () => {
@@ -438,6 +479,9 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
           link.addEventListener('click', () => {
             mobileMenu.classList.remove('open');
             menuButton.setAttribute('aria-expanded', 'false');
+            if (collapseMobileCalculatorCategories) {
+              collapseMobileCalculatorCategories();
+            }
           });
         });
       }
