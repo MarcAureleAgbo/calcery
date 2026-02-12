@@ -7,6 +7,7 @@ import IncomeCalculator from '../../../components/calculators/IncomeCalculator';
 import SmallExpensesSavingsCalculator from '../../../components/calculators/SmallExpensesSavingsCalculator';
 import TipCalculator from '../../../components/calculators/TipCalculator';
 import SplitBillCalculator from '../../../components/calculators/SplitBillCalculator';
+import UnifiedCalculator from '../../../components/calculators/UnifiedCalculator';
 import {
   getCalculatorStaticPaths,
   getCategoryRoute,
@@ -14,6 +15,7 @@ import {
   type CategoryDefinition,
   type CalculatorDefinition,
 } from '../../../lib/calculator-taxonomy';
+import { isNewCalculatorSlug } from '../../../lib/new-calculator-slugs';
 import type { BreadcrumbItem } from '../../../lib/types';
 
 export function getStaticPaths() {
@@ -52,4 +54,5 @@ const breadcrumbs: BreadcrumbItem[] = [
   {calculator.slug === 'economies-petites-depenses' && <SmallExpensesSavingsCalculator client:load lang="fr" />}
   {calculator.slug === 'pourboire' && <TipCalculator client:load lang="fr" />}
   {calculator.slug === 'partage-addition' && <SplitBillCalculator client:load lang="fr" />}
+  {isNewCalculatorSlug(calculator.slug) && <UnifiedCalculator client:load lang="fr" slug={calculator.slug} />}
 </CalculatorLayout>

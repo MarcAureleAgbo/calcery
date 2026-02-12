@@ -9,6 +9,7 @@
     "astro": "astro",
     "test:analytics:dev": "node scripts/check-analytics-dev.mjs",
     "test:adsense:dev": "node scripts/check-adsense-dev.mjs",
+    "test:new-calculators": "node scripts/test-new-calculators.mjs",
     "verify:sitemap": "node scripts/verify-sitemap.mjs"
   },
   "dependencies": {

@@ -17,7 +17,31 @@ export type CalculatorSlug =
   | 'impot-revenu'
   | 'economies-petites-depenses'
   | 'pourboire'
-  | 'partage-addition';
+  | 'partage-addition'
+  | 'taux-endettement'
+  | 'mensualite-credit'
+  | 'pret-personnel'
+  | 'salaire-brut-net'
+  | 'salaire-net-brut'
+  | 'tva-ht-ttc'
+  | 'capacite-epargne-mensuelle'
+  | 'objectif-epargne-temps'
+  | 'calcul-imc'
+  | 'besoin-calorique-journalier'
+  | 'poids-ideal'
+  | 'besoin-eau-quotidien'
+  | 'rythme-cardiaque-cible'
+  | 'depense-calorique-activite'
+  | 'capacite-emprunt-immobilier'
+  | 'frais-notaire'
+  | 'rentabilite-locative-brute'
+  | 'rendement-locatif-net'
+  | 'difference-entre-deux-dates'
+  | 'age-exact'
+  | 'consommation-carburant'
+  | 'quantite-peinture'
+  | 'surface-piece'
+  | 'moyenne-scolaire';
 
 type Localized<T> = {
   fr: T;
@@ -98,8 +122,8 @@ export const CATEGORIES: CategoryDefinition[] = [
       en: 'Health tools for practical tracking and estimates | Calcery',
     },
     description: {
-      fr: 'Bientot des calculateurs sante pour suivre vos objectifs, habitudes et indicateurs utiles au quotidien.',
-      en: 'Upcoming health calculators to track goals, habits and useful daily indicators.',
+      fr: 'Des calculateurs sante pour suivre vos objectifs, habitudes et indicateurs utiles au quotidien.',
+      en: 'Health calculators to track goals, habits and useful daily indicators.',
     },
     seoText: {
       fr: [
@@ -133,8 +157,8 @@ export const CATEGORIES: CategoryDefinition[] = [
       en: 'Real estate calculators for planning and cost scenarios | Calcery',
     },
     description: {
-      fr: 'Bientot des calculateurs immobiliers pour estimer budget, mensualites et scenarios d achat ou de location.',
-      en: 'Upcoming real estate calculators for budget, monthly payment and buy-vs-rent scenarios.',
+      fr: 'Des calculateurs immobiliers pour estimer budget, mensualites et scenarios d achat ou de location.',
+      en: 'Real estate calculators for budget, monthly payment and buy-vs-rent scenarios.',
     },
     seoText: {
       fr: [
@@ -203,8 +227,8 @@ export const CATEGORIES: CategoryDefinition[] = [
       en: 'Home calculators to estimate costs and priorities | Calcery',
     },
     description: {
-      fr: 'Bientot des calculateurs pour prioriser vos travaux, estimer budgets et planifier vos projets maison.',
-      en: 'Upcoming calculators to prioritize renovation plans, estimate budgets and manage home projects.',
+      fr: 'Des calculateurs pour prioriser vos travaux, estimer budgets et planifier vos projets maison.',
+      en: 'Calculators to prioritize renovation plans, estimate budgets and manage home projects.',
     },
     seoText: {
       fr: [
@@ -238,8 +262,8 @@ export const CATEGORIES: CategoryDefinition[] = [
       en: 'Education calculators for planning and progress | Calcery',
     },
     description: {
-      fr: 'Bientot des outils education pour planifier budgets d apprentissage et suivre vos objectifs de progression.',
-      en: 'Upcoming education tools for learning budgets and progress planning.',
+      fr: 'Des outils education pour planifier budgets d apprentissage et suivre vos objectifs de progression.',
+      en: 'Education tools for learning budgets and progress planning.',
     },
     seoText: {
       fr: [
@@ -619,6 +643,1134 @@ export const CALCULATORS: CalculatorDefinition[] = [
       ],
     },
     updatedAt: '2026-02-10',
+  },
+  {
+    slug: 'taux-endettement',
+    category: 'finance',
+    icon: '📉',
+    name: { fr: "Taux d'endettement", en: 'Debt ratio' },
+    title: {
+      fr: "Calculateur taux d'endettement",
+      en: 'Debt ratio calculator',
+    },
+    description: {
+      fr: "Calculez votre taux d'endettement mensuel en fonction de vos revenus et charges.",
+      en: 'Calculate your monthly debt ratio from income and recurring charges.',
+    },
+    metaTitle: {
+      fr: "Calculateur taux d'endettement | Calcery",
+      en: 'Debt ratio calculator | Calcery',
+    },
+    metaDescription: {
+      fr: "Estimez votre taux d'endettement pour mieux piloter vos projets de credit.",
+      en: 'Estimate your debt ratio to better manage borrowing decisions.',
+    },
+    faqs: {
+      fr: [
+        { question: "Qu'est-ce que le taux d'endettement ?", answer: 'Le rapport entre vos charges de credit et vos revenus mensuels.' },
+        { question: 'Pourquoi le suivre ?', answer: "Il aide a evaluer votre marge financiere avant un nouveau pret." },
+        { question: 'Quel niveau viser ?', answer: 'En pratique, de nombreux dossiers visent un seuil autour de 35%.' },
+      ],
+      en: [
+        { question: 'What is a debt ratio?', answer: 'It is the share of your monthly income used by recurring debt payments.' },
+        { question: 'Why track it?', answer: 'It helps assess borrowing room before applying for a new loan.' },
+        { question: 'What ratio is usually targeted?', answer: 'In many cases, lenders prefer a ratio close to 35% or below.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Integrez toutes les mensualites fixes dans vos charges.',
+        'Mettez a jour le calcul apres tout changement de revenu.',
+        'Comparez plusieurs scenarios avant de vous engager.',
+      ],
+      en: [
+        'Include all fixed monthly debt payments.',
+        'Update calculations whenever income changes.',
+        'Compare scenarios before committing to new debt.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'mensualite-credit',
+    category: 'finance',
+    icon: '🏦',
+    name: { fr: 'Mensualite de credit', en: 'Loan monthly payment' },
+    title: {
+      fr: 'Calculateur mensualite de credit',
+      en: 'Loan monthly payment calculator',
+    },
+    description: {
+      fr: 'Simulez une mensualite a partir du montant, du taux et de la duree.',
+      en: 'Estimate monthly loan payments from principal, rate and duration.',
+    },
+    metaTitle: {
+      fr: 'Calculateur mensualite credit | Calcery',
+      en: 'Loan monthly payment calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Obtenez une estimation rapide de votre mensualite de pret.',
+      en: 'Get a quick estimate of your monthly loan payment.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quels parametres sont necessaires ?', answer: 'Montant emprunte, taux annuel et duree du credit.' },
+        { question: 'Le resultat est-il exact ?', answer: 'C est une estimation utile avant une simulation bancaire detaillee.' },
+        { question: 'Puis-je tester un taux a 0% ?', answer: 'Oui, le calcul gere aussi ce cas.' },
+      ],
+      en: [
+        { question: 'Which inputs are required?', answer: 'Principal amount, annual interest rate, and loan term.' },
+        { question: 'Is the result exact?', answer: 'It is a planning estimate before a detailed bank offer.' },
+        { question: 'Can I test a 0% rate?', answer: 'Yes, the calculator also handles zero-interest scenarios.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Testez plusieurs durees pour voir le compromis cout / mensualite.',
+        'Utilisez un taux prudent pour vos projections.',
+        'Comparez ensuite avec votre taux d endettement global.',
+      ],
+      en: [
+        'Compare several durations to evaluate payment vs. total cost.',
+        'Use conservative rates for realistic planning.',
+        'Then compare results with your overall debt ratio.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'pret-personnel',
+    category: 'finance',
+    icon: '💳',
+    name: { fr: 'Pret personnel', en: 'Personal loan simulator' },
+    title: {
+      fr: 'Simulateur pret personnel',
+      en: 'Personal loan simulator',
+    },
+    description: {
+      fr: 'Estimez mensualite, montant rembourse et cout total de votre pret personnel.',
+      en: 'Estimate monthly payment, total repayment and total cost for a personal loan.',
+    },
+    metaTitle: {
+      fr: 'Simulateur pret personnel | Calcery',
+      en: 'Personal loan simulator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Comparez rapidement les couts d un pret personnel selon la duree et le taux.',
+      en: 'Quickly compare personal loan costs by duration and interest rate.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que calcule cet outil ?', answer: 'Mensualite, total rembourse et cout global du credit.' },
+        { question: 'Pourquoi comparer plusieurs durees ?', answer: 'La duree influence fortement le cout total des interets.' },
+        { question: 'A qui sert cette simulation ?', answer: 'A toute personne preparant un financement personnel.' },
+      ],
+      en: [
+        { question: 'What does this tool compute?', answer: 'Monthly payment, total repayment, and total credit cost.' },
+        { question: 'Why compare durations?', answer: 'Loan term has a major impact on the total interest paid.' },
+        { question: 'Who is it for?', answer: 'Anyone planning personal financing decisions.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Ajoutez une marge de securite dans votre budget mensuel.',
+        'Evitez de simuler uniquement le meilleur taux possible.',
+        'Verifiez la coherence avec vos autres charges fixes.',
+      ],
+      en: [
+        'Keep a safety margin in your monthly budget.',
+        'Do not simulate only best-case interest rates.',
+        'Check consistency with your other fixed expenses.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'salaire-brut-net',
+    category: 'finance',
+    icon: '🧮',
+    name: { fr: 'Brut vers net', en: 'Gross to net salary' },
+    title: {
+      fr: 'Convertisseur salaire brut vers net',
+      en: 'Gross to net salary converter',
+    },
+    description: {
+      fr: 'Obtenez une estimation rapide du salaire net a partir du brut.',
+      en: 'Get a quick estimate of net salary from gross salary.',
+    },
+    metaTitle: {
+      fr: 'Convertisseur brut net salaire | Calcery',
+      en: 'Gross to net salary converter | Calcery',
+    },
+    metaDescription: {
+      fr: 'Estimez votre salaire net mensuel a partir du brut.',
+      en: 'Estimate your monthly net salary from gross salary.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Le resultat est-il contractuel ?', answer: 'Non, c est une estimation informative basee sur un ratio moyen.' },
+        { question: 'Pourquoi un ecart avec la fiche de paie ?', answer: 'Le statut et les cotisations reelles varient selon chaque situation.' },
+        { question: 'Puis-je l utiliser pour budgeter ?', answer: 'Oui, pour une premiere projection rapide.' },
+      ],
+      en: [
+        { question: 'Is the result contractual?', answer: 'No, this is an estimate based on an average payroll ratio.' },
+        { question: 'Why can payroll differ?', answer: 'Actual deductions vary by status, contract, and contribution rules.' },
+        { question: 'Can I use it for budgeting?', answer: 'Yes, as a fast first-pass estimate.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Utilisez un scenario prudent pour vos decisions.',
+        'Comparez ensuite avec vos bulletins recents.',
+        'Mettez a jour vos calculs lors des changements de contrat.',
+      ],
+      en: [
+        'Use conservative assumptions in planning.',
+        'Compare with your recent payroll slips.',
+        'Recalculate whenever contract terms change.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'salaire-net-brut',
+    category: 'finance',
+    icon: '🔁',
+    name: { fr: 'Net vers brut', en: 'Net to gross salary' },
+    title: {
+      fr: 'Convertisseur salaire net vers brut',
+      en: 'Net to gross salary converter',
+    },
+    description: {
+      fr: 'Estimez le salaire brut correspondant a votre net mensuel.',
+      en: 'Estimate gross salary from your monthly net salary.',
+    },
+    metaTitle: {
+      fr: 'Convertisseur net brut salaire | Calcery',
+      en: 'Net to gross salary converter | Calcery',
+    },
+    metaDescription: {
+      fr: 'Convertissez un salaire net en estimation de salaire brut.',
+      en: 'Convert net salary into an estimated gross salary.',
+    },
+    faqs: {
+      fr: [
+        { question: 'A quoi sert cet outil ?', answer: 'A estimer un niveau de brut a partir d un net cible.' },
+        { question: 'Puis-je l utiliser pour negocier ?', answer: 'Oui, comme base de discussion initiale.' },
+        { question: 'Le taux utilise est-il fixe ?', answer: 'Il s agit d une approximation moyenne, pas d un calcul paie complet.' },
+      ],
+      en: [
+        { question: 'What is this tool for?', answer: 'It estimates gross salary from a desired net amount.' },
+        { question: 'Can it support salary negotiation?', answer: 'Yes, as an initial reference for discussion.' },
+        { question: 'Is the conversion exact?', answer: 'No, it uses an average approximation, not full payroll rules.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Combinez ce calcul avec vos objectifs de budget net.',
+        'Conservez une marge selon votre regime reel.',
+        'Verifiez vos hypotheses avec un professionnel si besoin.',
+      ],
+      en: [
+        'Combine this estimate with your net budget target.',
+        'Keep a margin for your actual payroll framework.',
+        'Validate assumptions with a professional when needed.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'tva-ht-ttc',
+    category: 'finance',
+    icon: '🧾',
+    name: { fr: 'TVA HT TTC', en: 'VAT HT TTC' },
+    title: {
+      fr: 'Calcul TVA HT vers TTC et TTC vers HT',
+      en: 'VAT calculator net to gross and gross to net',
+    },
+    description: {
+      fr: 'Convertissez un montant HT ou TTC avec le taux de TVA de votre choix.',
+      en: 'Convert before-tax and after-tax amounts with a custom VAT rate.',
+    },
+    metaTitle: {
+      fr: 'Calcul TVA HT TTC | Calcery',
+      en: 'VAT calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil de conversion bidirectionnelle HT / TTC avec montant TVA detaille.',
+      en: 'Bidirectional VAT conversion with detailed tax amount.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Puis-je convertir dans les deux sens ?', answer: 'Oui, HT vers TTC et TTC vers HT.' },
+        { question: 'Le taux est-il personnalisable ?', answer: 'Oui, vous saisissez librement le taux de TVA.' },
+        { question: 'Le montant TVA est-il affiche ?', answer: 'Oui, le detail de la taxe est retourne avec le resultat.' },
+      ],
+      en: [
+        { question: 'Can I convert both ways?', answer: 'Yes, from net to gross and from gross to net.' },
+        { question: 'Is VAT rate customizable?', answer: 'Yes, you can enter any VAT percentage.' },
+        { question: 'Is VAT amount shown?', answer: 'Yes, the tax amount is shown with the result.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Verifiez le taux applicable a votre activite.',
+        'Controlez les arrondis sur vos documents finaux.',
+        'Utilisez la meme logique sur tous vos devis.',
+      ],
+      en: [
+        'Check the VAT rate relevant to your context.',
+        'Review rounding on final accounting documents.',
+        'Apply the same method across all quotes/invoices.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'capacite-epargne-mensuelle',
+    category: 'finance',
+    icon: '💶',
+    name: { fr: "Capacite d'epargne", en: 'Monthly savings capacity' },
+    title: {
+      fr: "Calculateur capacite d'epargne mensuelle",
+      en: 'Monthly savings capacity calculator',
+    },
+    description: {
+      fr: 'Calculez votre surplus mensuel a epargner apres depenses.',
+      en: 'Calculate your monthly savings surplus after expenses.',
+    },
+    metaTitle: {
+      fr: "Capacite d'epargne mensuelle | Calcery",
+      en: 'Monthly savings capacity | Calcery',
+    },
+    metaDescription: {
+      fr: 'Visualisez votre capacite d epargne mensuelle et annuelle.',
+      en: 'Visualize your monthly and yearly savings potential.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quelle formule est utilisee ?', answer: 'Revenus mensuels moins depenses mensuelles.' },
+        { question: 'Pourquoi annualiser le resultat ?', answer: 'Pour visualiser rapidement votre potentiel sur 12 mois.' },
+        { question: 'Peut-on avoir un resultat negatif ?', answer: 'Oui, cela signale un budget mensuel a corriger.' },
+      ],
+      en: [
+        { question: 'Which formula is used?', answer: 'Monthly income minus monthly expenses.' },
+        { question: 'Why annualize the result?', answer: 'To quickly estimate long-term impact over 12 months.' },
+        { question: 'Can the result be negative?', answer: 'Yes, indicating that spending exceeds income.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Mettez a jour vos depenses fixes et variables chaque mois.',
+        'Affectez une partie de la capacite a un objectif concret.',
+        'Suivez l evolution sur plusieurs mois pour lisser les variations.',
+      ],
+      en: [
+        'Update fixed and variable expenses monthly.',
+        'Allocate part of the surplus to a clear savings goal.',
+        'Track trends across multiple months to smooth volatility.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'objectif-epargne-temps',
+    category: 'finance',
+    icon: '🎯',
+    name: { fr: "Objectif d'epargne", en: 'Savings goal timeline' },
+    title: {
+      fr: "Calculateur delai objectif d'epargne",
+      en: 'Savings goal timeline calculator',
+    },
+    description: {
+      fr: 'Estimez le nombre de mois necessaires pour atteindre votre objectif.',
+      en: 'Estimate how many months are needed to reach your savings target.',
+    },
+    metaTitle: {
+      fr: "Objectif d'epargne: delai estime | Calcery",
+      en: 'Savings goal timeline estimate | Calcery',
+    },
+    metaDescription: {
+      fr: 'Calculez la duree pour atteindre un objectif d epargne selon vos versements.',
+      en: 'Calculate time to target based on monthly savings contributions.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quels parametres sont pris en compte ?', answer: 'Objectif, versement mensuel, capital initial et rendement optionnel.' },
+        { question: 'Puis-je inclure un taux annuel ?', answer: 'Oui, pour simuler une croissance plus realiste du capital.' },
+        { question: 'Le resultat est-il arrondi ?', answer: 'Oui, en nombre de mois complets necessaires.' },
+      ],
+      en: [
+        { question: 'Which inputs are used?', answer: 'Target, monthly contribution, initial amount, and optional annual return.' },
+        { question: 'Can I include annual return?', answer: 'Yes, to simulate more realistic capital growth.' },
+        { question: 'Is output rounded?', answer: 'Yes, to full months needed to reach the goal.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Augmentez legerement le versement pour reduire fortement le delai.',
+        'Testez plusieurs hypotheses de rendement.',
+        'Gardez un scenario prudent pour vos decisions engageantes.',
+      ],
+      en: [
+        'A small increase in contribution can reduce timeline significantly.',
+        'Run multiple return assumptions.',
+        'Use conservative scenarios for major decisions.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'calcul-imc',
+    category: 'health',
+    icon: '⚖️',
+    name: { fr: 'Calcul IMC', en: 'BMI calculator' },
+    title: {
+      fr: 'Calculateur IMC',
+      en: 'BMI calculator',
+    },
+    description: {
+      fr: 'Calculez votre indice de masse corporelle a partir du poids et de la taille.',
+      en: 'Calculate body mass index from your weight and height.',
+    },
+    metaTitle: {
+      fr: 'Calcul IMC rapide | Calcery',
+      en: 'BMI calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil IMC simple avec interpretation de la categorie de resultat.',
+      en: 'Simple BMI tool with category interpretation.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que mesure l IMC ?', answer: 'Le rapport entre votre poids et votre taille au carre.' },
+        { question: 'Le resultat suffit-il seul ?', answer: 'Non, il doit etre interprete dans un contexte plus large.' },
+        { question: 'Peut-on suivre une evolution ?', answer: 'Oui, en recalculant regulierement dans le temps.' },
+      ],
+      en: [
+        { question: 'What does BMI measure?', answer: 'The relationship between body weight and squared height.' },
+        { question: 'Is BMI enough on its own?', answer: 'No, it should be interpreted with broader health context.' },
+        { question: 'Can it track progress?', answer: 'Yes, by recalculating over time.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Utilisez toujours les memes unites pour comparer.',
+        'Suivez la tendance plutot qu une valeur isolee.',
+        'Consultez un professionnel en cas de doute medical.',
+      ],
+      en: [
+        'Use consistent units when comparing results.',
+        'Focus on trends rather than one isolated value.',
+        'Consult a professional for medical interpretation.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'besoin-calorique-journalier',
+    category: 'health',
+    icon: '🔥',
+    name: { fr: 'Besoin calorique journalier', en: 'Daily calorie needs' },
+    title: {
+      fr: 'Calculateur besoin calorique journalier',
+      en: 'Daily calorie needs calculator',
+    },
+    description: {
+      fr: 'Estimez vos besoins caloriques selon age, sexe, poids, taille et activite.',
+      en: 'Estimate calorie needs by age, sex, body metrics, and activity level.',
+    },
+    metaTitle: {
+      fr: 'Besoin calorique journalier | Calcery',
+      en: 'Daily calorie needs | Calcery',
+    },
+    metaDescription: {
+      fr: 'Simulation de metabolisme de base et maintien calorique quotidien.',
+      en: 'Estimate basal metabolism and daily maintenance calories.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que donne ce calcul ?', answer: 'Le metabolisme de base et un besoin calorique de maintien.' },
+        { question: 'Le niveau d activite est-il important ?', answer: 'Oui, il influence fortement le resultat final.' },
+        { question: 'Est-ce un conseil medical ?', answer: 'Non, c est une estimation informative.' },
+      ],
+      en: [
+        { question: 'What does this output include?', answer: 'Basal metabolic rate and maintenance calorie estimate.' },
+        { question: 'Does activity level matter?', answer: 'Yes, it has a major impact on daily calorie needs.' },
+        { question: 'Is this medical advice?', answer: 'No, this is informational estimation only.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Choisissez un niveau d activite realiste.',
+        'Ajustez apres quelques semaines de suivi reel.',
+        'Ne changez pas drastiquement vos apports sans accompagnement.',
+      ],
+      en: [
+        'Choose a realistic activity factor.',
+        'Recalibrate after tracking for a few weeks.',
+        'Avoid extreme intake changes without guidance.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'poids-ideal',
+    category: 'health',
+    icon: '🎚️',
+    name: { fr: 'Poids ideal', en: 'Ideal weight' },
+    title: {
+      fr: 'Calculateur poids ideal',
+      en: 'Ideal weight calculator',
+    },
+    description: {
+      fr: 'Obtenez une estimation de poids ideal selon votre taille et votre sexe.',
+      en: 'Estimate ideal weight from height and sex.',
+    },
+    metaTitle: {
+      fr: 'Poids ideal estime | Calcery',
+      en: 'Estimated ideal weight | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil simple pour une estimation indicative du poids ideal.',
+      en: 'Simple tool for an indicative ideal-weight estimate.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Ce chiffre est-il une cible absolue ?', answer: 'Non, il s agit d un repere indicatif.' },
+        { question: 'Dois-je viser exactement ce poids ?', answer: 'Pas forcement, le contexte individuel reste prioritaire.' },
+        { question: 'Puis-je suivre une progression ?', answer: 'Oui, comparez vos mesures sur la duree.' },
+      ],
+      en: [
+        { question: 'Is this an absolute target?', answer: 'No, it is an indicative reference point.' },
+        { question: 'Should I aim exactly for that number?', answer: 'Not necessarily; personal context matters first.' },
+        { question: 'Can it be used for tracking?', answer: 'Yes, as a trend reference over time.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Utilisez ce calcul comme repere, pas comme injonction.',
+        'Priorisez votre forme globale et vos marqueurs sante.',
+        'Discutez de vos objectifs avec un professionnel qualifie.',
+      ],
+      en: [
+        'Use this estimate as guidance, not strict instruction.',
+        'Prioritize overall health markers and fitness.',
+        'Discuss goals with a qualified professional.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'besoin-eau-quotidien',
+    category: 'health',
+    icon: '💧',
+    name: { fr: 'Besoin en eau quotidien', en: 'Daily water needs' },
+    title: {
+      fr: 'Calculateur besoin en eau quotidien',
+      en: 'Daily water needs calculator',
+    },
+    description: {
+      fr: 'Estimez votre hydratation quotidienne selon poids et activite.',
+      en: 'Estimate daily hydration needs based on weight and activity.',
+    },
+    metaTitle: {
+      fr: 'Besoin en eau quotidien | Calcery',
+      en: 'Daily water needs | Calcery',
+    },
+    metaDescription: {
+      fr: 'Simulation de volume d eau recommande par jour.',
+      en: 'Estimate recommended water intake per day.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que prend en compte ce calcul ?', answer: 'Votre poids et votre niveau d activite quotidienne.' },
+        { question: 'Le climat est-il inclus ?', answer: 'Non, adaptez selon chaleur, effort et contexte personnel.' },
+        { question: 'Est-ce une prescription medicale ?', answer: 'Non, c est un repere d usage general.' },
+      ],
+      en: [
+        { question: 'What inputs are used?', answer: 'Body weight and daily activity duration.' },
+        { question: 'Is climate included?', answer: 'No, adjust for heat, effort, and personal context.' },
+        { question: 'Is this medical prescription?', answer: 'No, this is general guidance only.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Fractionnez votre hydratation sur la journee.',
+        'Augmentez vos apports lors des activites longues.',
+        'Surveillez les signes de deshydratation.',
+      ],
+      en: [
+        'Spread hydration throughout the day.',
+        'Increase intake during longer activity sessions.',
+        'Watch for dehydration signs in daily routine.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'rythme-cardiaque-cible',
+    category: 'health',
+    icon: '❤️',
+    name: { fr: 'Rythme cardiaque cible', en: 'Target heart rate' },
+    title: {
+      fr: 'Calculateur rythme cardiaque cible',
+      en: 'Target heart rate calculator',
+    },
+    description: {
+      fr: "Estimez une frequence cardiaque cible selon l'age et l intensite.",
+      en: 'Estimate target training heart rate from age and intensity.',
+    },
+    metaTitle: {
+      fr: 'Rythme cardiaque cible | Calcery',
+      en: 'Target heart rate | Calcery',
+    },
+    metaDescription: {
+      fr: 'Obtenez une cible bpm et une zone d entrainement indicative.',
+      en: 'Get target bpm and an indicative training zone.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quelle formule est utilisee ?', answer: 'Base 220 - age, puis application du pourcentage d intensite.' },
+        { question: 'A quoi sert la zone 50-85% ?', answer: "A definir une plage d effort generale pour l entrainement." },
+        { question: 'Ce calcul suffit-il seul ?', answer: 'Non, adaptez toujours selon votre condition et avis medical.' },
+      ],
+      en: [
+        { question: 'Which formula is used?', answer: 'Baseline 220 - age, then intensity percentage is applied.' },
+        { question: 'What is the 50-85% zone for?', answer: 'It gives a general training intensity range.' },
+        { question: 'Is this enough on its own?', answer: 'No, adjust to your personal condition and medical context.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Commencez dans la partie basse de la zone.',
+        'Montez l intensite progressivement.',
+        'Arretez en cas de symptomes anormaux.',
+      ],
+      en: [
+        'Start in the lower part of the zone.',
+        'Increase intensity progressively.',
+        'Stop if unusual symptoms appear.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'depense-calorique-activite',
+    category: 'health',
+    icon: '🏃',
+    name: { fr: 'Depense calorique activite', en: 'Activity calories burned' },
+    title: {
+      fr: 'Calculateur depense calorique par activite',
+      en: 'Calories burned by activity calculator',
+    },
+    description: {
+      fr: 'Estimez les calories depensees selon poids, duree et type d activite.',
+      en: 'Estimate calories burned from weight, duration and activity type.',
+    },
+    metaTitle: {
+      fr: 'Depense calorique activite | Calcery',
+      en: 'Activity calories burned | Calcery',
+    },
+    metaDescription: {
+      fr: 'Simulation rapide des calories depensees pendant une activite.',
+      en: 'Quick estimate of calories burned during exercise.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Sur quoi repose le calcul ?', answer: 'Sur une valeur MET selon le type d activite.' },
+        { question: 'Le resultat est-il exact ?', answer: 'C est une estimation moyenne, utile pour comparer des scenarios.' },
+        { question: 'Puis-je changer de duree ?', answer: 'Oui, la duree influence directement la depense estimee.' },
+      ],
+      en: [
+        { question: 'What drives the estimate?', answer: 'A MET value associated with each activity type.' },
+        { question: 'Is the result exact?', answer: 'It is an average estimate useful for scenario comparison.' },
+        { question: 'Can I vary duration?', answer: 'Yes, duration directly impacts estimated burn.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Utilisez le meme poids de reference pour comparer.',
+        'Comparez plusieurs activites a duree egale.',
+        'Integrez ces donnees dans un suivi regulier.',
+      ],
+      en: [
+        'Use the same body weight for comparisons.',
+        'Compare activities at equal duration.',
+        'Integrate results into regular tracking.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'capacite-emprunt-immobilier',
+    category: 'realEstate',
+    icon: '🏡',
+    name: { fr: "Capacite d'emprunt immobilier", en: 'Mortgage borrowing capacity' },
+    title: {
+      fr: "Calculateur capacite d'emprunt immobilier",
+      en: 'Mortgage borrowing capacity calculator',
+    },
+    description: {
+      fr: 'Estimez votre capacite d emprunt selon revenus, charges, taux et duree.',
+      en: 'Estimate borrowing capacity based on income, charges, rate, and duration.',
+    },
+    metaTitle: {
+      fr: "Capacite d'emprunt immobilier | Calcery",
+      en: 'Mortgage borrowing capacity | Calcery',
+    },
+    metaDescription: {
+      fr: 'Simulez mensualite maximale et montant empruntable.',
+      en: 'Simulate maximum monthly payment and borrowing amount.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que calcule cet outil ?', answer: 'Mensualite supportable et capital potentiellement empruntable.' },
+        { question: 'Le taux d endettement est-il modifiable ?', answer: 'Oui, vous pouvez tester plusieurs hypothese de ratio.' },
+        { question: 'Est-ce une offre bancaire ?', answer: 'Non, c est une estimation preparatoire.' },
+      ],
+      en: [
+        { question: 'What does it calculate?', answer: 'Affordable monthly payment and potential borrowing amount.' },
+        { question: 'Can debt ratio be changed?', answer: 'Yes, you can test different ratio assumptions.' },
+        { question: 'Is this a bank offer?', answer: 'No, this is a preparatory estimate.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Integrez toutes vos charges recurrentes.',
+        'Testez un taux plus haut pour scenario prudent.',
+        'Conservez une marge pour imprevus immobiliers.',
+      ],
+      en: [
+        'Include all recurring monthly obligations.',
+        'Test higher rates for conservative planning.',
+        'Keep margin for property-related surprises.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'frais-notaire',
+    category: 'realEstate',
+    icon: '📜',
+    name: { fr: 'Frais de notaire', en: 'Notary fees' },
+    title: {
+      fr: 'Calculateur frais de notaire',
+      en: 'Notary fee calculator',
+    },
+    description: {
+      fr: 'Estimez les frais de notaire et le budget total d acquisition.',
+      en: 'Estimate notary fees and total acquisition budget.',
+    },
+    metaTitle: {
+      fr: 'Calcul frais de notaire | Calcery',
+      en: 'Notary fee calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil de simulation des frais de notaire a partir du prix du bien.',
+      en: 'Estimate notary fees based on property purchase price.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que comprend cette estimation ?', answer: 'Un calcul forfaitaire selon le taux de frais saisi.' },
+        { question: 'Le taux peut-il changer ?', answer: 'Oui, selon neuf/ancien et contexte du dossier.' },
+        { question: 'Le resultat remplace-t-il un devis notarial ?', answer: 'Non, il sert de repere budgetaire initial.' },
+      ],
+      en: [
+        { question: 'What does this estimate include?', answer: 'A simplified estimate based on the entered fee rate.' },
+        { question: 'Can fee rates vary?', answer: 'Yes, they vary by property type and transaction context.' },
+        { question: 'Does this replace a legal quote?', answer: 'No, it is an initial budgeting reference.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Testez plusieurs taux pour encadrer votre budget.',
+        'Ajoutez les frais annexes hors notaire pour une vision complete.',
+        'Conservez une marge de securite.',
+      ],
+      en: [
+        'Test multiple fee rates for budget range planning.',
+        'Add other acquisition costs for full visibility.',
+        'Keep a contingency margin.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'rentabilite-locative-brute',
+    category: 'realEstate',
+    icon: '🏘️',
+    name: { fr: 'Rentabilite locative brute', en: 'Gross rental yield' },
+    title: {
+      fr: 'Calculateur rentabilite locative brute',
+      en: 'Gross rental yield calculator',
+    },
+    description: {
+      fr: 'Calculez la rentabilite brute annuelle de votre investissement locatif.',
+      en: 'Calculate annual gross rental yield of a property investment.',
+    },
+    metaTitle: {
+      fr: 'Rentabilite locative brute | Calcery',
+      en: 'Gross rental yield | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil simple pour estimer le rendement locatif brut.',
+      en: 'Simple tool to estimate gross rental return.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Comment est calculee la rentabilite brute ?', answer: 'Loyer annuel divise par prix d achat, puis multiplie par 100.' },
+        { question: 'Les charges sont-elles incluses ?', answer: 'Non, elles ne sont pas prises en compte dans la version brute.' },
+        { question: 'A quoi sert cet indicateur ?', answer: 'A comparer rapidement plusieurs opportunites immobiliere.' },
+      ],
+      en: [
+        { question: 'How is gross yield computed?', answer: 'Annual rent divided by purchase price, multiplied by 100.' },
+        { question: 'Are expenses included?', answer: 'No, gross yield excludes operating charges.' },
+        { question: 'Why use this metric?', answer: 'To compare property opportunities quickly at first pass.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Utilisez ensuite le rendement net pour une decision finale.',
+        'Visez des hypothese de loyer realistes.',
+        'Comparez sur plusieurs biens similaires.',
+      ],
+      en: [
+        'Use net yield next for final decision quality.',
+        'Use realistic rent assumptions.',
+        'Compare across similar properties.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'rendement-locatif-net',
+    category: 'realEstate',
+    icon: '📊',
+    name: { fr: 'Rendement locatif net', en: 'Net rental yield' },
+    title: {
+      fr: 'Calculateur rendement locatif net',
+      en: 'Net rental yield calculator',
+    },
+    description: {
+      fr: 'Estimez un rendement locatif net en incluant charges et frais d acquisition.',
+      en: 'Estimate net rental yield including costs and recurring charges.',
+    },
+    metaTitle: {
+      fr: 'Rendement locatif net estime | Calcery',
+      en: 'Estimated net rental yield | Calcery',
+    },
+    metaDescription: {
+      fr: 'Simulation de rendement net pour une analyse locative plus realiste.',
+      en: 'Net rental return simulation for more realistic investment analysis.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que prend en compte le net ?', answer: 'Loyers, charges annuelles et cout global d acquisition.' },
+        { question: 'Pourquoi est-il plus utile que le brut ?', answer: 'Il rapproche davantage la simulation de la realite.' },
+        { question: 'Peut-on comparer plusieurs scenarios ?', answer: 'Oui, notamment sur loyers et niveaux de charges.' },
+      ],
+      en: [
+        { question: 'What is included in net yield?', answer: 'Rent, annual charges, and total acquisition cost.' },
+        { question: 'Why more useful than gross yield?', answer: 'It is closer to actual economic performance.' },
+        { question: 'Can I run multiple scenarios?', answer: 'Yes, especially for rent and expense assumptions.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Restez prudent sur le niveau de vacance locative.',
+        'Integrez les frais d entretien recurrent.',
+        'Comparez net et brut pour comprendre les ecarts.',
+      ],
+      en: [
+        'Keep assumptions conservative on vacancy risk.',
+        'Include recurring maintenance costs.',
+        'Compare gross and net yield to understand spread.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'difference-entre-deux-dates',
+    category: 'dailyLife',
+    icon: '📅',
+    name: { fr: 'Difference entre deux dates', en: 'Date difference' },
+    title: {
+      fr: 'Calculateur difference entre deux dates',
+      en: 'Date difference calculator',
+    },
+    description: {
+      fr: 'Obtenez la difference en jours et en format calendrier entre deux dates.',
+      en: 'Get date difference in days and calendar format.',
+    },
+    metaTitle: {
+      fr: 'Difference entre deux dates | Calcery',
+      en: 'Date difference calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Calculez une duree entre deux dates en jours, mois et annees.',
+      en: 'Calculate duration between two dates in days, months, and years.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quel format de resultat est fourni ?', answer: 'Une vue calendrier (annees/mois/jours) et un total de jours.' },
+        { question: 'La date de fin doit-elle etre superieure ?', answer: 'Oui, la date de fin doit etre posterieure a la date de debut.' },
+        { question: 'A quoi sert ce calcul ?', answer: 'Planification, suivi de delais et controle administratif.' },
+      ],
+      en: [
+        { question: 'Which outputs are provided?', answer: 'Calendar duration (years/months/days) and total day count.' },
+        { question: 'Must end date be after start date?', answer: 'Yes, end date must be later than start date.' },
+        { question: 'What is it useful for?', answer: 'Planning, deadline tracking, and administrative checks.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Verifiez le fuseau/date locale lors de la saisie.',
+        'Conservez un format ISO pour eviter les ambiguities.',
+        'Utilisez le total jours pour les comparaisons rapides.',
+      ],
+      en: [
+        'Double-check date format before submitting.',
+        'Prefer ISO-style dates for consistency.',
+        'Use total days for quick cross-comparison.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'age-exact',
+    category: 'dailyLife',
+    icon: '🎂',
+    name: { fr: 'Age exact', en: 'Exact age' },
+    title: {
+      fr: 'Calculateur age exact',
+      en: 'Exact age calculator',
+    },
+    description: {
+      fr: 'Calculez un age exact en annees, mois et jours.',
+      en: 'Calculate exact age in years, months, and days.',
+    },
+    metaTitle: {
+      fr: 'Calcul age exact | Calcery',
+      en: 'Exact age calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Estimation precise de l age entre date de naissance et date de reference.',
+      en: 'Precise age estimate between birth date and reference date.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quelle date de reference utiliser ?', answer: 'La date du jour ou toute date de votre choix.' },
+        { question: 'Le resultat inclut-il les jours ?', answer: 'Oui, le detail annees/mois/jours est retourne.' },
+        { question: 'Peut-on l utiliser pour des formalites ?', answer: 'Oui, pour une verification rapide avant saisie administrative.' },
+      ],
+      en: [
+        { question: 'Which reference date should I use?', answer: 'Today or any custom date needed.' },
+        { question: 'Does output include days?', answer: 'Yes, result includes years, months, and days.' },
+        { question: 'Is it useful for admin tasks?', answer: 'Yes, it helps quick age verification before submissions.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Saisissez les dates au format standard pour eviter les erreurs.',
+        'Controlez la coherence jour/mois pour les anciennes dates.',
+        'Utilisez une meme date de reference sur vos comparaisons.',
+      ],
+      en: [
+        'Use standard date formatting to avoid input mistakes.',
+        'Check day/month order for old dates.',
+        'Use one consistent reference date when comparing.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'consommation-carburant',
+    category: 'dailyLife',
+    icon: '⛽',
+    name: { fr: 'Consommation carburant', en: 'Fuel consumption' },
+    title: {
+      fr: 'Calculateur consommation carburant',
+      en: 'Fuel consumption calculator',
+    },
+    description: {
+      fr: 'Calculez la consommation en L/100 km et le cout carburant estime.',
+      en: 'Calculate fuel consumption in L/100 km and estimated fuel cost.',
+    },
+    metaTitle: {
+      fr: 'Consommation carburant L/100 | Calcery',
+      en: 'Fuel consumption L/100 calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Simulation de consommation et cout total de carburant.',
+      en: 'Estimate fuel efficiency and total fuel spending.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quel indicateur principal est fourni ?', answer: 'La consommation en litres pour 100 kilometres.' },
+        { question: 'Puis-je estimer le cout ?', answer: 'Oui, en ajoutant le prix du carburant au litre.' },
+        { question: 'A quoi sert ce calcul ?', answer: 'Suivi budget transport et comparaison de trajets.' },
+      ],
+      en: [
+        { question: 'What is the main output?', answer: 'Fuel usage in liters per 100 kilometers.' },
+        { question: 'Can I estimate cost?', answer: 'Yes, by entering fuel price per liter.' },
+        { question: 'What is this useful for?', answer: 'Transport budgeting and route comparison.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Mesurez distance et carburant sur une periode stable.',
+        'Comparez ville, mixte et autoroute separement.',
+        'Actualisez le prix carburant regulierement.',
+      ],
+      en: [
+        'Measure fuel and distance across a stable period.',
+        'Compare city, mixed, and highway segments separately.',
+        'Update fuel price regularly for accurate cost tracking.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'quantite-peinture',
+    category: 'home',
+    icon: '🎨',
+    name: { fr: 'Quantite peinture', en: 'Paint quantity' },
+    title: {
+      fr: 'Calculateur quantite de peinture',
+      en: 'Paint quantity calculator',
+    },
+    description: {
+      fr: 'Estimez la quantite de peinture selon surface, couches et rendement.',
+      en: 'Estimate paint quantity from surface, coats, and coverage.',
+    },
+    metaTitle: {
+      fr: 'Calcul quantite peinture | Calcery',
+      en: 'Paint quantity calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil simple pour estimer les litres de peinture necessaires.',
+      en: 'Simple tool to estimate liters of paint required.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Que signifie le rendement m2/L ?', answer: 'La surface couverte par litre selon le produit choisi.' },
+        { question: 'Pourquoi saisir le nombre de couches ?', answer: 'Chaque couche augmente la quantite totale necessaire.' },
+        { question: 'Dois-je ajouter une marge ?', answer: 'Oui, prevoir un surplus est souvent prudent.' },
+      ],
+      en: [
+        { question: 'What does m2/L coverage mean?', answer: 'How much surface one liter can cover for your paint type.' },
+        { question: 'Why include number of coats?', answer: 'Each additional coat increases total paint needed.' },
+        { question: 'Should I add margin?', answer: 'Yes, adding a small safety margin is usually wise.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Mesurez les surfaces utiles avec precision.',
+        'Tenez compte des pertes d application.',
+        'Ajoutez 5 a 10% de marge selon le support.',
+      ],
+      en: [
+        'Measure effective paintable surfaces carefully.',
+        'Account for application losses.',
+        'Add a 5-10% margin depending on wall condition.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'surface-piece',
+    category: 'home',
+    icon: '📐',
+    name: { fr: 'Surface piece', en: 'Room surface' },
+    title: {
+      fr: 'Calculateur surface de piece',
+      en: 'Room surface calculator',
+    },
+    description: {
+      fr: 'Calculez rapidement surface et perimetre d une piece rectangulaire.',
+      en: 'Quickly calculate surface area and perimeter of a rectangular room.',
+    },
+    metaTitle: {
+      fr: 'Calcul surface piece | Calcery',
+      en: 'Room surface calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil rapide pour estimer surface m2 et perimetre.',
+      en: 'Fast tool to estimate area and perimeter.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Quels champs sont necessaires ?', answer: 'Longueur et largeur de la piece en metres.' },
+        { question: 'Le calcul vaut-il pour toute forme ?', answer: 'Non, ici le modele suppose une piece rectangulaire.' },
+        { question: 'A quoi sert le perimetre ?', answer: 'Utile pour plinthes, moulures et certains materiaux lineaires.' },
+      ],
+      en: [
+        { question: 'Which inputs are required?', answer: 'Room length and width in meters.' },
+        { question: 'Does it fit any room shape?', answer: 'No, this model assumes a rectangular room.' },
+        { question: 'Why perimeter output?', answer: 'Useful for skirting boards and linear material estimates.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Mesurez au sol avec un metre ruban stable.',
+        'Verifiez les unites avant saisie.',
+        'Refaites une mesure en cas de doute.',
+      ],
+      en: [
+        'Measure floor dimensions with a reliable tape.',
+        'Check units before submission.',
+        'Re-measure if dimensions seem inconsistent.',
+      ],
+    },
+    updatedAt: '2026-02-12',
+  },
+  {
+    slug: 'moyenne-scolaire',
+    category: 'education',
+    icon: '📚',
+    name: { fr: 'Moyenne scolaire', en: 'School average' },
+    title: {
+      fr: 'Calculateur moyenne scolaire',
+      en: 'School average calculator',
+    },
+    description: {
+      fr: 'Calculez une moyenne simple ou ponderee a partir des notes saisies.',
+      en: 'Calculate simple or weighted average from entered grades.',
+    },
+    metaTitle: {
+      fr: 'Calcul moyenne scolaire | Calcery',
+      en: 'School average calculator | Calcery',
+    },
+    metaDescription: {
+      fr: 'Outil de calcul de moyenne avec coefficients optionnels.',
+      en: 'Grade average calculator with optional coefficients.',
+    },
+    faqs: {
+      fr: [
+        { question: 'Comment saisir les notes ?', answer: 'Entrez les notes separees par virgules.' },
+        { question: 'Les coefficients sont-ils obligatoires ?', answer: 'Non, sans coefficient la moyenne simple est calculee.' },
+        { question: 'Quelle echelle est attendue ?', answer: 'Le calculateur est prevu pour des notes sur 20.' },
+      ],
+      en: [
+        { question: 'How do I enter grades?', answer: 'Provide grades separated by commas.' },
+        { question: 'Are coefficients mandatory?', answer: 'No, simple average is computed if omitted.' },
+        { question: 'Which grading scale is expected?', answer: 'The calculator is designed for 0-20 grading scale.' },
+      ],
+    },
+    tips: {
+      fr: [
+        'Verifiez le nombre de coefficients saisis.',
+        'Gardez le meme format decimal pour toutes les notes.',
+        'Comparez moyenne simple et ponderee selon votre contexte.',
+      ],
+      en: [
+        'Make sure coefficient count matches grade count.',
+        'Use consistent decimal format in all inputs.',
+        'Compare simple and weighted averages when relevant.',
+      ],
+    },
+    updatedAt: '2026-02-12',
   },
 ];
 
