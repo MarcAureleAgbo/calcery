@@ -86,7 +86,7 @@ Votre site est **structurellement solide** mais présente plusieurs domaines d'a
 - `/mentions-legales` → ✅ Actif
 
 ⚠️ **Liens externes à configurer:**
-- `siteConfig.siteEmail` = `ingridsacla@gmail.com` → Vérifier valide
+- `siteConfig.siteEmail` = `contact@calcery.com` → Vérifier valide
 - Twitter: `@calcery` → Vérifier account exists
 - Blog articles: 2 seuls (manque contenu)
 
@@ -401,4 +401,3 @@ Score: **+1.5 points** de fluidité visuelle
 **Audit réalisé le:** 7 février 2026  
 **Auditeur:** Consultant Senior UX/Performance/SEO  
 **Recommandation:** Démarrer par corrections critiques (semaine 1), puis ajouter calculateurs (semaine 2-3)
-

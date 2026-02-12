@@ -3,7 +3,7 @@ import { SITE_URL as BASE_SITE_URL } from '../../site.config.mjs';
 export const siteConfig = {
   siteName: "Calcery",
   siteUrl: BASE_SITE_URL,
-  siteEmail: "ingridsacla@gmail.com",
+  siteEmail: "contact@calcery.com",
   editorName: "Maison Ellis",
   legalRepresentative: "Sacla Medesse Emmanuella Ingrid",
   rcsNumber: "RCS Paris 938 302 239",
