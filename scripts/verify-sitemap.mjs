@@ -10,7 +10,9 @@ const BLOG_EN_DIR = path.join(ROOT_DIR, 'src', 'content', 'blogEn');
 
 const REQUIRED_STATIC_PATHS = new Set([
   '/',
+  '/fr/calculateurs',
   '/en',
+  '/en/calculators',
   '/a-propos',
   '/contact',
   '/confidentialite',

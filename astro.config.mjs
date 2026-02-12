@@ -9,7 +9,9 @@ const site = SITE_URL.replace(/\/+$/, '');
 
 const STATIC_PATHS = new Set([
   '/',
+  '/fr/calculateurs',
   '/en',
+  '/en/calculators',
   '/a-propos',
   '/contact',
   '/confidentialite',
