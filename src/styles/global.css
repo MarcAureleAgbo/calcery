@@ -119,6 +119,10 @@ body.legal-page-layout main.legal-main-offset > section:first-of-type h1 {
 }
 
 @media (max-width: 768px) {
+  body.blog-page-layout main {
+    padding-top: 5.25rem;
+  }
+
   body.legal-page-layout main.legal-main-offset {
     padding-top: 5.4rem;
   }

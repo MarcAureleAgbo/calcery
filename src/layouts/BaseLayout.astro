@@ -104,7 +104,9 @@ const navItems = [
   { href: '/contact', label: t.nav.contact },
 ];
 
-const mobilePrimaryItems = navItems.filter((item) => item.href === '/' || item.href === calculatorsLandingPath);
+const mobilePrimaryItems = navItems.filter(
+  (item) => item.href === '/' || item.href === calculatorsLandingPath || item.href === '/blog',
+);
 
 const categoryLabelByKey = {
   fr: {
@@ -140,6 +142,7 @@ const withLocale = (href: string) => localizePath(href, currentLocale);
 const categorySlugs = CATEGORIES.map((category) => category.slug[currentLocale]);
 const isCalculatorCategoryPath = categorySlugs.some((slug) => normalizedPath === `/${slug}` || normalizedPath.startsWith(`/${slug}/`));
 const isCalculatorsHubPath = normalizedPath === '/calculateurs' || normalizedPath === '/calculators';
+const isBlogPath = normalizedPath === '/blog' || normalizedPath.startsWith('/blog/');
 
 const isCurrentPath = (href: string) => {
   const normalizedHref = (stripLocalePrefix(href).replace(/\/+$/, '') || '/');
@@ -188,7 +191,7 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
     <Adsense />
   </head>
 
-  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset, 'category-page-layout': isCalculatorCategoryPath || isCalculatorsHubPath, 'mentions-hero-fix': applyMentionsHeroFix, 'about-hero-fix': applyAboutHeroFix }}>
+  <body class:list={{ 'legal-page-layout': applyLegalHeaderOffset, 'category-page-layout': isCalculatorCategoryPath || isCalculatorsHubPath, 'blog-page-layout': isBlogPath, 'mentions-hero-fix': applyMentionsHeroFix, 'about-hero-fix': applyAboutHeroFix }}>
     <a href="#main-content" class="skip-link">{t.skipToContent}</a>
 
     <div class="animated-background" aria-hidden="true">
