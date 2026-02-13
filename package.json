@@ -4,13 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run verify:sitemap",
+    "build": "astro build && npm run verify:sitemap && npm run verify:calculator-pages",
     "preview": "astro preview",
     "astro": "astro",
     "test:analytics:dev": "node scripts/check-analytics-dev.mjs",
     "test:adsense:dev": "node scripts/check-adsense-dev.mjs",
     "test:new-calculators": "node scripts/test-new-calculators.mjs",
-    "verify:sitemap": "node scripts/verify-sitemap.mjs"
+    "verify:sitemap": "node scripts/verify-sitemap.mjs",
+    "verify:calculator-pages": "node scripts/verify-calculator-pages.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

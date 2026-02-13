@@ -37,6 +37,16 @@ interface CalculatorDetail {
   relatedBlogs?: BlogSlug[];
 }
 
+interface ResolvedCalculatorDetail {
+  variables: string[];
+  formula: string;
+  numericExample: string;
+  decisionScenario: string;
+  contextualCase: string;
+  thresholds: string[];
+  riskNotice: string;
+}
+
 export interface CalculatorSeoScenario {
   title: string;
   text: string;
@@ -1187,6 +1197,77 @@ function formatNaturalList(items: string[], locale: Locale): string {
   return locale === 'fr' ? `${head} et ${tail}` : `${head}, and ${tail}`;
 }
 
+function assertRenderableString(value: unknown, fieldName: string): string {
+  if (typeof value !== 'string') {
+    throw new Error(`Invalid SEO content for ${fieldName}: expected string.`);
+  }
+  const trimmed = value.trim();
+  if (trimmed.length === 0) {
+    throw new Error(`Invalid SEO content for ${fieldName}: empty string.`);
+  }
+  if (trimmed.includes('[object Object]')) {
+    throw new Error(`Invalid SEO content for ${fieldName}: found [object Object].`);
+  }
+  if (trimmed.includes('undefined')) {
+    throw new Error(`Invalid SEO content for ${fieldName}: found undefined token.`);
+  }
+  return trimmed;
+}
+
+function assertRenderableStringArray(value: unknown, fieldName: string): string[] {
+  if (!Array.isArray(value)) {
+    throw new Error(`Invalid SEO content for ${fieldName}: expected string array.`);
+  }
+  return value.map((item, index) => assertRenderableString(item, `${fieldName}[${index}]`));
+}
+
+function resolveCalculatorDetail(detail: CalculatorDetail, locale: Locale, calculatorSlug: CalculatorSlug): ResolvedCalculatorDetail {
+  return {
+    variables: assertRenderableStringArray(detail.variables[locale], `${calculatorSlug}.variables.${locale}`),
+    formula: assertRenderableString(detail.formula[locale], `${calculatorSlug}.formula.${locale}`),
+    numericExample: assertRenderableString(detail.numericExample[locale], `${calculatorSlug}.numericExample.${locale}`),
+    decisionScenario: assertRenderableString(detail.decisionScenario[locale], `${calculatorSlug}.decisionScenario.${locale}`),
+    contextualCase: assertRenderableString(detail.contextualCase[locale], `${calculatorSlug}.contextualCase.${locale}`),
+    thresholds: assertRenderableStringArray(detail.thresholds[locale], `${calculatorSlug}.thresholds.${locale}`),
+    riskNotice: assertRenderableString(detail.riskNotice[locale], `${calculatorSlug}.riskNotice.${locale}`),
+  };
+}
+
+function validateSeoContent(content: CalculatorSeoContent, calculatorSlug: CalculatorSlug, locale: Locale): void {
+  assertRenderableStringArray(content.introduction, `${calculatorSlug}.introduction.${locale}`);
+  assertRenderableStringArray(content.howItWorks, `${calculatorSlug}.howItWorks.${locale}`);
+  assertRenderableStringArray(content.interpretation, `${calculatorSlug}.interpretation.${locale}`);
+  assertRenderableString(content.formula, `${calculatorSlug}.formula.${locale}`);
+  assertRenderableStringArray(content.thresholds, `${calculatorSlug}.thresholds.${locale}`);
+  assertRenderableString(content.riskNotice, `${calculatorSlug}.riskNotice.${locale}`);
+
+  for (const [index, scenario] of content.scenarios.entries()) {
+    assertRenderableString(scenario.title, `${calculatorSlug}.scenarios[${index}].title.${locale}`);
+    assertRenderableString(scenario.text, `${calculatorSlug}.scenarios[${index}].text.${locale}`);
+  }
+
+  for (const [index, link] of content.relatedCalculators.entries()) {
+    assertRenderableString(link.label, `${calculatorSlug}.relatedCalculators[${index}].label.${locale}`);
+    assertRenderableString(link.href, `${calculatorSlug}.relatedCalculators[${index}].href.${locale}`);
+    if (link.description !== undefined) {
+      assertRenderableString(link.description, `${calculatorSlug}.relatedCalculators[${index}].description.${locale}`);
+    }
+  }
+
+  for (const [index, link] of content.relatedBlogPosts.entries()) {
+    assertRenderableString(link.label, `${calculatorSlug}.relatedBlogPosts[${index}].label.${locale}`);
+    assertRenderableString(link.href, `${calculatorSlug}.relatedBlogPosts[${index}].href.${locale}`);
+    if (link.description !== undefined) {
+      assertRenderableString(link.description, `${calculatorSlug}.relatedBlogPosts[${index}].description.${locale}`);
+    }
+  }
+
+  for (const [index, faq] of content.faqs.entries()) {
+    assertRenderableString(faq.question, `${calculatorSlug}.faqs[${index}].question.${locale}`);
+    assertRenderableString(faq.answer, `${calculatorSlug}.faqs[${index}].answer.${locale}`);
+  }
+}
+
 function buildRelatedCalculatorLinks(calculator: CalculatorDefinition, locale: Locale): RelatedLink[] {
   const detail = CALCULATOR_DETAILS[calculator.slug];
   const pool: CalculatorSlug[] = [];
@@ -1237,9 +1318,9 @@ function buildRelatedBlogLinks(calculator: CalculatorDefinition, locale: Locale)
   }));
 }
 
-function buildIntroduction(calculator: CalculatorDefinition, locale: Locale, detail: CalculatorDetail): string[] {
+function buildIntroduction(calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): string[] {
   const category = getCategoryLabel(calculator.category, locale);
-  const variables = formatNaturalList(detail.variables[locale], locale);
+  const variables = formatNaturalList(detail.variables, locale);
 
   if (locale === 'fr') {
     return [
@@ -1260,13 +1341,13 @@ function buildIntroduction(calculator: CalculatorDefinition, locale: Locale, det
   ];
 }
 
-function buildHowItWorks(calculator: CalculatorDefinition, locale: Locale, detail: CalculatorDetail): string[] {
-  const variables = formatNaturalList(detail.variables[locale], locale);
+function buildHowItWorks(_calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): string[] {
+  const variables = formatNaturalList(detail.variables, locale);
 
   if (locale === 'fr') {
     return [
       `Le fonctionnement du calcul s’appuie sur un enchaînement simple : saisie des données clés, application d’une formule transparente, puis lecture des indicateurs de sortie. Les entrées attendues (${variables}) doivent être homogènes sur la même période de référence. Mélanger des valeurs mensuelles et annuelles sans conversion est la première source d’erreur observée sur ce type d’outil.`,
-      `La logique de calcul utilisée est explicite : ${detail.formula.fr} Cette transparence est volontaire : vous devez pouvoir expliquer le résultat à un tiers (banque, partenaire, foyer, client) sans dépendre d’une “boîte noire”. En pratique, plus la formule est comprise, plus l’exécution est solide.`,
+      `La logique de calcul utilisée est explicite : ${detail.formula} Cette transparence est volontaire : vous devez pouvoir expliquer le résultat à un tiers (banque, partenaire, foyer, client) sans dépendre d’une “boîte noire”. En pratique, plus la formule est comprise, plus l’exécution est solide.`,
       `Pour renforcer la fiabilité, utilisez systématiquement une méthode en trois passes : scénario central, scénario prudent, puis scénario optimisé. Le scénario central sert de référence opérationnelle. Le scénario prudent vous protège contre les hypothèses trop favorables. Le scénario optimisé sert de cible d’amélioration réaliste, pas de promesse.`,
       `Enfin, pensez à tracer vos hypothèses. Une note courte avec la date de mise à jour, la source des données et la variable la plus incertaine suffit à professionnaliser votre usage. Cette traçabilité facilite les revues périodiques et limite les décisions contradictoires dans le temps.`
     ];
@@ -1274,14 +1355,14 @@ function buildHowItWorks(calculator: CalculatorDefinition, locale: Locale, detai
 
   return [
     `The calculation flow follows a clear sequence: input key data, apply a transparent formula, then interpret output indicators. Expected inputs (${variables}) should be aligned on the same time basis. Mixing monthly and annual values without conversion is a frequent source of error in practical usage.`,
-    `The underlying logic is explicit: ${detail.formula.en} This transparency is intentional. You should be able to explain the result to stakeholders (lenders, partners, clients, household members) without relying on a black-box outcome. In operational environments, explainability directly improves execution quality.`,
+    `The underlying logic is explicit: ${detail.formula} This transparency is intentional. You should be able to explain the result to stakeholders (lenders, partners, clients, household members) without relying on a black-box outcome. In operational environments, explainability directly improves execution quality.`,
     `To improve reliability, run three passes: baseline, conservative, and optimized scenarios. Baseline drives day-to-day decisions. Conservative protects against optimistic assumptions. Optimized scenario defines upside potential, not guaranteed outcome.`,
     `Finally, keep assumptions documented. A short note with update date, data source, and most uncertain variable is enough to professionalize your workflow. This tracking discipline supports periodic reviews and prevents inconsistent decisions over time.`
   ];
 }
 
-function buildInterpretation(calculator: CalculatorDefinition, locale: Locale, detail: CalculatorDetail): string[] {
-  const thresholds = formatNaturalList(detail.thresholds[locale], locale);
+function buildInterpretation(_calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): string[] {
+  const thresholds = formatNaturalList(detail.thresholds, locale);
 
   if (locale === 'fr') {
     return [
@@ -1300,7 +1381,7 @@ function buildInterpretation(calculator: CalculatorDefinition, locale: Locale, d
   ];
 }
 
-function buildScenarios(calculator: CalculatorDefinition, locale: Locale, detail: CalculatorDetail): CalculatorSeoScenario[] {
+function buildScenarios(_calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): CalculatorSeoScenario[] {
   if (locale === 'fr') {
     return [
       {
@@ -1334,14 +1415,14 @@ function buildScenarios(calculator: CalculatorDefinition, locale: Locale, detail
   ];
 }
 
-function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: CalculatorDetail): FAQItem[] {
+function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): FAQItem[] {
   const calcName = calculator.name[locale];
 
   if (locale === 'fr') {
     return [
       {
         question: `Quelles données dois-je préparer avant d’utiliser ${calcName} ?`,
-        answer: `Préparez d’abord des données récentes et cohérentes sur ${formatNaturalList(detail.variables.fr, 'fr')}. Évitez de mélanger des périodes différentes, par exemple une charge annuelle avec un revenu mensuel. Vérifiez enfin l’unité de chaque champ avant de valider la simulation. Cette rigueur simple augmente fortement la fiabilité du résultat et la qualité de la décision qui suit.`,
+        answer: `Préparez d’abord des données récentes et cohérentes sur ${formatNaturalList(detail.variables, 'fr')}. Évitez de mélanger des périodes différentes, par exemple une charge annuelle avec un revenu mensuel. Vérifiez enfin l’unité de chaque champ avant de valider la simulation. Cette rigueur simple augmente fortement la fiabilité du résultat et la qualité de la décision qui suit.`,
       },
       {
         question: `À quelle fréquence faut-il recalculer ce simulateur ?`,
@@ -1349,7 +1430,7 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Cal
       },
       {
         question: `Comment savoir si le résultat est “bon” ou “mauvais” ?`,
-        answer: `Le résultat doit être lu avec des seuils explicites, pas de manière isolée. Sur cette page, les repères prioritaires sont : ${formatNaturalList(detail.thresholds.fr, 'fr')}. Classez votre sortie en zone confortable, zone de vigilance, ou zone critique pour décider rapidement de l’action à mener. Cette lecture par seuils évite les interprétations émotionnelles.`,
+        answer: `Le résultat doit être lu avec des seuils explicites, pas de manière isolée. Sur cette page, les repères prioritaires sont : ${formatNaturalList(detail.thresholds, 'fr')}. Classez votre sortie en zone confortable, zone de vigilance, ou zone critique pour décider rapidement de l’action à mener. Cette lecture par seuils évite les interprétations émotionnelles.`,
       },
       {
         question: `Ce calculateur remplace-t-il un avis professionnel ?`,
@@ -1385,7 +1466,7 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Cal
   return [
     {
       question: `What data should I prepare before using ${calcName}?`,
-      answer: `Start with recent, coherent values for ${formatNaturalList(detail.variables.en, 'en')}. Avoid mixing incompatible time bases, such as annual costs with monthly income. Validate units before running the model. This simple discipline materially improves output reliability and downstream decision quality.`,
+      answer: `Start with recent, coherent values for ${formatNaturalList(detail.variables, 'en')}. Avoid mixing incompatible time bases, such as annual costs with monthly income. Validate units before running the model. This simple discipline materially improves output reliability and downstream decision quality.`,
     },
     {
       question: `How often should this calculator be updated?`,
@@ -1393,7 +1474,7 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Cal
     },
     {
       question: `How do I know whether the result is acceptable?`,
-      answer: `Do not read the output in isolation. Use explicit thresholds: ${formatNaturalList(detail.thresholds.en, 'en')}. Classify your result into comfortable, watch, or critical zone and attach a predefined action to each zone. Threshold-based reading prevents emotional overreaction and improves execution speed.`,
+      answer: `Do not read the output in isolation. Use explicit thresholds: ${formatNaturalList(detail.thresholds, 'en')}. Classify your result into comfortable, watch, or critical zone and attach a predefined action to each zone. Threshold-based reading prevents emotional overreaction and improves execution speed.`,
     },
     {
       question: `Does this calculator replace professional advice?`,
@@ -1427,18 +1508,21 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Cal
 }
 
 export function getCalculatorSeoContent(calculator: CalculatorDefinition, locale: Locale): CalculatorSeoContent {
-  const detail = CALCULATOR_DETAILS[calculator.slug];
+  const detail = resolveCalculatorDetail(CALCULATOR_DETAILS[calculator.slug], locale, calculator.slug);
 
-  return {
+  const content: CalculatorSeoContent = {
     introduction: buildIntroduction(calculator, locale, detail),
     howItWorks: buildHowItWorks(calculator, locale, detail),
     interpretation: buildInterpretation(calculator, locale, detail),
-    formula: detail.formula[locale],
-    thresholds: detail.thresholds[locale],
-    riskNotice: detail.riskNotice[locale],
+    formula: detail.formula,
+    thresholds: detail.thresholds,
+    riskNotice: detail.riskNotice,
     scenarios: buildScenarios(calculator, locale, detail),
     relatedCalculators: buildRelatedCalculatorLinks(calculator, locale),
     relatedBlogPosts: buildRelatedBlogLinks(calculator, locale),
     faqs: buildFaqs(calculator, locale, detail),
   };
+
+  validateSeoContent(content, calculator.slug, locale);
+  return content;
 }

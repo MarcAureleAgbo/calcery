@@ -1,63 +1,60 @@
 ---
-
 import type { FAQItem } from '../lib/types.ts';
 
 export interface Props {
-
   items: FAQItem[];
-
 }
 
 const { items } = Astro.props;
 
-const faqJsonLd = items.length > 0 ? {
+function assertSeoText(value: unknown, fieldName: string): string {
+  if (typeof value !== 'string') {
+    throw new Error(`Invalid FAQ field "${fieldName}": expected string.`);
+  }
+  const normalized = value.trim();
+  if (!normalized) {
+    throw new Error(`Invalid FAQ field "${fieldName}": empty string.`);
+  }
+  if (normalized.includes('[object Object]')) {
+    throw new Error(`Invalid FAQ field "${fieldName}": found [object Object].`);
+  }
+  return normalized;
+}
 
-  "@context": "https://schema.org",
+const normalizedItems = items.map((item, index) => ({
+  question: assertSeoText(item.question, `items[${index}].question`),
+  answer: assertSeoText(item.answer, `items[${index}].answer`),
+}));
 
-  "@type": "FAQPage",
-
-  "mainEntity": items.map(item => ({
-
-    "@type": "Question",
-
-    "name": item.question,
-
-    "acceptedAnswer": {
-
-      "@type": "Answer",
-
-      "text": item.answer
-
-    }
-
-  }))
-
-} : null;
+const faqJsonLd =
+  normalizedItems.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: normalizedItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
 
 ---
 
 {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
 
 <div class="space-y-4">
-
-  {items.map((item, index) => (
-
+  {normalizedItems.map((item, index) => (
     <details class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm" key={index}>
-
       <summary class="cursor-pointer font-semibold text-gray-800 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary">
-
         {item.question}
-
       </summary>
-
       <div class="mt-2 text-gray-700">
-
         <p>{item.answer}</p>
-
       </div>
-
     </details>
-
   ))}
-
 </div>

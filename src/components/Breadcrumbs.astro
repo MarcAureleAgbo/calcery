@@ -1,34 +1,41 @@
 ---
-
 import { toAbsoluteUrl } from '../lib/site';
 import type { BreadcrumbItem } from '../lib/types.ts';
 
 export interface Props {
-
   items: BreadcrumbItem[];
-
 }
 
 const { items } = Astro.props;
 
+function assertSeoText(value: unknown, fieldName: string): string {
+  if (typeof value !== 'string') {
+    throw new Error(`Invalid breadcrumb field "${fieldName}": expected string.`);
+  }
+  const normalized = value.trim();
+  if (!normalized) {
+    throw new Error(`Invalid breadcrumb field "${fieldName}": empty string.`);
+  }
+  if (normalized.includes('[object Object]')) {
+    throw new Error(`Invalid breadcrumb field "${fieldName}": found [object Object].`);
+  }
+  return normalized;
+}
+
+const normalizedItems = items.map((item, index) => ({
+  name: assertSeoText(item.name, `items[${index}].name`),
+  item: assertSeoText(item.item, `items[${index}].item`),
+}));
+
 const breadcrumbJsonLd = {
-
-  "@context": "https://schema.org",
-
-  "@type": "BreadcrumbList",
-
-  "itemListElement": items.map((item, index) => ({
-
-    "@type": "ListItem",
-
-    "position": index + 1,
-
-    "name": item.name,
-
-    "item": toAbsoluteUrl(item.item)
-
-  }))
-
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: normalizedItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: toAbsoluteUrl(item.item),
+  })),
 };
 
 ---
@@ -36,21 +43,12 @@ const breadcrumbJsonLd = {
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
 <nav aria-label="Breadcrumb" class="py-4">
-
   <ol class="flex items-center space-x-2 text-sm text-gray-600">
-
-    {items.map((item, index) => (
-
+    {normalizedItems.map((item, index) => (
       <li key={index} class="flex items-center">
-
         {index > 0 && <span class="mx-2">></span>}
-
         <a href={item.item} class="hover:text-primary">{item.name}</a>
-
       </li>
-
     ))}
-
   </ol>
-
 </nav>
