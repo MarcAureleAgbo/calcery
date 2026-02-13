@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/tax-cover.svg
 coverAlt: Illustration calcul impôt sur le revenu
 ---
-
 Le **calcul de l'impôt sur le revenu** semble souvent complexe. En pratique, une estimation structurée suffit pour anticiper vos finances et éviter les mauvaises surprises.
 
 ## Étape 1: partir de votre revenu annuel estimé

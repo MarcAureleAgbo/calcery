@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/lifestyle-cover.svg
 coverAlt: Illustration petites depenses et habitudes
 ---
-
 Les grandes dépenses attirent souvent l'attention, mais ce sont souvent les petites sommes dépensées quotidiennement qui grèvent le plus le budget. Un café à 2€ par jour, une application mobile à 5€ par mois, ou un snack impulsif peuvent sembler anodins, mais leur accumulation représente un montant significatif sur l'année.
 
 ## L'impact des petites dépenses

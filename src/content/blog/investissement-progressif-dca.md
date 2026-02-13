@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/investing-cover.svg
 coverAlt: Illustration investissement progressif DCA
 ---
-
 Le **DCA (Dollar-Cost Averaging)** consiste à investir un montant fixe à intervalles réguliers. Cette approche réduit l'impact émotionnel des fluctuations de marché.
 
 ## Pourquoi le DCA rassure

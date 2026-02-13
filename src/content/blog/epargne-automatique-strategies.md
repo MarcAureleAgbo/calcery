@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/savings-cover.svg
 coverAlt: Illustration stratégie d'épargne automatique
 ---
-
 L'**épargne automatique** est l'un des leviers les plus fiables pour progresser financièrement. Elle réduit la charge mentale et supprime la décision répétée de "mettre de côté".
 
 ## Pourquoi l'automatisation fonctionne

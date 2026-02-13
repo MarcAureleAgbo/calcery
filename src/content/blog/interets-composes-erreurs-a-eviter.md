@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/investing-cover.svg
 coverAlt: Illustration intérêts composés
 ---
-
 Les **intérêts composés** sont puissants, mais leurs résultats dépendent surtout de vos comportements. Quelques erreurs simples peuvent réduire fortement le résultat final.
 
 ## Erreur 1: commencer trop tard

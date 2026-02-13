@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/budget-cover.svg
 coverAlt: Illustration budget mensuel
 ---
-
 Un **budget mensuel** efficace ne sert pas seulement à suivre vos dépenses. Il vous aide à décider où va votre argent avant la fin du mois. L'objectif est simple: garder le contrôle, éviter les surprises et dégager de l'épargne régulière.
 
 ## Étape 1: poser un cadre clair

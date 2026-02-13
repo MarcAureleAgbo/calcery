@@ -1,3 +1,5 @@
+import { FR_TO_EN_BLOG_SLUG, EN_TO_FR_BLOG_SLUG } from './blog-slug-map';
+
 export type Locale = 'fr' | 'en';
 
 export const DEFAULT_LOCALE: Locale = 'fr';
@@ -76,6 +78,22 @@ export function localizePath(path: string, locale: Locale): string {
 }
 
 export function switchLocalePath(pathname: string, locale: Locale): string {
+  const frBlogMatch = pathname.match(/^\/fr\/blog\/([^/]+)\/?$/);
+  if (frBlogMatch) {
+    const frSlug = frBlogMatch[1];
+    if (locale === 'fr') return `/fr/blog/${frSlug}/`;
+    const enSlug = FR_TO_EN_BLOG_SLUG[frSlug] ?? frSlug;
+    return `/en/blog/${enSlug}/`;
+  }
+
+  const enBlogMatch = pathname.match(/^\/en\/blog\/([^/]+)\/?$/);
+  if (enBlogMatch) {
+    const enSlug = enBlogMatch[1];
+    if (locale === 'en') return `/en/blog/${enSlug}/`;
+    const frSlug = EN_TO_FR_BLOG_SLUG[enSlug] ?? enSlug;
+    return `/fr/blog/${frSlug}/`;
+  }
+
   if (pathname === '/fr/calculateurs' || pathname === '/fr/calculateurs/') {
     return locale === 'fr' ? '/fr/calculateurs' : '/en/calculators';
   }

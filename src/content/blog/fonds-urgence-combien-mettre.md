@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/savings-cover.svg
 coverAlt: Illustration fonds d'urgence
 ---
-
 Un **fonds d'urgence** protège votre budget en cas d'imprévu: panne, frais santé, perte de revenu temporaire. C'est la base de toute stratégie financière solide.
 
 ## Combien viser?

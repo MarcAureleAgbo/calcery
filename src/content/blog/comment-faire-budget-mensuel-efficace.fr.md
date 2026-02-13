@@ -26,7 +26,6 @@ faq:
 coverImage: /images/blog/budget-cover.svg
 coverAlt: "Planification de budget mensuel"
 ---
-
 Faire un **budget mensuel** ne consiste pas à se priver, mais à décider clairement où va votre argent avant qu’il parte dans des dépenses subies. Dans la pratique, ce pilotage sert à trois choses : sécuriser vos charges essentielles, garder une marge de manœuvre, et financer vos objectifs sans stress.
 
 Beaucoup de personnes démarrent avec motivation puis abandonnent parce que leur cadre est trop théorique. Une méthode efficace est au contraire un système simple, concret et révisable. L’objectif n’est pas d’obtenir un tableau parfait, mais un plan qui tient dans la vraie vie.

@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/group-cover.svg
 coverAlt: Illustration partage d'addition entre amis
 ---
-
 Le **partage d'addition** peut vite devenir une source de friction si les règles ne sont pas claires. Avec une méthode simple, vous gagnez du temps et évitez les discussions inutiles.
 
 ## Règle 1: confirmer le total exact

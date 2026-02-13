@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/group-cover.svg
 coverAlt: Illustration budget de couple
 ---
-
 Construire un **budget de couple** ne consiste pas à tout fusionner. Le vrai enjeu est d'être clair sur les règles, les priorités et la répartition des efforts.
 
 ## 1) Choisir le modèle de gestion

@@ -5,6 +5,7 @@ import Card from '../../../components/ui/Card.astro';
 import { getCollection } from 'astro:content';
 import { toAbsoluteUrl } from '../../../lib/site';
 import { getCalculatorRoute } from '../../../lib/calculator-taxonomy';
+import { FR_TO_EN_BLOG_SLUG, EN_TO_FR_BLOG_SLUG } from '../../../lib/blog-slug-map';
 
 type Locale = 'fr' | 'en';
 type CollectionName = 'blog' | 'blogEn';
@@ -51,10 +52,12 @@ const canonicalPath = `/${lang}/blog/${post.slug}/`;
 const canonicalUrl = toAbsoluteUrl(canonicalPath);
 
 const [frPosts, enPosts] = await Promise.all([getCollection('blog'), getCollection('blogEn')]);
-const hasFrVariant = frPosts.some((item) => !item.data.draft && item.slug === post.slug);
-const hasEnVariant = enPosts.some((item) => !item.data.draft && item.slug === post.slug);
-const frAlternatePath = hasFrVariant ? `/fr/blog/${post.slug}/` : null;
-const enAlternatePath = hasEnVariant ? `/en/blog/${post.slug}/` : null;
+const frTranslatedSlug = lang === 'en' ? (EN_TO_FR_BLOG_SLUG[post.slug] ?? post.slug) : post.slug;
+const enTranslatedSlug = lang === 'fr' ? (FR_TO_EN_BLOG_SLUG[post.slug] ?? post.slug) : post.slug;
+const hasFrVariant = frPosts.some((item) => !item.data.draft && item.slug === frTranslatedSlug);
+const hasEnVariant = enPosts.some((item) => !item.data.draft && item.slug === enTranslatedSlug);
+const frAlternatePath = hasFrVariant ? `/fr/blog/${frTranslatedSlug}/` : null;
+const enAlternatePath = hasEnVariant ? `/en/blog/${enTranslatedSlug}/` : null;
 const xDefaultAlternatePath = hasFrVariant
   ? frAlternatePath
   : hasEnVariant

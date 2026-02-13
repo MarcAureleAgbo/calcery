@@ -5,7 +5,7 @@ pubDate: "2026-02-26"
 updatedDate: "2026-02-26"
 lang: "en"
 slug: "monthly-budget-on-low-income"
-draft: true
+draft: false
 tags: ["monthly budget","budget planning","financial optimization"]
 faq:
   - question: "Where should I start if I want to improve my monthly budget for low income planning?"

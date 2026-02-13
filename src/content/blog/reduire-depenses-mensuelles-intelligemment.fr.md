@@ -21,7 +21,6 @@ faq:
   - question: "Que faire si un imprévu casse mon plan ?"
     answer: "Commencez par protéger les dépenses essentielles et réduisez temporairement les postes flexibles. Ajustez ensuite vos objectifs sans abandonner la méthode, même si la progression ralentit. Un budget mensuel efficace accepte les écarts ponctuels et se reconstruit rapidement autour d’un plan réaliste."
 ---
-
 # Comment réduire ses dépenses mensuelles intelligemment (sans frustration)
 
 Mettre en place un **budget mensuel** dans un contexte de réduction des dépenses demande une méthode claire, pas une perfection impossible. Beaucoup de personnes abandonnent parce qu’elles tentent de tout corriger d’un coup. La logique la plus efficace est inverse: poser une base simple, mesurer les écarts, puis améliorer un levier à la fois. Si vous avez déjà lu le [guide complet du budget mensuel](/fr/blog/guide-budget-mensuel-complet/), vous connaissez la structure générale. Ici, l’objectif est d’adapter cette méthode à une personne qui veut économiser sans tomber dans l’austérité, avec un cadre pratique et directement exploitable.
@@ -125,10 +124,6 @@ Vous pouvez démarrer avec le calculateur de cadre budgétaire pour cadrer vos c
 ### 6. Que faire si un imprévu casse mon plan ?
 
 Commencez par protéger les dépenses essentielles et réduisez temporairement les postes flexibles. Ajustez ensuite vos objectifs sans abandonner la méthode, même si la progression ralentit. Un organisation des dépenses efficace accepte les écarts ponctuels et se reconstruit rapidement autour d’un plan réaliste.
-
-## FAQ JSON-LD (prêt à l’activation)
-
-Ce contenu inclut une FAQ structurée en frontmatter (`faq`) pour générer automatiquement un schéma FAQPage via le template blog lors de la publication (`draft: false`).
 
 ## Conclusion opérationnelle
 

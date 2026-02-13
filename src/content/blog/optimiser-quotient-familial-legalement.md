@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/tax-cover.svg
 coverAlt: Illustration quotient familial et fiscalité
 ---
-
 Le **quotient familial** influence directement l'impôt dû par le foyer. Bien le comprendre permet d'éviter des erreurs coûteuses et d'améliorer vos décisions budgétaires.
 
 ## Ce que fait le quotient familial

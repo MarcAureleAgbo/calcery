@@ -10,7 +10,6 @@ tags:
 coverImage: /images/blog/lifestyle-cover.svg
 coverAlt: Illustration pourboire et voyage
 ---
-
 Le **pourboire** est un sujet culturel autant que financier. Les usages varient selon les pays et les contextes. Avoir des repères simples évite l'hésitation.
 
 ## En France: quelle logique?
