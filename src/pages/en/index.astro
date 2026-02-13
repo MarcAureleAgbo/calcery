@@ -21,7 +21,8 @@ const webApplicationSchema = {
     price: '0',
     priceCurrency: 'EUR',
   },
-  description: 'Simple and free calculators to better manage your daily finances.',
+  description:
+    'Free online calculators for budget planning, savings goals, debt ratio checks, and compound interest projections.',
 };
 
 const featuredToolsSchema = {
@@ -36,6 +37,47 @@ const featuredToolsSchema = {
     { '@type': 'ListItem', position: 5, url: `${baseSiteUrl}${getCalculatorRoute('en', 'economies-petites-depenses')}` },
     { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}${getCalculatorRoute('en', 'interets-composes')}` },
   ],
+};
+
+const homeFaqEntries = [
+  {
+    question: 'Are Calcery calculators really free?',
+    answer:
+      'Yes. Calcery tools are free to use with no mandatory signup and no paywall to unlock the core results. You can run calculations instantly on desktop or mobile and come back whenever you need to update your assumptions.',
+  },
+  {
+    question: 'How accurate are the results?',
+    answer:
+      'The output is mathematically accurate based on the values you enter. Real-world outcomes can differ if your assumptions are incomplete, so it is best to compare a baseline scenario with a conservative scenario before making an important decision.',
+  },
+  {
+    question: 'Do I need to create an account?',
+    answer:
+      'No account is required for standard usage. The calculators are designed for fast, frictionless access so you can test numbers quickly without a registration step.',
+  },
+  {
+    question: 'Can I use the tools on mobile?',
+    answer:
+      'Yes. Calcery is optimized for mobile and desktop, so you can estimate budget, savings, and interest directly from your phone. The interface stays readable and usable for quick decisions on the go.',
+  },
+  {
+    question: 'Are my data stored or private?',
+    answer:
+      'Your calculator inputs are processed locally in your browser for normal usage flows. That means your personal values are not required to be sent to create a result, which supports a privacy-first experience.',
+  },
+];
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqEntries.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
 };
 
 const categoryCards = [
@@ -79,12 +121,13 @@ const categoryCards = [
 ---
 
 <BaseLayout
-  title="Calcery - Simple calculators to better manage your daily finances"
-  description="Simple and free calculators to better manage your daily budget, with no signup and no hassle."
+  title="Free Online Calculators | Budget, Savings & Interest Tools - Calcery"
+  description="Explore free online calculators to manage your budget, savings, debt ratio, compound interest and more. No signup, instant results."
   lang="en"
 >
   <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
 
   <Hero lang="en" />
 
@@ -218,6 +261,69 @@ const categoryCards = [
         title="Get results"
         description="See immediate results and make better informed choices."
       />
+    </div>
+  </section>
+
+  <section class="section seo-home-text">
+    <div class="section-header">
+      <div class="section-badge">Search Guide</div>
+      <h2 class="section-title">Free Online Finance Calculators</h2>
+      <p class="section-subtitle">
+        Practical tools for budgeting, savings planning, and everyday financial decisions.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-5xl space-y-8 rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm md:p-10">
+      <div class="space-y-4 text-gray-700">
+        <p>
+          Calcery is built for people searching for free online calculators that are fast, clear, and immediately useful. Instead of opening a complex spreadsheet, you can run practical simulations in seconds: monthly budget planning, savings projections, debt ratio checks, and compound growth estimates. The goal is simple: turn financial questions into concrete numbers you can act on today.
+        </p>
+        <p>
+          Whether you are improving household cash flow, preparing a major purchase, or trying to save more each month, online calculators reduce friction and improve consistency. You can test a first scenario, adjust key inputs, and compare outcomes without technical setup. This is especially useful when your decisions depend on trade-offs between affordability, timeline, and risk level.
+        </p>
+        <p>
+          From a search perspective, many users are looking for personal finance tools they can trust without downloading templates or learning advanced formulas. Calcery answers that intent with focused calculators that keep assumptions visible and outputs easy to interpret. This helps beginners get started quickly while giving advanced users a faster way to validate assumptions before building deeper models.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900">What You Can Calculate with Calcery</h2>
+        <p>
+          Calcery covers high-intent use cases people search every day: budget calculator, savings calculator, debt-to-income ratio calculator, and compound interest calculator. You can start with a monthly budget check, estimate how much to set aside automatically, then move to long-term growth scenarios to understand what regular contributions can become over time.
+        </p>
+        <p>
+          For a practical workflow, begin with the <a href="/en/finance/budget-mensuel/" class="font-medium underline underline-offset-2">monthly budget calculator</a>, continue with the <a href="/en/finance/epargne-automatique/" class="font-medium underline underline-offset-2">automatic savings planner</a>, and finish with the <a href="/en/finance/interets-composes/" class="font-medium underline underline-offset-2">compound interest tool</a>. This sequence helps you connect daily money management to long-term goals instead of treating each decision in isolation.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900">Why Use Online Calculators Instead of Spreadsheets?</h2>
+        <p>
+          Spreadsheets are flexible, but they are often slow for quick decisions and easy to break with formula errors. A dedicated online calculator gives you a structured input flow, immediate output, and consistent logic each time you run it. That improves repeatability and helps you focus on interpretation, not formatting. For most personal finance decisions, speed and clarity create better execution than an over-engineered file.
+        </p>
+        <p>
+          Another advantage is accessibility. Calcery calculators are available on mobile and desktop, so you can validate a scenario anywhere without rebuilding your model. If you are comparing options with a partner or reviewing your plan at the end of the month, this reduces decision delay. In short, online finance tools are useful when you want reliable estimates fast, stronger day-to-day discipline, and a simpler path from calculation to action.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">FAQ</div>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <p class="section-subtitle">
+        Key answers before using our free online calculators.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-5xl space-y-4 rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm md:p-10">
+      {homeFaqEntries.map((item) => (
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer font-semibold text-gray-900">{item.question}</summary>
+          <p class="mt-2 leading-7 text-gray-700">{item.answer}</p>
+        </details>
+      ))}
     </div>
   </section>
 </BaseLayout>
