@@ -15,6 +15,7 @@ import {
   type CategoryDefinition,
   type CalculatorDefinition,
 } from '../../../lib/calculator-taxonomy';
+import { getCalculatorSeoContent } from '../../../lib/calculator-seo-content';
 import { isNewCalculatorSlug } from '../../../lib/new-calculator-slugs';
 import type { BreadcrumbItem } from '../../../lib/types';
 
@@ -28,6 +29,7 @@ interface Props {
 }
 
 const { category, calculator } = Astro.props as Props;
+const seoContent = getCalculatorSeoContent(calculator, 'fr');
 
 const breadcrumbs: BreadcrumbItem[] = [
   { name: 'Accueil', item: '/' },
@@ -42,9 +44,10 @@ const breadcrumbs: BreadcrumbItem[] = [
   metaTitle={calculator.metaTitle.fr}
   metaDescription={calculator.metaDescription.fr}
   breadcrumbs={breadcrumbs}
-  faqs={calculator.faqs.fr}
+  faqs={seoContent.faqs}
   updatedAt={calculator.updatedAt}
   tips={calculator.tips.fr}
+  seoContent={seoContent}
   lang="fr"
 >
   {calculator.slug === 'budget-mensuel' && <BudgetCalculator client:load lang="fr" />}

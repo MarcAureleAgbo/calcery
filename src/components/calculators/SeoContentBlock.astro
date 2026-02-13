@@ -1,0 +1,102 @@
+---
+import type { Locale } from '../../lib/i18n';
+import type { CalculatorSeoContent } from '../../lib/calculator-seo-content';
+
+interface Props {
+  content: CalculatorSeoContent;
+  lang?: Locale;
+}
+
+const { content, lang = 'fr' } = Astro.props as Props;
+
+const t = {
+  fr: {
+    introTitle: 'Comprendre le calculateur',
+    howTitle: 'Comment fonctionne le calcul',
+    interpretationTitle: 'Comment interpreter les resultats',
+    scenariosTitle: 'Cas pratiques',
+    relatedTitle: 'Ressources connexes',
+    relatedCalculators: 'Calculateurs associes',
+    relatedArticles: 'Articles de blog recommandes',
+  },
+  en: {
+    introTitle: 'Understand this calculator',
+    howTitle: 'How the calculation works',
+    interpretationTitle: 'How to interpret the results',
+    scenariosTitle: 'Practical scenarios',
+    relatedTitle: 'Related resources',
+    relatedCalculators: 'Related calculators',
+    relatedArticles: 'Recommended blog articles',
+  },
+}[lang];
+---
+
+<section class="seo-content rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm md:p-10">
+  <div class="space-y-12">
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gray-900">{t.introTitle}</h2>
+      {content.introduction.map((paragraph) => (
+        <p class="leading-8 text-gray-700">{paragraph}</p>
+      ))}
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gray-900">{t.howTitle}</h2>
+      {content.howItWorks.map((paragraph) => (
+        <p class="leading-8 text-gray-700">{paragraph}</p>
+      ))}
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-3xl font-bold text-gray-900">{t.interpretationTitle}</h2>
+      {content.interpretation.map((paragraph) => (
+        <p class="leading-8 text-gray-700">{paragraph}</p>
+      ))}
+    </section>
+
+    <section class="space-y-5">
+      <h2 class="text-3xl font-bold text-gray-900">{t.scenariosTitle}</h2>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        {content.scenarios.map((scenario) => (
+          <article class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+            <h3 class="mb-3 text-lg font-semibold text-gray-900">{scenario.title}</h3>
+            <p class="leading-7 text-gray-700">{scenario.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-5">
+      <h2 class="text-3xl font-bold text-gray-900">{t.relatedTitle}</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">{t.relatedCalculators}</h3>
+          <ul class="space-y-3">
+            {content.relatedCalculators.map((link) => (
+              <li>
+                <a href={link.href} class="font-medium text-gray-900 underline underline-offset-2 hover:text-black">
+                  {link.label}
+                </a>
+                {link.description && <p class="mt-1 text-sm leading-6 text-gray-600">{link.description}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">{t.relatedArticles}</h3>
+          <ul class="space-y-3">
+            {content.relatedBlogPosts.map((link) => (
+              <li>
+                <a href={link.href} class="font-medium text-gray-900 underline underline-offset-2 hover:text-black">
+                  {link.label}
+                </a>
+                {link.description && <p class="mt-1 text-sm leading-6 text-gray-600">{link.description}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

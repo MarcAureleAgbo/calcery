@@ -3,6 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import FAQ from '../components/FAQ.astro';
 import Container from '../components/ui/Container.astro';
+import SeoContentBlock from '../components/calculators/SeoContentBlock.astro';
+import type { CalculatorSeoContent } from '../lib/calculator-seo-content';
 import type { BreadcrumbItem, FAQItem } from '../lib/types.ts';
 import type { Locale } from '../lib/i18n';
 
@@ -15,6 +17,7 @@ export interface Props {
   faqs?: FAQItem[];
   updatedAt?: string;
   tips?: string[];
+  seoContent?: CalculatorSeoContent;
   disableDisclaimer?: boolean;
   lang?: Locale;
 }
@@ -28,6 +31,7 @@ const {
   faqs = [],
   updatedAt,
   tips = [],
+  seoContent,
   disableDisclaimer = false,
   lang = 'fr',
 } = Astro.props;
@@ -97,6 +101,8 @@ const t = {
         <h2 class="mb-8 text-center text-2xl font-bold text-gray-900">{t.calculator}</h2>
         <slot />
       </section>
+
+      {seoContent && <SeoContentBlock content={seoContent} lang={lang} />}
 
       {tips.length > 0 && (
         <section>
