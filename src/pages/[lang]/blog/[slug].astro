@@ -165,6 +165,9 @@ const homeLabel = lang === 'fr' ? 'Accueil' : 'Home';
 const homePath = lang === 'fr' ? '/fr' : '/en';
 const blogLabel = 'Blog';
 const articleDateLine = `${publishedLabel} ${new Date(publishedDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')}`;
+const titleMatch = post.data.title.match(/^(.*?)\s*\((.+)\)$/);
+const titlePrimary = titleMatch ? titleMatch[1] : post.data.title;
+const titleSecondary = titleMatch ? titleMatch[2] : null;
 ---
 
 <BaseLayout
@@ -189,7 +192,12 @@ const articleDateLine = `${publishedLabel} ${new Date(publishedDate).toLocaleDat
       </nav>
 
       <article class="prose-lite max-w-none rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm">
-        <h1>{post.data.title}</h1>
+        <h1 class="mb-1 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-5xl">
+          {titlePrimary}
+          {titleSecondary && (
+            <span class="mt-2 block text-base font-medium text-gray-500 md:text-xl">({titleSecondary})</span>
+          )}
+        </h1>
         <p class="mt-2 text-sm font-medium text-gray-500">{articleDateLine}</p>
 
         <figure class="article-cover">
