@@ -4,7 +4,11 @@ import Container from '../../components/ui/Container.astro';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sortedPosts = posts.sort((a, b) => {
+  const aDate = a.data.pubDate ?? a.data.date;
+  const bDate = b.data.pubDate ?? b.data.date;
+  return new Date(bDate ?? 0).getTime() - new Date(aDate ?? 0).getTime();
+});
 
 const getReadingTime = (content: string) => {
   const words = content.trim().split(/\s+/).length;
@@ -36,6 +40,7 @@ const getReadingTime = (content: string) => {
         const coverImage = post.data.coverImage ?? '/images/blog/default-cover.svg';
         const coverAlt = post.data.coverAlt ?? post.data.title;
         const category = post.data.category ?? 'Finance';
+        const publishDate = post.data.pubDate ?? post.data.date;
         return (
           <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
             <a href={`/blog/${post.slug}`} class="block">
@@ -63,7 +68,7 @@ const getReadingTime = (content: string) => {
               <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">{post.data.description}</p>
 
               <div class="flex items-center justify-between">
-                <p class="text-sm text-gray-500">Publié le <span class="font-medium">{new Date(post.data.date).toLocaleDateString('fr-FR')}</span></p>
+                <p class="text-sm text-gray-500">Publié le <span class="font-medium">{publishDate ? new Date(publishDate).toLocaleDateString('fr-FR') : ''}</span></p>
                 <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
                   Lire
                   <span aria-hidden="true">→</span>

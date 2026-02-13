@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Container from '../../../components/ui/Container.astro';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blogEn');
+const posts = await getCollection('blog', (post) => !post.data.draft);
 const sortedPosts = posts.sort((a, b) => {
   const aDate = a.data.pubDate ?? a.data.date;
   const bDate = b.data.pubDate ?? b.data.date;
@@ -16,13 +16,13 @@ const getReadingTime = (content: string) => {
 };
 ---
 
-<BaseLayout title="Blog - Calcery" description="Practical personal finance articles and guides." lang="en">
+<BaseLayout title="Blog - Calcery" description="Articles et conseils pratiques pour mieux gérer votre budget et votre épargne.">
   <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-20">
     <Container>
       <div class="mx-auto max-w-4xl text-center">
-        <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Calcery resources</div>
-        <h1 class="mb-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl">Articles and guides</h1>
-        <p class="text-xl font-light text-gray-600">Practical content to improve budgeting, savings, and everyday money decisions.</p>
+        <div class="mb-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Ressources Calcery</div>
+        <h1 class="mb-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl">Articles et conseils</h1>
+        <p class="text-xl font-light text-gray-600">Des contenus concrets pour mieux piloter votre budget, votre épargne et vos habitudes financières.</p>
       </div>
     </Container>
   </section>
@@ -30,8 +30,8 @@ const getReadingTime = (content: string) => {
   <section class="section">
     <div class="section-header">
       <div class="section-badge">Blog</div>
-      <h2 class="section-title">Latest articles</h2>
-      <p class="section-subtitle">Actionable and concise finance content connected to your calculators.</p>
+      <h2 class="section-title">Derniers articles</h2>
+      <p class="section-subtitle">Des guides courts, actionnables, reliés à vos calculateurs préférés.</p>
     </div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -43,7 +43,7 @@ const getReadingTime = (content: string) => {
         const publishDate = post.data.pubDate ?? post.data.date;
         return (
           <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
-            <a href={`/en/blog/${post.slug}`} class="block">
+            <a href={`/fr/blog/${post.slug}`} class="block">
               <img
                 src={coverImage}
                 alt={coverAlt}
@@ -62,15 +62,15 @@ const getReadingTime = (content: string) => {
               </div>
 
               <h3 class="mb-3 text-2xl font-bold text-black">
-                <a href={`/en/blog/${post.slug}`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
+                <a href={`/fr/blog/${post.slug}`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
               </h3>
 
               <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">{post.data.description}</p>
 
               <div class="flex items-center justify-between">
-                <p class="text-sm text-gray-500">Published on <span class="font-medium">{publishDate ? new Date(publishDate).toLocaleDateString('en-US') : ''}</span></p>
-                <a href={`/en/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
-                  Read
+                <p class="text-sm text-gray-500">Publié le <span class="font-medium">{publishDate ? new Date(publishDate).toLocaleDateString('fr-FR') : ''}</span></p>
+                <a href={`/fr/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
+                  Lire
                   <span aria-hidden="true">→</span>
                 </a>
               </div>

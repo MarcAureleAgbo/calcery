@@ -119,6 +119,15 @@ function hasDraftFlag(content) {
   return /(^|\n)\s*draft:\s*true\s*($|\n)/i.test(frontmatter[1]);
 }
 
+function extractFrontmatterSlug(content) {
+  const frontmatter = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!frontmatter) return null;
+  const slugMatch = frontmatter[1].match(/(^|\n)\s*slug:\s*["']?([^"'\n]+)["']?\s*($|\n)/i);
+  if (!slugMatch) return null;
+  const slug = slugMatch[2].trim().replace(/^\/+|\/+$/g, '');
+  return slug.length > 0 ? slug : null;
+}
+
 function listBlogRoutes(directoryPath, routePrefix) {
   if (!fs.existsSync(directoryPath)) return [];
 
@@ -131,7 +140,8 @@ function listBlogRoutes(directoryPath, routePrefix) {
     const filePath = path.join(directoryPath, entry.name);
     const content = fs.readFileSync(filePath, 'utf8');
     if (hasDraftFlag(content)) continue;
-    const slug = entry.name.replace(/\.(md|mdx)$/i, '');
+    const fileSlug = entry.name.replace(/\.(md|mdx)$/i, '');
+    const slug = extractFrontmatterSlug(content) ?? fileSlug;
     routes.push(`${routePrefix}/${slug}`);
   }
 
