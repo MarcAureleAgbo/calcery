@@ -13,16 +13,22 @@ const t = {
   fr: {
     introTitle: 'Comprendre le calculateur',
     howTitle: 'Comment fonctionne le calcul',
-    interpretationTitle: 'Comment interpreter les resultats',
+    formulaTitle: 'Formule de calcul',
+    interpretationTitle: 'Comment interpréter les résultats',
+    thresholdsTitle: 'Seuils de décision',
+    riskTitle: 'Point de vigilance',
     scenariosTitle: 'Cas pratiques',
     relatedTitle: 'Ressources connexes',
-    relatedCalculators: 'Calculateurs associes',
-    relatedArticles: 'Articles de blog recommandes',
+    relatedCalculators: 'Calculateurs associés',
+    relatedArticles: 'Articles de blog recommandés',
   },
   en: {
     introTitle: 'Understand this calculator',
     howTitle: 'How the calculation works',
+    formulaTitle: 'Calculation formula',
     interpretationTitle: 'How to interpret the results',
+    thresholdsTitle: 'Decision thresholds',
+    riskTitle: 'Risk note',
     scenariosTitle: 'Practical scenarios',
     relatedTitle: 'Related resources',
     relatedCalculators: 'Related calculators',
@@ -45,6 +51,11 @@ const t = {
       {content.howItWorks.map((paragraph) => (
         <p class="leading-8 text-gray-700">{paragraph}</p>
       ))}
+
+      <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+        <h3 class="mb-2 text-lg font-semibold text-gray-900">{t.formulaTitle}</h3>
+        <p class="leading-7 text-gray-700">{content.formula}</p>
+      </div>
     </section>
 
     <section class="space-y-4">
@@ -52,6 +63,20 @@ const t = {
       {content.interpretation.map((paragraph) => (
         <p class="leading-8 text-gray-700">{paragraph}</p>
       ))}
+
+      <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+        <h3 class="mb-2 text-lg font-semibold text-gray-900">{t.thresholdsTitle}</h3>
+        <ul class="list-disc space-y-2 pl-5 text-gray-700">
+          {content.thresholds.map((item) => (
+            <li class="leading-7">{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-xl border border-amber-200 bg-amber-50 p-5">
+        <h3 class="mb-2 text-lg font-semibold text-amber-900">{t.riskTitle}</h3>
+        <p class="leading-7 text-amber-900">{content.riskNotice}</p>
+      </div>
     </section>
 
     <section class="space-y-5">
