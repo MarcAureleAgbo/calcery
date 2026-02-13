@@ -63,6 +63,10 @@ export function localizePath(path: string, locale: Locale): string {
 
   const firstSegment = normalized.split('/')[1] ?? '';
 
+  if (locale === 'fr' && (normalized === '/blog' || normalized.startsWith('/blog/'))) {
+    return `/fr${normalized}`;
+  }
+
   if (locale === 'fr' && FR_CATEGORY_SEGMENTS.has(firstSegment)) {
     return `/fr${normalized}`;
   }
