@@ -1185,7 +1185,7 @@ function getCategoryLabel(category: CategoryKey, locale: Locale): string {
     home: { fr: 'maison et travaux', en: 'home projects' },
     education: { fr: 'éducation', en: 'education' },
   };
-  return labels[category][locale];
+  return resolveLocalizedString(labels[category], locale, `categoryLabel.${category}`);
 }
 
 function formatNaturalList(items: string[], locale: Locale): string {
@@ -1202,9 +1202,6 @@ function assertRenderableString(value: unknown, fieldName: string): string {
     throw new Error(`Invalid SEO content for ${fieldName}: expected string.`);
   }
   const trimmed = value.trim();
-  if (trimmed.length === 0) {
-    throw new Error(`Invalid SEO content for ${fieldName}: empty string.`);
-  }
   if (trimmed.includes('[object Object]')) {
     throw new Error(`Invalid SEO content for ${fieldName}: found [object Object].`);
   }
@@ -1221,15 +1218,60 @@ function assertRenderableStringArray(value: unknown, fieldName: string): string[
   return value.map((item, index) => assertRenderableString(item, `${fieldName}[${index}]`));
 }
 
+function resolveLocalizedString(value: string | Localized<string> | undefined, locale: Locale, fieldName: string): string {
+  let resolved: unknown;
+
+  if (typeof value === 'string') {
+    resolved = value;
+  } else if (value === undefined) {
+    resolved = '';
+  } else if (value && typeof value === 'object') {
+    resolved = value[locale];
+  } else {
+    resolved = value;
+  }
+
+  if (resolved === undefined) {
+    return '';
+  }
+  if (typeof resolved !== 'string') {
+    throw new Error(`Invalid SEO content for ${fieldName}: resolved value must be a string.`);
+  }
+  return assertRenderableString(resolved, fieldName);
+}
+
+function resolveLocalizedStringArray(
+  value: string[] | Localized<string[]> | undefined,
+  locale: Locale,
+  fieldName: string,
+): string[] {
+  let resolved: unknown;
+
+  if (Array.isArray(value)) {
+    resolved = value;
+  } else if (value === undefined) {
+    resolved = [];
+  } else if (value && typeof value === 'object') {
+    resolved = value[locale];
+  } else {
+    resolved = value;
+  }
+
+  if (resolved === undefined) {
+    return [];
+  }
+  return assertRenderableStringArray(resolved, fieldName);
+}
+
 function resolveCalculatorDetail(detail: CalculatorDetail, locale: Locale, calculatorSlug: CalculatorSlug): ResolvedCalculatorDetail {
   return {
-    variables: assertRenderableStringArray(detail.variables[locale], `${calculatorSlug}.variables.${locale}`),
-    formula: assertRenderableString(detail.formula[locale], `${calculatorSlug}.formula.${locale}`),
-    numericExample: assertRenderableString(detail.numericExample[locale], `${calculatorSlug}.numericExample.${locale}`),
-    decisionScenario: assertRenderableString(detail.decisionScenario[locale], `${calculatorSlug}.decisionScenario.${locale}`),
-    contextualCase: assertRenderableString(detail.contextualCase[locale], `${calculatorSlug}.contextualCase.${locale}`),
-    thresholds: assertRenderableStringArray(detail.thresholds[locale], `${calculatorSlug}.thresholds.${locale}`),
-    riskNotice: assertRenderableString(detail.riskNotice[locale], `${calculatorSlug}.riskNotice.${locale}`),
+    variables: resolveLocalizedStringArray(detail.variables, locale, `${calculatorSlug}.variables.${locale}`),
+    formula: resolveLocalizedString(detail.formula, locale, `${calculatorSlug}.formula.${locale}`),
+    numericExample: resolveLocalizedString(detail.numericExample, locale, `${calculatorSlug}.numericExample.${locale}`),
+    decisionScenario: resolveLocalizedString(detail.decisionScenario, locale, `${calculatorSlug}.decisionScenario.${locale}`),
+    contextualCase: resolveLocalizedString(detail.contextualCase, locale, `${calculatorSlug}.contextualCase.${locale}`),
+    thresholds: resolveLocalizedStringArray(detail.thresholds, locale, `${calculatorSlug}.thresholds.${locale}`),
+    riskNotice: resolveLocalizedString(detail.riskNotice, locale, `${calculatorSlug}.riskNotice.${locale}`),
   };
 }
 
@@ -1294,7 +1336,7 @@ function buildRelatedCalculatorLinks(calculator: CalculatorDefinition, locale: L
   return selected.map((slug) => {
     const related = getCalculatorBySlug(slug);
     return {
-      label: related.name[locale],
+      label: resolveLocalizedString(related.name, locale, `${calculator.slug}.relatedCalculators.${slug}.label.${locale}`),
       href: getCalculatorRoute(locale, slug),
       description:
         locale === 'fr'
@@ -1308,14 +1350,25 @@ function buildRelatedBlogLinks(calculator: CalculatorDefinition, locale: Locale)
   const detail = CALCULATOR_DETAILS[calculator.slug];
   const selectedBlogs = detail.relatedBlogs ?? DEFAULT_BLOGS_BY_CATEGORY[calculator.category];
 
-  return selectedBlogs.slice(0, 2).map((blogSlug) => ({
-    label: BLOG_METADATA[blogSlug][locale].title,
-    href: BLOG_METADATA[blogSlug][locale].path,
-    description:
-      locale === 'fr'
-        ? 'Lecture complémentaire pour passer de la simulation à un plan d’action concret.'
-        : 'Companion reading to turn simulation into an actionable execution plan.',
-  }));
+  return selectedBlogs.slice(0, 2).map((blogSlug) => {
+    const blogMeta = BLOG_METADATA[blogSlug];
+    return {
+      label: resolveLocalizedString(
+        { fr: blogMeta.fr.title, en: blogMeta.en.title },
+        locale,
+        `${calculator.slug}.relatedBlogs.${blogSlug}.label.${locale}`,
+      ),
+      href: resolveLocalizedString(
+        { fr: blogMeta.fr.path, en: blogMeta.en.path },
+        locale,
+        `${calculator.slug}.relatedBlogs.${blogSlug}.href.${locale}`,
+      ),
+      description:
+        locale === 'fr'
+          ? 'Lecture complémentaire pour passer de la simulation à un plan d’action concret.'
+          : 'Companion reading to turn simulation into an actionable execution plan.',
+    };
+  });
 }
 
 function buildIntroduction(calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): string[] {
@@ -1416,7 +1469,7 @@ function buildScenarios(_calculator: CalculatorDefinition, locale: Locale, detai
 }
 
 function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: ResolvedCalculatorDetail): FAQItem[] {
-  const calcName = calculator.name[locale];
+  const calcName = resolveLocalizedString(calculator.name, locale, `${calculator.slug}.name.${locale}`);
 
   if (locale === 'fr') {
     return [

@@ -294,6 +294,7 @@ for (const calculator of calculators) {
 const failures = [];
 const warnings = [];
 let objectObjectOccurrences = 0;
+let faqJsonLdObjectOccurrences = 0;
 
 for (const page of distPages) {
   const html = fs.readFileSync(page.filePath, 'utf8');
@@ -303,7 +304,11 @@ for (const page of distPages) {
     failures.push(`[${page.route}] Found ${pageObjectMatches.length} occurrence(s) of [object Object].`);
   }
   if (/"text"\s*:\s*"\[object Object\]"/.test(html)) {
-    failures.push(`[${page.route}] Found FAQ text field equal to [object Object].`);
+    const faqObjectMatches = html.match(/"text"\s*:\s*"\[object Object\]"/g) ?? [];
+    faqJsonLdObjectOccurrences += faqObjectMatches.length;
+    failures.push(
+      `[${page.route}] Found ${faqObjectMatches.length} FAQ JSON-LD text occurrence(s) equal to [object Object].`,
+    );
   }
   if (/>[\s\n\r\t]*undefined[\s\n\r\t]*</i.test(html)) {
     failures.push(`[${page.route}] Found visible "undefined" token in HTML content.`);
@@ -492,9 +497,11 @@ if (failures.length > 0) {
 }
 
 console.log('OK: Calculator page SEO verification passed.');
+console.log(`- HTML pages scanned: ${distPages.length}`);
 console.log(`- Pages verified: ${calculatorPages.length}`);
 console.log('- Pages corrected: 0 (verification-only step)');
 console.log(`- [object Object] occurrences: ${objectObjectOccurrences}`);
+console.log(`- FAQ JSON-LD [object Object] occurrences: ${faqJsonLdObjectOccurrences}`);
 console.log('- JSON-LD validity: OK');
 console.log('- Heading structure: OK');
 console.log('- hreflang links: OK');
