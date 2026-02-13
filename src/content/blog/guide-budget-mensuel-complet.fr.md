@@ -33,7 +33,7 @@ faq:
     answer: "Oui, un budget mensuel est un excellent outil de préparation pour un achat immobilier, un changement de travail ou une transition familiale. Il vous permet d’anticiper les impacts financiers avant de vous engager. En simulant plusieurs scénarios, vous identifiez des seuils de sécurité clairs. Cette visibilité réduit les décisions impulsives et améliore la qualité de votre planification."
   - question: "Quel est le principal piège à éviter lorsqu’on suit un budget mensuel ?"
     answer: "Le principal piège est de confondre suivi passif et pilotage actif. Regarder ses dépenses sans décider d’actions concrètes ne suffit pas pour améliorer ses finances. Un budget mensuel efficace doit déboucher sur des arbitrages explicites, datés et vérifiables. Sans cette dimension opérationnelle, les résultats restent limités."
-coverImage: /images/blog/budget-cover.svg
+coverImage: /images/blog/budget-cover-1200x630.jpg
 coverAlt: "Guide complet du budget mensuel"
 ---
 

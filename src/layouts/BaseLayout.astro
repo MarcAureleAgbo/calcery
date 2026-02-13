@@ -15,6 +15,11 @@ export interface Props {
   lang?: Locale;
   image?: string;
   seoType?: 'website' | 'article';
+  alternatePaths?: {
+    fr?: string | null;
+    en?: string | null;
+    xDefault?: string | null;
+  };
 }
 
 const {
@@ -24,6 +29,7 @@ const {
   lang,
   image,
   seoType = 'website',
+  alternatePaths,
 } = Astro.props;
 
 const currentLocale = lang ?? getLocaleFromPath(Astro.url.pathname);
@@ -154,6 +160,20 @@ const legalPagesWithHeaderOffset = new Set(['/mentions-legales', '/confidentiali
 const applyLegalHeaderOffset = legalPagesWithHeaderOffset.has(normalizedPath);
 const applyMentionsHeroFix = normalizedPath === '/mentions-legales';
 const applyAboutHeroFix = normalizedPath === '/a-propos';
+
+const toAbsoluteAlternateUrl = (path: string) =>
+  path.startsWith('http://') || path.startsWith('https://')
+    ? path
+    : `${siteUrl}${path.startsWith('/') ? path : `/${path}`}`;
+
+const frAlternateUrl =
+  alternatePaths?.fr === null ? null : toAbsoluteAlternateUrl(alternatePaths?.fr ?? frSwitchPath);
+const enAlternateUrl =
+  alternatePaths?.en === null ? null : toAbsoluteAlternateUrl(alternatePaths?.en ?? enSwitchPath);
+const xDefaultAlternateUrl =
+  alternatePaths?.xDefault === null
+    ? null
+    : toAbsoluteAlternateUrl(alternatePaths?.xDefault ?? frSwitchPath);
 ---
 
 <html lang={currentLocale}>
@@ -173,9 +193,9 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="alternate" hreflang="fr" href={`${siteUrl}${frSwitchPath}`} />
-    <link rel="alternate" hreflang="en" href={`${siteUrl}${enSwitchPath}`} />
-    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${frSwitchPath}`} />
+    {frAlternateUrl && <link rel="alternate" hreflang="fr" href={frAlternateUrl} />}
+    {enAlternateUrl && <link rel="alternate" hreflang="en" href={enAlternateUrl} />}
+    {xDefaultAlternateUrl && <link rel="alternate" hreflang="x-default" href={xDefaultAlternateUrl} />}
 
     <SEO
       title={title}

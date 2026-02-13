@@ -47,8 +47,19 @@ if (!publishedDate) {
   throw new Error(`Missing publish date for post "${post.slug}".`);
 }
 
-const canonicalPath = `/${lang}/blog/${post.slug}`;
+const canonicalPath = `/${lang}/blog/${post.slug}/`;
 const canonicalUrl = toAbsoluteUrl(canonicalPath);
+
+const [frPosts, enPosts] = await Promise.all([getCollection('blog'), getCollection('blogEn')]);
+const hasFrVariant = frPosts.some((item) => !item.data.draft && item.slug === post.slug);
+const hasEnVariant = enPosts.some((item) => !item.data.draft && item.slug === post.slug);
+const frAlternatePath = hasFrVariant ? `/fr/blog/${post.slug}/` : null;
+const enAlternatePath = hasEnVariant ? `/en/blog/${post.slug}/` : null;
+const xDefaultAlternatePath = hasFrVariant
+  ? frAlternatePath
+  : hasEnVariant
+    ? enAlternatePath
+    : canonicalPath;
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -177,6 +188,7 @@ const titleSecondary = titleMatch ? titleMatch[2] : null;
   image={coverImage}
   seoType="article"
   lang={lang}
+  alternatePaths={{ fr: frAlternatePath, en: enAlternatePath, xDefault: xDefaultAlternatePath }}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
