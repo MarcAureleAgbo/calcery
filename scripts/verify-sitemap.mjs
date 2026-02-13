@@ -5,6 +5,7 @@ const ROOT_DIR = process.cwd();
 const DIST_SITEMAP_PATH = path.join(ROOT_DIR, 'dist', 'sitemap-0.xml');
 const DIST_FR_INDEX_PATH = path.join(ROOT_DIR, 'dist', 'fr', 'index.html');
 const TAXONOMY_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-taxonomy.ts');
+const REDIRECTS_PATH = path.join(ROOT_DIR, 'public', '_redirects');
 const BLOG_FR_DIR = path.join(ROOT_DIR, 'src', 'content', 'blog');
 const BLOG_EN_DIR = path.join(ROOT_DIR, 'src', 'content', 'blogEn');
 
@@ -148,6 +149,24 @@ function listBlogRoutes(directoryPath, routePrefix) {
   return routes;
 }
 
+function parseRedirectSourcePaths(fileContent) {
+  const redirectSources = new Set();
+  const lines = fileContent.split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const parts = trimmed.split(/\s+/);
+    if (parts.length < 3) continue;
+    const [fromPath] = parts;
+    if (!fromPath.startsWith('/')) continue;
+    if (fromPath.includes('*')) continue;
+    redirectSources.add(normalizePathname(fromPath));
+  }
+
+  return redirectSources;
+}
+
 if (!fs.existsSync(DIST_SITEMAP_PATH)) {
   console.error(`FAILED: Missing sitemap file at ${DIST_SITEMAP_PATH}`);
   process.exit(1);
@@ -158,14 +177,21 @@ if (!fs.existsSync(TAXONOMY_PATH)) {
   process.exit(1);
 }
 
+if (!fs.existsSync(REDIRECTS_PATH)) {
+  console.error(`FAILED: Missing redirects file at ${REDIRECTS_PATH}`);
+  process.exit(1);
+}
+
 const sitemapXml = fs.readFileSync(DIST_SITEMAP_PATH, 'utf8');
 const sitemapEntries = parseSitemapEntries(sitemapXml);
 const sitemapPaths = new Set(sitemapEntries.map((entry) => entry.pathname));
 const taxonomySource = fs.readFileSync(TAXONOMY_PATH, 'utf8');
+const redirectsSource = fs.readFileSync(REDIRECTS_PATH, 'utf8');
 
 const categories = parseCategorySlugs(taxonomySource);
 const calculators = parseCalculators(taxonomySource);
 const legacyPaths = parseLegacyRedirectPaths(taxonomySource);
+const redirectSourcePaths = parseRedirectSourcePaths(redirectsSource);
 
 const requiredCategoryPaths = new Set();
 for (const { frSlug, enSlug } of categories.values()) {
@@ -185,9 +211,9 @@ for (const calculator of calculators) {
 }
 
 const requiredBlogPaths = new Set([
-  '/blog',
+  '/fr/blog',
   '/en/blog',
-  ...listBlogRoutes(BLOG_FR_DIR, '/blog'),
+  ...listBlogRoutes(BLOG_FR_DIR, '/fr/blog'),
   ...listBlogRoutes(BLOG_EN_DIR, '/en/blog'),
 ]);
 
@@ -207,9 +233,11 @@ const extraPaths = [...sitemapPaths].filter((pathName) => !allowedPaths.has(path
 const legacyPathsInSitemap = [...sitemapPaths].filter(
   (pathName) =>
     legacyPaths.has(pathName) ||
+    /^\/blog(?:\/|$)/.test(pathName) ||
     /^\/calculateurs(?:\/|$)/.test(pathName) ||
     /^\/en\/calculateurs(?:\/|$)/.test(pathName),
 );
+const redirectedPathsInSitemap = [...sitemapPaths].filter((pathName) => redirectSourcePaths.has(pathName));
 const has404Paths = [...sitemapPaths].filter((pathName) => pathName.includes('404'));
 const queryEntries = sitemapEntries.filter((entry) => entry.hasQuery);
 
@@ -229,6 +257,9 @@ if (missingBlogs.length > 0) {
 }
 if (legacyPathsInSitemap.length > 0) {
   failures.push(`Legacy URLs found in sitemap: ${legacyPathsInSitemap.join(', ')}`);
+}
+if (redirectedPathsInSitemap.length > 0) {
+  failures.push(`Redirect source URLs found in sitemap: ${redirectedPathsInSitemap.join(', ')}`);
 }
 if (has404Paths.length > 0) {
   failures.push(`404 pages found in sitemap: ${has404Paths.join(', ')}`);

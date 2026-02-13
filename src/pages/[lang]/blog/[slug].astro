@@ -33,24 +33,6 @@ const { post, lang, collectionName } = Astro.props as {
 };
 const { Content } = await post.render();
 
-const toSlug = (text: string) =>
-  text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-
-const toc = post.body
-  .split('\n')
-  .filter((line: string) => line.startsWith('## ') || line.startsWith('### '))
-  .map((line: string) => {
-    const level = line.startsWith('### ') ? 3 : 2;
-    const text = line.replace(/^#{2,3} /, '');
-    const id = toSlug(text);
-    return { level, text, id };
-  });
-
 const allPosts = await getCollection(collectionName);
 const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draft).slice(0, 2);
 const readingTime = Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 220));
@@ -173,14 +155,16 @@ const listPath = `/${lang}/blog`;
 const publishedLabel = lang === 'fr' ? 'Publié le' : 'Published on';
 const readingLabel = lang === 'fr' ? 'min de lecture' : 'min read';
 const authorLabel = lang === 'fr' ? 'Équipe Calcery' : 'Calcery Team';
-const tocLabel = lang === 'fr' ? 'Table des matières' : 'Table of contents';
-const tocAriaLabel = lang === 'fr' ? 'Table des matières' : 'Table of contents';
 const toolsTitle = lang === 'fr' ? 'Outils utiles' : 'Useful tools';
 const toolButton = lang === 'fr' ? 'Utiliser' : 'Use tool';
 const relatedTitle = lang === 'fr' ? 'Articles liés' : 'Related articles';
 const relatedFallbackTitle = lang === 'fr' ? "Découvrez d'autres articles" : 'Explore more articles';
 const relatedFallbackCta = lang === 'fr' ? 'Voir tous les articles' : 'View all articles';
 const backLabel = lang === 'fr' ? 'Retour au blog' : 'Back to blog';
+const homeLabel = lang === 'fr' ? 'Accueil' : 'Home';
+const homePath = lang === 'fr' ? '/fr' : '/en';
+const blogLabel = 'Blog';
+const articleDateLine = `${publishedLabel} ${new Date(publishedDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')}`;
 ---
 
 <BaseLayout
@@ -194,10 +178,19 @@ const backLabel = lang === 'fr' ? 'Retour au blog' : 'Back to blog';
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <div class="mx-auto max-w-6xl px-4 py-8">
-    <div class="flex flex-col gap-8 lg:flex-row">
-      <article class="prose-lite max-w-none flex-1 rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm">
+  <section class="section">
+    <div class="mx-auto max-w-4xl px-4 py-16">
+      <nav aria-label="Breadcrumb" class="mb-6 text-sm text-gray-500">
+        <a href={homePath} class="hover:text-black">{homeLabel}</a>
+        <span class="mx-2">&gt;</span>
+        <a href={listPath} class="hover:text-black">{blogLabel}</a>
+        <span class="mx-2">&gt;</span>
+        <span class="text-gray-700">{post.data.title}</span>
+      </nav>
+
+      <article class="prose-lite max-w-none rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm">
         <h1>{post.data.title}</h1>
+        <p class="mt-2 text-sm font-medium text-gray-500">{articleDateLine}</p>
 
         <figure class="article-cover">
           <img src={coverImage} alt={coverAlt} width="1200" height="630" loading="eager" decoding="async" />
@@ -224,26 +217,11 @@ const backLabel = lang === 'fr' ? 'Retour au blog' : 'Back to blog';
           <Content />
         </div>
       </article>
-
-      {toc.length > 0 && (
-        <aside class="lg:w-72 lg:flex-shrink-0">
-          <div class="sticky top-24 rounded-2xl border border-gray-200 bg-white/95 p-5 shadow-sm">
-            <h2 class="mb-4 text-lg font-semibold text-black">{tocLabel}</h2>
-            <nav aria-label={tocAriaLabel}>
-              <ul class="space-y-2">
-                {toc.map((item) => (
-                  <li class={item.level === 3 ? 'ml-4' : ''}>
-                    <a href={`#${item.id}`} class="text-sm text-gray-700 hover:text-black">{item.text}</a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </aside>
-      )}
     </div>
+  </section>
 
-    <section class="mt-12">
+  <section class="section">
+    <div class="mx-auto max-w-6xl px-4">
       <h2 class="mb-6 text-center text-2xl font-semibold">{toolsTitle}</h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {tools.map((tool) => (
@@ -254,10 +232,12 @@ const backLabel = lang === 'fr' ? 'Retour au blog' : 'Back to blog';
           </Card>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    {relatedPosts.length > 0 ? (
-      <section class="mt-12">
+  {relatedPosts.length > 0 ? (
+    <section class="section">
+      <div class="mx-auto max-w-6xl px-4">
         <h2 class="mb-6 text-center text-2xl font-semibold">{relatedTitle}</h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
           {relatedPosts.map((related) => {
@@ -271,16 +251,20 @@ const backLabel = lang === 'fr' ? 'Retour au blog' : 'Back to blog';
             );
           })}
         </div>
-      </section>
-    ) : (
-      <section class="mt-12 text-center">
+      </div>
+    </section>
+  ) : (
+    <section class="section">
+      <div class="mx-auto max-w-6xl px-4 text-center">
         <h2 class="mb-4 text-2xl font-semibold">{relatedFallbackTitle}</h2>
         <Button href={listPath}>{relatedFallbackCta}</Button>
-      </section>
-    )}
+      </div>
+    </section>
+  )}
 
-    <div class="mt-8 text-center">
+  <section class="section pt-0">
+    <div class="mx-auto max-w-6xl px-4 text-center">
       <a href={listPath} class="text-black hover:underline">{backLabel}</a>
     </div>
-  </div>
+  </section>
 </BaseLayout>

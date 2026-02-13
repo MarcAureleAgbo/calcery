@@ -32,6 +32,7 @@ const frSwitchPath = switchLocalePath(Astro.url.pathname, 'fr');
 const enSwitchPath = switchLocalePath(Astro.url.pathname, 'en');
 const siteUrl = SITE_URL;
 const calculatorsLandingPath = currentLocale === 'en' ? '/en/calculators' : '/fr/calculateurs';
+const blogLandingPath = currentLocale === 'en' ? '/en/blog' : '/fr/blog';
 
 const t = {
   fr: {
@@ -99,7 +100,7 @@ const t = {
 const navItems = [
   { href: '/', label: t.nav.home },
   { href: calculatorsLandingPath, label: t.nav.calculators },
-  { href: '/blog', label: t.nav.blog },
+  { href: blogLandingPath, label: t.nav.blog },
   { href: '/a-propos', label: t.nav.about },
   { href: '/contact', label: t.nav.contact },
 ];
@@ -347,7 +348,7 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
           <ul class="footer-links">
             <li><a href={withLocale('/')}>{t.nav.home}</a></li>
             <li><a href={calculatorsLandingPath}>{t.nav.calculators}</a></li>
-            <li><a href={withLocale('/blog')}>{t.nav.blog}</a></li>
+            <li><a href={blogLandingPath}>{t.nav.blog}</a></li>
             <li><a href={withLocale('/a-propos')}>{t.nav.about}</a></li>
           </ul>
         </div>

@@ -32,9 +32,9 @@ const CATEGORY_PATHS = new Set([
   '/en/education',
 ]);
 
-const BLOG_INDEX_PATHS = new Set(['/blog', '/en/blog']);
+const BLOG_INDEX_PATHS = new Set(['/fr/blog', '/en/blog']);
 
-const BLOG_POST_PATH_RE = /^\/(?:blog|en\/blog)\/[^/]+$/;
+const BLOG_POST_PATH_RE = /^\/(?:fr|en)\/blog\/[^/]+$/;
 
 const CALCULATOR_FR_PATH_RE =
   /^\/fr\/(?:finance|sante|immobilier|vie-pratique|maison-travaux|education)\/[^/]+$/;

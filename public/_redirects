@@ -2,6 +2,9 @@
 /calculateurs/ /fr/calculateurs 301
 /en/calculateurs /en/calculators 301
 /en/calculateurs/ /en/calculators 301
+/blog /fr/blog 301
+/blog/ /fr/blog 301
+/blog/* /fr/blog/:splat 301
 /budget-mensuel /fr/finance/budget-mensuel 301
 /budget-mensuel/ /fr/finance/budget-mensuel 301
 /epargne-automatique /fr/finance/epargne-automatique 301

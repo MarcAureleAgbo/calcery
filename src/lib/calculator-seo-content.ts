@@ -69,7 +69,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'budget-couple-methode-simple': {
     fr: {
       title: 'Budget couple : méthode simple pour gérer les finances à deux sans conflit',
-      path: '/blog/budget-couple-methode-simple',
+      path: '/fr/blog/budget-couple-methode-simple',
     },
     en: {
       title: 'Couple Budget Guide: Simple Method to Manage Money Together Without Conflict',
@@ -79,7 +79,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'budget-mensuel-mode-emploi': {
     fr: {
       title: 'Budget mensuel : guide pratique pour mieux gérer son argent au quotidien',
-      path: '/blog/budget-mensuel-mode-emploi',
+      path: '/fr/blog/budget-mensuel-mode-emploi',
     },
     en: {
       title: 'Monthly Budget Guide: Step-by-Step Method to Manage Money and Save More',
@@ -89,7 +89,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'calcul-impot-revenu-sans-stress': {
     fr: {
       title: 'Calcul impôt sur le revenu : méthode simple pour anticiper sereinement',
-      path: '/blog/calcul-impot-revenu-sans-stress',
+      path: '/fr/blog/calcul-impot-revenu-sans-stress',
     },
     en: {
       title: 'Income Tax Estimate Guide: Plan Cash Flow and Reduce Tax Stress',
@@ -99,7 +99,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'epargne-automatique-strategies': {
     fr: {
       title: 'Épargne automatique : stratégie progressive pour atteindre vos objectifs',
-      path: '/blog/epargne-automatique-strategies',
+      path: '/fr/blog/epargne-automatique-strategies',
     },
     en: {
       title: 'Automatic Savings Strategy: Build Consistent Savings All Year',
@@ -109,7 +109,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'fonds-urgence-combien-mettre': {
     fr: {
       title: "Fonds d'urgence : combien épargner selon votre situation financière",
-      path: '/blog/fonds-urgence-combien-mettre',
+      path: '/fr/blog/fonds-urgence-combien-mettre',
     },
     en: {
       title: 'Emergency Fund Guide: How Much to Save for Financial Security',
@@ -119,7 +119,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'interets-composes-erreurs-a-eviter': {
     fr: {
       title: 'Intérêts composés : les erreurs qui freinent la croissance de votre capital',
-      path: '/blog/interets-composes-erreurs-a-eviter',
+      path: '/fr/blog/interets-composes-erreurs-a-eviter',
     },
     en: {
       title: 'Compound Interest Mistakes: 5 Errors That Hurt Long-Term Growth',
@@ -129,7 +129,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'investissement-progressif-dca': {
     fr: {
       title: 'Investissement progressif DCA : lisser le risque avec une méthode régulière',
-      path: '/blog/investissement-progressif-dca',
+      path: '/fr/blog/investissement-progressif-dca',
     },
     en: {
       title: 'DCA Investing Guide: Progressive Investing Without Market Timing',
@@ -139,7 +139,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'methode-50-30-20': {
     fr: {
       title: 'La méthode 50/30/20 : guide simple pour équilibrer budget et épargne',
-      path: '/blog/methode-50-30-20',
+      path: '/fr/blog/methode-50-30-20',
     },
     en: {
       title: '50/30/20 Budget Rule: Practical Guide to Balance Spending and Savings',
@@ -149,7 +149,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'optimiser-quotient-familial-legalement': {
     fr: {
       title: 'Quotient familial : les bons réflexes pour optimiser son impôt légalement',
-      path: '/blog/optimiser-quotient-familial-legalement',
+      path: '/fr/blog/optimiser-quotient-familial-legalement',
     },
     en: {
       title: 'Family Tax Shares: Legal Ways to Optimize Household Tax Planning',
@@ -159,7 +159,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'partage-addition-entre-amis-guide': {
     fr: {
       title: "Partage d'addition entre amis : méthode simple et équitable",
-      path: '/blog/partage-addition-entre-amis-guide',
+      path: '/fr/blog/partage-addition-entre-amis-guide',
     },
     en: {
       title: 'Split Bill with Friends: Fair Method to Share Costs and Tips',
@@ -169,7 +169,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'petites-depenses-qui-comptent': {
     fr: {
       title: 'Petites dépenses du quotidien : comment les réduire et économiser plus',
-      path: '/blog/petites-depenses-qui-comptent',
+      path: '/fr/blog/petites-depenses-qui-comptent',
     },
     en: {
       title: 'Small Expenses That Add Up: How to Cut Daily Money Leaks',
@@ -179,7 +179,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
   'pourboire-regles-pratiques-voyage': {
     fr: {
       title: "Pourboire en France et à l'étranger : repères pratiques pour bien calculer",
-      path: '/blog/pourboire-regles-pratiques-voyage',
+      path: '/fr/blog/pourboire-regles-pratiques-voyage',
     },
     en: {
       title: 'Tipping Guide: Practical Rules for Home and Travel',
