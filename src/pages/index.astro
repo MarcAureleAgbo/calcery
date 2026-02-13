@@ -21,7 +21,8 @@ const webApplicationSchema = {
     price: '0',
     priceCurrency: 'EUR',
   },
-  description: 'Calculateurs simples et gratuits pour mieux gérer votre budget quotidien.',
+  description:
+    'Calculateurs en ligne gratuits pour piloter votre budget, votre épargne, votre taux d’endettement et vos intérêts composés.',
 };
 
 const featuredToolsSchema = {
@@ -36,6 +37,47 @@ const featuredToolsSchema = {
     { '@type': 'ListItem', position: 5, url: `${baseSiteUrl}${getCalculatorRoute('fr', 'economies-petites-depenses')}` },
     { '@type': 'ListItem', position: 6, url: `${baseSiteUrl}${getCalculatorRoute('fr', 'interets-composes')}` },
   ],
+};
+
+const homeFaqEntries = [
+  {
+    question: 'Les calculateurs Calcery sont-ils vraiment gratuits ?',
+    answer:
+      "Oui, les outils Calcery sont gratuits et accessibles sans abonnement pour les usages essentiels. Vous pouvez faire vos simulations immédiatement, sans créer de compte ni passer par une étape de paiement. L'objectif est de vous donner un accès direct à des résultats utiles pour décider plus vite.",
+  },
+  {
+    question: 'Les résultats sont-ils fiables ?',
+    answer:
+      "Les résultats sont fiables sur le plan mathématique dès lors que vos données d'entrée sont cohérentes et à jour. Comme pour tout simulateur, la qualité de la décision dépend aussi des hypothèses choisies. La bonne pratique consiste à comparer un scénario central et un scénario prudent avant d'agir.",
+  },
+  {
+    question: 'Faut-il créer un compte ?',
+    answer:
+      "Non, un compte n'est pas nécessaire pour utiliser les calculateurs principaux. Le parcours est volontairement simple pour vous éviter les frictions inutiles. Vous ouvrez l'outil, vous saisissez vos données, et vous obtenez un résultat en quelques secondes.",
+  },
+  {
+    question: 'Puis-je utiliser les outils sur mobile ?',
+    answer:
+      "Oui, la plateforme est optimisée pour mobile comme pour desktop. Vous pouvez vérifier un budget, une capacité d'épargne ou une projection d'intérêts composés directement depuis votre téléphone. L'interface reste lisible et rapide, même pour des comparaisons de scénarios en déplacement.",
+  },
+  {
+    question: 'Mes données sont-elles enregistrées ?',
+    answer:
+      "Les calculs sont conçus pour fonctionner en local dans votre navigateur pour les usages standards. Cela signifie que vos valeurs personnelles ne sont pas nécessaires pour obtenir un résultat exploitable. Cette logique de calcul local renforce la confidentialité et limite l'exposition de vos données.",
+  },
+];
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqEntries.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
 };
 
 const categoryCards = [
@@ -79,11 +121,12 @@ const categoryCards = [
 ---
 
 <BaseLayout
-  title="Calcery - Des calculateurs simples pour mieux gérer votre quotidien"
-  description="Calculateurs simples et gratuits pour mieux gérer votre budget quotidien, sans inscription ni complications."
+  title="Calculateurs en ligne gratuits | Budget, Épargne & Intérêts composés - Calcery"
+  description="Découvrez des calculateurs en ligne gratuits pour gérer votre budget, votre épargne, votre taux d’endettement et vos intérêts composés. Sans inscription, résultats instantanés."
 >
   <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
 
   <Hero />
 
@@ -211,6 +254,75 @@ const categoryCards = [
         title="Obtenir le résultat"
         description="Visualisez immédiatement vos calculs et prenez des décisions éclairées pour votre avenir."
       />
+    </div>
+  </section>
+
+  <section class="section seo-home-text">
+    <div class="section-header">
+      <div class="section-badge">Guide SEO</div>
+      <h2 class="section-title">Calculateurs financiers en ligne gratuits</h2>
+      <p class="section-subtitle">
+        Des outils pratiques pour transformer vos questions financières en décisions concrètes.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-5xl space-y-8 rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm md:p-10">
+      <div class="space-y-4 text-gray-700">
+        <p>
+          Calcery s’adresse aux personnes qui recherchent des calculateurs en ligne gratuits pour gérer leur argent avec plus de clarté. Au lieu de créer un tableur complexe ou de naviguer entre plusieurs outils imprécis, vous accédez à des simulateurs ciblés, rapides et lisibles. Vous pouvez estimer un budget, projeter une épargne, vérifier un taux d’endettement ou simuler des intérêts composés en quelques instants. L’objectif est simple : passer d’une intuition à un chiffre exploitable, puis d’un chiffre à une action.
+        </p>
+        <p>
+          Ce fonctionnement répond à une intention de recherche très concrète : “combien je peux épargner”, “quel effort mensuel est réaliste”, “mon niveau d’endettement est-il acceptable”, ou encore “quel montant je peux viser à long terme”. En pratique, disposer d’un résultat immédiat permet d’éviter les décisions prises à l’aveugle. Vous testez un scénario de référence, vous ajustez une variable, puis vous comparez l’impact sans perdre de temps. Cette logique de simulation progressive est particulièrement utile pour les décisions du quotidien comme pour les projets plus engageants.
+        </p>
+        <p>
+          Calcery est également pensé pour un usage régulier. Un calcul isolé peut informer, mais c’est la répétition des vérifications qui améliore réellement la qualité des choix financiers. Revenir chaque mois sur ses hypothèses, mesurer l’écart entre prévu et réel, puis corriger sa trajectoire est une méthode efficace pour rester cohérent. Avec des outils disponibles sans friction, l’exécution devient plus simple, ce qui est souvent le facteur qui manque dans la plupart des plans financiers personnels.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900">Que pouvez-vous calculer avec Calcery ?</h2>
+        <p>
+          Les cas d’usage couvrent les besoins les plus recherchés autour de la finance personnelle : budget mensuel, projection d’épargne, effort de remboursement, et croissance du capital dans le temps. Vous pouvez commencer par un <a href="/fr/finance/budget-mensuel" class="font-medium underline underline-offset-2">calculateur de budget mensuel</a> pour visualiser clairement la relation entre revenus, charges fixes et dépenses variables. Cette base est essentielle pour comprendre votre marge de manœuvre réelle avant d’ajouter de nouveaux objectifs.
+        </p>
+        <p>
+          Ensuite, vous pouvez passer au <a href="/fr/finance/epargne-automatique" class="font-medium underline underline-offset-2">simulateur d’épargne automatique</a> afin de transformer une intention d’épargner en plan opérationnel. Au lieu de fixer un objectif abstrait, vous obtenez un montant mensuel cohérent avec votre capacité actuelle, puis vous pouvez tester plusieurs horizons de temps. Cette approche est utile pour financer un projet, constituer un fonds de sécurité, ou simplement améliorer la régularité de votre discipline financière.
+        </p>
+        <p>
+          Enfin, l’<a href="/fr/finance/interets-composes" class="font-medium underline underline-offset-2">outil d’intérêts composés</a> permet de relier vos efforts présents à une perspective long terme. Vous visualisez l’effet du temps, du taux de rendement et des versements réguliers, ce qui facilite les arbitrages entre consommation immédiate et accumulation progressive. Utilisés ensemble, ces trois outils construisent un parcours logique : comprendre sa situation, structurer son effort, puis projeter sa trajectoire.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900">Pourquoi utiliser un calculateur en ligne plutôt qu’un tableur ?</h2>
+        <p>
+          Un tableur offre de la flexibilité, mais il demande du temps, de la méthode et une bonne maîtrise des formules. Pour la majorité des utilisateurs, cette complexité ralentit l’analyse et augmente le risque d’erreur silencieuse. Un calculateur en ligne spécialisé apporte un cadre clair : des entrées définies, une logique stable, et un résultat immédiat. Cela permet de se concentrer sur l’interprétation et la décision plutôt que sur la mise en forme technique.
+        </p>
+        <p>
+          L’autre avantage est la rapidité d’usage en situation réelle. Quand vous comparez deux options de dépenses, quand vous réévaluez un objectif d’épargne, ou quand vous préparez un échange avec un conseiller, vous avez besoin d’un outil simple à relancer plusieurs fois. Les simulateurs en ligne facilitent cette itération, ce qui améliore la qualité finale des arbitrages. Vous gagnez en réactivité tout en conservant une base chiffrée cohérente.
+        </p>
+        <p>
+          Enfin, l’accessibilité joue un rôle important. Avec Calcery, vous pouvez utiliser les outils sur mobile et desktop, sans installation ni configuration préalable. Cette disponibilité réduit la distance entre l’idée et l’exécution : vous testez une hypothèse au bon moment, vous validez un ordre de grandeur, puis vous ajustez votre plan. Pour un usage personnel ou familial, cette simplicité est souvent plus efficace qu’un système trop lourd, même s’il paraît plus sophistiqué sur le papier.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-badge">FAQ</div>
+      <h2 class="section-title">Questions fréquentes</h2>
+      <p class="section-subtitle">
+        Les réponses essentielles avant d’utiliser nos calculateurs en ligne.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-5xl space-y-4 rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm md:p-10">
+      {homeFaqEntries.map((item) => (
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer font-semibold text-gray-900">{item.question}</summary>
+          <p class="mt-2 leading-7 text-gray-700">{item.answer}</p>
+        </details>
+      ))}
     </div>
   </section>
 
