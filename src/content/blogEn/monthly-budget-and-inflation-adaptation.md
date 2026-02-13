@@ -5,7 +5,7 @@ pubDate: "2026-03-02"
 updatedDate: "2026-03-02"
 lang: "en"
 slug: "monthly-budget-and-inflation-adaptation"
-draft: true
+draft: false
 tags: ["monthly budget","budget planning","financial optimization"]
 faq:
   - question: "Where should I start if I want to improve my monthly budget for inflation adaptation?"

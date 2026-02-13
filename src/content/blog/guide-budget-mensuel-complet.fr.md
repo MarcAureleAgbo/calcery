@@ -42,6 +42,8 @@ Ce guide premium est pensé pour une mise en pratique immédiate. Vous allez app
 
 Pour passer de la théorie à l’action, vous pouvez vous appuyer dès maintenant sur le [calculateur de budget mensuel](/fr/finance/budget-mensuel), compléter avec le [simulateur d’épargne automatique](/fr/finance/epargne-automatique), puis projeter vos résultats avec l’[outil d’intérêts composés](/fr/finance/interets-composes). Ensemble, ces trois outils couvrent le triptyque essentiel : cadrer, exécuter, progresser.
 
+Pour une déclinaison opérationnelle immédiate, vous pouvez lire [comment faire un budget mensuel efficace](/fr/blog/comment-faire-budget-mensuel-efficace/) puis adapter la méthode aux petits revenus avec [comment faire un budget mensuel quand on gagne peu](/fr/blog/comment-faire-budget-mensuel-quand-on-gagne-peu/).
+
 ## Qu’est-ce qu’un budget mensuel ?
 
 Un **plan budgétaire** est un plan de répartition de vos ressources financières sur une période de trente jours. Il répond à une question stratégique : où doit aller votre argent pour protéger vos besoins essentiels, respecter vos engagements, et financer vos objectifs sans tension permanente.
@@ -120,6 +122,8 @@ Cette boucle de pilotage transforme votre **plan budgétaire** en processus viva
 
 Pour rendre ce guide opérationnel, voici quatre cas de figure représentatifs : célibataire, couple, famille, et revenu variable. Chaque cas montre comment adapter un **plan budgétaire** à une réalité différente.
 
+Si vous cherchez des cadres ciblés par profil, consultez aussi [comment faire un budget mensuel quand on gagne peu](/fr/blog/comment-faire-budget-mensuel-quand-on-gagne-peu/), [comment faire un budget mensuel efficace](/fr/blog/comment-faire-budget-mensuel-efficace/), [budget en couple : méthode simple](/fr/blog/budget-couple-methode-simple/) et [budget mensuel : mode d'emploi](/fr/blog/budget-mensuel-mode-emploi/). Pour aller plus loin selon votre situation, vous pouvez aussi lire [budget mensuel étudiant : modèle simple](/fr/blog/budget-mensuel-etudiant-modele-simple/), [budget mensuel famille nombreuse](/fr/blog/budget-mensuel-famille-nombreuse/), [budget mensuel avec revenu irrégulier](/fr/blog/budget-mensuel-revenu-irregulier/) et [budget mensuel en couple : organisation optimale](/fr/blog/budget-mensuel-en-couple-organisation-optimale/).
+
 ### Cas 1 : célibataire en ville (revenu stable)
 
 - Revenu net : 2 200 €
@@ -191,9 +195,13 @@ Pour affiner l’analyse, combinez ce repère avec le [calculateur taux d’ende
 
 En conclusion, 50/30/20 est utile si vous l’adaptez. Un **budget mensuel** performant ne suit pas une règle “pure”, il suit une stratégie réaliste.
 
+Pour un comparatif détaillé entre cadre personnalisé et règle standard, l’article sur la [méthode 50/30/20](/fr/blog/methode-50-30-20/) complète cette section. Si vous voulez une comparaison orientée décision, consultez aussi [budget mensuel vs méthode 50/30/20](/fr/blog/budget-mensuel-vs-methode-50-30-20/).
+
 ## Les erreurs fréquentes qui sabotent un budget
 
 Voici les erreurs les plus destructrices observées dans un **budget mensuel** :
+
+Vous pouvez approfondir ces points avec [les petites dépenses qui comptent](/fr/blog/petites-depenses-qui-comptent/) et passer à l’exécution avec [épargne automatique : stratégies](/fr/blog/epargne-automatique-strategies/). Pour un diagnostic plus fin, lisez aussi [erreurs invisibles dans un budget mensuel](/fr/blog/erreurs-invisibles-budget-mensuel/) puis [comment réduire ses dépenses mensuelles intelligemment](/fr/blog/reduire-depenses-mensuelles-intelligemment/).
 
 ### 1) Oublier les dépenses non mensuelles
 
@@ -245,6 +253,8 @@ L’amélioration continue d’un **budget mensuel** repose sur une méthode cou
 
 Cette routine rend votre **budget mensuel** plus intelligent mois après mois. Vous cessez de “subir” les écarts et vous construisez une trajectoire.
 
+Quand la base est stabilisée, utilisez aussi le plan [épargne automatique : stratégies](/fr/blog/epargne-automatique-strategies/) pour accélérer sans casser votre équilibre. Vous pouvez compléter avec [comment augmenter sa capacité d’épargne rapidement](/fr/blog/augmenter-capacite-epargne-rapidement/) pour garder une progression réaliste.
+
 Une stratégie utile consiste à définir des seuils :
 
 - Si le taux d’épargne descend sous 8 %, action corrective obligatoire.
@@ -263,9 +273,13 @@ Si vous voulez professionnaliser votre gestion, utilisez une feuille de route en
 Cette méthode évite les changements brusques qui créent de la fatigue financière. En 90 jours, vous obtenez une base fiable, compréhensible et surtout répétable. Pour renforcer la cohérence de vos décisions, vous pouvez contrôler en parallèle votre [taux d’endettement](/fr/finance/taux-endettement), votre [objectif d’épargne](/fr/finance/objectif-epargne-temps) et, si besoin, votre scénario de [prêt personnel](/fr/finance/pret-personnel).  
 L’avantage de ce plan séquencé est simple : vous avancez par priorités, avec des résultats mesurables à chaque étape.
 
+Pour des contextes de marché plus tendus, prolongez la démarche avec [fonds d'urgence : combien mettre](/fr/blog/fonds-urgence-combien-mettre/) et [calcul impôt revenu sans stress](/fr/blog/calcul-impot-revenu-sans-stress/). Selon vos objectifs, vous pouvez aussi consulter [budget mensuel et inflation : comment s’adapter](/fr/blog/budget-mensuel-inflation-comment-sadapter/) et [budget mensuel pour préparer un achat immobilier](/fr/blog/budget-mensuel-preparer-achat-immobilier/).
+
 ## Outils pour automatiser son budget
 
 Un **budget mensuel** devient vraiment efficace quand il est soutenu par des automatisations. Voici un stack simple et robuste.
+
+La sécurisation de trésorerie reste essentielle : l’article [fonds d'urgence : combien mettre](/fr/blog/fonds-urgence-combien-mettre/) montre comment absorber les imprévus sans casser votre trajectoire. Vous pouvez aussi appliquer la méthode détaillée dans [budget mensuel et fonds d’urgence](/fr/blog/budget-mensuel-et-fonds-durgence/).
 
 ### 1) Outils de cadrage
 

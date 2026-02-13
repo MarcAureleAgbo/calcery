@@ -5,7 +5,7 @@ pubDate: "2026-03-01"
 updatedDate: "2026-03-01"
 lang: "en"
 slug: "monthly-budget-irregular-income"
-draft: true
+draft: false
 tags: ["monthly budget","budget planning","financial optimization"]
 faq:
   - question: "Where should I start if I want to improve my monthly budget for irregular income control?"

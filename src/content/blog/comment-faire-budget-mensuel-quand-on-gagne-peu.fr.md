@@ -27,6 +27,8 @@ Mettre en place un **budget mensuel** dans un contexte de petit revenu demande u
 
 Pour transformer l’analyse en action, commencez par renseigner vos chiffres dans le [calculateur de budget mensuel](/fr/finance/budget-mensuel). En quelques minutes, vous visualisez la relation entre vos revenus, vos charges et votre marge réelle. Ce premier diagnostic évite les décisions basées uniquement sur des impressions. Un **budget mensuel** bien posé n’est pas un document figé: c’est un système de pilotage qui vous aide à arbitrer au bon moment.
 
+Si vos contraintes ressemblent à un contexte de démarrage serré, comparez aussi [comment faire un budget mensuel efficace](/fr/blog/comment-faire-budget-mensuel-efficace/) et le cadre de base [budget mensuel : mode d'emploi](/fr/blog/budget-mensuel-mode-emploi/).
+
 ## Pourquoi ce sujet change vraiment votre budget mensuel
 
 La plupart des difficultés financières ne viennent pas d’un manque de volonté, mais d’un manque de visibilité. Dans votre cas, la marge de manœuvre est faible et chaque euro compte. Sans cadre, chaque imprévu déstabilise l’ensemble et la fin de mois devient un test de résistance. Un **budget mensuel** robuste vous aide à hiérarchiser: d’abord les dépenses vitales, ensuite les engagements utiles, puis les objectifs à moyen terme.

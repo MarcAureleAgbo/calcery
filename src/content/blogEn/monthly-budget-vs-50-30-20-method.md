@@ -5,7 +5,7 @@ pubDate: "2026-03-06"
 updatedDate: "2026-03-06"
 lang: "en"
 slug: "monthly-budget-vs-50-30-20-method"
-draft: true
+draft: false
 tags: ["monthly budget","budget planning","financial optimization"]
 faq:
   - question: "Where should I start if I want to improve my monthly budget for method comparison?"

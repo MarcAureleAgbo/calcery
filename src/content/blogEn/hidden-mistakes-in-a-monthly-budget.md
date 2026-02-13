@@ -5,7 +5,7 @@ pubDate: "2026-03-04"
 updatedDate: "2026-03-04"
 lang: "en"
 slug: "hidden-mistakes-in-a-monthly-budget"
-draft: true
+draft: false
 tags: ["monthly budget","budget planning","financial optimization"]
 faq:
   - question: "Where should I start if I want to improve my monthly budget for hidden budgeting mistakes?"

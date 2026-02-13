@@ -5,7 +5,7 @@ pubDate: "2026-02-24"
 updatedDate: "2026-02-24"
 lang: "fr"
 slug: "budget-mensuel-preparer-achat-immobilier"
-draft: true
+draft: false
 tags: ["budget mensuel","gestion budget","optimisation financière"]
 faq:
   - question: "Par quoi commencer pour améliorer mon budget mensuel sur le thème “achat immobilier” ?"
@@ -26,6 +26,8 @@ faq:
 Mettre en place un **budget mensuel** dans un contexte de achat immobilier demande une méthode claire, pas une perfection impossible. Beaucoup de personnes abandonnent parce qu’elles tentent de tout corriger d’un coup. La logique la plus efficace est inverse: poser une base simple, mesurer les écarts, puis améliorer un levier à la fois. Si vous avez déjà lu le [guide complet du budget mensuel](/fr/blog/guide-budget-mensuel-complet/), vous connaissez la structure générale. Ici, l’objectif est d’adapter cette méthode à un ménage qui veut acheter sa résidence principale dans l’année, avec un cadre pratique et directement exploitable.
 
 Pour transformer l’analyse en action, commencez par renseigner vos chiffres dans le [calculateur de budget mensuel](/fr/finance/budget-mensuel). En quelques minutes, vous visualisez la relation entre vos revenus, vos charges et votre marge réelle. Ce premier diagnostic évite les décisions basées uniquement sur des impressions. Un **budget mensuel** bien posé n’est pas un document figé: c’est un système de pilotage qui vous aide à arbitrer au bon moment.
+
+Pour sécuriser votre trajectoire avant signature, reliez ce plan à [budget mensuel et fonds d’urgence](/fr/blog/budget-mensuel-et-fonds-durgence/) et à la méthode pour [augmenter sa capacité d’épargne rapidement](/fr/blog/augmenter-capacite-epargne-rapidement/).
 
 ## Pourquoi ce sujet change vraiment votre budget mensuel
 

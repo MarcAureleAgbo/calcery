@@ -32,6 +32,8 @@ Beaucoup de personnes démarrent avec motivation puis abandonnent parce que leur
 
 Dans ce guide, vous allez voir comment bâtir ce cadre en quatre étapes, comment l’adapter à votre profil, et comment l’améliorer chaque mois sans complexité inutile. Vous pourrez ensuite passer à l’action avec des outils pratiques comme le <a href="/fr/finance/budget-mensuel" class="internal-link">calculateur de budget mensuel</a>, le <a href="/fr/finance/epargne-automatique" class="internal-link">simulateur d’épargne automatique</a> et l’<a href="/fr/finance/interets-composes" class="internal-link">outil d’intérêts composés</a>.
 
+Si vous voulez une vision complète avant de décliner votre méthode par profil, appuyez-vous sur le [guide pilier du budget mensuel](/fr/blog/guide-budget-mensuel-complet/), puis comparez avec [comment faire un budget mensuel quand on gagne peu](/fr/blog/comment-faire-budget-mensuel-quand-on-gagne-peu/) et le repère [méthode 50/30/20](/fr/blog/methode-50-30-20/).
+
 ## Pourquoi faire un budget mensuel est indispensable
 
 Sans budget mensuel, vos décisions financières sont souvent prises en réaction : vous payez les urgences, vous ajustez à la dernière minute, et vous reportez l’épargne quand il “reste quelque chose”. Ce fonctionnement crée de la fatigue mentale et donne l’impression d’être toujours en retard.
@@ -118,6 +120,8 @@ Vous pouvez aussi définir des seuils simples : si les dépenses variables dépa
 Enfin, automatisez ce qui peut l’être : virements d’épargne, rappels de revue hebdomadaire, alertes de seuil. Vous pouvez combiner budget et automatisation avec le <a href="/fr/finance/epargne-automatique" class="internal-link">simulateur d’épargne automatique</a>.
 
 ## Conclusion
+
+Pour consolider votre cadre de pilotage sur la durée, revenez au [guide complet du budget mensuel](/fr/blog/guide-budget-mensuel-complet/) et validez vos arbitrages avec des scénarios comparés.
 
 Un budget mensuel efficace n’est pas celui qui paraît parfait, c’est celui que vous maintenez dans la durée avec des ajustements réalistes.
 
