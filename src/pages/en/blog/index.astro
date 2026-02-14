@@ -37,7 +37,7 @@ const getReadingTime = (content: string) => {
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
       {sortedPosts.map((post) => {
         const readingTime = getReadingTime(post.body);
-        const coverImage = post.data.coverImage ?? '/images/blog/default-cover.svg';
+        const coverImage = post.data.coverImage ?? '/images/blog/default-cover-en.svg';
         const coverAlt = post.data.coverAlt ?? post.data.title;
         const category = post.data.category ?? 'Finance';
         const publishDate = post.data.pubDate ?? post.data.date;

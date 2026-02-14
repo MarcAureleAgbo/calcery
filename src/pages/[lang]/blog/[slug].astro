@@ -39,7 +39,9 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draf
 const readingTime = Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 220));
 const category = post.data.category ?? (lang === 'fr' ? 'Finance' : 'Finance');
 const tags = post.data.tags ?? [];
-const coverImage = post.data.coverImage ?? '/images/blog/default-cover.svg';
+const coverImage =
+  post.data.coverImage ??
+  (lang === 'fr' ? '/images/blog/default-cover-fr.svg' : '/images/blog/default-cover-en.svg');
 const coverAlt = post.data.coverAlt ?? post.data.title;
 const publishedDate = post.data.pubDate ?? post.data.date;
 const updatedDate = post.data.updatedDate ?? publishedDate;
