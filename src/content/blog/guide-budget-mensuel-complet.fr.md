@@ -44,7 +44,22 @@ Pour passer de la théorie à l’action, vous pouvez vous appuyer dès maintena
 
 Pour une déclinaison opérationnelle immédiate, vous pouvez lire [comment faire un budget mensuel efficace](/fr/blog/comment-faire-budget-mensuel-efficace/) puis adapter la méthode aux petits revenus avec [comment faire un budget mensuel quand on gagne peu](/fr/blog/comment-faire-budget-mensuel-quand-on-gagne-peu/).
 
-## Qu’est-ce qu’un budget mensuel ?
+<nav class="article-toc rounded-xl border border-gray-200 bg-gray-50 p-5 md:p-6" aria-label="Sommaire de l'article">
+  <h2 class="m-0 text-xl font-semibold text-gray-900">Sommaire</h2>
+  <ul class="mt-4 space-y-2 pl-5">
+    <li><a href="#quest-ce-quun-budget-mensuel">Qu’est-ce qu’un budget mensuel ?</a></li>
+    <li><a href="#pourquoi-faire-un-budget-change-reellement-vos-finances">Pourquoi faire un budget change réellement vos finances</a></li>
+    <li><a href="#comment-faire-un-budget-mensuel-en-5-etapes">Comment faire un budget mensuel en 5 étapes</a></li>
+    <li><a href="#exemple-concret-de-budget-mensuel-cas-reel-chiffre">Exemple concret de budget mensuel (cas réel chiffré)</a></li>
+    <li><a href="#la-methode-50-30-20-utile-ou-trop-simpliste">La méthode 50/30/20 : utile ou trop simpliste ?</a></li>
+    <li><a href="#les-erreurs-frequentes-qui-sabotent-un-budget">Les erreurs fréquentes qui sabotent un budget</a></li>
+    <li><a href="#comment-ameliorer-son-budget-chaque-mois">Comment améliorer son budget chaque mois</a></li>
+    <li><a href="#outils-pour-automatiser-son-budget">Outils pour automatiser son budget</a></li>
+    <li><a href="#questions-frequentes-sur-le-budget-mensuel">Questions fréquentes sur le budget mensuel</a></li>
+  </ul>
+</nav>
+
+<h2 id="quest-ce-quun-budget-mensuel">Qu’est-ce qu’un budget mensuel ?</h2>
 
 Un **plan budgétaire** est un plan de répartition de vos ressources financières sur une période de trente jours. Il répond à une question stratégique : où doit aller votre argent pour protéger vos besoins essentiels, respecter vos engagements, et financer vos objectifs sans tension permanente.
 
@@ -61,7 +76,7 @@ Ce plan devient un véritable système quand il est relié à des outils de suiv
 
 L’enjeu clé est la cohérence. Un **plan budgétaire** efficace n’est pas celui qui “impressionne” sur le papier, c’est celui que vous pouvez appliquer sans épuisement. Si votre système est trop rigide, vous l’abandonnerez. S’il est trop vague, il ne changera rien. La bonne zone se trouve entre précision utile et simplicité opérationnelle.
 
-## Pourquoi faire un budget change réellement vos finances
+<h2 id="pourquoi-faire-un-budget-change-reellement-vos-finances">Pourquoi faire un budget change réellement vos finances</h2>
 
 Faire un **plan budgétaire** modifie votre rapport à l’argent parce qu’il réduit l’incertitude. Vous ne pilotez plus vos dépenses au ressenti, vous avancez avec des repères clairs. Cette clarté a des effets immédiats : moins de stress, moins d’achats impulsifs, et davantage de décisions alignées avec vos priorités.
 
@@ -75,7 +90,7 @@ Quatrième effet : vous gagnez en capacité de projection. Un **plan budgétaire
 
 En résumé, un **plan budgétaire** transforme la gestion financière en système décisionnel. Vous passez d’une logique de réaction à une logique de pilotage. C’est cette bascule qui produit des progrès durables.
 
-## Comment faire un budget mensuel en 5 étapes
+<h2 id="comment-faire-un-budget-mensuel-en-5-etapes">Comment faire un budget mensuel en 5 étapes</h2>
 
 La méthode suivante a été conçue pour être actionnable dès ce mois-ci. Elle convient à un salarié, un couple, un indépendant, ou un foyer avec enfants.
 
@@ -118,7 +133,7 @@ Un **plan budgétaire** sans revue devient vite obsolète. Prévoyez 20 à 30 mi
 
 Cette boucle de pilotage transforme votre **plan budgétaire** en processus vivant. C’est cette régularité qui fait la différence entre un plan abandonné et un plan efficace.
 
-## Exemple concret de budget mensuel (cas réel chiffré)
+<h2 id="exemple-concret-de-budget-mensuel-cas-reel-chiffre">Exemple concret de budget mensuel (cas réel chiffré)</h2>
 
 Pour rendre ce guide opérationnel, voici quatre cas de figure représentatifs : célibataire, couple, famille, et revenu variable. Chaque cas montre comment adapter un **plan budgétaire** à une réalité différente.
 
@@ -171,7 +186,7 @@ Décision recommandée : programmer 200 € d’épargne même sur mois bas, pui
 
 Ce tableau montre qu’un **budget mensuel** n’est pas une formule unique. C’est un cadre adaptable qui conserve la même logique : prioriser, sécuriser, progresser.
 
-## La méthode 50/30/20 : utile ou trop simpliste ?
+<h2 id="la-methode-50-30-20-utile-ou-trop-simpliste">La méthode 50/30/20 : utile ou trop simpliste ?</h2>
 
 La méthode 50/30/20 propose une répartition de référence :
 
@@ -197,7 +212,7 @@ En conclusion, 50/30/20 est utile si vous l’adaptez. Un **budget mensuel** per
 
 Pour un comparatif détaillé entre cadre personnalisé et règle standard, l’article sur la [méthode 50/30/20](/fr/blog/methode-50-30-20/) complète cette section. Si vous voulez une comparaison orientée décision, consultez aussi [budget mensuel vs méthode 50/30/20](/fr/blog/budget-mensuel-vs-methode-50-30-20/).
 
-## Les erreurs fréquentes qui sabotent un budget
+<h2 id="les-erreurs-frequentes-qui-sabotent-un-budget">Les erreurs fréquentes qui sabotent un budget</h2>
 
 Voici les erreurs les plus destructrices observées dans un **budget mensuel** :
 
@@ -233,7 +248,7 @@ Revenu, logement, mobilité, école, santé : les paramètres évoluent. Un **bu
 
 Pour renforcer la fiabilité globale, vous pouvez aussi contrôler les postes de consommation via le [calculateur consommation carburant](/fr/vie-pratique/consommation-carburant) et vérifier des écarts temporels avec l’[outil différence entre deux dates](/fr/vie-pratique/difference-entre-deux-dates) lors d’analyses de périodes.
 
-## Comment améliorer son budget chaque mois
+<h2 id="comment-ameliorer-son-budget-chaque-mois">Comment améliorer son budget chaque mois</h2>
 
 L’amélioration continue d’un **budget mensuel** repose sur une méthode courte et répétable. Voici une mini méthodologie actionnable en 25 minutes.
 
@@ -275,7 +290,7 @@ L’avantage de ce plan séquencé est simple : vous avancez par priorités, ave
 
 Pour des contextes de marché plus tendus, prolongez la démarche avec [fonds d'urgence : combien mettre](/fr/blog/fonds-urgence-combien-mettre/) et [calcul impôt revenu sans stress](/fr/blog/calcul-impot-revenu-sans-stress/). Selon vos objectifs, vous pouvez aussi consulter [budget mensuel et inflation : comment s’adapter](/fr/blog/budget-mensuel-inflation-comment-sadapter/) et [budget mensuel pour préparer un achat immobilier](/fr/blog/budget-mensuel-preparer-achat-immobilier/).
 
-## Outils pour automatiser son budget
+<h2 id="outils-pour-automatiser-son-budget">Outils pour automatiser son budget</h2>
 
 Un **budget mensuel** devient vraiment efficace quand il est soutenu par des automatisations. Voici un stack simple et robuste.
 
@@ -304,7 +319,7 @@ La sécurisation de trésorerie reste essentielle : l’article [fonds d'urgence
 
 L’idée n’est pas d’utiliser tous les outils en permanence. L’idée est de construire un écosystème cohérent autour de votre **budget mensuel** : un outil pour cadrer, un outil pour agir, un outil pour projeter.
 
-## Questions fréquentes sur le budget mensuel
+<h2 id="questions-frequentes-sur-le-budget-mensuel">Questions fréquentes sur le budget mensuel</h2>
 
 ### 1) Combien de temps faut-il pour construire un premier budget mensuel fiable ?
 

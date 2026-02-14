@@ -22,13 +22,27 @@ faq:
     answer: "The biggest mistake is passive tracking without active decisions. A monthly budget creates value when each review leads to one concrete adjustment you can execute immediately."
 ---
 
-# Complete Monthly Budget Guide (Method, Example, Template and Free Tool)
-
 This guide gives you a complete framework to build, run, and improve a **monthly budget** in real life. The objective is not to produce a perfect spreadsheet. The objective is to create a reliable decision system you can use every month under real constraints.
 
 If you want immediate implementation, start with the [monthly budget calculator](/en/finance/budget-mensuel). For practical sub-topics, you can also use the [automatic savings tool](/en/finance/epargne-automatique) and the [compound interest calculator](/en/finance/interets-composes).
 
-## 1) What a monthly budget actually does
+<nav class="article-toc rounded-xl border border-gray-200 bg-gray-50 p-5 md:p-6" aria-label="Table of contents">
+  <h2 class="m-0 text-xl font-semibold text-gray-900">Table of contents</h2>
+  <ul class="mt-4 space-y-2 pl-5">
+    <li><a href="#what-a-monthly-budget-actually-does">1) What a monthly budget actually does</a></li>
+    <li><a href="#core-structure-you-should-use">2) Core structure you should use</a></li>
+    <li><a href="#build-your-baseline-in-five-steps">3) Build your baseline in five steps</a></li>
+    <li><a href="#full-worked-example">4) Full worked example</a></li>
+    <li><a href="#method-50-30-20-useful-reference-not-rigid-rule">5) Method 50/30/20: useful reference, not rigid rule</a></li>
+    <li><a href="#common-mistakes-that-break-consistency">6) Common mistakes that break consistency</a></li>
+    <li><a href="#monthly-improvement-loop">7) Monthly improvement loop</a></li>
+    <li><a href="#connect-your-budget-to-long-term-outcomes">8) Connect your budget to long-term outcomes</a></li>
+    <li><a href="#practical-action-plan-for-the-next-30-days">9) Practical action plan for the next 30 days</a></li>
+    <li><a href="#final-conclusion">Final conclusion</a></li>
+  </ul>
+</nav>
+
+<h2 id="what-a-monthly-budget-actually-does">1) What a monthly budget actually does</h2>
 
 A **monthly budget** is a planning and decision layer between income and spending. It answers one practical question: where should money go this month to protect essentials, maintain flexibility, and support medium- and long-term goals?
 
@@ -40,7 +54,7 @@ A strong budget model does three things:
 
 In practice, this improves stability and reduces reactive decision-making.
 
-## 2) Core structure you should use
+<h2 id="core-structure-you-should-use">2) Core structure you should use</h2>
 
 Use a structure that is simple enough to maintain:
 
@@ -52,7 +66,7 @@ Use a structure that is simple enough to maintain:
 
 This structure is enough for most households. As your process matures, you can add detail where it improves decisions. A **monthly budget** should remain operational, not administrative.
 
-## 3) Build your baseline in five steps
+<h2 id="build-your-baseline-in-five-steps">3) Build your baseline in five steps</h2>
 
 ### Step 1: define realistic income
 
@@ -74,7 +88,7 @@ Convert annual or seasonal costs into monthly equivalents. This single action in
 
 Define a realistic savings target and maintain a safety margin for minor shocks.
 
-## 4) Full worked example
+<h2 id="full-worked-example">4) Full worked example</h2>
 
 Here is a practical **monthly budget** example:
 
@@ -94,7 +108,7 @@ Decision scenario:
 - if the safety margin is repeatedly unused, reallocate part of it to savings
 - if fixed costs rise, recalculate category targets before changing long-term goals
 
-## 5) Method 50/30/20: useful reference, not rigid rule
+<h2 id="method-50-30-20-useful-reference-not-rigid-rule">5) Method 50/30/20: useful reference, not rigid rule</h2>
 
 The 50/30/20 model can serve as a starting benchmark:
 
@@ -104,7 +118,7 @@ The 50/30/20 model can serve as a starting benchmark:
 
 It works as orientation, not as strict law. In high-cost environments, needs often exceed 50%. A complete **monthly budget** framework should adapt ratios to your reality while preserving progression.
 
-## 6) Common mistakes that break consistency
+<h2 id="common-mistakes-that-break-consistency">6) Common mistakes that break consistency</h2>
 
 Mistake 1: over-optimizing before you have stable baseline data.  
 Mistake 2: ignoring irregular costs and calling them “unexpected.”  
@@ -114,7 +128,7 @@ Mistake 5: abandoning the process after one difficult month.
 
 Each mistake has the same correction: simplify structure, shorten review cycles, and prioritize one change at a time.
 
-## 7) Monthly improvement loop
+<h2 id="monthly-improvement-loop">7) Monthly improvement loop</h2>
 
 A practical review process:
 
@@ -124,7 +138,7 @@ A practical review process:
 
 This loop is the engine of an effective **monthly budget**. It turns budgeting from static reporting into active financial control.
 
-## 8) Connect your budget to long-term outcomes
+<h2 id="connect-your-budget-to-long-term-outcomes">8) Connect your budget to long-term outcomes</h2>
 
 A budget without goals loses momentum. Convert your monthly surplus into concrete targets:
 
@@ -135,7 +149,7 @@ A budget without goals loses momentum. Convert your monthly surplus into concret
 
 Then test projection scenarios with the [compound interest calculator](/en/finance/interets-composes). This strengthens motivation and improves allocation discipline.
 
-## 9) Practical action plan for the next 30 days
+<h2 id="practical-action-plan-for-the-next-30-days">9) Practical action plan for the next 30 days</h2>
 
 Week 1: baseline and category setup.  
 Week 2: spending caps + one automation.  
@@ -144,6 +158,6 @@ Week 4: monthly review and next-cycle calibration.
 
 This 30-day plan is enough to install a functional **monthly budget** process without complexity overload.
 
-## Final conclusion
+<h2 id="final-conclusion">Final conclusion</h2>
 
 A complete **monthly budget** system is simple, measurable, and adaptive. It does not require perfect forecasting, only consistent execution and clear decisions. Use this guide as your framework, then apply it with the [monthly budget calculator](/en/finance/budget-mensuel). Over repeated cycles, clarity and consistency become your strongest financial advantage.
