@@ -299,15 +299,15 @@ export const CALCULATORS: CalculatorDefinition[] = [
       en: 'Free monthly budget calculator',
     },
     description: {
-      fr: 'Calculez facilement votre budget mensuel pour mieux gerer vos finances.',
+      fr: 'Estimez votre reste à vivre, vos charges et votre marge d’épargne avec un calculateur de budget mensuel simple et concret.',
       en: 'Calculate your monthly budget to make better financial decisions.',
     },
     metaTitle: {
-      fr: 'Calculateur budget mensuel | Finance personnelle Calcery',
+      fr: 'Calculer son budget mensuel sans tableur | Calcery',
       en: 'Monthly budget calculator | Personal finance Calcery',
     },
     metaDescription: {
-      fr: 'Estimez revenus, depenses et reste a vivre avec un outil budget rapide et clair.',
+      fr: 'Calculez votre budget mensuel, votre reste à vivre et votre marge d’épargne avec un outil gratuit, clair et sans inscription.',
       en: 'Estimate income, expenses and remaining cash with a clear monthly budget tool.',
     },
     faqs: {
@@ -328,9 +328,9 @@ export const CALCULATORS: CalculatorDefinition[] = [
     },
     tips: {
       fr: [
-        'Incluez revenus fixes et variables pour une vision complete.',
-        'Classez les depenses essentielles et discretionnaires.',
-        'Ajustez votre budget tous les mois selon la realite.',
+        'Saisissez un revenu net réellement disponible, pas votre meilleur mois.',
+        'Ramenez les dépenses annuelles à un montant mensuel avant de valider.',
+        'Gardez une petite marge pour les imprévus avant d’augmenter l’épargne.',
       ],
       en: [
         'Include both fixed and variable income for a complete view.',
@@ -338,7 +338,7 @@ export const CALCULATORS: CalculatorDefinition[] = [
         'Review your budget monthly and adjust quickly.',
       ],
     },
-    updatedAt: '2026-02-10',
+    updatedAt: '2026-03-24',
   },
   {
     slug: 'epargne-automatique',
@@ -350,15 +350,15 @@ export const CALCULATORS: CalculatorDefinition[] = [
       en: 'Free automatic savings calculator',
     },
     description: {
-      fr: 'Calculez votre plan d epargne pour atteindre vos objectifs financiers.',
+      fr: 'Déterminez un virement d’épargne automatique réaliste selon votre objectif, votre délai et votre marge mensuelle.',
       en: 'Estimate the monthly contribution needed to reach your savings goal.',
     },
     metaTitle: {
-      fr: 'Calculateur epargne automatique | Finance personnelle Calcery',
+      fr: 'Calculer son epargne automatique realiste | Calcery',
       en: 'Automatic savings calculator | Personal finance Calcery',
     },
     metaDescription: {
-      fr: 'Projetez votre epargne mensuelle et la duree necessaire pour atteindre votre objectif.',
+      fr: 'Estimez le virement mensuel adapté à votre objectif d’épargne avec un outil gratuit, clair et sans inscription.',
       en: 'Project monthly savings and estimate time needed to reach your target.',
     },
     faqs: {
@@ -379,9 +379,9 @@ export const CALCULATORS: CalculatorDefinition[] = [
     },
     tips: {
       fr: [
-        "Programmez le virement juste apres la date d'entree de revenu.",
-        'Commencez avec un montant tenable puis augmentez progressivement.',
-        'Associez cet outil a votre budget mensuel pour rester coherent.',
+        'Programmez le virement juste après l’arrivée du revenu principal.',
+        'Commencez par un montant facile à tenir, puis augmentez par paliers.',
+        'Comparez toujours ce montant à votre budget mensuel avant de l’automatiser.',
       ],
       en: [
         'Schedule transfers right after income arrives.',
@@ -389,7 +389,7 @@ export const CALCULATORS: CalculatorDefinition[] = [
         'Use this together with your monthly budget for consistency.',
       ],
     },
-    updatedAt: '2026-02-10',
+    updatedAt: '2026-03-24',
   },
   {
     slug: 'interets-composes',
@@ -401,15 +401,15 @@ export const CALCULATORS: CalculatorDefinition[] = [
       en: 'Free compound interest calculator',
     },
     description: {
-      fr: 'Simulez la croissance de votre capital sur le long terme.',
+      fr: 'Projetez la croissance de votre capital dans le temps avec des hypothèses de rendement et de versements réalistes.',
       en: 'Simulate long-term capital growth with compound interest.',
     },
     metaTitle: {
-      fr: 'Calculateur interets composes | Projection investissement Calcery',
+      fr: 'Simuler ses interets composes sur 10 ou 20 ans | Calcery',
       en: 'Compound interest calculator | Investment projection Calcery',
     },
     metaDescription: {
-      fr: 'Visualisez la croissance de votre epargne selon taux, duree et versements periodiques.',
+      fr: 'Visualisez l’effet du temps, du taux et des versements réguliers avec un simulateur gratuit. Comparez plusieurs scénarios.',
       en: 'Visualize savings growth based on rate, duration and recurring contributions.',
     },
     faqs: {
@@ -430,9 +430,9 @@ export const CALCULATORS: CalculatorDefinition[] = [
     },
     tips: {
       fr: [
-        'Commencez tot pour maximiser l effet du temps.',
-        'Comparez plusieurs frequences de versement.',
-        'Restez prudent sur les hypotheses de rendement.',
+        'Testez un scénario prudent avant de regarder un scénario plus optimiste.',
+        'Comparez un versement unique et un versement mensuel régulier.',
+        'Le temps compte souvent plus que la recherche d’un taux très élevé.',
       ],
       en: [
         'Start early to maximize the time effect.',
@@ -440,7 +440,7 @@ export const CALCULATORS: CalculatorDefinition[] = [
         'Keep return assumptions conservative.',
       ],
     },
-    updatedAt: '2026-02-10',
+    updatedAt: '2026-03-24',
   },
   {
     slug: 'impot-revenu',
@@ -503,15 +503,15 @@ export const CALCULATORS: CalculatorDefinition[] = [
       en: 'Free small expense savings calculator',
     },
     description: {
-      fr: 'Estimez l impact cumule de vos petites depenses repetees.',
+      fr: 'Mesurez ce que des achats répétés coûtent vraiment sur un mois ou sur un an pour repérer des économies faciles.',
       en: 'Estimate the cumulative impact of recurring small expenses.',
     },
     metaTitle: {
-      fr: 'Calculateur petites depenses | Vie pratique Calcery',
+      fr: 'Calculer le cout reel des petites depenses | Calcery',
       en: 'Small expense calculator | Daily life Calcery',
     },
     metaDescription: {
-      fr: 'Mesurez ce que vos micro-depenses coutent sur 1, 3 ou 5 ans et optimisez votre budget.',
+      fr: 'Mesurez ce que vos petites dépenses coûtent vraiment avec un outil gratuit et sans inscription. Repérez les habitudes à corriger.',
       en: 'Measure what recurring micro-spending costs over 1, 3 or 5 years.',
     },
     faqs: {
@@ -532,9 +532,9 @@ export const CALCULATORS: CalculatorDefinition[] = [
     },
     tips: {
       fr: [
-        'Commencez par deux ou trois habitudes recurrentes.',
-        'Redirigez automatiquement les montants economises.',
-        'Revoyez vos categories chaque mois.',
+        'Commencez par deux ou trois habitudes fréquentes, pas par tout supprimer.',
+        'Transformez l’économie trouvée en virement ou en marge visible.',
+        'Mesurez le coût mensuel avant de regarder la projection annuelle.',
       ],
       en: [
         'Start with two or three recurring habits.',
@@ -542,7 +542,7 @@ export const CALCULATORS: CalculatorDefinition[] = [
         'Review spending categories monthly.',
       ],
     },
-    updatedAt: '2026-02-10',
+    updatedAt: '2026-03-24',
   },
   {
     slug: 'pourboire',
@@ -1843,11 +1843,44 @@ export function getCalculatorBySlug(slug: CalculatorSlug): CalculatorDefinition 
   return calculator;
 }
 
+const FR_CALCULATOR_COPY_OVERRIDES: Partial<
+  Record<CalculatorSlug, { heading: string; metaTitle: string; metaDescription: string }>
+> = {
+  'budget-mensuel': {
+    heading: 'Calculateur de budget mensuel pour voir votre vrai reste à vivre',
+    metaTitle: 'Calculer son budget mensuel sans tableur | Calcery',
+    metaDescription:
+      'Calculez votre budget mensuel, votre reste à vivre et votre marge d’épargne avec un outil gratuit, clair et sans inscription. Lancez la simulation.',
+  },
+  'epargne-automatique': {
+    heading: 'Simulateur d’épargne automatique pour fixer un virement tenable',
+    metaTitle: 'Calculer son épargne automatique réaliste | Calcery',
+    metaDescription:
+      'Estimez le virement mensuel adapté à votre objectif d’épargne avec un outil gratuit, clair et sans inscription. Testez votre plan.',
+  },
+  'interets-composes': {
+    heading: 'Simulateur d’intérêts composés pour projeter votre épargne',
+    metaTitle: 'Simuler ses intérêts composés sur 10 ou 20 ans | Calcery',
+    metaDescription:
+      'Visualisez l’effet du temps, du taux et des versements réguliers avec un simulateur gratuit. Comparez plusieurs scénarios en quelques secondes.',
+  },
+  'economies-petites-depenses': {
+    heading: 'Calculateur des petites dépenses qui grignotent votre budget',
+    metaTitle: 'Calculer le coût réel des petites dépenses | Calcery',
+    metaDescription:
+      'Mesurez ce que vos petites dépenses coûtent vraiment avec un outil gratuit et sans inscription. Repérez les habitudes à corriger en quelques clics.',
+  },
+};
+
 export function getCalculatorPageHeading(
   calculator: CalculatorDefinition,
   locale: Locale,
 ): string {
   if (locale === 'fr') {
+    const override = FR_CALCULATOR_COPY_OVERRIDES[calculator.slug];
+    if (override) {
+      return clampSeoText(override.heading, 70);
+    }
     return clampSeoText(`Calculateur ${getFrCalculatorKeyword(calculator.name.fr)} gratuit en ligne`, 70);
   }
   return clampSeoText(`Free ${getEnCalculatorKeyword(calculator.name.en)} calculator`, 70);
@@ -1858,6 +1891,10 @@ export function getCalculatorMetaTitle(
   locale: Locale,
 ): string {
   if (locale === 'fr') {
+    const override = FR_CALCULATOR_COPY_OVERRIDES[calculator.slug];
+    if (override) {
+      return clampSeoText(override.metaTitle, 60);
+    }
     const keyword = getFrCalculatorKeyword(calculator.name.fr);
     const candidates = [
       `Calculateur ${keyword} gratuit et rapide en ligne | Calcery`,
@@ -1885,6 +1922,10 @@ export function getCalculatorMetaDescription(
   locale: Locale,
 ): string {
   if (locale === 'fr') {
+    const override = FR_CALCULATOR_COPY_OVERRIDES[calculator.slug];
+    if (override) {
+      return ensureMetaDescriptionLength(override.metaDescription, 'fr');
+    }
     return ensureMetaDescriptionLength(
       `Outil gratuit, sans inscription, pour ${lowercaseFirstLetter(calculator.description.fr).replace(/\.$/, '')}. Lancez votre simulation en ligne avec Calcery.`,
       'fr',

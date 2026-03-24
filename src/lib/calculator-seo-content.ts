@@ -66,6 +66,14 @@ export interface CalculatorSeoContent {
   faqs: FAQItem[];
 }
 
+interface CalculatorSeoOverride {
+  introduction?: string[];
+  howItWorks?: string[];
+  interpretation?: string[];
+  scenarios?: CalculatorSeoScenario[];
+  faqs?: FAQItem[];
+}
+
 const getEnBlogPath = (frSlug: BlogSlug) => `/en/blog/${FR_TO_EN_BLOG_SLUG[frSlug] ?? frSlug}`;
 
 const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>> = {
@@ -209,6 +217,241 @@ const CROSS_CATEGORY_FALLBACKS: Record<CategoryKey, CalculatorSlug[]> = {
   education: ['moyenne-scolaire', 'difference-entre-deux-dates', 'budget-mensuel'],
 };
 
+const FR_CALCULATOR_EDITORIAL_OVERRIDES: Partial<Record<CalculatorSlug, CalculatorSeoOverride>> = {
+  'budget-mensuel': {
+    introduction: [
+      'Ce calculateur de budget mensuel sert à répondre à une question très concrète : une fois le logement, les charges fixes et les dépenses du quotidien payés, que vous reste-t-il vraiment ? Beaucoup de foyers pensent connaître leur situation parce qu’ils connaissent leur salaire. En pratique, ce qui compte est le reste à vivre réel, pas le revenu affiché sur le bulletin de paie.',
+      'L’outil est utile aussi bien si vous débutez que si vous avez déjà un budget. Dans le premier cas, il vous donne une base claire. Dans le second, il permet de vérifier si votre cadre actuel tient encore face à un déménagement, une hausse des prix ou une nouvelle charge.',
+      'Le bon réflexe n’est pas de chercher un budget parfait. Il faut plutôt chercher un budget crédible, c’est-à-dire un budget qui tient sur un mois normal, un mois un peu chargé et un mois avec un petit imprévu. C’est cette lecture pragmatique qui rend le résultat vraiment utile.',
+    ],
+    howItWorks: [
+      'Commencez par saisir un revenu net réaliste. Si vos revenus varient, partez d’une moyenne prudente plutôt que d’un bon mois. Le calcul perd vite en qualité si la base de départ est trop optimiste.',
+      'Ajoutez ensuite vos charges fixes, puis vos dépenses variables. Les charges fixes sont faciles à voir. Les dépenses variables, elles, sont souvent sous-estimées. Pensez aussi à mensualiser les dépenses annuelles, sinon le résultat semblera plus confortable qu’il ne l’est réellement.',
+      'Le calcul compare ensuite ce qui entre et ce qui sort pour afficher votre reste à vivre et votre marge potentielle d’épargne. Le plus utile est de refaire une simulation avec un scénario un peu plus prudent pour voir si votre budget tient encore quand le mois se complique légèrement.',
+    ],
+    interpretation: [
+      'Le chiffre important n’est pas seulement le taux d’épargne. Ce qui compte d’abord, c’est de savoir si votre marge absorbe les petites secousses du quotidien. Avec 400 € de marge, un budget peut rester stable. Avec 80 € de marge, le moindre écart devient un problème.',
+      'Utilisez les repères de la page comme des zones de lecture, pas comme une note. Une situation saine signifie que vous gardez une vraie respiration. Une zone à surveiller indique souvent un poste mal évalué. Une zone de tension montre qu’il faut corriger la structure du budget avant de viser plus d’épargne.',
+      'Exemple concret : deux foyers peuvent gagner 2 500 € chacun. Si le premier garde 350 € de marge et le second seulement 90 €, ils ne sont pas du tout dans la même situation. Le résultat doit donc toujours être interprété avec vos charges réelles, pas seulement avec votre revenu.',
+    ],
+    scenarios: [
+      {
+        title: 'Scénario mois normal',
+        text: 'Utilisez vos chiffres habituels pour construire votre base de référence. Ce scénario vous sert à suivre le budget courant et à voir rapidement si une catégorie se décale d’un mois sur l’autre.',
+      },
+      {
+        title: 'Scénario mois tendu',
+        text: 'Augmentez légèrement les courses, ajoutez une dépense ponctuelle ou baissez un peu le revenu si votre activité varie. Si le budget devient tout de suite négatif, votre marge est probablement trop faible.',
+      },
+      {
+        title: 'Scénario objectif d’épargne',
+        text: 'Testez ensuite le montant que vous aimeriez mettre de côté chaque mois. Si l’épargne ne tient que dans le meilleur scénario, elle est trop ambitieuse pour être automatisée sereinement.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Que dois-je mettre dans les charges fixes ?',
+        answer:
+          'Mettez tout ce que vous devez payer presque quoi qu’il arrive : logement, énergie, assurances, transport contraint, remboursements, téléphonie, garde d’enfants ou abonnements vraiment utiles. Les dépenses annuelles doivent être ramenées au mois. Sinon, votre budget paraît plus confortable qu’il ne l’est réellement.',
+      },
+      {
+        question: 'Pourquoi mon reste à vivre semble correct alors que je finis souvent à découvert ?',
+        answer:
+          'Le plus souvent, il manque des dépenses oubliées ou mal évaluées : achats d’appoint, frais bancaires, dépenses annuelles, santé ou courses trop basses. Le calculateur est fiable si les entrées sont honnêtes. Quand le résultat paraît bon mais que le réel ne suit pas, il faut d’abord revoir les hypothèses.',
+      },
+      {
+        question: 'Comment utiliser l’outil si mes revenus changent chaque mois ?',
+        answer:
+          'Prenez une moyenne prudente sur plusieurs mois ou votre niveau de revenu le plus fréquent. L’erreur classique consiste à se baser sur un bon mois. Mieux vaut partir d’une base un peu prudente et avoir une bonne surprise que l’inverse.',
+      },
+      {
+        question: 'Quel niveau d’épargne est raisonnable au départ ?',
+        answer:
+          'Il n’y a pas de chiffre universel. En pratique, une épargne modeste mais stable est plus utile qu’un montant ambitieux que vous annulez deux mois plus tard. Si votre marge est faible, commencez petit et sécurisez d’abord la tenue du mois.',
+      },
+      {
+        question: 'Faut-il suivre chaque dépense au centime près ?',
+        answer:
+          'Non. Ce qui compte est d’identifier les catégories qui bougent vraiment. Un suivi trop détaillé fatigue vite et finit souvent par être abandonné. Un budget simple, revu régulièrement, vaut mieux qu’un système parfait impossible à tenir.',
+      },
+    ],
+  },
+  'epargne-automatique': {
+    introduction: [
+      'Ce simulateur d’épargne automatique aide à transformer une intention vague en montant mensuel tenable. La bonne question n’est pas seulement : combien voudrais-je mettre de côté ? La vraie question est : quel virement puis-je laisser tourner sans mettre mon mois sous tension ?',
+      'L’automatisation est utile parce qu’elle retire une partie de la décision du quotidien. Au lieu d’espérer qu’il restera quelque chose en fin de mois, vous choisissez à l’avance un montant cohérent avec votre budget et vous le programmez.',
+      'L’outil devient encore plus utile si vous le reliez à votre budget réel. Un objectif d’épargne n’a de sens que s’il tient face à vos charges actuelles. Sinon, vous risquez d’annuler le virement au premier écart, ce qui crée surtout de la frustration.',
+    ],
+    howItWorks: [
+      'Saisissez votre objectif, la durée visée et ce que vous avez déjà de côté. Le calcul estime ensuite le montant mensuel nécessaire pour atteindre la cible dans le délai choisi.',
+      'Ne lisez pas ce résultat comme un ordre. Lisez-le comme un point de départ. S’il vous paraît trop élevé, la bonne correction consiste souvent à allonger un peu la durée plutôt qu’à forcer un montant difficile à tenir.',
+      'Une fois le bon niveau trouvé, programmez le virement juste après l’arrivée du revenu principal. Vous limiterez ainsi le risque de dépenser d’abord puis d’épargner seulement s’il reste quelque chose.',
+    ],
+    interpretation: [
+      'Un bon plan d’épargne automatique est un plan qui survit aux mois ordinaires. Si le montant exige de serrer chaque catégorie au maximum, il est probablement trop haut. S’il passe même avec une petite variation de dépenses, il a de bonnes chances de durer.',
+      'Utilisez les seuils de la page pour distinguer un virement confortable, un virement soutenable mais un peu serré, et un plan trop agressif. La bonne zone est rarement la plus impressionnante. C’est celle que vous tenez sans la renégocier sans cesse.',
+      'Par exemple, épargner 120 € pendant douze mois vaut mieux qu’annoncer 250 € puis interrompre trois fois dans l’année. L’automatisation fonctionne quand elle crée une habitude, pas quand elle vous met immédiatement en situation d’échec.',
+    ],
+    scenarios: [
+      {
+        title: 'Scénario fonds de sécurité',
+        text: 'Testez un petit montant destiné à recréer d’abord un coussin de sécurité. C’est souvent l’usage le plus utile si vous n’avez encore aucune marge en cas d’imprévu.',
+      },
+      {
+        title: 'Scénario projet à douze mois',
+        text: 'Entrez un objectif concret, comme des travaux, un voyage ou un achat important. Vous verrez vite si le délai est raisonnable ou si vous devez étaler le plan.',
+      },
+      {
+        title: 'Scénario revenu variable',
+        text: 'Si vos revenus fluctuent, comparez un montant bas garanti tous les mois à un montant plus élevé réservé aux bons mois. Cette lecture est souvent plus réaliste qu’un unique virement ambitieux.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Vaut-il mieux épargner peu mais tous les mois ?',
+        answer:
+          'Oui, dans la plupart des cas. Un petit virement stable crée une habitude et donne un résultat visible avec le temps. Un montant plus élevé mais sans cesse annulé ou reporté fragilise l’ensemble du plan et décourage rapidement.',
+      },
+      {
+        question: 'Quand programmer le virement automatique ?',
+        answer:
+          'Le plus simple est juste après l’arrivée du salaire ou du revenu principal. Vous traitez ainsi l’épargne comme une charge utile plutôt que comme un reste éventuel de fin de mois. Ce placement dans le calendrier change beaucoup la régularité.',
+      },
+      {
+        question: 'Que faire si mes revenus ne sont pas stables ?',
+        answer:
+          'Partez d’un montant bas que vous êtes presque certain de tenir, puis ajoutez ponctuellement un complément les mois meilleurs. Un plan en deux vitesses est souvent plus solide qu’un objectif unique calculé sur un mois exceptionnel.',
+      },
+      {
+        question: 'Dois-je annuler le virement au premier mois difficile ?',
+        answer:
+          'Pas automatiquement. Si le mois est juste un peu chargé, vous pouvez parfois garder le virement. En revanche, si le budget devient réellement tendu, mieux vaut l’ajuster temporairement plutôt que de finir à découvert pour tenir un objectif théorique.',
+      },
+      {
+        question: 'Faut-il d’abord viser un projet ou un petit matelas de sécurité ?',
+        answer:
+          'Si vous n’avez presque aucune marge face aux imprévus, commencer par un petit coussin de sécurité est souvent plus utile. Cela rend l’épargne future beaucoup plus stable et évite de casser votre plan au premier incident.',
+      },
+    ],
+  },
+  'interets-composes': {
+    introduction: [
+      'Le simulateur d’intérêts composés montre comment le temps, le taux de rendement et les versements réguliers se combinent. Il ne sert pas à promettre un résultat spectaculaire. Il sert à rendre visible une trajectoire et à comparer plusieurs hypothèses avec un minimum de clarté.',
+      'Cet outil est particulièrement utile quand vous hésitez entre commencer maintenant avec un montant modeste ou attendre d’avoir davantage. La plupart du temps, il montre qu’un effort raisonnable lancé tôt pèse plus qu’un gros effort commencé trop tard.',
+      'Il permet aussi de remettre les projections à leur juste place. Une estimation très optimiste peut flatter sur le papier, mais elle devient dangereuse si elle sert de base à une vraie décision. Le bon usage consiste donc à comparer un scénario central et un scénario prudent.',
+    ],
+    howItWorks: [
+      'Saisissez votre capital de départ, le taux annuel, la durée et, si vous le souhaitez, des versements réguliers. Le calcul projette ensuite la valeur finale selon la fréquence de capitalisation retenue.',
+      'Pour bien l’utiliser, testez plusieurs horizons. Sur un placement de long terme, quelques années de plus changent souvent davantage le résultat qu’une hypothèse de rendement légèrement plus haute. Le temps est un levier plus puissant qu’il n’y paraît.',
+      'Faites toujours au moins deux simulations : une prudente et une centrale. Si votre projet ne tient que dans le scénario le plus optimiste, vous savez déjà que la marge de sécurité est trop faible.',
+    ],
+    interpretation: [
+      'Le premier enseignement vient souvent de l’horizon. Sur quelques années, les intérêts composés restent modestes. Sur dix, quinze ou vingt ans, l’accélération devient nettement plus visible. Il ne faut donc pas juger l’outil uniquement sur un résultat à court terme.',
+      'Le deuxième point est la prudence sur le taux. Une projection à 7 % ou 8 % peut sembler séduisante, mais elle n’a pas la même solidité qu’un scénario à 3 % ou 4,5 %. Pour planifier sérieusement, mieux vaut raisonner sur une hypothèse défendable.',
+      'Enfin, comparez le poids du capital initial et celui des versements réguliers. Beaucoup de personnes découvrent qu’un effort mensuel constant fait une vraie différence, même quand le capital de départ est modeste. C’est souvent cette comparaison qui déclenche l’action.',
+    ],
+    scenarios: [
+      {
+        title: 'Scénario versement unique',
+        text: 'Utilisez-le pour mesurer ce qu’un capital déjà disponible peut produire dans le temps. C’est utile pour un héritage, une prime ou une épargne déjà constituée.',
+      },
+      {
+        title: 'Scénario effort mensuel régulier',
+        text: 'Ajoutez un versement mensuel pour voir l’effet de la discipline dans le temps. Beaucoup de projets deviennent plus crédibles quand le montant de départ est modeste mais que la régularité est forte.',
+      },
+      {
+        title: 'Scénario prudent de long terme',
+        text: 'Réduisez un peu le taux et vérifiez si l’objectif tient encore. Si oui, votre projection est plus solide. Si non, il faut sans doute revoir la durée, le montant versé ou le niveau d’objectif.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Quel taux faut-il utiliser dans la simulation ?',
+        answer:
+          'Le plus prudent est de partir d’une hypothèse défendable plutôt que flatteuse. Un taux modéré permet de construire un plan solide. Vous pouvez ensuite comparer avec un scénario un peu plus favorable, mais sans en faire votre référence unique.',
+      },
+      {
+        question: 'Pourquoi le temps compte-t-il autant ?',
+        answer:
+          'Parce que les gains des premières années produisent eux aussi des gains par la suite. Plus l’horizon est long, plus cet effet devient visible. C’est ce qui explique pourquoi quelques années d’avance changent parfois plus le résultat qu’une hausse du taux supposé.',
+      },
+      {
+        question: 'Les versements mensuels changent-ils vraiment le résultat ?',
+        answer:
+          'Oui, souvent beaucoup. Même un montant modeste ajouté chaque mois finit par peser lourd sur dix ou quinze ans. Le simulateur est utile justement pour rendre visible cette progression que l’on sous-estime facilement au quotidien.',
+      },
+      {
+        question: 'Peut-on prendre le chiffre final comme une prévision fiable ?',
+        answer:
+          'Non. Le chiffre final est une projection conditionnelle, pas une promesse. Les frais, la fiscalité, la volatilité et les années moins favorables peuvent modifier le résultat. Utilisez-le pour cadrer un plan, pas pour garantir un montant futur.',
+      },
+      {
+        question: 'Que regarder en premier dans le résultat ?',
+        answer:
+          'Regardez surtout l’effet de la durée, puis l’impact des versements réguliers. Ce sont souvent les deux leviers les plus utiles. Le taux reste important, mais il est aussi le paramètre le plus tentant à surestimer.',
+      },
+    ],
+  },
+  'economies-petites-depenses': {
+    introduction: [
+      'Ce calculateur sert à mesurer ce que des dépenses banales finissent par représenter sur un mois ou sur un an. L’idée n’est pas de culpabiliser pour un café ou un achat plaisir. L’idée est de voir ce que coûtent réellement les habitudes que l’on banalise parce qu’elles sont petites.',
+      'C’est souvent sur ce type de postes que le budget donne l’impression de fuir sans cause évidente. Une dépense faible prise isolément ne change rien. Répétée plusieurs fois par semaine, elle finit pourtant par peser autant qu’une vraie ligne budgétaire.',
+      'L’outil est surtout utile pour remettre les chiffres à l’échelle. Quand vous voyez qu’une habitude représente 40 €, 70 € ou 100 € par mois, la question devient plus concrète : est-ce que cette dépense m’apporte vraiment autant de valeur ?',
+    ],
+    howItWorks: [
+      'Entrez un coût unitaire, une fréquence et un horizon. Le calcul multiplie ensuite ces trois éléments pour afficher l’impact potentiel sur la période choisie.',
+      'Le plus utile est de commencer par une seule habitude fréquente : boissons achetées dehors, livraison, achats d’appoint, snack, abonnement discret. Une fois ce premier poste mesuré, vous pouvez comparer avec un second ou un troisième.',
+      'Ne lisez pas seulement la projection annuelle. Regardez aussi l’impact mensuel. C’est souvent ce montant qui aide le plus à décider si une habitude mérite une limite, une substitution ou aucun changement.',
+    ],
+    interpretation: [
+      'Toutes les petites dépenses ne sont pas un problème. Certaines ont une vraie utilité ou un vrai plaisir. Le but n’est donc pas de tout supprimer. Il s’agit plutôt de distinguer ce qui vous apporte quelque chose de ce qui est devenu automatique et peu utile.',
+      'Une dépense de 10 € par semaine paraît anodine. Sur un mois, elle représente déjà environ 40 €. Sur un an, on approche les 500 €. Cette translation d’échelle change souvent la perception et rend la décision plus lucide.',
+      'Si plusieurs petites habitudes additionnées représentent un montant visible, vous pouvez les transformer en marge ou en épargne. Le plus important est que l’économie soit ensuite visible, sinon elle se dissout rapidement dans le quotidien.',
+    ],
+    scenarios: [
+      {
+        title: 'Scénario café ou snack',
+        text: 'C’est le cas le plus parlant : une petite somme répétée plusieurs fois par semaine finit par représenter un vrai poste sur l’année. Le résultat aide à savoir s’il faut simplement ralentir ou fixer une limite claire.',
+      },
+      {
+        title: 'Scénario livraisons et achats d’appoint',
+        text: 'Ces dépenses paraissent pratiques et ponctuelles, mais elles se répètent souvent plus qu’on ne le pense. Les mesurer permet de voir si elles valent vraiment ce qu’elles coûtent.',
+      },
+      {
+        title: 'Scénario habitude partagée',
+        text: 'Dans un couple ou une colocation, une habitude commune peut peser encore davantage. Le calcul permet alors de discuter sur des chiffres simples au lieu de rester dans l’impression.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Faut-il supprimer toutes les petites dépenses ?',
+        answer:
+          'Non. Ce serait souvent contre-productif. L’objectif est de choisir. Certaines dépenses valent leur prix parce qu’elles vous facilitent vraiment la vie ou vous font plaisir. D’autres sont devenues automatiques sans vrai bénéfice. C’est sur celles-là qu’il faut concentrer l’effort.',
+      },
+      {
+        question: 'Comment savoir quelles habitudes réduire en premier ?',
+        answer:
+          'Commencez par les dépenses fréquentes, peu visibles et peu utiles. Ce sont elles qui offrent souvent le meilleur ratio entre effort et gain. Cherchez un ou deux leviers concrets plutôt que dix restrictions symboliques.',
+      },
+      {
+        question: 'Cet outil reste-t-il utile si mes revenus sont confortables ?',
+        answer:
+          'Oui, parce qu’il ne sert pas seulement à faire des économies de survie. Il sert aussi à arbitrer entre consommation automatique et usage plus intentionnel de l’argent. Même avec un revenu confortable, voir le coût cumulé d’une habitude peut aider à mieux choisir.',
+      },
+      {
+        question: 'Comment transformer l’économie trouvée en vrai gain ?',
+        answer:
+          'Il faut la rendre visible. Le plus simple est de la laisser dans une marge identifiée ou de la rediriger vers un virement d’épargne. Si vous ne faites rien de concret après le calcul, l’économie théorique disparaît généralement dans le reste du mois.',
+      },
+      {
+        question: 'Pourquoi regarder aussi le montant mensuel et pas seulement annuel ?',
+        answer:
+          'Le total annuel frappe l’esprit, mais le montant mensuel aide à agir. Savoir qu’une habitude vous coûte 45 € par mois rend la correction plus immédiate que de voir simplement un gros chiffre sur douze mois.',
+      },
+    ],
+  },
+};
+
 const CALCULATOR_DETAILS: Record<CalculatorSlug, CalculatorDetail> = {
   'budget-mensuel': {
     variables: {
@@ -220,23 +463,23 @@ const CALCULATOR_DETAILS: Record<CalculatorSlug, CalculatorDetail> = {
       en: 'Remaining balance = Net income - (Fixed costs + Variable spending). Savings rate = Remaining balance / Net income x 100.',
     },
     numericExample: {
-      fr: 'Exemple : avec 2 600 € de revenus, 1 450 € de charges fixes et 700 € de dépenses variables, le reste à vivre est de 450 €, soit 17,3 % de taux d’épargne.',
+      fr: 'Exemple : avec 2 450 € de revenus, 1 380 € de charges fixes et 620 € de dépenses variables, il reste 450 €. Cela représente environ 18 % de marge, ce qui laisse encore de la place pour un petit imprévu.',
       en: 'Example: with €2,600 income, €1,450 fixed costs, and €700 variable spending, remaining balance is €450, i.e. a 17.3% savings rate.',
     },
     decisionScenario: {
-      fr: 'Décision : si votre reste à vivre descend sous 250 € deux mois de suite, vous bloquez temporairement une catégorie loisir et réallouez 100 € vers l’épargne de précaution.',
+      fr: 'Décision : si votre reste à vivre passe sous 200 € deux mois de suite, réduisez une catégorie variable précise ou mensualisez une dépense oubliée avant d’augmenter l’épargne.',
       en: 'Decision: if your remaining balance falls below €250 for two consecutive months, pause one leisure category and redirect €100 to emergency savings.',
     },
     contextualCase: {
-      fr: 'Cas contextualisé : un jeune couple en location compare un budget “normal” et un budget “naissance” pour anticiper les six premiers mois après l’arrivée d’un enfant.',
+      fr: 'Cas concret : un salarié qui vient de déménager compare son ancien budget et son nouveau loyer pour vérifier s’il peut garder 100 € d’épargne mensuelle sans finir chaque mois à zéro.',
       en: 'Contextualized case: a renting couple compares a “standard” versus “new baby” budget to prepare the first six months after childbirth.',
     },
     thresholds: {
-      fr: ['Zone confortable : taux d’épargne >= 15 %.', 'Zone à surveiller : taux d’épargne entre 5 % et 15 %.', 'Zone critique : taux d’épargne < 5 % ou reste à vivre négatif.'],
+      fr: ['Situation saine : reste à vivre >= 10 % du revenu et dépenses fixes sous contrôle.', 'À surveiller : marge entre 5 % et 10 % ou dépenses variables qui débordent régulièrement.', 'Tension réelle : reste à vivre < 5 % ou budget négatif une fois les dépenses courantes comptées.'],
       en: ['Comfort zone: savings rate >= 15%.', 'Watch zone: savings rate between 5% and 15%.', 'Critical zone: savings rate < 5% or negative remaining balance.'],
     },
     riskNotice: {
-      fr: 'Le risque principal est d’oublier les dépenses annuelles (assurance, entretien, impôts locaux) : elles doivent être mensualisées pour éviter une lecture trop optimiste.',
+      fr: 'Le résultat devient trompeur si vous oubliez les dépenses annuelles, les frais bancaires ou les achats ponctuels récurrents. Ramenez-les au mois avant d’interpréter votre marge.',
       en: 'Main risk: forgetting annual expenses (insurance, maintenance, local taxes). Monthly allocation is required to avoid an overly optimistic result.',
     },
     relatedCalculators: ['capacite-epargne-mensuelle', 'objectif-epargne-temps', 'taux-endettement'],
@@ -251,23 +494,23 @@ const CALCULATOR_DETAILS: Record<CalculatorSlug, CalculatorDetail> = {
       en: 'Target monthly contribution ≈ (Goal - Initial capital) / Duration, then adjusted when a yield assumption is used.',
     },
     numericExample: {
-      fr: 'Exemple : objectif 12 000 € sur 24 mois avec 1 200 € déjà disponibles. Sans rendement, l’effort est de 450 € par mois.',
+      fr: 'Exemple : pour atteindre 6 000 € en 18 mois en partant de 900 €, il faut environ 283 € par mois sans rendement. Si ce montant est trop haut, allonger la durée est souvent plus réaliste que forcer l’effort.',
       en: 'Example: €12,000 target over 24 months with €1,200 already saved. Without yield, required monthly contribution is €450.',
     },
     decisionScenario: {
-      fr: 'Décision : si l’effort mensuel dépasse 20 % de votre capacité d’épargne, allongez la durée de 6 à 12 mois avant de réduire l’objectif.',
+      fr: 'Décision : si le virement demandé dépasse ce que vous tenez déjà sur trois mois, baissez le montant ou étalez l’objectif avant de l’automatiser.',
       en: 'Decision: if required contribution exceeds 20% of your monthly savings capacity, extend timeline by 6–12 months before cutting the goal.',
     },
     contextualCase: {
-      fr: 'Cas contextualisé : un freelance met en place deux virements automatiques, 300 € les mois faibles et 600 € les mois forts, pour lisser la saisonnalité.',
+      fr: 'Cas concret : un couple prépare 4 000 € pour des travaux dans 12 mois et teste trois montants mensuels pour garder une marge tout au long de l’année.',
       en: 'Contextualized case: a freelancer sets two automatic tiers, €300 in low months and €600 in strong months, to absorb seasonality.',
     },
     thresholds: {
-      fr: ['Plan stable : effort <= 15 % du revenu net.', 'Plan tendu : effort entre 15 % et 25 %.', 'Plan fragile : effort > 25 % sans marge de sécurité.'],
+      fr: ['Plan confortable : virement <= 10 % du revenu net ou facilement absorbé par votre marge actuelle.', 'Plan soutenable mais serré : entre 10 % et 15 % du revenu net.', 'Plan fragile : effort élevé sans matelas de sécurité ou besoin d’annuler souvent le virement.'],
       en: ['Stable plan: contribution <= 15% of net income.', 'Tight plan: contribution between 15% and 25%.', 'Fragile plan: contribution > 25% without safety buffer.'],
     },
     riskNotice: {
-      fr: 'Un objectif trop ambitieux crée des abandons. Privilégiez un montant soutenable et augmentez-le par paliers trimestriels.',
+      fr: 'Le principal piège est de programmer un virement trop ambitieux puis de le suspendre au premier mois tendu. Un montant un peu plus faible mais régulier vaut mieux qu’une bonne intention instable.',
       en: 'An overly aggressive target often leads to drop-off. Start with a sustainable amount and increase in quarterly steps.',
     },
     relatedCalculators: ['objectif-epargne-temps', 'interets-composes', 'capacite-epargne-mensuelle'],
@@ -283,23 +526,23 @@ const CALCULATOR_DETAILS: Record<CalculatorSlug, CalculatorDetail> = {
       en: 'Final amount = Initial capital x (1 + rate / frequency)^(frequency x duration).',
     },
     numericExample: {
-      fr: 'Exemple : 10 000 € à 5 % pendant 15 ans (capitalisation mensuelle) donnent environ 21 170 €.',
+      fr: 'Exemple : 8 000 € placés à 4,5 % pendant 15 ans donnent un peu plus de 15 500 € sans versement complémentaire. Avec 100 € ajoutés chaque mois, le total final dépasse largement 32 000 €.',
       en: 'Example: €10,000 at 5% for 15 years (monthly compounding) grows to about €21,170.',
     },
     decisionScenario: {
-      fr: 'Décision : si l’écart entre un scénario à 4 % et un scénario à 6 % dépasse 30 %, vous basez votre plan sur l’hypothèse basse.',
+      fr: 'Décision : si votre objectif n’est atteint qu’avec un rendement optimiste, basez votre plan sur une hypothèse plus basse ou allongez l’horizon.',
       en: 'Decision: if the gap between 4% and 6% scenarios exceeds 30%, anchor planning to the lower-return case.',
     },
     contextualCase: {
-      fr: 'Cas contextualisé : une salariée de 32 ans compare un versement unique et un versement mensuel automatique pour préparer son apport immobilier à 45 ans.',
+      fr: 'Cas concret : une personne de 30 ans compare un versement unique de 5 000 € et un effort mensuel de 150 € pour préparer un projet dans 15 ans.',
       en: 'Contextualized case: a 32-year-old employee compares lump sum versus recurring monthly investing to prepare a home down payment at age 45.',
     },
     thresholds: {
-      fr: ['Horizon efficace : au moins 8 ans.', 'Rendement prudent : 3 % à 5 % net de frais.', 'Alerte : projections fondées sur un rendement > 8 % sans justification.'],
+      fr: ['Horizon parlant : au moins 8 à 10 ans pour laisser le temps agir.', 'Hypothèse prudente : 3 % à 5 % net de frais selon le support.', 'Projection fragile : rendement > 7 % ou horizon trop court pour absorber les aléas.'],
       en: ['Effective horizon: at least 8 years.', 'Prudent return assumption: 3% to 5% net of fees.', 'Warning: projections based on >8% return without clear rationale.'],
     },
     riskNotice: {
-      fr: 'Le calcul ne modélise pas la volatilité des marchés ni la fiscalité réelle du support. Utilisez-le pour cadrer une trajectoire, pas pour promettre un résultat.',
+      fr: 'Un simulateur d’intérêts composés montre une trajectoire, pas une promesse. Les frais, la fiscalité et les années moins favorables peuvent réduire le résultat obtenu en pratique.',
       en: 'The tool does not model market volatility or full tax reality of the investment vehicle. Use it for trajectory planning, not guaranteed outcomes.',
     },
     relatedCalculators: ['epargne-automatique', 'objectif-epargne-temps', 'pret-personnel'],
@@ -347,23 +590,23 @@ const CALCULATOR_DETAILS: Record<CalculatorSlug, CalculatorDetail> = {
       en: 'Potential savings = Unit cost x Frequency x Period.',
     },
     numericExample: {
-      fr: 'Exemple : 4 € de snack quotidien représentent environ 1 460 € sur un an.',
+      fr: 'Exemple : 3,80 € dépensés cinq fois par semaine représentent près de 990 € sur un an. Ce n’est pas un petit achat isolé, c’est presque un mois de courses.',
       en: 'Example: a €4 daily snack represents about €1,460 over one year.',
     },
     decisionScenario: {
-      fr: 'Décision : si la somme annuelle dépasse 1 000 €, vous définissez un plafond hebdomadaire et une règle de substitution simple.',
+      fr: 'Décision : si une habitude dépasse 40 à 50 € par mois sans vraie utilité, fixez une limite hebdomadaire ou remplacez-la une fois sur deux au lieu de tout supprimer.',
       en: 'Decision: if annual total exceeds €1,000, set a weekly cap and a simple substitution rule.',
     },
     contextualCase: {
-      fr: 'Cas contextualisé : un étudiant réduit trois dépenses impulsives et redirige 80 € par mois vers son loyer et ses manuels.',
+      fr: 'Cas concret : une étudiante additionne boissons, livraisons et achats d’appoint et découvre 95 € par mois récupérables sans toucher à son loyer ni à ses charges fixes.',
       en: 'Contextualized case: a student cuts three impulse spending habits and reallocates €80/month to rent and textbooks.',
     },
     thresholds: {
-      fr: ['Impact faible : < 300 €/an.', 'Impact modéré : 300 à 1 000 €/an.', 'Impact fort : > 1 000 €/an.'],
+      fr: ['Impact faible : moins de 20 € par mois ou quelques centaines d’euros sur l’année.', 'Impact notable : entre 20 € et 80 € par mois sur une habitude récurrente.', 'Impact fort : plus de 80 € par mois sur une dépense peu utile ou peu visible.'],
       en: ['Low impact: < €300/year.', 'Moderate impact: €300 to €1,000/year.', 'High impact: > €1,000/year.'],
     },
     riskNotice: {
-      fr: 'Le risque est de viser une restriction excessive non tenable. Préférez 2 à 3 ajustements réalistes plutôt qu’un plan radical.',
+      fr: 'Le piège n’est pas la petite dépense elle-même, mais l’absence de limite sur une habitude répétée. Cherchez quelques ajustements réalistes, pas une privation totale.',
       en: 'Main risk is over-restriction that cannot be sustained. Prefer 2–3 realistic adjustments over a radical plan.',
     },
     relatedCalculators: ['budget-mensuel', 'capacite-epargne-mensuelle', 'objectif-epargne-temps'],
@@ -1565,18 +1808,19 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Res
 
 export function getCalculatorSeoContent(calculator: CalculatorDefinition, locale: Locale): CalculatorSeoContent {
   const detail = resolveCalculatorDetail(CALCULATOR_DETAILS[calculator.slug], locale, calculator.slug);
+  const editorialOverride = locale === 'fr' ? FR_CALCULATOR_EDITORIAL_OVERRIDES[calculator.slug] : undefined;
 
   const content: CalculatorSeoContent = {
-    introduction: buildIntroduction(calculator, locale, detail),
-    howItWorks: buildHowItWorks(calculator, locale, detail),
-    interpretation: buildInterpretation(calculator, locale, detail),
+    introduction: editorialOverride?.introduction ?? buildIntroduction(calculator, locale, detail),
+    howItWorks: editorialOverride?.howItWorks ?? buildHowItWorks(calculator, locale, detail),
+    interpretation: editorialOverride?.interpretation ?? buildInterpretation(calculator, locale, detail),
     formula: detail.formula,
     thresholds: detail.thresholds,
     riskNotice: detail.riskNotice,
-    scenarios: buildScenarios(calculator, locale, detail),
+    scenarios: editorialOverride?.scenarios ?? buildScenarios(calculator, locale, detail),
     relatedCalculators: buildRelatedCalculatorLinks(calculator, locale),
     relatedBlogPosts: buildRelatedBlogLinks(calculator, locale),
-    faqs: buildFaqs(calculator, locale, detail),
+    faqs: editorialOverride?.faqs ?? buildFaqs(calculator, locale, detail),
   };
 
   validateSeoContent(content, calculator.slug, locale);
