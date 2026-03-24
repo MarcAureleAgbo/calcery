@@ -34,6 +34,7 @@ const CATEGORY_PATHS = new Set([
 
 const BLOG_INDEX_PATHS = new Set(['/fr/blog', '/en/blog']);
 const SITEMAP_LASTMOD = '2026-03-24';
+const FILE_PATH_RE = /\/[^/?#]+\.[a-z0-9]+$/i;
 
 const BLOG_POST_PATH_RE = /^\/(?:fr|en)\/blog\/[^/]+$/;
 
@@ -51,6 +52,39 @@ const normalizePathname = (value) => {
   }
   const cleaned = pathname.replace(/\/+$/, '');
   return cleaned === '' ? '/' : cleaned;
+};
+
+const ensureTrailingSlashHref = (value) => {
+  if (typeof value !== 'string' || !value.startsWith('/')) return value;
+
+  const [pathAndQuery, hash = ''] = value.split('#');
+  const [pathname, search = ''] = pathAndQuery.split('?');
+
+  if (pathname === '/' || pathname.endsWith('/') || FILE_PATH_RE.test(pathname)) {
+    return value;
+  }
+
+  return `${pathname}/${search ? `?${search}` : ''}${hash ? `#${hash}` : ''}`;
+};
+
+const rehypeTrailingSlashInternalLinks = () => {
+  const visit = (node) => {
+    if (!node || typeof node !== 'object') return;
+
+    if (node.type === 'element' && node.tagName === 'a' && node.properties && typeof node.properties.href === 'string') {
+      node.properties.href = ensureTrailingSlashHref(node.properties.href);
+    }
+
+    if (node.type === 'raw' && typeof node.value === 'string') {
+      node.value = node.value.replace(/href="(\/[^"]*)"/g, (_, href) => `href="${ensureTrailingSlashHref(href)}"`);
+    }
+
+    if (Array.isArray(node.children)) {
+      node.children.forEach(visit);
+    }
+  };
+
+  return (tree) => visit(tree);
 };
 
 const isAllowedSitemapPath = (pathname) => {
@@ -74,6 +108,10 @@ const getPriorityForPath = (pathname) => {
 // https://astro.build/config
 export default defineConfig({
   site,
+  trailingSlash: 'always',
+  markdown: {
+    rehypePlugins: [rehypeTrailingSlashInternalLinks],
+  },
   integrations: [
     react(),
     tailwind(),

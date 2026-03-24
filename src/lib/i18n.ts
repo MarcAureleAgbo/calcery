@@ -1,5 +1,6 @@
 import { FR_TO_EN_BLOG_SLUG, EN_TO_FR_BLOG_SLUG } from './blog-slug-map';
 import { getLocalizedCalculatorSlug } from './calculator-route-slugs';
+import { ensureTrailingSlashPath } from './site';
 
 export type Locale = 'fr' | 'en';
 
@@ -61,21 +62,23 @@ export function localizePath(path: string, locale: Locale): string {
     normalized === '/en' ||
     normalized.startsWith('/en/')
   ) {
-    return normalized;
+    if (normalized === '/fr' || normalized === '/fr/') return '/';
+    if (normalized === '/en' || normalized === '/en/') return '/en/';
+    return ensureTrailingSlashPath(normalized);
   }
 
   const firstSegment = normalized.split('/')[1] ?? '';
 
   if (locale === 'fr' && (normalized === '/blog' || normalized.startsWith('/blog/'))) {
-    return `/fr${normalized}`;
+    return ensureTrailingSlashPath(`/fr${normalized}`);
   }
 
   if (locale === 'fr' && FR_CATEGORY_SEGMENTS.has(firstSegment)) {
-    return `/fr${normalized}`;
+    return ensureTrailingSlashPath(`/fr${normalized}`);
   }
 
-  if (locale === 'fr') return normalized;
-  return normalized === '/' ? '/en' : `/en${normalized}`;
+  if (locale === 'fr') return ensureTrailingSlashPath(normalized);
+  return normalized === '/' ? '/en/' : ensureTrailingSlashPath(`/en${normalized}`);
 }
 
 export function switchLocalePath(pathname: string, locale: Locale): string {
@@ -96,15 +99,15 @@ export function switchLocalePath(pathname: string, locale: Locale): string {
   }
 
   if (pathname === '/fr/calculateurs' || pathname === '/fr/calculateurs/') {
-    return locale === 'fr' ? '/fr/calculateurs' : '/en/calculators';
+    return locale === 'fr' ? '/fr/calculateurs/' : '/en/calculators/';
   }
 
   if (pathname === '/en/calculators' || pathname === '/en/calculators/') {
-    return locale === 'en' ? '/en/calculators' : '/fr/calculateurs';
+    return locale === 'en' ? '/en/calculators/' : '/fr/calculateurs/';
   }
 
   if (pathname === '/en/calculateurs' || pathname === '/en/calculateurs/') {
-    return locale === 'en' ? '/en/calculators' : '/fr/calculateurs';
+    return locale === 'en' ? '/en/calculators/' : '/fr/calculateurs/';
   }
 
   const frCategoryMatch = pathname.match(/^\/fr\/([^/]+)(\/.*)?$/);
@@ -115,9 +118,9 @@ export function switchLocalePath(pathname: string, locale: Locale): string {
       const targetSlug = getLocalizedCalculatorSlug(slug, locale);
       return `/${targetSlug}${rest}`;
     });
-    if (locale === 'fr') return `/fr/${currentCategory}${suffix}`;
+    if (locale === 'fr') return ensureTrailingSlashPath(`/fr/${currentCategory}${suffix}`);
     const targetCategory = FR_TO_EN_CATEGORY_SEGMENT[currentCategory];
-    return `/en/${targetCategory}${localizedSuffix}`;
+    return ensureTrailingSlashPath(`/en/${targetCategory}${localizedSuffix}`);
   }
 
   const enCategoryMatch = pathname.match(/^\/en\/([^/]+)(\/.*)?$/);
@@ -128,9 +131,9 @@ export function switchLocalePath(pathname: string, locale: Locale): string {
       const targetSlug = getLocalizedCalculatorSlug(slug, locale);
       return `/${targetSlug}${rest}`;
     });
-    if (locale === 'en') return `/en/${currentCategory}${suffix}`;
+    if (locale === 'en') return ensureTrailingSlashPath(`/en/${currentCategory}${suffix}`);
     const targetCategory = EN_TO_FR_CATEGORY_SEGMENT[currentCategory];
-    return `/fr/${targetCategory}${localizedSuffix}`;
+    return ensureTrailingSlashPath(`/fr/${targetCategory}${localizedSuffix}`);
   }
 
   const raw = stripLocalePrefix(pathname);

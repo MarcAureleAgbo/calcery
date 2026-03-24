@@ -1,3 +1,19 @@
+# Autorisation explicite des bots Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
 User-agent: *
 Allow: /
+
 Sitemap: https://calcery.com/sitemap.xml
+
+# BEGIN Cloudflare Managed Content

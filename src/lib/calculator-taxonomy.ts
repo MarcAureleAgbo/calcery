@@ -1,5 +1,6 @@
 import type { FAQItem } from './types';
 import { getLocalizedCalculatorSlug } from './calculator-route-slugs';
+import { ensureTrailingSlashPath } from './site';
 
 export type Locale = 'fr' | 'en';
 
@@ -1831,7 +1832,7 @@ export function getCategoryByLocaleSlug(locale: Locale, slug: string): CategoryD
 }
 
 export function getCategoryRoute(locale: Locale, key: CategoryKey): string {
-  return `/${locale}/${getCategorySlug(locale, key)}`;
+  return ensureTrailingSlashPath(`/${locale}/${getCategorySlug(locale, key)}`);
 }
 
 export function getCalculatorBySlug(slug: CalculatorSlug): CalculatorDefinition {
@@ -1898,7 +1899,9 @@ export function getCalculatorMetaDescription(
 
 export function getCalculatorRoute(locale: Locale, slug: CalculatorSlug): string {
   const calculator = getCalculatorBySlug(slug);
-  return `${getCategoryRoute(locale, calculator.category)}/${getLocalizedCalculatorSlug(calculator.slug, locale)}`;
+  return ensureTrailingSlashPath(
+    `${getCategoryRoute(locale, calculator.category)}${getLocalizedCalculatorSlug(calculator.slug, locale)}`,
+  );
 }
 
 export function getCalculatorsByCategory(key: CategoryKey): CalculatorDefinition[] {
@@ -1934,36 +1937,36 @@ export function getCalculatorStaticPaths(locale: Locale) {
 }
 
 export const LEGACY_REDIRECTS: Array<{ from: string; to: string }> = [
-  { from: '/calculateurs', to: '/fr/calculateurs' },
-  { from: '/en/calculateurs', to: '/en/calculators' },
-  { from: '/budget-mensuel', to: '/fr/finance/budget-mensuel' },
-  { from: '/epargne-automatique', to: '/fr/finance/epargne-automatique' },
-  { from: '/interets-composes', to: '/fr/finance/interets-composes' },
-  { from: '/impot-revenu', to: '/fr/finance/impot-revenu' },
-  { from: '/economies-petites-depenses', to: '/fr/vie-pratique/economies-petites-depenses' },
-  { from: '/pourboire', to: '/fr/vie-pratique/pourboire' },
-  { from: '/partage-addition', to: '/fr/vie-pratique/partage-addition' },
-  { from: '/calculateurs/budget-mensuel', to: '/fr/finance/budget-mensuel' },
-  { from: '/calculateurs/epargne-automatique', to: '/fr/finance/epargne-automatique' },
-  { from: '/calculateurs/interets-composes', to: '/fr/finance/interets-composes' },
-  { from: '/calculateurs/impot-revenu', to: '/fr/finance/impot-revenu' },
-  { from: '/calculateurs/economies-petites-depenses', to: '/fr/vie-pratique/economies-petites-depenses' },
-  { from: '/calculateurs/pourboire', to: '/fr/vie-pratique/pourboire' },
-  { from: '/calculateurs/partage-addition', to: '/fr/vie-pratique/partage-addition' },
-  { from: '/calculateurs/demo', to: '/fr/calculateurs' },
-  { from: '/en/budget-mensuel', to: '/en/finance/monthly-budget' },
-  { from: '/en/epargne-automatique', to: '/en/finance/automatic-savings' },
-  { from: '/en/interets-composes', to: '/en/finance/compound-interest' },
-  { from: '/en/impot-revenu', to: '/en/finance/income-tax' },
-  { from: '/en/economies-petites-depenses', to: '/en/daily-life/small-expense-savings' },
-  { from: '/en/pourboire', to: '/en/daily-life/tip-calculator' },
-  { from: '/en/partage-addition', to: '/en/daily-life/split-bill' },
-  { from: '/en/calculateurs/budget-mensuel', to: '/en/finance/monthly-budget' },
-  { from: '/en/calculateurs/epargne-automatique', to: '/en/finance/automatic-savings' },
-  { from: '/en/calculateurs/interets-composes', to: '/en/finance/compound-interest' },
-  { from: '/en/calculateurs/impot-revenu', to: '/en/finance/income-tax' },
-  { from: '/en/calculateurs/economies-petites-depenses', to: '/en/daily-life/small-expense-savings' },
-  { from: '/en/calculateurs/pourboire', to: '/en/daily-life/tip-calculator' },
-  { from: '/en/calculateurs/partage-addition', to: '/en/daily-life/split-bill' },
-  { from: '/en/calculateurs/demo', to: '/en/calculators' },
+  { from: '/calculateurs', to: '/fr/calculateurs/' },
+  { from: '/en/calculateurs', to: '/en/calculators/' },
+  { from: '/budget-mensuel', to: '/fr/finance/budget-mensuel/' },
+  { from: '/epargne-automatique', to: '/fr/finance/epargne-automatique/' },
+  { from: '/interets-composes', to: '/fr/finance/interets-composes/' },
+  { from: '/impot-revenu', to: '/fr/finance/impot-revenu/' },
+  { from: '/economies-petites-depenses', to: '/fr/vie-pratique/economies-petites-depenses/' },
+  { from: '/pourboire', to: '/fr/vie-pratique/pourboire/' },
+  { from: '/partage-addition', to: '/fr/vie-pratique/partage-addition/' },
+  { from: '/calculateurs/budget-mensuel', to: '/fr/finance/budget-mensuel/' },
+  { from: '/calculateurs/epargne-automatique', to: '/fr/finance/epargne-automatique/' },
+  { from: '/calculateurs/interets-composes', to: '/fr/finance/interets-composes/' },
+  { from: '/calculateurs/impot-revenu', to: '/fr/finance/impot-revenu/' },
+  { from: '/calculateurs/economies-petites-depenses', to: '/fr/vie-pratique/economies-petites-depenses/' },
+  { from: '/calculateurs/pourboire', to: '/fr/vie-pratique/pourboire/' },
+  { from: '/calculateurs/partage-addition', to: '/fr/vie-pratique/partage-addition/' },
+  { from: '/calculateurs/demo', to: '/fr/calculateurs/' },
+  { from: '/en/budget-mensuel', to: '/en/finance/monthly-budget/' },
+  { from: '/en/epargne-automatique', to: '/en/finance/automatic-savings/' },
+  { from: '/en/interets-composes', to: '/en/finance/compound-interest/' },
+  { from: '/en/impot-revenu', to: '/en/finance/income-tax/' },
+  { from: '/en/economies-petites-depenses', to: '/en/daily-life/small-expense-savings/' },
+  { from: '/en/pourboire', to: '/en/daily-life/tip-calculator/' },
+  { from: '/en/partage-addition', to: '/en/daily-life/split-bill/' },
+  { from: '/en/calculateurs/budget-mensuel', to: '/en/finance/monthly-budget/' },
+  { from: '/en/calculateurs/epargne-automatique', to: '/en/finance/automatic-savings/' },
+  { from: '/en/calculateurs/interets-composes', to: '/en/finance/compound-interest/' },
+  { from: '/en/calculateurs/impot-revenu', to: '/en/finance/income-tax/' },
+  { from: '/en/calculateurs/economies-petites-depenses', to: '/en/daily-life/small-expense-savings/' },
+  { from: '/en/calculateurs/pourboire', to: '/en/daily-life/tip-calculator/' },
+  { from: '/en/calculateurs/partage-addition', to: '/en/daily-life/split-bill/' },
+  { from: '/en/calculateurs/demo', to: '/en/calculators/' },
 ];

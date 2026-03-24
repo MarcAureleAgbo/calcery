@@ -1,5 +1,5 @@
 ---
-import { toAbsoluteUrl } from '../lib/site';
+import { ensureTrailingSlashPath, ensureTrailingSlashUrl, toAbsoluteUrl } from '../lib/site';
 
 export interface Props {
   title: string;
@@ -12,12 +12,16 @@ export interface Props {
 
 const { title, description, canonical, image, locale = 'fr_FR', type = 'website' } = Astro.props;
 
-const currentPath = Astro.url.pathname.startsWith('/') ? Astro.url.pathname : `/${Astro.url.pathname}`;
+const currentPath = ensureTrailingSlashPath(
+  Astro.url.pathname.startsWith('/') ? Astro.url.pathname : `/${Astro.url.pathname}`,
+);
 
 const canonicalUrl = (() => {
   if (!canonical) return toAbsoluteUrl(currentPath);
-  if (canonical.startsWith('http://') || canonical.startsWith('https://')) return canonical;
-  return toAbsoluteUrl(canonical);
+  if (canonical.startsWith('http://') || canonical.startsWith('https://')) {
+    return ensureTrailingSlashUrl(canonical);
+  }
+  return toAbsoluteUrl(ensureTrailingSlashPath(canonical));
 })();
 
 const imageUrl = (() => {

@@ -43,7 +43,7 @@ const getReadingTime = (content: string) => {
         const publishDate = post.data.pubDate ?? post.data.date;
         return (
           <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
-            <a href={`/fr/blog/${post.slug}`} class="block">
+            <a href={`/fr/blog/${post.slug}/`} class="block">
               <img
                 src={coverImage}
                 alt={coverAlt}
@@ -62,14 +62,14 @@ const getReadingTime = (content: string) => {
               </div>
 
               <h3 class="mb-3 text-2xl font-bold text-black">
-                <a href={`/fr/blog/${post.slug}`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
+                <a href={`/fr/blog/${post.slug}/`} class="transition-colors hover:text-gray-700">{post.data.title}</a>
               </h3>
 
               <p class="mb-6 line-clamp-3 leading-relaxed text-gray-700">{post.data.description}</p>
 
               <div class="flex items-center justify-between">
                 <p class="text-sm text-gray-500">Publié le <span class="font-medium">{publishDate ? new Date(publishDate).toLocaleDateString('fr-FR') : ''}</span></p>
-                <a href={`/fr/blog/${post.slug}`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
+                <a href={`/fr/blog/${post.slug}/`} class="inline-flex items-center gap-1 font-semibold text-black transition-all hover:gap-2">
                   Lire
                   <span aria-hidden="true">→</span>
                 </a>

@@ -1,5 +1,5 @@
 ---
-import { toAbsoluteUrl } from '../lib/site';
+import { ensureTrailingSlashPath, toAbsoluteUrl } from '../lib/site';
 import type { BreadcrumbItem } from '../lib/types.ts';
 
 export interface Props {
@@ -24,7 +24,7 @@ function assertSeoText(value: unknown, fieldName: string): string {
 
 const normalizedItems = items.map((item, index) => ({
   name: assertSeoText(item.name, `items[${index}].name`),
-  item: assertSeoText(item.item, `items[${index}].item`),
+  item: ensureTrailingSlashPath(assertSeoText(item.item, `items[${index}].item`)),
 }));
 
 const breadcrumbJsonLd = {

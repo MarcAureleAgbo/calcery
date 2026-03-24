@@ -37,6 +37,7 @@ function parseSitemapEntries(xmlContent) {
     const url = new URL(loc);
     entries.push({
       loc,
+      exactPathname: url.pathname || '/',
       pathname: normalizePathname(url.pathname),
       hasQuery: url.search.length > 0,
     });
@@ -180,7 +181,7 @@ function parseRedirectSourcePaths(fileContent) {
     const [fromPath] = parts;
     if (!fromPath.startsWith('/')) continue;
     if (fromPath.includes('*')) continue;
-    redirectSources.add(normalizePathname(fromPath));
+    redirectSources.add(fromPath);
   }
 
   return redirectSources;
@@ -209,6 +210,7 @@ if (!fs.existsSync(REDIRECTS_PATH)) {
 const sitemapXml = fs.readFileSync(DIST_SITEMAP_PATH, 'utf8');
 const sitemapEntries = parseSitemapEntries(sitemapXml);
 const sitemapPaths = new Set(sitemapEntries.map((entry) => entry.pathname));
+const sitemapExactPaths = new Set(sitemapEntries.map((entry) => entry.exactPathname));
 const taxonomySource = fs.readFileSync(TAXONOMY_PATH, 'utf8');
 const routeSlugSource = fs.readFileSync(CALCULATOR_ROUTE_SLUGS_PATH, 'utf8');
 const redirectsSource = fs.readFileSync(REDIRECTS_PATH, 'utf8');
@@ -264,7 +266,9 @@ const legacyPathsInSitemap = [...sitemapPaths].filter(
     /^\/calculateurs(?:\/|$)/.test(pathName) ||
     /^\/en\/calculateurs(?:\/|$)/.test(pathName),
 );
-const redirectedPathsInSitemap = [...sitemapPaths].filter((pathName) => redirectSourcePaths.has(pathName));
+const redirectedPathsInSitemap = [...sitemapExactPaths]
+  .filter((pathName) => redirectSourcePaths.has(pathName))
+  .map((pathName) => normalizePathname(pathName));
 const has404Paths = [...sitemapPaths].filter((pathName) => pathName.includes('404'));
 const queryEntries = sitemapEntries.filter((entry) => entry.hasQuery);
 

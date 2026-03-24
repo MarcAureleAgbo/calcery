@@ -30,7 +30,7 @@ Faire un **budget mensuel** ne consiste pas à se priver, mais à décider clair
 
 Beaucoup de personnes démarrent avec motivation puis abandonnent parce que leur cadre est trop théorique. Une méthode efficace est au contraire un système simple, concret et révisable. L’objectif n’est pas d’obtenir un tableau parfait, mais un plan qui tient dans la vraie vie.
 
-Dans ce guide, vous allez voir comment bâtir ce cadre en quatre étapes, comment l’adapter à votre profil, et comment l’améliorer chaque mois sans complexité inutile. Vous pourrez ensuite passer à l’action avec des outils pratiques comme le <a href="/fr/finance/budget-mensuel" class="internal-link">calculateur de budget mensuel</a>, le <a href="/fr/finance/epargne-automatique" class="internal-link">simulateur d’épargne automatique</a> et l’<a href="/fr/finance/interets-composes" class="internal-link">outil d’intérêts composés</a>.
+Dans ce guide, vous allez voir comment bâtir ce cadre en quatre étapes, comment l’adapter à votre profil, et comment l’améliorer chaque mois sans complexité inutile. Vous pourrez ensuite passer à l’action avec des outils pratiques comme le <a href="/fr/finance/budget-mensuel/" class="internal-link">calculateur de budget mensuel</a>, le <a href="/fr/finance/epargne-automatique/" class="internal-link">simulateur d’épargne automatique</a> et l’<a href="/fr/finance/interets-composes/" class="internal-link">outil d’intérêts composés</a>.
 
 Si vous voulez une vision complète avant de décliner votre méthode par profil, appuyez-vous sur le [guide pilier du budget mensuel](/fr/blog/guide-budget-mensuel-complet/), puis comparez avec [comment faire un budget mensuel quand on gagne peu](/fr/blog/comment-faire-budget-mensuel-quand-on-gagne-peu/) et le repère [méthode 50/30/20](/fr/blog/methode-50-30-20/).
 
@@ -72,7 +72,7 @@ La capacité d’épargne est ce qui reste après charges fixes et variables ré
 
 Si ce montant est faible ou négatif, il faut ajuster le cadre global avant de viser des objectifs ambitieux. Si ce montant est positif, convertissez-le rapidement en action via un virement programmé.
 
-Pour passer de l’intention à l’exécution, utilisez le <a href="/fr/finance/epargne-automatique" class="internal-link">simulateur d’épargne automatique</a>.
+Pour passer de l’intention à l’exécution, utilisez le <a href="/fr/finance/epargne-automatique/" class="internal-link">simulateur d’épargne automatique</a>.
 
 ## La méthode 50/30/20 : utile ou trop simpliste ?
 
@@ -99,7 +99,7 @@ Prenons le cas d’un couple avec un enfant, locataire, revenus nets cumulés de
 
 Décision opérationnelle : le foyer choisit de sécuriser 400 € d’épargne automatique et de garder 190 € en marge d’ajustement. Pourquoi ne pas verser les 590 € entiers ? Parce qu’un plan robuste intègre l’imprévu.
 
-Ce mini scénario illustre une règle clé : mieux vaut un niveau d’épargne légèrement inférieur mais stable, qu’un objectif maximaliste interrompu au premier écart. Vous pouvez reproduire cette logique avec le <a href="/fr/finance/budget-mensuel" class="internal-link">calculateur de budget mensuel</a>, puis projeter l’impact à moyen terme avec l’<a href="/fr/finance/interets-composes" class="internal-link">outil d’intérêts composés</a>.
+Ce mini scénario illustre une règle clé : mieux vaut un niveau d’épargne légèrement inférieur mais stable, qu’un objectif maximaliste interrompu au premier écart. Vous pouvez reproduire cette logique avec le <a href="/fr/finance/budget-mensuel/" class="internal-link">calculateur de budget mensuel</a>, puis projeter l’impact à moyen terme avec l’<a href="/fr/finance/interets-composes/" class="internal-link">outil d’intérêts composés</a>.
 
 ## Les erreurs fréquentes quand on fait un budget
 
@@ -117,7 +117,7 @@ En fin de mois, comparez prévu et réel sur trois indicateurs : écart sur char
 
 Vous pouvez aussi définir des seuils simples : si les dépenses variables dépassent 95 % de l’enveloppe au 20 du mois, suspension des achats non essentiels ; si l’écart dépasse 10 % deux mois de suite, revue complète du plan.
 
-Enfin, automatisez ce qui peut l’être : virements d’épargne, rappels de revue hebdomadaire, alertes de seuil. Vous pouvez combiner budget et automatisation avec le <a href="/fr/finance/epargne-automatique" class="internal-link">simulateur d’épargne automatique</a>.
+Enfin, automatisez ce qui peut l’être : virements d’épargne, rappels de revue hebdomadaire, alertes de seuil. Vous pouvez combiner budget et automatisation avec le <a href="/fr/finance/epargne-automatique/" class="internal-link">simulateur d’épargne automatique</a>.
 
 ## Conclusion
 
@@ -125,4 +125,4 @@ Pour consolider votre cadre de pilotage sur la durée, revenez au [guide complet
 
 Un budget mensuel efficace n’est pas celui qui paraît parfait, c’est celui que vous maintenez dans la durée avec des ajustements réalistes.
 
-Pour démarrer immédiatement, utilisez le <a href="/fr/finance/budget-mensuel" class="internal-link">calculateur de budget mensuel</a> puis validez votre trajectoire long terme grâce à l’<a href="/fr/finance/interets-composes" class="internal-link">outil d’intérêts composés</a>.
+Pour démarrer immédiatement, utilisez le <a href="/fr/finance/budget-mensuel/" class="internal-link">calculateur de budget mensuel</a> puis validez votre trajectoire long terme grâce à l’<a href="/fr/finance/interets-composes/" class="internal-link">outil d’intérêts composés</a>.

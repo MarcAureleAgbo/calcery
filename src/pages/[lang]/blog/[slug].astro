@@ -205,7 +205,7 @@ const tools =
           { href: getCalculatorRoute('en', 'epargne-automatique'), title: 'Automatic savings', desc: 'Build a realistic savings plan.' },
         ];
 
-const listPath = `/${lang}/blog`;
+const listPath = `/${lang}/blog/`;
 const publishedLabel = lang === 'fr' ? 'Publié le' : 'Published on';
 const readingLabel = lang === 'fr' ? 'min de lecture' : 'min read';
 const authorLabel = lang === 'fr' ? 'Équipe Calcery' : 'Calcery Team';
@@ -216,7 +216,7 @@ const relatedFallbackTitle = lang === 'fr' ? "Découvrez d'autres articles" : 'E
 const relatedFallbackCta = lang === 'fr' ? 'Voir tous les articles' : 'View all articles';
 const backLabel = lang === 'fr' ? 'Retour au blog' : 'Back to blog';
 const homeLabel = lang === 'fr' ? 'Accueil' : 'Home';
-const homePath = lang === 'fr' ? '/fr' : '/en';
+const homePath = lang === 'fr' ? '/' : '/en/';
 const blogLabel = 'Blog';
 const articleDateLine = `${publishedLabel} ${new Date(publishedDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')}`;
 const titleMatch = post.data.title.match(/^(.*?)\s*\((.+)\)$/);
@@ -309,7 +309,7 @@ const metaDescription = buildBlogMetaDescription(post.data.description, lang);
             const relatedDate = related.data.pubDate ?? related.data.date;
             return (
               <Card class="p-6 transition-shadow hover:shadow-md">
-                <h3 class="mb-2 text-xl font-semibold"><a href={`/${lang}/blog/${related.slug}`} class="text-black hover:underline">{related.data.title}</a></h3>
+                <h3 class="mb-2 text-xl font-semibold"><a href={`/${lang}/blog/${related.slug}/`} class="text-black hover:underline">{related.data.title}</a></h3>
                 <p class="mb-4 text-gray-700">{related.data.description}</p>
                 <p class="text-sm text-gray-500">{publishedLabel} {relatedDate ? new Date(relatedDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US') : ''}</p>
               </Card>

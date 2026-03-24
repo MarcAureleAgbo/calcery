@@ -5,7 +5,7 @@ import Analytics from '../components/Analytics.astro';
 import Adsense from '../components/Adsense.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { getLocaleFromPath, localizePath, switchLocalePath, stripLocalePrefix, type Locale } from '../lib/i18n';
-import { SITE_URL } from '../lib/site';
+import { SITE_URL, ensureTrailingSlashPath, ensureTrailingSlashUrl } from '../lib/site';
 import { CATEGORIES, getCalculatorRoute, getCategoryRoute, getCalculatorsByCategory } from '../lib/calculator-taxonomy';
 
 export interface Props {
@@ -37,8 +37,8 @@ const normalizedPath = stripLocalePrefix(Astro.url.pathname).replace(/\/+$/, '')
 const frSwitchPath = switchLocalePath(Astro.url.pathname, 'fr');
 const enSwitchPath = switchLocalePath(Astro.url.pathname, 'en');
 const siteUrl = SITE_URL;
-const calculatorsLandingPath = currentLocale === 'en' ? '/en/calculators' : '/fr/calculateurs';
-const blogLandingPath = currentLocale === 'en' ? '/en/blog' : '/fr/blog';
+const calculatorsLandingPath = currentLocale === 'en' ? '/en/calculators/' : '/fr/calculateurs/';
+const blogLandingPath = currentLocale === 'en' ? '/en/blog/' : '/fr/blog/';
 
 const t = {
   fr: {
@@ -140,7 +140,7 @@ const categoryLinks = CATEGORIES.map((category) => ({
   })),
 }));
 
-const withLocale = (href: string) => localizePath(href, currentLocale);
+const withLocale = (href: string) => ensureTrailingSlashPath(localizePath(href, currentLocale));
 
 const categorySlugs = CATEGORIES.map((category) => category.slug[currentLocale]);
 const isCalculatorCategoryPath = categorySlugs.some((slug) => normalizedPath === `/${slug}` || normalizedPath.startsWith(`/${slug}/`));
@@ -163,8 +163,8 @@ const applyAboutHeroFix = normalizedPath === '/a-propos';
 
 const toAbsoluteAlternateUrl = (path: string) =>
   path.startsWith('http://') || path.startsWith('https://')
-    ? path
-    : `${siteUrl}${path.startsWith('/') ? path : `/${path}`}`;
+    ? ensureTrailingSlashUrl(path)
+    : `${siteUrl}${ensureTrailingSlashPath(path.startsWith('/') ? path : `/${path}`)}`;
 
 const frAlternateUrl =
   alternatePaths?.fr === null ? null : toAbsoluteAlternateUrl(alternatePaths?.fr ?? frSwitchPath);
@@ -565,7 +565,7 @@ const xDefaultAlternateUrl =
           sel.addEventListener('change', (e) => {
             const target = e.target.value;
             const frPath = sel.dataset.frPath || '/';
-            const enPath = sel.dataset.enPath || '/en';
+            const enPath = sel.dataset.enPath || '/en/';
             const nextPath = target === 'en' ? enPath : frPath;
             localStorage.setItem('site_lang', target);
             window.location.href = `${nextPath}${window.location.search}`;

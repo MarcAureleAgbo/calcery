@@ -1,4 +1,6 @@
 ---
+import { ensureTrailingSlashPath } from '../lib/site';
+
 export interface Props {
   icon: string;
   title: string;
@@ -8,9 +10,10 @@ export interface Props {
 }
 
 const { icon, title, description, href, ctaLabel = 'Essayer' } = Astro.props;
+const normalizedHref = ensureTrailingSlashPath(href);
 ---
 
-<a href={href} class="tool-card">
+<a href={normalizedHref} class="tool-card">
   <div class="tool-icon" aria-hidden="true">{icon}</div>
   <h3 class="tool-title">{title}</h3>
   <p class="tool-description">{description}</p>
