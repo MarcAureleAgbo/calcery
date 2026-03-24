@@ -5,6 +5,7 @@ const ROOT_DIR = process.cwd();
 const DIST_SITEMAP_PATH = path.join(ROOT_DIR, 'dist', 'sitemap-0.xml');
 const DIST_FR_INDEX_PATH = path.join(ROOT_DIR, 'dist', 'fr', 'index.html');
 const TAXONOMY_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-taxonomy.ts');
+const CALCULATOR_ROUTE_SLUGS_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-route-slugs.ts');
 const REDIRECTS_PATH = path.join(ROOT_DIR, 'public', '_redirects');
 const BLOG_FR_DIR = path.join(ROOT_DIR, 'src', 'content', 'blog');
 const BLOG_EN_DIR = path.join(ROOT_DIR, 'src', 'content', 'blogEn');
@@ -97,6 +98,24 @@ function parseCalculators(taxonomySource) {
   return calculators;
 }
 
+function parseEnCalculatorRouteSlugs(routeSlugSource) {
+  const routeSlugBlock = getBlock(
+    routeSlugSource,
+    'export const FR_TO_EN_CALCULATOR_SLUG: Record<string, string> = {',
+    '};',
+  );
+
+  const mapping = new Map();
+  const routeSlugPattern = /'([^']+)':\s*'([^']+)'/g;
+
+  for (const match of routeSlugBlock.matchAll(routeSlugPattern)) {
+    const [, canonicalSlug, enSlug] = match;
+    mapping.set(canonicalSlug, enSlug);
+  }
+
+  return mapping;
+}
+
 function parseLegacyRedirectPaths(taxonomySource) {
   const legacyBlock = getBlock(
     taxonomySource,
@@ -177,6 +196,11 @@ if (!fs.existsSync(TAXONOMY_PATH)) {
   process.exit(1);
 }
 
+if (!fs.existsSync(CALCULATOR_ROUTE_SLUGS_PATH)) {
+  console.error(`FAILED: Missing calculator route slug file at ${CALCULATOR_ROUTE_SLUGS_PATH}`);
+  process.exit(1);
+}
+
 if (!fs.existsSync(REDIRECTS_PATH)) {
   console.error(`FAILED: Missing redirects file at ${REDIRECTS_PATH}`);
   process.exit(1);
@@ -186,10 +210,12 @@ const sitemapXml = fs.readFileSync(DIST_SITEMAP_PATH, 'utf8');
 const sitemapEntries = parseSitemapEntries(sitemapXml);
 const sitemapPaths = new Set(sitemapEntries.map((entry) => entry.pathname));
 const taxonomySource = fs.readFileSync(TAXONOMY_PATH, 'utf8');
+const routeSlugSource = fs.readFileSync(CALCULATOR_ROUTE_SLUGS_PATH, 'utf8');
 const redirectsSource = fs.readFileSync(REDIRECTS_PATH, 'utf8');
 
 const categories = parseCategorySlugs(taxonomySource);
 const calculators = parseCalculators(taxonomySource);
+const enCalculatorRouteSlugs = parseEnCalculatorRouteSlugs(routeSlugSource);
 const legacyPaths = parseLegacyRedirectPaths(taxonomySource);
 const redirectSourcePaths = parseRedirectSourcePaths(redirectsSource);
 
@@ -206,8 +232,9 @@ for (const calculator of calculators) {
     console.error(`FAILED: Calculator "${calculator.slug}" references unknown category "${calculator.categoryKey}".`);
     process.exit(1);
   }
+  const enRouteSlug = enCalculatorRouteSlugs.get(calculator.slug) ?? calculator.slug;
   requiredCalculatorPaths.add(`/fr/${category.frSlug}/${calculator.slug}`);
-  requiredCalculatorPaths.add(`/en/${category.enSlug}/${calculator.slug}`);
+  requiredCalculatorPaths.add(`/en/${category.enSlug}/${enRouteSlug}`);
 }
 
 const requiredBlogPaths = new Set([

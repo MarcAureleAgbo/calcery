@@ -9,6 +9,7 @@ tags:
   - financial habits
 coverImage: /images/blog/savings-cover.svg
 coverAlt: Automatic savings strategy illustration
+slug: "automatic-savings-strategy"
 ---
 
 **Automatic savings** is one of the most reliable levers for financial progress. It lowers mental friction and removes repeated decisions.
@@ -26,7 +27,7 @@ Example:
 - months 4 to 6: 110 EUR
 - months 7 to 12: 140 EUR
 
-Use the [automatic savings calculator](/en/finance/epargne-automatique) to test scenarios.
+Use the [automatic savings calculator](/en/finance/automatic-savings) to test scenarios.
 
 ## Tie savings to a concrete goal
 

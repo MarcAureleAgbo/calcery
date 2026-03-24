@@ -12,6 +12,9 @@ import {
   getCalculatorStaticPaths,
   getCategoryRoute,
   getCalculatorRoute,
+  getCalculatorPageHeading,
+  getCalculatorMetaDescription,
+  getCalculatorMetaTitle,
   type CategoryDefinition,
   type CalculatorDefinition,
 } from '../../../lib/calculator-taxonomy';
@@ -30,25 +33,37 @@ interface Props {
 
 const { category, calculator } = Astro.props as Props;
 const seoContent = getCalculatorSeoContent(calculator, 'fr');
+const pageTitle = getCalculatorPageHeading(calculator, 'fr');
+const metaTitle = getCalculatorMetaTitle(calculator, 'fr');
+const metaDescription = getCalculatorMetaDescription(calculator, 'fr');
 
 const breadcrumbs: BreadcrumbItem[] = [
   { name: 'Accueil', item: '/' },
   { name: category.name.fr, item: getCategoryRoute('fr', category.key) },
   { name: calculator.name.fr, item: getCalculatorRoute('fr', calculator.slug) },
 ];
+
+const canonicalPath = getCalculatorRoute('fr', calculator.slug);
+const alternatePaths = {
+  fr: canonicalPath,
+  en: getCalculatorRoute('en', calculator.slug),
+  xDefault: canonicalPath,
+};
 ---
 
 <CalculatorLayout
-  title={calculator.title.fr}
+  title={pageTitle}
   description={calculator.description.fr}
-  metaTitle={calculator.metaTitle.fr}
-  metaDescription={calculator.metaDescription.fr}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
   breadcrumbs={breadcrumbs}
   faqs={seoContent.faqs}
   updatedAt={calculator.updatedAt}
   tips={calculator.tips.fr}
   seoContent={seoContent}
   lang="fr"
+  canonical={canonicalPath}
+  alternatePaths={alternatePaths}
 >
   {calculator.slug === 'budget-mensuel' && <BudgetCalculator client:load lang="fr" />}
   {calculator.slug === 'epargne-automatique' && <SavingsGoalCalculator client:load lang="fr" />}

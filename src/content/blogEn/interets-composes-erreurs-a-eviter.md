@@ -9,6 +9,7 @@ tags:
   - wealth building
 coverImage: /images/blog/investing-cover.svg
 coverAlt: Compound interest growth illustration
+slug: "compound-interest-mistakes"
 ---
 
 **Compound interest** is powerful, but outcomes depend heavily on behavior. A few common mistakes can significantly reduce long-term results.
@@ -23,7 +24,7 @@ Consistency matters as much as return. Small recurring amounts can produce stron
 
 ## Mistake 3: unrealistic assumptions
 
-Overly optimistic return assumptions can lead to poor planning. Test conservative, base, and optimistic cases with the [compound interest calculator](/en/finance/interets-composes).
+Overly optimistic return assumptions can lead to poor planning. Test conservative, base, and optimistic cases with the [compound interest calculator](/en/finance/compound-interest).
 
 ## Mistake 4: ignoring inflation
 

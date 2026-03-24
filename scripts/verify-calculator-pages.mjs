@@ -4,6 +4,7 @@ import path from 'node:path';
 const ROOT_DIR = process.cwd();
 const DIST_DIR = path.join(ROOT_DIR, 'dist');
 const TAXONOMY_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-taxonomy.ts');
+const CALCULATOR_ROUTE_SLUGS_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-route-slugs.ts');
 const SITE_ORIGIN = 'https://calcery.com';
 
 function normalizePathname(pathname) {
@@ -63,6 +64,24 @@ function parseCalculators(taxonomySource) {
   }
 
   return calculators;
+}
+
+function parseEnCalculatorRouteSlugs(routeSlugSource) {
+  const routeSlugBlock = getBlock(
+    routeSlugSource,
+    'export const FR_TO_EN_CALCULATOR_SLUG: Record<string, string> = {',
+    '};',
+  );
+
+  const mapping = new Map();
+  const routeSlugPattern = /'([^']+)':\s*'([^']+)'/g;
+
+  for (const match of routeSlugBlock.matchAll(routeSlugPattern)) {
+    const [, canonicalSlug, enSlug] = match;
+    mapping.set(canonicalSlug, enSlug);
+  }
+
+  return mapping;
 }
 
 function listDistHtmlPages(dirPath, relativeDir = '') {
@@ -245,6 +264,20 @@ function assertStringField(value, route, context, failures) {
   }
 }
 
+function htmlToText(html) {
+  return html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 if (!fs.existsSync(DIST_DIR)) {
   console.error(`FAILED: Missing dist directory at ${DIST_DIR}`);
   process.exit(1);
@@ -255,9 +288,16 @@ if (!fs.existsSync(TAXONOMY_PATH)) {
   process.exit(1);
 }
 
+if (!fs.existsSync(CALCULATOR_ROUTE_SLUGS_PATH)) {
+  console.error(`FAILED: Missing calculator route slug file at ${CALCULATOR_ROUTE_SLUGS_PATH}`);
+  process.exit(1);
+}
+
 const taxonomySource = fs.readFileSync(TAXONOMY_PATH, 'utf8');
+const routeSlugSource = fs.readFileSync(CALCULATOR_ROUTE_SLUGS_PATH, 'utf8');
 const categories = parseCategorySlugs(taxonomySource);
 const calculators = parseCalculators(taxonomySource);
+const enCalculatorRouteSlugs = parseEnCalculatorRouteSlugs(routeSlugSource);
 const distPages = listDistHtmlPages(DIST_DIR);
 const distRoutes = new Set(distPages.map((page) => page.route));
 const distPageByRoute = new Map(distPages.map((page) => [page.route, page]));
@@ -271,7 +311,8 @@ for (const calculator of calculators) {
   }
 
   const frPath = normalizePathname(`/fr/${category.frSlug}/${calculator.slug}`);
-  const enPath = normalizePathname(`/en/${category.enSlug}/${calculator.slug}`);
+  const enRouteSlug = enCalculatorRouteSlugs.get(calculator.slug) ?? calculator.slug;
+  const enPath = normalizePathname(`/en/${category.enSlug}/${enRouteSlug}`);
 
   calculatorPages.push({
     route: frPath,
@@ -295,6 +336,8 @@ const failures = [];
 const warnings = [];
 let objectObjectOccurrences = 0;
 let faqJsonLdObjectOccurrences = 0;
+const titleUsage = new Map();
+const metaDescriptionUsage = new Map();
 
 for (const page of distPages) {
   const html = fs.readFileSync(page.filePath, 'utf8');
@@ -342,13 +385,27 @@ for (const page of calculatorPages) {
   }
 
   const metaTags = [...html.matchAll(/<meta\b[^>]*>/gi)].map((match) => match[0]);
+  const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+  if (!titleMatch) {
+    failures.push(`[${page.route}] Missing <title>.`);
+  } else {
+    const titleValue = titleMatch[1].trim();
+    titleUsage.set(titleValue, [...(titleUsage.get(titleValue) ?? []), page.route]);
+    if (titleValue.length < 50 || titleValue.length > 60) {
+      failures.push(`[${page.route}] Title length must be 50-60 characters, found ${titleValue.length}.`);
+    }
+  }
+
   const descriptionMeta = metaTags.find((tag) => (parseTagAttributes(tag).name || '').toLowerCase() === 'description');
   if (!descriptionMeta) {
     failures.push(`[${page.route}] Missing meta description.`);
   } else {
     const content = parseTagAttributes(descriptionMeta).content ?? '';
+    metaDescriptionUsage.set(content, [...(metaDescriptionUsage.get(content) ?? []), page.route]);
     if (!content.trim()) {
       failures.push(`[${page.route}] Meta description is empty.`);
+    } else if (content.length < 140 || content.length > 160) {
+      failures.push(`[${page.route}] Meta description length must be 140-160 characters, found ${content.length}.`);
     }
   }
 
@@ -401,9 +458,11 @@ for (const page of calculatorPages) {
 
   const faqNodes = [];
   const breadcrumbNodes = [];
+  const webApplicationNodes = [];
   for (const jsonLd of jsonLdNodes) {
     collectTypedNodes(jsonLd, 'FAQPage', faqNodes);
     collectTypedNodes(jsonLd, 'BreadcrumbList', breadcrumbNodes);
+    collectTypedNodes(jsonLd, 'WebApplication', webApplicationNodes);
   }
 
   if (faqNodes.length !== 1) {
@@ -439,6 +498,15 @@ for (const page of calculatorPages) {
         failures.push(`[${page.route}] Breadcrumb current item mismatch: expected ${page.route}, found ${currentPath}.`);
       }
     }
+  }
+
+  if (webApplicationNodes.length !== 1) {
+    failures.push(`[${page.route}] Expected exactly 1 WebApplication JSON-LD, found ${webApplicationNodes.length}.`);
+  } else {
+    const webApplicationNode = webApplicationNodes[0];
+    assertStringField(webApplicationNode?.name, page.route, 'WebApplication.name', failures);
+    assertStringField(webApplicationNode?.description, page.route, 'WebApplication.description', failures);
+    assertStringField(webApplicationNode?.url, page.route, 'WebApplication.url', failures);
   }
 
   const breadcrumbNavMatch = html.match(/<nav\b[^>]*aria-label=["']Breadcrumb["'][\s\S]*?<\/nav>/i);
@@ -479,12 +547,23 @@ for (const page of calculatorPages) {
   if (brokenRoutes.size > 0) {
     failures.push(`[${page.route}] Broken internal links: ${[...brokenRoutes].join(', ')}`);
   }
+
+  const textWordCount = htmlToText(html).split(/\s+/).filter(Boolean).length;
+  if (textWordCount < 450) {
+    failures.push(`[${page.route}] Expected at least 450 words of textual content, found ${textWordCount}.`);
+  }
 }
 
-if (calculatorPages.some((page) => page.locale === 'en' && page.slug === 'budget-mensuel')) {
-  warnings.push(
-    'EN route uses shared slug "/en/finance/budget-mensuel". Route kept as-is because slugs are shared in current taxonomy.',
-  );
+for (const [titleValue, routes] of titleUsage.entries()) {
+  if (routes.length > 1) {
+    failures.push(`Duplicate calculator title "${titleValue}" used by: ${routes.join(', ')}`);
+  }
+}
+
+for (const [descriptionValue, routes] of metaDescriptionUsage.entries()) {
+  if (routes.length > 1) {
+    failures.push(`Duplicate calculator meta description used by: ${routes.join(', ')}`);
+  }
 }
 
 if (failures.length > 0) {

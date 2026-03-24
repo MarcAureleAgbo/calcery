@@ -9,6 +9,7 @@ tags:
   - money habits
 coverImage: /images/blog/lifestyle-cover.svg
 coverAlt: Small expenses and daily habits illustration
+slug: "small-expenses-that-add-up"
 ---
 
 Large expenses attract attention, but recurring small purchases often have the biggest long-term impact on budgets. A daily coffee, convenience snacks, or forgotten subscriptions can quietly consume a large annual amount.
@@ -20,7 +21,7 @@ If you spend 5€ per day on impulse purchases:
 - Per month: ~150€
 - Per year: ~1,825€
 
-Use our [small expense savings calculator](/en/daily-life/economies-petites-depenses) to estimate your own patterns.
+Use our [small expense savings calculator](/en/daily-life/small-expense-savings) to estimate your own patterns.
 
 ## Common categories
 
@@ -51,7 +52,7 @@ Scan the last 2–3 months and identify recurring patterns.
 
 ### 3. Categorize and prioritize
 
-Use our [monthly budget calculator](/en/finance/budget-mensuel) to structure categories.
+Use our [monthly budget calculator](/en/finance/monthly-budget) to structure categories.
 
 ## Practical reduction strategies
 

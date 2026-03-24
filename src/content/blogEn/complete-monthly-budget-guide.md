@@ -4,7 +4,6 @@ description: "A complete monthly budget guide with clear steps, realistic exampl
 pubDate: "2026-02-13"
 updatedDate: "2026-02-13"
 lang: "en"
-slug: "complete-monthly-budget-guide"
 draft: false
 tags: ["monthly budget","budget strategy","personal finance"]
 faq:
@@ -24,7 +23,7 @@ faq:
 
 This guide gives you a complete framework to build, run, and improve a **monthly budget** in real life. The objective is not to produce a perfect spreadsheet. The objective is to create a reliable decision system you can use every month under real constraints.
 
-If you want immediate implementation, start with the [monthly budget calculator](/en/finance/budget-mensuel). For practical sub-topics, you can also use the [automatic savings tool](/en/finance/epargne-automatique) and the [compound interest calculator](/en/finance/interets-composes).
+If you want immediate implementation, start with the [monthly budget calculator](/en/finance/monthly-budget). For practical sub-topics, you can also use the [automatic savings tool](/en/finance/automatic-savings) and the [compound interest calculator](/en/finance/compound-interest).
 
 <nav class="article-toc rounded-xl border border-gray-200 bg-gray-50 p-5 md:p-6" aria-label="Table of contents">
   <h2 class="m-0 text-xl font-semibold text-gray-900">Table of contents</h2>
@@ -147,7 +146,7 @@ A budget without goals loses momentum. Convert your monthly surplus into concret
 - down payment or project fund
 - long-term capital growth
 
-Then test projection scenarios with the [compound interest calculator](/en/finance/interets-composes). This strengthens motivation and improves allocation discipline.
+Then test projection scenarios with the [compound interest calculator](/en/finance/compound-interest). This strengthens motivation and improves allocation discipline.
 
 <h2 id="practical-action-plan-for-the-next-30-days">9) Practical action plan for the next 30 days</h2>
 
@@ -160,4 +159,4 @@ This 30-day plan is enough to install a functional **monthly budget** process wi
 
 <h2 id="final-conclusion">Final conclusion</h2>
 
-A complete **monthly budget** system is simple, measurable, and adaptive. It does not require perfect forecasting, only consistent execution and clear decisions. Use this guide as your framework, then apply it with the [monthly budget calculator](/en/finance/budget-mensuel). Over repeated cycles, clarity and consistency become your strongest financial advantage.
+A complete **monthly budget** system is simple, measurable, and adaptive. It does not require perfect forecasting, only consistent execution and clear decisions. Use this guide as your framework, then apply it with the [monthly budget calculator](/en/finance/monthly-budget). Over repeated cycles, clarity and consistency become your strongest financial advantage.

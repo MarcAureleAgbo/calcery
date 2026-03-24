@@ -9,6 +9,7 @@ tags:
   - risk management
 coverImage: /images/blog/investing-cover.svg
 coverAlt: DCA investing illustration
+slug: "dca-investing-guide"
 ---
 
 **DCA (Dollar-Cost Averaging)** means investing a fixed amount on a fixed schedule. It reduces emotional timing decisions.
@@ -24,7 +25,7 @@ You stop trying to predict the perfect entry point. Regular investing smooths en
 3. automate execution
 4. review quarterly, not daily
 
-Use the [compound interest calculator](/en/finance/interets-composes) to project long-term effects.
+Use the [compound interest calculator](/en/finance/compound-interest) to project long-term effects.
 
 ## Strengths
 

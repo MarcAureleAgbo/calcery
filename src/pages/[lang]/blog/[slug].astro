@@ -10,6 +10,44 @@ import { FR_TO_EN_BLOG_SLUG, EN_TO_FR_BLOG_SLUG } from '../../../lib/blog-slug-m
 type Locale = 'fr' | 'en';
 type CollectionName = 'blog' | 'blogEn';
 
+const getRenderedHtmlLength = (value: string) =>
+  value.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').length;
+
+const trimSeoText = (value: string, maxLength: number) => {
+  if (getRenderedHtmlLength(value) <= maxLength) return value;
+
+  let current = value.trim();
+  while (getRenderedHtmlLength(current) > maxLength && current.includes(' ')) {
+    current = current.replace(/\s+[^\s]+$/, '').trim().replace(/[|,:;\\-]+$/, '');
+  }
+
+  return current;
+};
+
+const buildBlogMetaTitle = (title: string, locale: Locale) => {
+  const suffix = ' | Calcery';
+  const core = trimSeoText(title.replace(/\s+/g, ' ').trim(), 60 - suffix.length);
+  const baseTitle = `${core}${suffix}`;
+  if (getRenderedHtmlLength(baseTitle) >= 50) return baseTitle;
+
+  const paddedCore = trimSeoText(
+    locale === 'fr' ? `${core} : guide` : `${core} guide`,
+    60 - suffix.length,
+  );
+  return `${paddedCore}${suffix}`;
+};
+
+const buildBlogMetaDescription = (description: string, locale: Locale) => {
+  const extension =
+    locale === 'fr'
+      ? ' Conseils pratiques a appliquer rapidement avec Calcery.'
+      : ' Practical guidance you can apply quickly with Calcery.';
+
+  const base = description.trim();
+  const extended = base.length < 140 ? `${base}${extension}` : base;
+  return trimSeoText(extended, 160);
+};
+
 export async function getStaticPaths() {
   const [frPosts, enPosts] = await Promise.all([getCollection('blog'), getCollection('blogEn')]);
   const frPublished = frPosts.filter((post) => !post.data.draft);
@@ -184,11 +222,13 @@ const articleDateLine = `${publishedLabel} ${new Date(publishedDate).toLocaleDat
 const titleMatch = post.data.title.match(/^(.*?)\s*\((.+)\)$/);
 const titlePrimary = titleMatch ? titleMatch[1] : post.data.title;
 const titleSecondary = titleMatch ? titleMatch[2] : null;
+const metaTitle = buildBlogMetaTitle(post.data.title, lang);
+const metaDescription = buildBlogMetaDescription(post.data.description, lang);
 ---
 
 <BaseLayout
-  title={`${post.data.title} - Calcery`}
-  description={post.data.description}
+  title={metaTitle}
+  description={metaDescription}
   canonical={canonicalPath}
   image={coverImage}
   seoType="article"

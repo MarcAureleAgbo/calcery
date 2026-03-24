@@ -4,7 +4,6 @@ description: "Compare a custom monthly budget with the 50/30/20 rule to choose a
 pubDate: "2026-03-06"
 updatedDate: "2026-03-06"
 lang: "en"
-slug: "monthly-budget-vs-50-30-20-method"
 draft: false
 tags: ["monthly budget","budget planning","financial optimization"]
 faq:
@@ -26,7 +25,7 @@ faq:
 
 A reliable **monthly budget** is not a spreadsheet exercise. It is a decision system that helps you allocate money before pressure builds at month-end. In a context like method comparison, this matters even more because a fixed rule may conflict with real local costs. If you are looking for an actionable approach, this guide translates strategy into practical steps you can use immediately.
 
-Use this article as a satellite to the main pillar guide: [complete monthly budget guide](/en/blog/budget-mensuel-mode-emploi/). For execution, start with the [monthly budget calculator](/en/finance/budget-mensuel). Together, they let you move from theory to action quickly.
+Use this article as a satellite to the main pillar guide: [complete monthly budget guide](/en/blog/complete-monthly-budget-guide/). For execution, start with the [monthly budget calculator](/en/finance/monthly-budget). Together, they let you move from theory to action quickly.
 
 ## Why this topic matters for a monthly budget
 
@@ -75,7 +74,7 @@ Use this sample **monthly budget** as a template:
 | Adjusted split | 58/27/15 |
 | 6-month goal | 55/27/18 |
 
-This example works because it combines hard constraints with flexible controls. The structure protects essentials, caps leakage, and preserves a visible surplus. You can also test longer-term outcomes using the [compound interest tool](/en/finance/interets-composes) after your baseline stabilizes.
+This example works because it combines hard constraints with flexible controls. The structure protects essentials, caps leakage, and preserves a visible surplus. You can also test longer-term outcomes using the [compound interest tool](/en/finance/compound-interest) after your baseline stabilizes.
 
 Decision scenario: if variable spending exceeds plan in two consecutive months, do not apply random cuts. Instead, reallocate one category cap, keep the rest unchanged, and test for 30 days. This keeps your **budget framework** measurable and avoids chaotic overcorrection.
 
@@ -146,7 +145,7 @@ This checklist prevents drift, keeps decisions practical, and supports durable p
 
 ## Final takeaway
 
-A high-performing **monthly financial plan** is a practical decision framework. In a context like method comparison, the winning approach is clear priorities, realistic targets, and short review loops. Use the [complete cash-flow plan guide](/en/blog/budget-mensuel-mode-emploi/) for strategy and the [spending structure calculator](/en/finance/budget-mensuel) for execution. That combination gives you control, consistency, and better decisions over time.
+A high-performing **monthly financial plan** is a practical decision framework. In a context like method comparison, the winning approach is clear priorities, realistic targets, and short review loops. Use the [complete cash-flow plan guide](/en/blog/complete-monthly-budget-guide/) for strategy and the [spending structure calculator](/en/finance/monthly-budget) for execution. That combination gives you control, consistency, and better decisions over time.
 
 
 A stable planning cadence matters more than perfect forecasting. Keep your monthly review short, measurable, and decision-oriented so the system remains durable over time.

@@ -9,6 +9,7 @@ tags:
   - household finance
 coverImage: /images/blog/group-cover.svg
 coverAlt: Couple budget illustration
+slug: "couple-budget-simple-method"
 ---
 
 A good **couple budget** is not about controlling each other. It is about clear rules, shared priorities, and fair effort.
@@ -26,11 +27,11 @@ Pick the model you can maintain long term.
 
 List all shared costs in one place: housing, utilities, groceries, mobility, insurance, subscriptions. Then define who pays what and when.
 
-The [monthly budget calculator](/en/finance/budget-mensuel) helps build a shared financial snapshot.
+The [monthly budget calculator](/en/finance/monthly-budget) helps build a shared financial snapshot.
 
 ## 3) set one shared savings goal
 
-A shared project improves consistency: emergency buffer, travel, down payment. Use the [automatic savings calculator](/en/finance/epargne-automatique) to define a realistic monthly contribution.
+A shared project improves consistency: emergency buffer, travel, down payment. Use the [automatic savings calculator](/en/finance/automatic-savings) to define a realistic monthly contribution.
 
 ## 4) protect personal freedom
 

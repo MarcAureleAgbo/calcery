@@ -9,6 +9,7 @@ tags:
   - personal finance
 coverImage: /images/blog/budget-cover.svg
 coverAlt: Budget planning illustration
+slug: "50-30-20-budget-rule"
 ---
 
 Budgeting can feel overwhelming, but proven frameworks can make it easier. The 50/30/20 rule offers a practical way to split your net income into three categories: needs, wants, and savings.
@@ -26,7 +27,7 @@ This structure helps you cover essentials while still building financial resilie
 
 ### 1. Calculate your monthly net income
 
-Start from your take-home income (after taxes and mandatory deductions). Use our [monthly budget calculator](/en/finance/budget-mensuel) to estimate your baseline.
+Start from your take-home income (after taxes and mandatory deductions). Use our [monthly budget calculator](/en/finance/monthly-budget) to estimate your baseline.
 
 ### 2. Define your needs (50%)
 
@@ -57,7 +58,7 @@ Savings can include:
 - Short-term projects
 - Debt repayment
 
-Use our [automatic savings calculator](/en/finance/epargne-automatique) to design a realistic contribution plan.
+Use our [automatic savings calculator](/en/finance/automatic-savings) to design a realistic contribution plan.
 
 ## Example
 

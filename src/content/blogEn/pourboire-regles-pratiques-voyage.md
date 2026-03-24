@@ -9,6 +9,7 @@ tags:
   - travel budget
 coverImage: /images/blog/lifestyle-cover.svg
 coverAlt: Tipping and travel illustration
+slug: "tipping-guide-home-and-travel"
 ---
 
 **Tipping** is both cultural and financial. Expectations vary by country and context, so a simple framework is useful.
@@ -27,11 +28,11 @@ In some countries tipping is expected; in others, less common. Adapting to local
 - good service: 8% to 12%
 - exceptional service: 15%+
 
-Use the [tip calculator](/en/daily-life/pourboire) for instant totals and per-person amounts.
+Use the [tip calculator](/en/daily-life/tip-calculator) for instant totals and per-person amounts.
 
 ## For groups
 
-Agree on tip percentage first, then split the final amount with the [split bill calculator](/en/daily-life/partage-addition).
+Agree on tip percentage first, then split the final amount with the [split bill calculator](/en/daily-life/split-bill).
 
 ## Conclusion
 

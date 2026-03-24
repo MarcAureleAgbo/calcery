@@ -9,6 +9,7 @@ tags:
   - financial forecasting
 coverImage: /images/blog/tax-cover.svg
 coverAlt: Income tax estimation illustration
+slug: "income-tax-estimate-guide"
 ---
 
 A practical **income tax estimate** helps you anticipate cash flow and avoid year-end surprises.
@@ -23,7 +24,7 @@ Tax household shares can materially impact outcomes. Validate your current famil
 
 ## Step 3: run scenario ranges
 
-Use the [income tax calculator](/en/finance/impot-revenu) with three versions:
+Use the [income tax calculator](/en/finance/income-tax) with three versions:
 - conservative
 - base
 - high

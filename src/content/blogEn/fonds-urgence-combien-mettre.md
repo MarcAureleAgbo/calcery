@@ -9,6 +9,7 @@ tags:
   - financial safety
 coverImage: /images/blog/savings-cover.svg
 coverAlt: Emergency fund illustration
+slug: "emergency-fund-guide"
 ---
 
 An **emergency fund** protects your budget against shocks: repairs, health costs, or temporary income loss.
@@ -30,7 +31,7 @@ Count only essential costs:
 - healthcare
 - non-negotiable family expenses
 
-Use the [monthly budget calculator](/en/finance/budget-mensuel) to isolate that core amount.
+Use the [monthly budget calculator](/en/finance/monthly-budget) to isolate that core amount.
 
 ## Build steadily
 

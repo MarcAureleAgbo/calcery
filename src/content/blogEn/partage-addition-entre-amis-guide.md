@@ -9,6 +9,7 @@ tags:
   - tip split
 coverImage: /images/blog/group-cover.svg
 coverAlt: Split bill with friends illustration
+slug: "split-bill-with-friends"
 ---
 
 A clear **bill split** process saves time and avoids awkward conversations.
@@ -23,11 +24,11 @@ Two common options:
 - equal split
 - weighted split based on consumption
 
-Use the [split bill calculator](/en/daily-life/partage-addition) for a fast and transparent result.
+Use the [split bill calculator](/en/daily-life/split-bill) for a fast and transparent result.
 
 ## Rule 3: handle tip explicitly
 
-Decide tip policy first, then apply the same split rule. For quick checks, use the [tip calculator](/en/daily-life/pourboire).
+Decide tip policy first, then apply the same split rule. For quick checks, use the [tip calculator](/en/daily-life/tip-calculator).
 
 ## Rule 4: define rounding
 

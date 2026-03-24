@@ -33,6 +33,7 @@ const CATEGORY_PATHS = new Set([
 ]);
 
 const BLOG_INDEX_PATHS = new Set(['/fr/blog', '/en/blog']);
+const SITEMAP_LASTMOD = '2026-03-24';
 
 const BLOG_POST_PATH_RE = /^\/(?:fr|en)\/blog\/[^/]+$/;
 
@@ -87,7 +88,12 @@ export default defineConfig({
         if (priority === undefined) {
           return undefined;
         }
-        return { ...item, priority };
+        return {
+          ...item,
+          changefreq: 'monthly',
+          lastmod: SITEMAP_LASTMOD,
+          priority,
+        };
       },
     }),
   ],

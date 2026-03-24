@@ -7,6 +7,7 @@ import SeoContentBlock from '../components/calculators/SeoContentBlock.astro';
 import type { CalculatorSeoContent } from '../lib/calculator-seo-content';
 import type { BreadcrumbItem, FAQItem } from '../lib/types.ts';
 import type { Locale } from '../lib/i18n';
+import { toAbsoluteUrl } from '../lib/site';
 
 export interface Props {
   title: string;
@@ -20,6 +21,12 @@ export interface Props {
   seoContent?: CalculatorSeoContent;
   disableDisclaimer?: boolean;
   lang?: Locale;
+  canonical?: string;
+  alternatePaths?: {
+    fr?: string | null;
+    en?: string | null;
+    xDefault?: string | null;
+  };
 }
 
 const {
@@ -34,6 +41,8 @@ const {
   seoContent,
   disableDisclaimer = false,
   lang = 'fr',
+  canonical,
+  alternatePaths,
 } = Astro.props;
 
 const hasHowItWorks = Astro.slots.has('how-it-works');
@@ -71,9 +80,27 @@ const t = {
     updatedAt: 'Last updated:',
   },
 }[lang];
+
+const canonicalPath = canonical ?? Astro.url.pathname;
+const webApplicationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: title,
+  description: metaDescription,
+  url: toAbsoluteUrl(canonicalPath),
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+  },
+  inLanguage: lang,
+};
 ---
 
-<BaseLayout title={metaTitle} description={metaDescription} lang={lang}>
+<BaseLayout title={metaTitle} description={metaDescription} lang={lang} canonical={canonicalPath} alternatePaths={alternatePaths}>
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
   <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white pb-10 pt-8">
     <Container>
       <div class="mx-auto max-w-5xl">

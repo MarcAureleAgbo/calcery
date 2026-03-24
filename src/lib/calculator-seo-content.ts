@@ -7,6 +7,7 @@ import {
   type CategoryKey,
   type Locale,
 } from './calculator-taxonomy';
+import { FR_TO_EN_BLOG_SLUG } from './blog-slug-map';
 import type { FAQItem, RelatedLink } from './types';
 
 type Localized<T> = { fr: T; en: T };
@@ -65,6 +66,8 @@ export interface CalculatorSeoContent {
   faqs: FAQItem[];
 }
 
+const getEnBlogPath = (frSlug: BlogSlug) => `/en/blog/${FR_TO_EN_BLOG_SLUG[frSlug] ?? frSlug}`;
+
 const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>> = {
   'budget-couple-methode-simple': {
     fr: {
@@ -73,7 +76,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Couple Budget Guide: Simple Method to Manage Money Together Without Conflict',
-      path: '/en/blog/budget-couple-methode-simple',
+      path: getEnBlogPath('budget-couple-methode-simple'),
     },
   },
   'budget-mensuel-mode-emploi': {
@@ -83,7 +86,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Monthly Budget Guide: Step-by-Step Method to Manage Money and Save More',
-      path: '/en/blog/budget-mensuel-mode-emploi',
+      path: getEnBlogPath('budget-mensuel-mode-emploi'),
     },
   },
   'calcul-impot-revenu-sans-stress': {
@@ -93,7 +96,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Income Tax Estimate Guide: Plan Cash Flow and Reduce Tax Stress',
-      path: '/en/blog/calcul-impot-revenu-sans-stress',
+      path: getEnBlogPath('calcul-impot-revenu-sans-stress'),
     },
   },
   'epargne-automatique-strategies': {
@@ -103,7 +106,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Automatic Savings Strategy: Build Consistent Savings All Year',
-      path: '/en/blog/epargne-automatique-strategies',
+      path: getEnBlogPath('epargne-automatique-strategies'),
     },
   },
   'fonds-urgence-combien-mettre': {
@@ -113,7 +116,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Emergency Fund Guide: How Much to Save for Financial Security',
-      path: '/en/blog/fonds-urgence-combien-mettre',
+      path: getEnBlogPath('fonds-urgence-combien-mettre'),
     },
   },
   'interets-composes-erreurs-a-eviter': {
@@ -123,7 +126,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Compound Interest Mistakes: 5 Errors That Hurt Long-Term Growth',
-      path: '/en/blog/interets-composes-erreurs-a-eviter',
+      path: getEnBlogPath('interets-composes-erreurs-a-eviter'),
     },
   },
   'investissement-progressif-dca': {
@@ -133,7 +136,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'DCA Investing Guide: Progressive Investing Without Market Timing',
-      path: '/en/blog/investissement-progressif-dca',
+      path: getEnBlogPath('investissement-progressif-dca'),
     },
   },
   'methode-50-30-20': {
@@ -143,7 +146,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: '50/30/20 Budget Rule: Practical Guide to Balance Spending and Savings',
-      path: '/en/blog/methode-50-30-20',
+      path: getEnBlogPath('methode-50-30-20'),
     },
   },
   'optimiser-quotient-familial-legalement': {
@@ -153,7 +156,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Family Tax Shares: Legal Ways to Optimize Household Tax Planning',
-      path: '/en/blog/optimiser-quotient-familial-legalement',
+      path: getEnBlogPath('optimiser-quotient-familial-legalement'),
     },
   },
   'partage-addition-entre-amis-guide': {
@@ -163,7 +166,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Split Bill with Friends: Fair Method to Share Costs and Tips',
-      path: '/en/blog/partage-addition-entre-amis-guide',
+      path: getEnBlogPath('partage-addition-entre-amis-guide'),
     },
   },
   'petites-depenses-qui-comptent': {
@@ -173,7 +176,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Small Expenses That Add Up: How to Cut Daily Money Leaks',
-      path: '/en/blog/petites-depenses-qui-comptent',
+      path: getEnBlogPath('petites-depenses-qui-comptent'),
     },
   },
   'pourboire-regles-pratiques-voyage': {
@@ -183,7 +186,7 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
     },
     en: {
       title: 'Tipping Guide: Practical Rules for Home and Travel',
-      path: '/en/blog/pourboire-regles-pratiques-voyage',
+      path: getEnBlogPath('pourboire-regles-pratiques-voyage'),
     },
   },
 };

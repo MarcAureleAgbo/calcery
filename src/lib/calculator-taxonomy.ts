@@ -1,4 +1,5 @@
 import type { FAQItem } from './types';
+import { getLocalizedCalculatorSlug } from './calculator-route-slugs';
 
 export type Locale = 'fr' | 'en';
 
@@ -1777,6 +1778,42 @@ export const CALCULATORS: CalculatorDefinition[] = [
 const CATEGORY_BY_KEY = new Map(CATEGORIES.map((category) => [category.key, category]));
 const CALCULATOR_BY_SLUG = new Map(CALCULATORS.map((calculator) => [calculator.slug, calculator]));
 
+function clampSeoText(value: string, maxLength: number): string {
+  if (value.length <= maxLength) return value;
+  const sliced = value.slice(0, maxLength + 1);
+  const lastSpace = sliced.lastIndexOf(' ');
+  const cutoff = lastSpace >= maxLength - 14 ? lastSpace : maxLength;
+  return sliced.slice(0, cutoff).trim().replace(/[|,:;\\-]+$/, '');
+}
+
+function getRenderedHtmlLength(value: string): number {
+  return value.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').length;
+}
+
+function lowercaseFirstLetter(value: string): string {
+  if (!value) return value;
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function ensureMetaDescriptionLength(value: string, locale: Locale): string {
+  if (value.length >= 140) return clampSeoText(value, 160);
+
+  const extension =
+    locale === 'fr'
+      ? ' Resultat instantane, simple a relire sur mobile comme sur desktop.'
+      : ' Instant results, with a layout that stays easy to review on mobile or desktop.';
+
+  return clampSeoText(`${value}${extension}`, 160);
+}
+
+function getFrCalculatorKeyword(name: string): string {
+  return name.replace(/^Calcul(?:ateur)?\s+/i, '').trim();
+}
+
+function getEnCalculatorKeyword(name: string): string {
+  return name.replace(/\s+calculator$/i, '').trim();
+}
+
 export function getCategoryByKey(key: CategoryKey): CategoryDefinition {
   const category = CATEGORY_BY_KEY.get(key);
   if (!category) {
@@ -1805,9 +1842,63 @@ export function getCalculatorBySlug(slug: CalculatorSlug): CalculatorDefinition 
   return calculator;
 }
 
+export function getCalculatorPageHeading(
+  calculator: CalculatorDefinition,
+  locale: Locale,
+): string {
+  if (locale === 'fr') {
+    return clampSeoText(`Calculateur ${getFrCalculatorKeyword(calculator.name.fr)} gratuit en ligne`, 70);
+  }
+  return clampSeoText(`Free ${getEnCalculatorKeyword(calculator.name.en)} calculator`, 70);
+}
+
+export function getCalculatorMetaTitle(
+  calculator: CalculatorDefinition,
+  locale: Locale,
+): string {
+  if (locale === 'fr') {
+    const keyword = getFrCalculatorKeyword(calculator.name.fr);
+    const candidates = [
+      `Calculateur ${keyword} gratuit et rapide en ligne | Calcery`,
+      `Calculateur ${keyword} gratuit en ligne | Calcery`,
+      `Calculateur ${keyword} gratuit | Calcery`,
+      `Simulation ${keyword} | Calcery`,
+      `Calcul ${keyword} gratuit en ligne | Calcery`,
+    ];
+
+    const matchingTitle = candidates.find((candidate) => {
+      const renderedLength = getRenderedHtmlLength(candidate);
+      return renderedLength >= 50 && renderedLength <= 60;
+    });
+
+    return matchingTitle ?? clampSeoText(candidates[candidates.length - 1], 60);
+  }
+  return clampSeoText(
+    `Free ${getEnCalculatorKeyword(calculator.name.en)} calculator and instant online estimate | Calcery`,
+    60,
+  );
+}
+
+export function getCalculatorMetaDescription(
+  calculator: CalculatorDefinition,
+  locale: Locale,
+): string {
+  if (locale === 'fr') {
+    return ensureMetaDescriptionLength(
+      `Outil gratuit, sans inscription, pour ${lowercaseFirstLetter(calculator.description.fr).replace(/\.$/, '')}. Lancez votre simulation en ligne avec Calcery.`,
+      'fr',
+    );
+  }
+
+  return ensureMetaDescriptionLength(
+    `Free online tool with no signup required to ${lowercaseFirstLetter(calculator.description.en).replace(/\.$/, '')}. Run your simulation with Calcery.`,
+    'en',
+  );
+}
+
 export function getCalculatorRoute(locale: Locale, slug: CalculatorSlug): string {
   const calculator = getCalculatorBySlug(slug);
-  return `${getCategoryRoute(locale, calculator.category)}/${calculator.slug}`;
+  return `${getCategoryRoute(locale, calculator.category)}/${getLocalizedCalculatorSlug(calculator.slug, locale)}`;
 }
 
 export function getCalculatorsByCategory(key: CategoryKey): CalculatorDefinition[] {
@@ -1831,7 +1922,7 @@ export function getCalculatorStaticPaths(locale: Locale) {
     return {
       params: {
         category: category.slug[locale],
-        slug: calculator.slug,
+        slug: getLocalizedCalculatorSlug(calculator.slug, locale),
       },
       props: {
         locale,
@@ -1860,19 +1951,19 @@ export const LEGACY_REDIRECTS: Array<{ from: string; to: string }> = [
   { from: '/calculateurs/pourboire', to: '/fr/vie-pratique/pourboire' },
   { from: '/calculateurs/partage-addition', to: '/fr/vie-pratique/partage-addition' },
   { from: '/calculateurs/demo', to: '/fr/calculateurs' },
-  { from: '/en/budget-mensuel', to: '/en/finance/budget-mensuel' },
-  { from: '/en/epargne-automatique', to: '/en/finance/epargne-automatique' },
-  { from: '/en/interets-composes', to: '/en/finance/interets-composes' },
-  { from: '/en/impot-revenu', to: '/en/finance/impot-revenu' },
-  { from: '/en/economies-petites-depenses', to: '/en/daily-life/economies-petites-depenses' },
-  { from: '/en/pourboire', to: '/en/daily-life/pourboire' },
-  { from: '/en/partage-addition', to: '/en/daily-life/partage-addition' },
-  { from: '/en/calculateurs/budget-mensuel', to: '/en/finance/budget-mensuel' },
-  { from: '/en/calculateurs/epargne-automatique', to: '/en/finance/epargne-automatique' },
-  { from: '/en/calculateurs/interets-composes', to: '/en/finance/interets-composes' },
-  { from: '/en/calculateurs/impot-revenu', to: '/en/finance/impot-revenu' },
-  { from: '/en/calculateurs/economies-petites-depenses', to: '/en/daily-life/economies-petites-depenses' },
-  { from: '/en/calculateurs/pourboire', to: '/en/daily-life/pourboire' },
-  { from: '/en/calculateurs/partage-addition', to: '/en/daily-life/partage-addition' },
+  { from: '/en/budget-mensuel', to: '/en/finance/monthly-budget' },
+  { from: '/en/epargne-automatique', to: '/en/finance/automatic-savings' },
+  { from: '/en/interets-composes', to: '/en/finance/compound-interest' },
+  { from: '/en/impot-revenu', to: '/en/finance/income-tax' },
+  { from: '/en/economies-petites-depenses', to: '/en/daily-life/small-expense-savings' },
+  { from: '/en/pourboire', to: '/en/daily-life/tip-calculator' },
+  { from: '/en/partage-addition', to: '/en/daily-life/split-bill' },
+  { from: '/en/calculateurs/budget-mensuel', to: '/en/finance/monthly-budget' },
+  { from: '/en/calculateurs/epargne-automatique', to: '/en/finance/automatic-savings' },
+  { from: '/en/calculateurs/interets-composes', to: '/en/finance/compound-interest' },
+  { from: '/en/calculateurs/impot-revenu', to: '/en/finance/income-tax' },
+  { from: '/en/calculateurs/economies-petites-depenses', to: '/en/daily-life/small-expense-savings' },
+  { from: '/en/calculateurs/pourboire', to: '/en/daily-life/tip-calculator' },
+  { from: '/en/calculateurs/partage-addition', to: '/en/daily-life/split-bill' },
   { from: '/en/calculateurs/demo', to: '/en/calculators' },
 ];

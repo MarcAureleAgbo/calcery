@@ -9,6 +9,7 @@ tags:
   - family tax planning
 coverImage: /images/blog/tax-cover.svg
 coverAlt: Family tax share illustration
+slug: "family-tax-shares-guide"
 ---
 
 Household tax shares can significantly affect final tax estimates. Understanding this mechanism improves financial planning.
@@ -31,7 +32,7 @@ They adjust taxable burden to household composition. Revenue is assessed through
 3. simulate alternative scenarios if status may change
 4. translate results into monthly budget adjustments
 
-Use the [income tax calculator](/en/finance/impot-revenu) for quick first-pass estimates.
+Use the [income tax calculator](/en/finance/income-tax) for quick first-pass estimates.
 
 ## Conclusion
 

@@ -4,7 +4,6 @@ description: "Learn how to build an effective monthly budget with a simple frame
 pubDate: "2026-02-13"
 updatedDate: "2026-02-13"
 lang: "en"
-slug: "how-to-build-an-effective-monthly-budget"
 draft: false
 tags: ["monthly budget","budget planning","personal finance"]
 faq:
@@ -26,7 +25,7 @@ faq:
 
 An effective **monthly budget** is not about restricting every decision. It is about creating a clear framework that lets you choose priorities before pressure builds. Most people do not fail because they lack motivation. They struggle because their plan is vague, too rigid, or disconnected from daily reality.
 
-This guide is designed for practical use. If you need the broader strategic view, start with the [complete monthly budget guide](/en/blog/complete-monthly-budget-guide/). If you want to execute immediately, use the [monthly budget calculator](/en/finance/budget-mensuel). The goal is simple: better decisions, less stress, and steady progress month after month.
+This guide is designed for practical use. If you need the broader strategic view, start with the [complete monthly budget guide](/en/blog/complete-monthly-budget-guide/). If you want to execute immediately, use the [monthly budget calculator](/en/finance/monthly-budget). The goal is simple: better decisions, less stress, and steady progress month after month.
 
 ## Why an effective monthly budget changes outcomes
 
@@ -54,7 +53,7 @@ Category limits should be clear enough to guide behavior and flexible enough to 
 
 A useful **monthly budget** uses progressive adjustment. For example, reduce one category by a moderate amount for 30 days, then review results. This approach is more effective than broad cuts across every category at once.
 
-You can quantify realistic targets with the [automatic savings tool](/en/finance/epargne-automatique) and test long-term effects with the [compound interest calculator](/en/finance/interets-composes).
+You can quantify realistic targets with the [automatic savings tool](/en/finance/automatic-savings) and test long-term effects with the [compound interest calculator](/en/finance/compound-interest).
 
 ## Step 3: include irregular costs before they become emergencies
 
@@ -114,4 +113,4 @@ Correction: end every review with one explicit adjustment.
 
 ## Final takeaway
 
-An effective **monthly budget** is a practical operating system for financial decisions. Keep it simple, measurable, and adaptive. Use the [complete monthly budget guide](/en/blog/complete-monthly-budget-guide/) for strategic structure and the [monthly budget calculator](/en/finance/budget-mensuel) for implementation. If you stay consistent, results compound faster than most people expect.
+An effective **monthly budget** is a practical operating system for financial decisions. Keep it simple, measurable, and adaptive. Use the [complete monthly budget guide](/en/blog/complete-monthly-budget-guide/) for strategic structure and the [monthly budget calculator](/en/finance/monthly-budget) for implementation. If you stay consistent, results compound faster than most people expect.

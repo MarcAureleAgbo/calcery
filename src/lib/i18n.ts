@@ -1,4 +1,5 @@
 import { FR_TO_EN_BLOG_SLUG, EN_TO_FR_BLOG_SLUG } from './blog-slug-map';
+import { getLocalizedCalculatorSlug } from './calculator-route-slugs';
 
 export type Locale = 'fr' | 'en';
 
@@ -110,18 +111,26 @@ export function switchLocalePath(pathname: string, locale: Locale): string {
   if (frCategoryMatch && FR_CATEGORY_SEGMENTS.has(frCategoryMatch[1])) {
     const currentCategory = frCategoryMatch[1];
     const suffix = frCategoryMatch[2] ?? '';
+    const localizedSuffix = suffix.replace(/^\/([^/]+)(.*)?$/, (_, slug, rest = '') => {
+      const targetSlug = getLocalizedCalculatorSlug(slug, locale);
+      return `/${targetSlug}${rest}`;
+    });
     if (locale === 'fr') return `/fr/${currentCategory}${suffix}`;
     const targetCategory = FR_TO_EN_CATEGORY_SEGMENT[currentCategory];
-    return `/en/${targetCategory}${suffix}`;
+    return `/en/${targetCategory}${localizedSuffix}`;
   }
 
   const enCategoryMatch = pathname.match(/^\/en\/([^/]+)(\/.*)?$/);
   if (enCategoryMatch && EN_CATEGORY_SEGMENTS.has(enCategoryMatch[1])) {
     const currentCategory = enCategoryMatch[1];
     const suffix = enCategoryMatch[2] ?? '';
+    const localizedSuffix = suffix.replace(/^\/([^/]+)(.*)?$/, (_, slug, rest = '') => {
+      const targetSlug = getLocalizedCalculatorSlug(slug, locale);
+      return `/${targetSlug}${rest}`;
+    });
     if (locale === 'en') return `/en/${currentCategory}${suffix}`;
     const targetCategory = EN_TO_FR_CATEGORY_SEGMENT[currentCategory];
-    return `/fr/${targetCategory}${suffix}`;
+    return `/fr/${targetCategory}${localizedSuffix}`;
   }
 
   const raw = stripLocalePrefix(pathname);
