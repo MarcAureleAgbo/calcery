@@ -33,7 +33,7 @@ const CATEGORY_PATHS = new Set([
 ]);
 
 const BLOG_INDEX_PATHS = new Set(['/fr/blog', '/en/blog']);
-const SITEMAP_LASTMOD = '2026-03-24';
+const SITEMAP_LASTMOD = '2026-04-03';
 const FILE_PATH_RE = /\/[^/?#]+\.[a-z0-9]+$/i;
 
 const BLOG_POST_PATH_RE = /^\/(?:fr|en)\/blog\/[^/]+$/;
