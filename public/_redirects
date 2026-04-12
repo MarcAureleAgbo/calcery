@@ -1,5 +1,15 @@
 https://www.calcery.com/* https://calcery.com/:splat 301!
 
+# Search Console priority redirects (Google 404 — must stay near top)
+/en/blog/petites-depenses-qui-comptent /en/blog/small-expenses-that-add-up/ 301
+/en/blog/petites-depenses-qui-comptent/ /en/blog/small-expenses-that-add-up/ 301
+/en/real-estate/capacite-emprunt-immobilier /en/real-estate/mortgage-borrowing-capacity/ 301
+/en/real-estate/capacite-emprunt-immobilier/ /en/real-estate/mortgage-borrowing-capacity/ 301
+/en/blog/budget-mensuel-mode-emploi /en/blog/monthly-budget-step-by-step-guide/ 301
+/en/blog/budget-mensuel-mode-emploi/ /en/blog/monthly-budget-step-by-step-guide/ 301
+/en/daily-life/age-exact /en/daily-life/exact-age/ 301
+/en/daily-life/age-exact/ /en/daily-life/exact-age/ 301
+
 # Search Console redirect-only URLs to monitor after deployment:
 # /en/blog/budget-couple-methode-simple
 # /en/blog/budget-mensuel-mode-emploi
