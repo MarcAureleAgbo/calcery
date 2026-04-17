@@ -2,3 +2,29 @@ https://www.calcery.com/* https://calcery.com/:splat 301!
 /blog/* /fr/blog/:splat/ 301
 /en/real-estate/capacite-emprunt-immobilier /en/real-estate/mortgage-borrowing-capacity/ 301
 /en/real-estate/capacite-emprunt-immobilier/ /en/real-estate/mortgage-borrowing-capacity/ 301
+
+# Blog EN redirects (FR slugs → EN slugs)
+/en/blog/budget-couple-methode-simple /en/blog/couple-budget-simple-method/ 301
+/en/blog/budget-couple-methode-simple/ /en/blog/couple-budget-simple-method/ 301
+/en/blog/budget-mensuel-mode-emploi /en/blog/monthly-budget-step-by-step-guide/ 301
+/en/blog/budget-mensuel-mode-emploi/ /en/blog/monthly-budget-step-by-step-guide/ 301
+/en/blog/calcul-impot-revenu-sans-stress /en/blog/income-tax-estimate-guide/ 301
+/en/blog/calcul-impot-revenu-sans-stress/ /en/blog/income-tax-estimate-guide/ 301
+/en/blog/epargne-automatique-strategies /en/blog/automatic-savings-strategy/ 301
+/en/blog/epargne-automatique-strategies/ /en/blog/automatic-savings-strategy/ 301
+/en/blog/fonds-urgence-combien-mettre /en/blog/emergency-fund-guide/ 301
+/en/blog/fonds-urgence-combien-mettre/ /en/blog/emergency-fund-guide/ 301
+/en/blog/interets-composes-erreurs-a-eviter /en/blog/compound-interest-mistakes/ 301
+/en/blog/interets-composes-erreurs-a-eviter/ /en/blog/compound-interest-mistakes/ 301
+/en/blog/investissement-progressif-dca /en/blog/dca-investing-guide/ 301
+/en/blog/investissement-progressif-dca/ /en/blog/dca-investing-guide/ 301
+/en/blog/methode-50-30-20 /en/blog/50-30-20-budget-rule/ 301
+/en/blog/methode-50-30-20/ /en/blog/50-30-20-budget-rule/ 301
+/en/blog/optimiser-quotient-familial-legalement /en/blog/family-tax-shares-guide/ 301
+/en/blog/optimiser-quotient-familial-legalement/ /en/blog/family-tax-shares-guide/ 301
+/en/blog/partage-addition-entre-amis-guide /en/blog/split-bill-with-friends/ 301
+/en/blog/partage-addition-entre-amis-guide/ /en/blog/split-bill-with-friends/ 301
+/en/blog/petites-depenses-qui-comptent /en/blog/small-expenses-that-add-up/ 301
+/en/blog/petites-depenses-qui-comptent/ /en/blog/small-expenses-that-add-up/ 301
+/en/blog/pourboire-regles-pratiques-voyage /en/blog/tipping-guide-home-and-travel/ 301
+/en/blog/pourboire-regles-pratiques-voyage/ /en/blog/tipping-guide-home-and-travel/ 301
