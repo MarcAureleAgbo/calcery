@@ -1,2 +1,4 @@
 https://www.calcery.com/* https://calcery.com/:splat 301!
 /blog/* /fr/blog/:splat/ 301
+/en/real-estate/capacite-emprunt-immobilier /en/real-estate/mortgage-borrowing-capacity/ 301
+/en/real-estate/capacite-emprunt-immobilier/ /en/real-estate/mortgage-borrowing-capacity/ 301

@@ -223,8 +223,6 @@ export default defineConfig({
     '/en/health/rythme-cardiaque-cible/': '/en/health/target-heart-rate/',
     '/en/health/depense-calorique-activite': '/en/health/calories-burned/',
     '/en/health/depense-calorique-activite/': '/en/health/calories-burned/',
-    '/en/real-estate/capacite-emprunt-immobilier': '/en/real-estate/mortgage-borrowing-capacity/',
-    '/en/real-estate/capacite-emprunt-immobilier/': '/en/real-estate/mortgage-borrowing-capacity/',
     '/en/real-estate/frais-notaire': '/en/real-estate/notary-fees/',
     '/en/real-estate/frais-notaire/': '/en/real-estate/notary-fees/',
     '/en/real-estate/rentabilite-locative-brute': '/en/real-estate/gross-rental-yield/',
