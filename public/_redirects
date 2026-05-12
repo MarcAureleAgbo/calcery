@@ -1,7 +1,13 @@
+# HTTP → HTTPS redirects (must be first for Cloudflare)
+http://calcery.com/* https://calcery.com/:splat 301!
+http://www.calcery.com/* https://calcery.com/:splat 301!
 https://www.calcery.com/* https://calcery.com/:splat 301!
+
 /blog/* /fr/blog/:splat/ 301
 /en/real-estate/capacite-emprunt-immobilier /en/real-estate/mortgage-borrowing-capacity/ 301
 /en/real-estate/capacite-emprunt-immobilier/ /en/real-estate/mortgage-borrowing-capacity/ 301
+/en/daily-life/age-exact /en/daily-life/exact-age/ 301
+/en/daily-life/age-exact/ /en/daily-life/exact-age/ 301
 
 # Blog EN redirects (FR slugs → EN slugs)
 /en/blog/budget-couple-methode-simple /en/blog/couple-budget-simple-method/ 301
