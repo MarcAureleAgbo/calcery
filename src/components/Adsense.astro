@@ -7,9 +7,7 @@ const ADSENSE_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle
 
 {
   isProd && (
-    <>
-      <script async src={ADSENSE_SRC} crossorigin="anonymous"></script>
-      <script is:inline define:vars={{ CONSENT_KEY }}>
+      <script is:inline define:vars={{ CONSENT_KEY, ADSENSE_SRC }}>
         (() => {
           function hasAcceptedConsent() {
             try {
@@ -35,8 +33,32 @@ const ADSENSE_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle
             });
           }
 
+          function loadAdsense() {
+            if (!hasAcceptedConsent()) return;
+
+            if (window.__calceryAdsenseLoaded) {
+              initializeAdsenseSlots();
+              return;
+            }
+
+            window.__calceryAdsenseLoaded = true;
+            const script = document.createElement('script');
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.src = ADSENSE_SRC;
+            script.addEventListener('load', initializeAdsenseSlots, { once: true });
+            script.addEventListener(
+              'error',
+              () => {
+                window.__calceryAdsenseLoaded = false;
+              },
+              { once: true },
+            );
+            document.head.appendChild(script);
+          }
+
           function onReady() {
-            initializeAdsenseSlots();
+            loadAdsense();
           }
 
           if (document.readyState === 'loading') {
@@ -49,13 +71,12 @@ const ADSENSE_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle
             window.addEventListener('calcery:consent-updated', (event) => {
               const status = event?.detail?.status;
               if (status === 'accepted') {
-                initializeAdsenseSlots();
+                loadAdsense();
               }
             });
             window.__calceryAdsenseConsentListenerAttached = true;
           }
         })();
       </script>
-    </>
   )
 }

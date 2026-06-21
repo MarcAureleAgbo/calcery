@@ -1,4 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const faqEntrySchema = z.object({
   question: z.string(),
@@ -13,7 +15,6 @@ const sharedBlogSchema = z
     date: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
     lang: z.enum(['fr', 'en']).optional(),
-    slug: z.string().optional(),
     draft: z.boolean().default(false),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
@@ -24,19 +25,19 @@ const sharedBlogSchema = z
   .superRefine((value, ctx) => {
     if (!value.pubDate && !value.date) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         message: 'Either "pubDate" or "date" must be provided.',
       });
     }
   });
 
 const blogCollection = defineCollection({
-  type: 'content',
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
   schema: sharedBlogSchema,
 });
 
 const blogEnCollection = defineCollection({
-  type: 'content',
+  loader: glob({ base: './src/content/blogEn', pattern: '**/*.{md,mdx}' }),
   schema: sharedBlogSchema,
 });
 

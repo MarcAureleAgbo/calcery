@@ -7,6 +7,8 @@ import {
   getCategoryStaticPaths,
   getCategoryRoute,
   getCalculatorRoute,
+  getCategoryMetaDescription,
+  getCategoryMetaTitle,
   type CategoryDefinition,
   type CalculatorDefinition,
 } from '../../../lib/calculator-taxonomy';
@@ -30,8 +32,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 ---
 
 <BaseLayout
-  title={category.title.en}
-  description={category.description.en}
+  title={getCategoryMetaTitle(category, 'en')}
+  description={getCategoryMetaDescription(category, 'en')}
   lang="en"
 >
   <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-16">
@@ -65,5 +67,16 @@ const breadcrumbs: BreadcrumbItem[] = [
         <p class="mt-2">New calculators will be published here soon.</p>
       </div>
     )}
+  </section>
+
+  <section class="section pt-0">
+    <div class="mx-auto max-w-4xl rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm md:p-12">
+      <h2 class="mb-6 text-3xl font-bold text-gray-900">
+        How to use our {category.name.en.toLowerCase()} calculators
+      </h2>
+      <div class="space-y-5 text-lg leading-relaxed text-gray-700">
+        {category.seoText.en.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
   </section>
 </BaseLayout>

@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Button from '../../../components/ui/Button.astro';
 import Card from '../../../components/ui/Card.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { toAbsoluteUrl } from '../../../lib/site';
 import { getCalculatorRoute } from '../../../lib/calculator-taxonomy';
 import { FR_TO_EN_BLOG_SLUG, EN_TO_FR_BLOG_SLUG } from '../../../lib/blog-slug-map';
@@ -55,11 +55,11 @@ export async function getStaticPaths() {
 
   return [
     ...frPublished.map((post) => ({
-      params: { lang: 'fr', slug: post.slug },
+      params: { lang: 'fr', slug: post.id },
       props: { post, lang: 'fr', collectionName: 'blog' },
     })),
     ...enPublished.map((post) => ({
-      params: { lang: 'en', slug: post.slug },
+      params: { lang: 'en', slug: post.id },
       props: { post, lang: 'en', collectionName: 'blogEn' },
     })),
   ];
@@ -70,13 +70,37 @@ const { post, lang, collectionName } = Astro.props as {
   lang: Locale;
   collectionName: CollectionName;
 };
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const allPosts = await getCollection(collectionName);
-const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && !p.data.draft).slice(0, 2);
-const readingTime = Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 220));
+const readingTime = Math.max(1, Math.ceil((post.body ?? '').trim().split(/\s+/).length / 220));
 const category = post.data.category ?? (lang === 'fr' ? 'Finance' : 'Finance');
 const tags = post.data.tags ?? [];
+const normalizedCategory = category.toLocaleLowerCase(lang);
+const normalizedTags = new Set(tags.map((tag) => tag.toLocaleLowerCase(lang)));
+const relatedPosts = allPosts
+  .filter((item) => item.id !== post.id && !item.data.draft)
+  .map((item) => {
+    const itemCategory = (item.data.category ?? '').toLocaleLowerCase(lang);
+    const sharedTags = (item.data.tags ?? []).filter((tag) =>
+      normalizedTags.has(tag.toLocaleLowerCase(lang)),
+    ).length;
+    const categoryScore = itemCategory && itemCategory === normalizedCategory ? 4 : 0;
+    const topicScore =
+      item.data.title.toLocaleLowerCase(lang).includes('budget') &&
+      post.data.title.toLocaleLowerCase(lang).includes('budget')
+        ? 2
+        : 0;
+    const published = item.data.updatedDate ?? item.data.pubDate ?? item.data.date;
+    return {
+      item,
+      score: categoryScore + sharedTags * 3 + topicScore,
+      publishedAt: new Date(published ?? 0).getTime(),
+    };
+  })
+  .sort((a, b) => b.score - a.score || b.publishedAt - a.publishedAt)
+  .slice(0, 3)
+  .map(({ item }) => item);
 const coverImage =
   post.data.coverImage ??
   (lang === 'fr' ? '/images/blog/default-cover-fr.svg' : '/images/blog/default-cover-en.svg');
@@ -85,17 +109,17 @@ const publishedDate = post.data.pubDate ?? post.data.date;
 const updatedDate = post.data.updatedDate ?? publishedDate;
 
 if (!publishedDate) {
-  throw new Error(`Missing publish date for post "${post.slug}".`);
+  throw new Error(`Missing publish date for post "${post.id}".`);
 }
 
-const canonicalPath = `/${lang}/blog/${post.slug}/`;
+const canonicalPath = `/${lang}/blog/${post.id}/`;
 const canonicalUrl = toAbsoluteUrl(canonicalPath);
 
 const [frPosts, enPosts] = await Promise.all([getCollection('blog'), getCollection('blogEn')]);
-const frTranslatedSlug = lang === 'en' ? (EN_TO_FR_BLOG_SLUG[post.slug] ?? post.slug) : post.slug;
-const enTranslatedSlug = lang === 'fr' ? (FR_TO_EN_BLOG_SLUG[post.slug] ?? post.slug) : post.slug;
-const hasFrVariant = frPosts.some((item) => !item.data.draft && item.slug === frTranslatedSlug);
-const hasEnVariant = enPosts.some((item) => !item.data.draft && item.slug === enTranslatedSlug);
+const frTranslatedSlug = lang === 'en' ? (EN_TO_FR_BLOG_SLUG[post.id] ?? post.id) : post.id;
+const enTranslatedSlug = lang === 'fr' ? (FR_TO_EN_BLOG_SLUG[post.id] ?? post.id) : post.id;
+const hasFrVariant = frPosts.some((item) => !item.data.draft && item.id === frTranslatedSlug);
+const hasEnVariant = enPosts.some((item) => !item.data.draft && item.id === enTranslatedSlug);
 const frAlternatePath = hasFrVariant ? `/fr/blog/${frTranslatedSlug}/` : null;
 const enAlternatePath = hasEnVariant ? `/en/blog/${enTranslatedSlug}/` : null;
 const xDefaultAlternatePath = hasFrVariant
@@ -179,7 +203,7 @@ const faqSchema = {
   })),
 };
 
-const isBudgetSlug = post.slug === 'methode-50-30-20' || post.slug === 'comment-faire-budget-mensuel-efficace';
+const isBudgetSlug = post.id === 'methode-50-30-20' || post.id === 'comment-faire-budget-mensuel-efficace';
 const tools =
   lang === 'fr'
     ? isBudgetSlug
@@ -235,8 +259,8 @@ const metaDescription = buildBlogMetaDescription(post.data.description, lang);
   lang={lang}
   alternatePaths={{ fr: frAlternatePath, en: enAlternatePath, xDefault: xDefaultAlternatePath }}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <section class="section">
     <div class="mx-auto max-w-4xl px-4 py-16">
@@ -304,12 +328,12 @@ const metaDescription = buildBlogMetaDescription(post.data.description, lang);
     <section class="section">
       <div class="mx-auto max-w-6xl px-4">
         <h2 class="mb-6 text-center text-2xl font-semibold">{relatedTitle}</h2>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
           {relatedPosts.map((related) => {
             const relatedDate = related.data.pubDate ?? related.data.date;
             return (
               <Card class="p-6 transition-shadow hover:shadow-md">
-                <h3 class="mb-2 text-xl font-semibold"><a href={`/${lang}/blog/${related.slug}/`} class="text-black hover:underline">{related.data.title}</a></h3>
+                <h3 class="mb-2 text-xl font-semibold"><a href={`/${lang}/blog/${related.id}/`} class="text-black hover:underline">{related.data.title}</a></h3>
                 <p class="mb-4 text-gray-700">{related.data.description}</p>
                 <p class="text-sm text-gray-500">{publishedLabel} {relatedDate ? new Date(relatedDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US') : ''}</p>
               </Card>

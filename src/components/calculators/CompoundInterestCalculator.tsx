@@ -6,6 +6,14 @@ interface CompoundInterestCalculatorProps {
   lang?: Locale;
 }
 
+const COMPOUNDING_FREQUENCY = {
+  annually: 1,
+  semiannually: 2,
+  quarterly: 4,
+  monthly: 12,
+  daily: 365,
+} as const;
+
 const messages = {
   fr: {
     initialCapital: 'Capital initial',
@@ -72,16 +80,8 @@ export default function CompoundInterestCalculator({ lang = 'fr' }: CompoundInte
 
   const t = messages[lang];
 
-  const compoundingFrequency = {
-    annually: 1,
-    semiannually: 2,
-    quarterly: 4,
-    monthly: 12,
-    daily: 365,
-  };
-
   const result = useMemo(() => {
-    const n = compoundingFrequency[compounding];
+    const n = COMPOUNDING_FREQUENCY[compounding];
     const r = rate / 100;
     const finalAmount = principal * Math.pow(1 + r / n, n * years);
     const interest = finalAmount - principal;
@@ -230,7 +230,7 @@ export default function CompoundInterestCalculator({ lang = 'fr' }: CompoundInte
             • <strong>r</strong> = {t.formulaItems.rate} ({rate}%)
           </li>
           <li>
-            • <strong>n</strong> = {t.formulaItems.frequency} ({compoundingFrequency[compounding]})
+            • <strong>n</strong> = {t.formulaItems.frequency} ({COMPOUNDING_FREQUENCY[compounding]})
           </li>
           <li>
             • <strong>t</strong> = {t.formulaItems.years} ({years})

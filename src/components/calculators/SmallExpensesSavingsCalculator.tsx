@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useId, useState } from 'react';
 
 type Locale = 'fr' | 'en';
 
@@ -6,10 +6,8 @@ interface SmallExpensesSavingsCalculatorProps {
   lang?: Locale;
 }
 
-type FrequencyFr = 'par jour' | 'par semaine' | 'par mois';
-type FrequencyEn = 'per day' | 'per week' | 'per month';
-type HorizonFr = '1 mois' | '1 an' | '5 ans';
-type HorizonEn = '1 month' | '1 year' | '5 years';
+type Frequency = 'daily' | 'weekly' | 'monthly';
+type Horizon = 'month' | 'year' | 'fiveYears';
 
 const messages = {
   fr: {
@@ -23,12 +21,12 @@ const messages = {
     monthly: 'Économie mensuelle estimée',
     annual: 'Économie annuelle estimée',
     note: 'Même de petites dépenses répétées peuvent représenter un budget important sur la durée.',
-    frequencies: ['par jour', 'par semaine', 'par mois'] as FrequencyFr[],
-    horizons: ['1 mois', '1 an', '5 ans'] as HorizonFr[],
+    frequencies: { daily: 'par jour', weekly: 'par semaine', monthly: 'par mois' },
+    horizons: { month: '1 mois', year: '1 an', fiveYears: '5 ans' },
     presetsList: [
-      { name: 'Café', unitCost: 2.2, frequencyType: 'par jour' as const, quantity: 1 },
-      { name: 'Cigarettes', unitCost: 12, frequencyType: 'par jour' as const, quantity: 1 },
-      { name: 'Streaming', unitCost: 12.99, frequencyType: 'par mois' as const, quantity: 1 },
+      { name: 'Café', unitCost: 2.2, frequencyType: 'daily' as const, quantity: 1 },
+      { name: 'Cigarettes', unitCost: 12, frequencyType: 'daily' as const, quantity: 1 },
+      { name: 'Streaming', unitCost: 12.99, frequencyType: 'monthly' as const, quantity: 1 },
     ],
   },
   en: {
@@ -42,12 +40,12 @@ const messages = {
     monthly: 'Estimated monthly savings',
     annual: 'Estimated yearly savings',
     note: 'Even small recurring expenses can become significant over time.',
-    frequencies: ['per day', 'per week', 'per month'] as FrequencyEn[],
-    horizons: ['1 month', '1 year', '5 years'] as HorizonEn[],
+    frequencies: { daily: 'per day', weekly: 'per week', monthly: 'per month' },
+    horizons: { month: '1 month', year: '1 year', fiveYears: '5 years' },
     presetsList: [
-      { name: 'Coffee', unitCost: 2.2, frequencyType: 'per day' as const, quantity: 1 },
-      { name: 'Cigarettes', unitCost: 12, frequencyType: 'per day' as const, quantity: 1 },
-      { name: 'Streaming', unitCost: 12.99, frequencyType: 'per month' as const, quantity: 1 },
+      { name: 'Coffee', unitCost: 2.2, frequencyType: 'daily' as const, quantity: 1 },
+      { name: 'Cigarettes', unitCost: 12, frequencyType: 'daily' as const, quantity: 1 },
+      { name: 'Streaming', unitCost: 12.99, frequencyType: 'monthly' as const, quantity: 1 },
     ],
   },
 };
@@ -57,44 +55,16 @@ const SmallExpensesSavingsCalculator: React.FC<SmallExpensesSavingsCalculatorPro
   const baseId = useId();
 
   const [unitCost, setUnitCost] = useState<number>(0);
-  const [frequencyType, setFrequencyType] = useState<(typeof t.frequencies)[number]>(t.frequencies[0]);
+  const [frequencyType, setFrequencyType] = useState<Frequency>('daily');
   const [quantity, setQuantity] = useState<number>(0);
-  const [horizon, setHorizon] = useState<(typeof t.horizons)[number]>(t.horizons[0]);
+  const [horizon, setHorizon] = useState<Horizon>('month');
   const [showExtra, setShowExtra] = useState<boolean>(false);
 
-  const [monthly, setMonthly] = useState<number>(0);
-  const [total, setTotal] = useState<number>(0);
-  const [annual, setAnnual] = useState<number>(0);
-
-  useEffect(() => {
-    setFrequencyType(t.frequencies[0]);
-    setHorizon(t.horizons[0]);
-  }, [lang]);
-
-  useEffect(() => {
-    let monthlyCost = 0;
-    if (frequencyType === t.frequencies[0]) {
-      monthlyCost = unitCost * quantity * 30;
-    } else if (frequencyType === t.frequencies[1]) {
-      monthlyCost = unitCost * quantity * 4.345;
-    } else {
-      monthlyCost = unitCost * quantity;
-    }
-
-    setMonthly(monthlyCost);
-
-    let totalCost = 0;
-    if (horizon === t.horizons[0]) {
-      totalCost = monthlyCost;
-    } else if (horizon === t.horizons[1]) {
-      totalCost = monthlyCost * 12;
-    } else {
-      totalCost = monthlyCost * 60;
-    }
-
-    setTotal(totalCost);
-    setAnnual(monthlyCost * 12);
-  }, [unitCost, frequencyType, quantity, horizon, t.frequencies, t.horizons]);
+  const periodsPerMonth = frequencyType === 'daily' ? 30 : frequencyType === 'weekly' ? 4.345 : 1;
+  const monthly = unitCost * quantity * periodsPerMonth;
+  const horizonMonths = horizon === 'month' ? 1 : horizon === 'year' ? 12 : 60;
+  const total = monthly * horizonMonths;
+  const annual = monthly * 12;
 
   const handleInputChange =
     (setter: React.Dispatch<React.SetStateAction<number>>, min = 0) =>
@@ -151,12 +121,12 @@ const SmallExpensesSavingsCalculator: React.FC<SmallExpensesSavingsCalculatorPro
           <select
             id={`${baseId}-frequency`}
             value={frequencyType}
-            onChange={(event) => setFrequencyType(event.target.value as (typeof t.frequencies)[number])}
+            onChange={(event) => setFrequencyType(event.target.value as Frequency)}
             className="w-full rounded border border-gray-300 p-2"
           >
-            {t.frequencies.map((frequency) => (
-              <option key={frequency} value={frequency}>
-                {frequency}
+            {(Object.entries(t.frequencies) as Array<[Frequency, string]>).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
               </option>
             ))}
           </select>
@@ -185,12 +155,12 @@ const SmallExpensesSavingsCalculator: React.FC<SmallExpensesSavingsCalculatorPro
           <select
             id={`${baseId}-horizon`}
             value={horizon}
-            onChange={(event) => setHorizon(event.target.value as (typeof t.horizons)[number])}
+            onChange={(event) => setHorizon(event.target.value as Horizon)}
             className="w-full rounded border border-gray-300 p-2"
           >
-            {t.horizons.map((item) => (
-              <option key={item} value={item}>
-                {item}
+            {(Object.entries(t.horizons) as Array<[Horizon, string]>).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
               </option>
             ))}
           </select>

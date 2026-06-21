@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useId, useState } from 'react';
 
 type Locale = 'fr' | 'en';
 
@@ -49,26 +49,12 @@ const SplitBillCalculator: React.FC<SplitBillCalculatorProps> = ({ lang = 'fr' }
   const [tipAmount, setTipAmount] = useState<number>(0);
   const [round, setRound] = useState<boolean>(false);
 
-  const [tip, setTip] = useState<number>(0);
-  const [total, setTotal] = useState<number>(0);
-  const [perPerson, setPerPerson] = useState<number>(0);
-
   const baseId = useId();
   const t = messages[lang];
-
-  useEffect(() => {
-    const computedTip = tipMode === 'percent' ? (bill * tipPercent) / 100 : tipAmount;
-    const computedTotal = bill + computedTip;
-    let computedPerPerson = people > 0 ? computedTotal / people : 0;
-
-    if (round) {
-      computedPerPerson = Math.ceil(computedPerPerson);
-    }
-
-    setTip(computedTip);
-    setTotal(computedTotal);
-    setPerPerson(computedPerPerson);
-  }, [bill, people, tipMode, tipPercent, tipAmount, round]);
+  const tip = tipMode === 'percent' ? (bill * tipPercent) / 100 : tipAmount;
+  const total = bill + tip;
+  const rawPerPerson = people > 0 ? total / people : 0;
+  const perPerson = round ? Math.ceil(rawPerPerson) : rawPerPerson;
 
   const handleInputChange =
     (setter: React.Dispatch<React.SetStateAction<number>>, min = 0) =>

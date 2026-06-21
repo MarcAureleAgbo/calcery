@@ -13,8 +13,8 @@ const CONSENT_KEY = 'calcery_cookie_consent';
         function ensureDataLayer() {
           window.dataLayer = window.dataLayer || [];
           if (!window.gtag) {
-            window.gtag = function gtag() {
-              window.dataLayer.push(arguments);
+            window.gtag = (...args) => {
+              window.dataLayer.push(args);
             };
           }
         }

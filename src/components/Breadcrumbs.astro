@@ -40,13 +40,13 @@ const breadcrumbJsonLd = {
 
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
 <nav aria-label="Breadcrumb" class="py-4">
   <ol class="flex items-center space-x-2 text-sm text-gray-600">
     {normalizedItems.map((item, index) => (
-      <li key={index} class="flex items-center">
-        {index > 0 && <span class="mx-2">></span>}
+      <li class="flex items-center">
+        {index > 0 && <span class="mx-2">&gt;</span>}
         <a href={item.item} class="hover:text-primary">{item.name}</a>
       </li>
     ))}

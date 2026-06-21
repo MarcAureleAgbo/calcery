@@ -90,7 +90,7 @@ const categoryCards = [
   {
     icon: '🏥',
     title: 'Santé',
-    description: 'Catégorie en préparation pour vos futurs calculateurs santé.',
+    description: 'IMC, besoins caloriques, hydratation, poids idéal et suivi d’activité.',
     href: '/fr/sante',
   },
   {
@@ -108,25 +108,25 @@ const categoryCards = [
   {
     icon: '🛠️',
     title: 'Maison & travaux',
-    description: 'Futurs outils pour piloter vos projets maison et travaux.',
+    description: 'Surface de pièce et quantité de peinture pour préparer vos travaux.',
     href: '/fr/maison-travaux',
   },
   {
     icon: '🎓',
     title: 'Éducation',
-    description: 'Prochainement: calculateurs dédiés à l’apprentissage et la progression.',
+    description: 'Calculez une moyenne scolaire simple ou pondérée avec coefficients.',
     href: '/fr/education',
   },
 ];
 ---
 
 <BaseLayout
-  title="Calculateurs en ligne gratuits | Budget, Épargne & Intérêts composés - Calcery"
-  description="Découvrez des calculateurs en ligne gratuits pour gérer votre budget, votre épargne, votre taux d’endettement et vos intérêts composés. Sans inscription, résultats instantanés."
+  title="Calculateurs gratuits : finance, santé et quotidien | Calcery"
+  description="Utilisez 31 calculateurs gratuits pour le budget, l’épargne, la santé, l’immobilier, les travaux et la vie quotidienne. Sans inscription, résultats instantanés."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
 
   <Hero />
 

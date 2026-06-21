@@ -6,8 +6,8 @@ import { siteConfig } from '../lib/site.ts';
 ---
 
 <BaseLayout
-  title="Contact - Calcery"
-  description="Contactez Calcery pour vos questions, signalements, partenariats et demandes liées aux données personnelles."
+  title="Contacter Calcery : support, bugs et demandes RGPD"
+  description="Contactez l’équipe Calcery pour une question, un signalement de bug, une suggestion, un partenariat ou une demande relative à vos données personnelles."
 >
   <section class="border-b border-gray-200 bg-white py-20">
     <Container>
@@ -119,7 +119,7 @@ import { siteConfig } from '../lib/site.ts';
   </Container>
 </BaseLayout>
 
-<script define:vars={{ email: siteConfig.siteEmail }}>
+<script is:inline define:vars={{ email: siteConfig.siteEmail }}>
   const form = document.getElementById('contact-form');
 
   if (form) {

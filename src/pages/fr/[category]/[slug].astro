@@ -64,6 +64,7 @@ const alternatePaths = {
   lang="fr"
   canonical={canonicalPath}
   alternatePaths={alternatePaths}
+  categoryKey={category.key}
 >
   {calculator.slug === 'budget-mensuel' && <BudgetCalculator client:load lang="fr" />}
   {calculator.slug === 'epargne-automatique' && <SavingsGoalCalculator client:load lang="fr" />}

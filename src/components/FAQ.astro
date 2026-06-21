@@ -44,11 +44,11 @@ const faqJsonLd =
 
 ---
 
-{faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+{faqJsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
 
 <div class="space-y-4">
-  {normalizedItems.map((item, index) => (
-    <details class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm" key={index}>
+  {normalizedItems.map((item) => (
+    <details class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
       <summary class="cursor-pointer font-semibold text-gray-800 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary">
         {item.question}
       </summary>

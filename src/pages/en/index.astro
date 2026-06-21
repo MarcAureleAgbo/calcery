@@ -90,13 +90,13 @@ const categoryCards = [
   {
     icon: '🏥',
     title: 'Health',
-    description: 'Category ready for upcoming health-focused calculators.',
+    description: 'BMI, calorie needs, hydration, ideal weight, and activity estimates.',
     href: '/en/health',
   },
   {
     icon: '🏠',
     title: 'Real estate',
-    description: 'Upcoming simulations for housing budgets and planning.',
+    description: 'Borrowing capacity, notary fees, and rental yield estimates.',
     href: '/en/real-estate',
   },
   {
@@ -108,26 +108,26 @@ const categoryCards = [
   {
     icon: '🛠️',
     title: 'Home',
-    description: 'Future tools for renovation and home project decisions.',
+    description: 'Room area and paint quantity tools for planning home projects.',
     href: '/en/home',
   },
   {
     icon: '🎓',
     title: 'Education',
-    description: 'Upcoming calculators for study planning and progress tracking.',
+    description: 'Calculate simple or weighted grade averages with coefficients.',
     href: '/en/education',
   },
 ];
 ---
 
 <BaseLayout
-  title="Free Online Calculators | Budget, Savings & Interest Tools - Calcery"
-  description="Explore free online calculators to manage your budget, savings, debt ratio, compound interest and more. No signup, instant results."
+  title="Free calculators for finance, health and daily life | Calcery"
+  description="Use 31 free calculators for budgeting, savings, health, real estate, home projects, education, and daily life. No signup and instant results."
   lang="en"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(featuredToolsSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
 
   <Hero lang="en" />
 

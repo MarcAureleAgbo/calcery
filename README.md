@@ -1,64 +1,65 @@
 # Calcery
 
-Site Astro premium de calculateurs du quotidien (glassmorphism, animations avancées, mobile-first).
+Site bilingue de calculateurs pratiques construit avec Astro 6, React 19 et Tailwind CSS.
 
-## 🚀 Développement
+État fonctionnel au 21 juin 2026 :
+
+- 31 calculateurs disponibles en français et en anglais ;
+- 52 articles de blog ;
+- 140 URLs indexables dans un sitemap XML direct ;
+- redirections HTTP Cloudflare pour les anciennes routes ;
+- données structurées, canonicals et hreflang vérifiés au build ;
+- Google Analytics et AdSense chargés uniquement après consentement.
+
+## Prérequis
+
+- Node.js 22.12 ou supérieur, conformément à `.nvmrc` ;
+- npm.
 
 ```bash
-npm install
+nvm use
+npm ci
 npm run dev
 ```
 
-## 🏗️ Build
+## Contrôles
 
 ```bash
-npm run build
-npm run preview
+npm run lint
+npm run typecheck
+npm run check
 ```
 
-## ☁️ Déploiement Cloudflare Pages
+`npm run check` exécute le lint, les contrôles Astro/TypeScript, les tests des calculateurs et le build complet. Le build vérifie aussi :
 
-- Framework preset: `Astro`
-- Build command: `npm run build`
-- Build output directory: `dist`
-- URL du site centralisée: `site.config.mjs` (`SITE_URL`)
+- le sitemap et ses dates de modification ;
+- les pages et données structurées des calculateurs ;
+- les redirections Cloudflare et l’absence de pages de redirection HTML ;
+- les canonicals, titres, descriptions, directives d’indexation et garde-fous AdSense.
 
-## 🎨 Personnalisation rapide des couleurs
+## Déploiement Cloudflare Pages
 
-Éditez les variables CSS dans `src/styles/global.css`:
+- Framework preset : `Astro`
+- Build command : `npm run build`
+- Build output directory : `dist`
+- Version Node : lue depuis `.nvmrc`
 
-```css
-:root {
-  --primary: #6366F1;
-  --primary-dark: #4F46E5;
-  --primary-light: #818CF8;
-  --accent: #14B8A6;
-  --bg-main: #0A0E1A;
-  --bg-secondary: #151B2E;
-  --bg-tertiary: #1F2937;
-  --glass-bg: rgba(31, 41, 55, 0.6);
-  --glass-border: rgba(156, 163, 175, 0.1);
-}
-```
+Les redirections sont déclarées dans `redirects.config.mjs`, puis générées dans `public/_redirects` par `npm run generate:redirects`.
 
-## 🧩 Composants principaux
+Le sitemap est généré par `src/pages/sitemap.xml.ts` à l’adresse :
 
-- `src/layouts/BaseLayout.astro`: background animé, header/fixed, footer premium, scripts globaux (particules, scroll, observer, touch, batterie faible)
-- `src/components/Hero.astro`: hero premium
-- `src/components/ToolCard.astro`: cartes outils glassmorphism + interactions
-- `src/components/FeatureCard.astro`: cartes avantages
-- `src/components/StepCard.astro`: étapes numérotées
-- `src/components/AdSpace.astro`: zones publicitaires AdSense
-- `src/styles/global.css`: design system, animations, responsive complet
+`https://calcery.com/sitemap.xml`
 
-## 📁 Structure
+## Structure
 
-- `src/pages/` - Pages Astro
-- `src/components/` - Composants UI
-- `src/layouts/` - Layouts partagés
-- `src/content/` - Articles de blog
-- `src/lib/` - Config et types
+- `src/pages/` : routes Astro ;
+- `src/components/calculators/` : interfaces de calcul React ;
+- `src/content/` : articles Markdown ;
+- `src/content.config.ts` : collections Astro ;
+- `src/lib/calculator-taxonomy.ts` : catégories, routes et métadonnées ;
+- `scripts/` : tests de cohérence SEO et build ;
+- `SEARCH_CONSOLE_RUNBOOK.md` : procédure post-déploiement.
 
-## 📧 Contact
+## Contact
 
-contact@calcery.fr
+contact@calcery.com

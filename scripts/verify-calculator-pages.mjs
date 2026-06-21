@@ -560,7 +560,7 @@ for (const [titleValue, routes] of titleUsage.entries()) {
   }
 }
 
-for (const [descriptionValue, routes] of metaDescriptionUsage.entries()) {
+for (const [_descriptionValue, routes] of metaDescriptionUsage.entries()) {
   if (routes.length > 1) {
     failures.push(`Duplicate calculator meta description used by: ${routes.join(', ')}`);
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useMemo, useState } from 'react';
+import React, { useId, useMemo, useState } from 'react';
 
 type Locale = 'fr' | 'en';
 
@@ -71,20 +71,11 @@ const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ lang = 'fr' }) => {
   const [leisure, setLeisure] = useState<number>(0);
   const [other, setOther] = useState<number>(0);
 
-  const [totalExpenses, setTotalExpenses] = useState<number>(0);
-  const [remaining, setRemaining] = useState<number>(0);
-  const [savingsRate, setSavingsRate] = useState<number>(0);
-
   const baseId = useId();
   const t = messages[lang];
-
-  useEffect(() => {
-    const expenses = housing + food + transport + leisure + other;
-    setTotalExpenses(expenses);
-    const balance = income - expenses;
-    setRemaining(balance);
-    setSavingsRate(income > 0 ? (balance / income) * 100 : 0);
-  }, [income, housing, food, transport, leisure, other]);
+  const totalExpenses = housing + food + transport + leisure + other;
+  const remaining = income - totalExpenses;
+  const savingsRate = income > 0 ? (remaining / income) * 100 : 0;
 
   const handleInputChange =
     (setter: React.Dispatch<React.SetStateAction<number>>) =>
@@ -160,7 +151,7 @@ const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ lang = 'fr' }) => {
               <input
                 id={field.id}
                 type="number"
-            onFocus={(event) => event.currentTarget.select()}
+                onFocus={(event) => event.currentTarget.select()}
                 min="0"
                 step="any"
                 value={field.value}

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT_DIR = process.cwd();
-const DIST_SITEMAP_PATH = path.join(ROOT_DIR, 'dist', 'sitemap-0.xml');
+const DIST_SITEMAP_PATH = path.join(ROOT_DIR, 'dist', 'sitemap.xml');
 const DIST_FR_INDEX_PATH = path.join(ROOT_DIR, 'dist', 'fr', 'index.html');
 const TAXONOMY_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-taxonomy.ts');
 const CALCULATOR_ROUTE_SLUGS_PATH = path.join(ROOT_DIR, 'src', 'lib', 'calculator-route-slugs.ts');
@@ -13,11 +13,18 @@ const BLOG_EN_DIR = path.join(ROOT_DIR, 'src', 'content', 'blogEn');
 const REQUIRED_STATIC_PATHS = new Set([
   '/',
   '/fr/calculateurs',
+  '/fr/blog',
   '/en',
   '/en/calculators',
+  '/en/blog',
   '/a-propos',
   '/contact',
   '/confidentialite',
+  '/mentions-legales',
+  '/en/a-propos',
+  '/en/contact',
+  '/en/confidentialite',
+  '/en/mentions-legales',
 ]);
 
 if (fs.existsSync(DIST_FR_INDEX_PATH)) {
@@ -30,13 +37,16 @@ function normalizePathname(pathname) {
 }
 
 function parseSitemapEntries(xmlContent) {
-  const locPattern = /<loc>([^<]+)<\/loc>/g;
+  const urlPattern = /<url>([\s\S]*?)<\/url>/g;
   const entries = [];
-  for (const match of xmlContent.matchAll(locPattern)) {
-    const loc = match[1].trim();
+  for (const match of xmlContent.matchAll(urlPattern)) {
+    const loc = match[1].match(/<loc>([^<]+)<\/loc>/)?.[1]?.trim();
+    const lastmod = match[1].match(/<lastmod>([^<]+)<\/lastmod>/)?.[1]?.trim();
+    if (!loc) continue;
     const url = new URL(loc);
     entries.push({
       loc,
+      lastmod,
       exactPathname: url.pathname || '/',
       pathname: normalizePathname(url.pathname),
       hasQuery: url.search.length > 0,
@@ -271,6 +281,11 @@ const redirectedPathsInSitemap = [...sitemapExactPaths]
   .map((pathName) => normalizePathname(pathName));
 const has404Paths = [...sitemapPaths].filter((pathName) => pathName.includes('404'));
 const queryEntries = sitemapEntries.filter((entry) => entry.hasQuery);
+const missingLastmodEntries = sitemapEntries.filter((entry) => !entry.lastmod);
+const invalidLastmodEntries = sitemapEntries.filter(
+  (entry) => entry.lastmod && !/^\d{4}-\d{2}-\d{2}$/.test(entry.lastmod),
+);
+const uniqueLastmods = new Set(sitemapEntries.map((entry) => entry.lastmod));
 
 const failures = [];
 
@@ -298,6 +313,15 @@ if (has404Paths.length > 0) {
 if (queryEntries.length > 0) {
   failures.push(`URLs with query params found in sitemap: ${queryEntries.map((entry) => entry.loc).join(', ')}`);
 }
+if (missingLastmodEntries.length > 0) {
+  failures.push(`URLs without lastmod found in sitemap: ${missingLastmodEntries.map((entry) => entry.loc).join(', ')}`);
+}
+if (invalidLastmodEntries.length > 0) {
+  failures.push(`Invalid lastmod values found in sitemap: ${invalidLastmodEntries.map((entry) => entry.loc).join(', ')}`);
+}
+if (uniqueLastmods.size < 3) {
+  failures.push('Sitemap lastmod values are not granular enough.');
+}
 if (extraPaths.length > 0) {
   failures.push(`Unexpected URLs not in whitelist: ${extraPaths.join(', ')}`);
 }
@@ -315,3 +339,4 @@ console.log(`- Total URLs checked: ${sitemapPaths.size}`);
 console.log(`- Categories verified: ${requiredCategoryPaths.size}`);
 console.log(`- Calculators verified: ${requiredCalculatorPaths.size}`);
 console.log(`- Blog URLs verified: ${requiredBlogPaths.size}`);
+console.log(`- Distinct lastmod dates: ${uniqueLastmods.size}`);

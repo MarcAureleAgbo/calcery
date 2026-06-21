@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useId, useState } from 'react';
 
 type Locale = 'fr' | 'en';
 
@@ -42,22 +42,11 @@ const TipCalculator: React.FC<TipCalculatorProps> = ({ lang = 'fr' }) => {
   const [percent, setPercent] = useState<number>(10);
   const [people, setPeople] = useState<number>(1);
 
-  const [tip, setTip] = useState<number>(0);
-  const [total, setTotal] = useState<number>(0);
-  const [perPerson, setPerPerson] = useState<number>(0);
-
   const baseId = useId();
   const t = messages[lang];
-
-  useEffect(() => {
-    const computedTip = (bill * percent) / 100;
-    const computedTotal = bill + computedTip;
-    const computedPerPerson = people > 0 ? computedTotal / people : 0;
-
-    setTip(computedTip);
-    setTotal(computedTotal);
-    setPerPerson(computedPerPerson);
-  }, [bill, percent, people]);
+  const tip = (bill * percent) / 100;
+  const total = bill + tip;
+  const perPerson = people > 0 ? total / people : 0;
 
   const handleInputChange =
     (setter: React.Dispatch<React.SetStateAction<number>>, min = 0) =>
@@ -78,7 +67,7 @@ const TipCalculator: React.FC<TipCalculatorProps> = ({ lang = 'fr' }) => {
           <input
             id={`${baseId}-bill`}
             type="number"
-            onFocus={(event) => event.currentTarget.select()}
+          onFocus={(event) => event.currentTarget.select()}
             min="0"
             step="any"
             value={bill}

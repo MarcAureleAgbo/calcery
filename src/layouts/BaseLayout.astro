@@ -408,7 +408,7 @@ const xDefaultAlternateUrl =
     </button>
     <CookieBanner />
 
-    <script define:vars={{ currentLocale }}>
+    <script is:inline define:vars={{ currentLocale }}>
       // Device detection
       const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
       const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;

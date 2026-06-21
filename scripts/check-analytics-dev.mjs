@@ -16,7 +16,9 @@ async function waitForServer(url, timeoutMs = 30000) {
       if (res.ok) {
         return true;
       }
-    } catch {}
+    } catch {
+      // The development server may still be starting.
+    }
     await sleep(500);
   }
   return false;

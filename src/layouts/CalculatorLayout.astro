@@ -5,6 +5,7 @@ import FAQ from '../components/FAQ.astro';
 import Container from '../components/ui/Container.astro';
 import SeoContentBlock from '../components/calculators/SeoContentBlock.astro';
 import type { CalculatorSeoContent } from '../lib/calculator-seo-content';
+import type { CategoryKey } from '../lib/calculator-taxonomy';
 import type { BreadcrumbItem, FAQItem } from '../lib/types.ts';
 import type { Locale } from '../lib/i18n';
 import { toAbsoluteUrl } from '../lib/site';
@@ -27,6 +28,7 @@ export interface Props {
     en?: string | null;
     xDefault?: string | null;
   };
+  categoryKey?: CategoryKey;
 }
 
 const {
@@ -43,6 +45,7 @@ const {
   lang = 'fr',
   canonical,
   alternatePaths,
+  categoryKey = 'finance',
 } = Astro.props;
 
 const hasHowItWorks = Astro.slots.has('how-it-works');
@@ -61,6 +64,10 @@ const t = {
     warningTitle: 'Avertissement important',
     warningText:
       "Les calculateurs de ce site sont fournis à titre informatif uniquement. Ils ne constituent pas un conseil financier, fiscal ou juridique. Les résultats sont approximatifs et peuvent varier selon votre situation personnelle. Nous vous recommandons de consulter un professionnel qualifié pour des conseils personnalisés.",
+    healthWarning:
+      "Ce calculateur fournit une estimation générale et ne constitue ni un diagnostic ni un avis médical. Les besoins réels varient selon votre état de santé, vos traitements et votre situation personnelle. Consultez un professionnel de santé avant de modifier votre alimentation, votre hydratation ou votre activité physique.",
+    realEstateWarning:
+      "Cette simulation immobilière est indicative. Les conditions de financement, frais, taxes et règles applicables varient selon le dossier et la juridiction. Faites confirmer les montants par une banque, un courtier, un notaire ou un conseiller qualifié.",
     faqTitle: 'Questions fréquentes',
     updatedAt: 'Dernière mise à jour :',
   },
@@ -76,19 +83,37 @@ const t = {
     warningTitle: 'Important disclaimer',
     warningText:
       'The calculators on this site are provided for informational purposes only. They do not constitute financial, tax, or legal advice. Results are estimates and may vary depending on your personal situation. We recommend consulting a qualified professional for personalized advice.',
+    healthWarning:
+      'This calculator provides a general estimate and is not a diagnosis or medical advice. Actual needs vary with health conditions, medication, and personal circumstances. Consult a qualified healthcare professional before changing your diet, hydration, or physical activity.',
+    realEstateWarning:
+      'This real estate simulation is informational. Financing terms, fees, taxes, and applicable rules vary by application and jurisdiction. Confirm the figures with a bank, broker, notary, attorney, or other qualified professional.',
     faqTitle: 'Frequently asked questions',
     updatedAt: 'Last updated:',
   },
 }[lang];
 
 const canonicalPath = canonical ?? Astro.url.pathname;
+const applicationCategoryByKey: Record<CategoryKey, string> = {
+  finance: 'FinanceApplication',
+  health: 'HealthApplication',
+  realEstate: 'BusinessApplication',
+  dailyLife: 'UtilitiesApplication',
+  home: 'UtilitiesApplication',
+  education: 'EducationalApplication',
+};
+const warningText =
+  categoryKey === 'health'
+    ? t.healthWarning
+    : categoryKey === 'realEstate'
+      ? t.realEstateWarning
+      : t.warningText;
 const webApplicationSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: title,
   description: metaDescription,
   url: toAbsoluteUrl(canonicalPath),
-  applicationCategory: 'FinanceApplication',
+  applicationCategory: applicationCategoryByKey[categoryKey],
   operatingSystem: 'Web',
   offers: {
     '@type': 'Offer',
@@ -100,7 +125,7 @@ const webApplicationSchema = {
 ---
 
 <BaseLayout title={metaTitle} description={metaDescription} lang={lang} canonical={canonicalPath} alternatePaths={alternatePaths}>
-  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
   <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white pb-10 pt-8">
     <Container>
       <div class="mx-auto max-w-5xl">
@@ -169,7 +194,7 @@ const webApplicationSchema = {
         <section>
           <div class="rounded-2xl border border-amber-300 bg-amber-50 p-8">
             <h2 class="mb-3 text-xl font-semibold text-amber-900">{t.warningTitle}</h2>
-            <p class="leading-relaxed text-amber-900/90">{t.warningText}</p>
+            <p class="leading-relaxed text-amber-900/90">{warningText}</p>
           </div>
         </section>
       )}

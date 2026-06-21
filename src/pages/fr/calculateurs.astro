@@ -37,8 +37,8 @@ const categoryCards = CATEGORIES.map((category) => {
 ---
 
 <BaseLayout
-  title="Calculateurs par categories | Calcery"
-  description="Choisissez une categorie pour acceder rapidement aux calculateurs Calcery."
+  title="Calculateurs gratuits par catégorie | Calcery"
+  description="Explorez tous les calculateurs Calcery par catégorie : finance, santé, immobilier, vie pratique, maison et éducation. Outils gratuits et sans inscription."
 >
   <section class="border-b border-gray-200/70 bg-gradient-to-b from-white via-gray-50/40 to-white py-8">
     <Container>
@@ -59,6 +59,16 @@ const categoryCards = CATEGORIES.map((category) => {
           ctaLabel="Explorer"
         />
       ))}
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="mx-auto max-w-4xl rounded-2xl border border-gray-200 bg-white/95 p-8 shadow-sm md:p-12">
+      <h2 class="mb-5 text-3xl font-bold text-gray-900">Des outils pour des décisions concrètes</h2>
+      <div class="space-y-4 text-lg leading-relaxed text-gray-700">
+        <p>Calcery rassemble des calculateurs gratuits conçus pour répondre rapidement aux questions du quotidien. Chaque outil présente les données nécessaires, la méthode utilisée et des repères pour interpréter le résultat sans tableur ni inscription.</p>
+        <p>Commencez par choisir une catégorie, puis comparez plusieurs scénarios avec des hypothèses réalistes. Les calculs sont réalisés localement dans votre navigateur et les résultats restent indicatifs : pour une décision médicale, fiscale, juridique ou financière importante, confirmez toujours l’estimation auprès d’un professionnel qualifié.</p>
+      </div>
     </div>
   </section>
 </BaseLayout>

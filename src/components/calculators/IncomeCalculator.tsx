@@ -6,6 +6,14 @@ interface IncomeCalculatorProps {
   lang?: Locale;
 }
 
+const TAX_BRACKETS = [
+  { limit: 11294, rate: 0 },
+  { limit: 28797, rate: 0.11 },
+  { limit: 82341, rate: 0.3 },
+  { limit: 177882, rate: 0.41 },
+  { limit: Infinity, rate: 0.45 },
+];
+
 const messages = {
   fr: {
     grossIncome: 'Revenu annuel brut',
@@ -79,21 +87,12 @@ export default function IncomeCalculator({ lang = 'fr' }: IncomeCalculatorProps)
 
   const t = messages[lang];
 
-  // Approximate progressive brackets used for estimate display
-  const taxBrackets = [
-    { limit: 11294, rate: 0 },
-    { limit: 28797, rate: 0.11 },
-    { limit: 82341, rate: 0.3 },
-    { limit: 177882, rate: 0.41 },
-    { limit: Infinity, rate: 0.45 },
-  ];
-
   const result = useMemo(() => {
     const incomeTaxed = income / nbParts;
     let tax = 0;
     let prevLimit = 0;
 
-    for (const bracket of taxBrackets) {
+    for (const bracket of TAX_BRACKETS) {
       const taxableInThisBracket = Math.min(incomeTaxed, bracket.limit) - prevLimit;
       if (taxableInThisBracket > 0) {
         tax += taxableInThisBracket * bracket.rate;
@@ -125,7 +124,7 @@ export default function IncomeCalculator({ lang = 'fr' }: IncomeCalculatorProps)
       netIncome: netIncome.toFixed(2),
       effectiveRate,
     };
-  }, [income, nbParts, year]);
+  }, [income, nbParts]);
 
   const handleExport = async () => {
     const text =

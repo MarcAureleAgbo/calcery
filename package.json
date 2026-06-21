@@ -2,25 +2,67 @@
   "name": "calcery2",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
+    "prebuild": "npm run generate:redirects",
     "dev": "astro dev",
-    "build": "astro build && npm run verify:sitemap && npm run verify:calculator-pages",
+    "build": "astro build && npm run verify:sitemap && npm run verify:calculator-pages && npm run verify:redirects && npm run verify:site-output",
     "preview": "astro preview",
     "astro": "astro",
+    "typecheck": "astro check && tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "check": "npm run lint && npm run typecheck && npm run test:new-calculators && npm run build",
+    "generate:redirects": "node scripts/generate-cloudflare-redirects.mjs",
     "test:analytics:dev": "node scripts/check-analytics-dev.mjs",
     "test:adsense:dev": "node scripts/check-adsense-dev.mjs",
     "test:new-calculators": "node scripts/test-new-calculators.mjs",
     "verify:sitemap": "node scripts/verify-sitemap.mjs",
-    "verify:calculator-pages": "node scripts/verify-calculator-pages.mjs"
+    "verify:calculator-pages": "node scripts/verify-calculator-pages.mjs",
+    "verify:redirects": "node scripts/verify-redirects.mjs",
+    "verify:site-output": "node scripts/verify-site-output.mjs"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.6.1",
-    "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.16.6",
+    "@astrojs/markdown-remark": "^7.2.0",
+    "@astrojs/react": "^5.0.7",
+    "astro": "^6.4.8",
     "autoprefixer": "^10.4.23",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@eslint/js": "^9.39.4",
+    "eslint": "^9.39.4",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0"
+  },
+  "overrides": {
+    "astro-eslint-parser": {
+      "@typescript-eslint/scope-manager": "8.55.0"
+    },
+    "esbuild": "0.28.1",
+    "js-yaml": "4.2.0",
+    "rollup": "4.62.2",
+    "postcss": "8.5.15",
+    "volar-service-yaml": "0.0.71",
+    "yaml": "2.9.0",
+    "yaml-language-server": "1.23.0",
+    "anymatch": {
+      "picomatch": "2.3.2"
+    },
+    "micromatch": {
+      "picomatch": "2.3.2"
+    },
+    "readdirp@3.6.0": {
+      "picomatch": "2.3.2"
+    }
   }
 }

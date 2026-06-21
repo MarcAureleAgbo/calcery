@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useId, useMemo, useState } from 'react';
 
 type Locale = 'fr' | 'en';
 
@@ -31,75 +31,62 @@ const messages = {
   },
 };
 
+const calculateFinalCapital = (effort: number, rate: number, months: number, initial: number): number => {
+  if (rate === 0) return initial + effort * months;
+  const factor = ((1 + rate) ** months - 1) / rate;
+  return initial * (1 + rate) ** months + effort * factor;
+};
+
+const findMonthlyEffort = (target: number, rate: number, months: number, initial: number): number => {
+  if (target <= initial) return 0;
+
+  let low = 0;
+  let high = target * 2;
+  let mid = 0;
+
+  for (let index = 0; index < 100; index += 1) {
+    mid = (low + high) / 2;
+    if (calculateFinalCapital(mid, rate, months, initial) < target) {
+      low = mid;
+    } else {
+      high = mid;
+    }
+  }
+
+  return mid;
+};
+
 const SavingsGoalCalculator: React.FC<SavingsGoalCalculatorProps> = ({ lang = 'fr' }) => {
   const [goal, setGoal] = useState<number>(0);
   const [months, setMonths] = useState<number>(1);
   const [initial, setInitial] = useState<number>(0);
   const [annualRate, setAnnualRate] = useState<number>(0);
 
-  const [monthlyEffort, setMonthlyEffort] = useState<number>(0);
-  const [totalPaid, setTotalPaid] = useState<number>(0);
-  const [interest, setInterest] = useState<number>(0);
-  const [finalCapital, setFinalCapital] = useState<number>(0);
-
   const baseId = useId();
   const t = messages[lang];
 
-  const calculateWithoutRate = () => {
-    const remaining = Math.max(goal - initial, 0);
-    const effort = remaining / months;
-    const total = effort * months;
-    setMonthlyEffort(effort);
-    setTotalPaid(total);
-    setInterest(0);
-    setFinalCapital(initial + total);
-  };
-
-  const calculateFinalCapital = (effort: number, r: number, n: number, init: number): number => {
-    if (r === 0) return init + effort * n;
-    const factor = ((1 + r) ** n - 1) / r;
-    return init * (1 + r) ** n + effort * factor;
-  };
-
-  const findMonthlyEffort = (target: number, r: number, n: number, init: number): number => {
-    if (target <= init) return 0;
-
-    let low = 0;
-    let high = target * 2;
-    let mid = 0;
-
-    for (let i = 0; i < 100; i += 1) {
-      mid = (low + high) / 2;
-      const cap = calculateFinalCapital(mid, r, n, init);
-      if (cap < target) {
-        low = mid;
-      } else {
-        high = mid;
-      }
-    }
-
-    return mid;
-  };
-
-  const calculateWithRate = () => {
-    const monthlyRate = annualRate / 100 / 12;
-    const effort = findMonthlyEffort(goal, monthlyRate, months, initial);
-    const estimatedFinal = calculateFinalCapital(effort, monthlyRate, months, initial);
-    const total = effort * months;
-    const estimatedInterest = Math.max(estimatedFinal - initial - total, 0);
-
-    setMonthlyEffort(effort);
-    setTotalPaid(total);
-    setInterest(estimatedInterest);
-    setFinalCapital(estimatedFinal);
-  };
-
-  useEffect(() => {
+  const result = useMemo(() => {
     if (annualRate === 0) {
-      calculateWithoutRate();
-    } else {
-      calculateWithRate();
+      const monthlyEffort = Math.max(goal - initial, 0) / months;
+      const totalPaid = monthlyEffort * months;
+      return {
+        monthlyEffort,
+        totalPaid,
+        interest: 0,
+        finalCapital: initial + totalPaid,
+      };
     }
+
+    const monthlyRate = annualRate / 100 / 12;
+    const monthlyEffort = findMonthlyEffort(goal, monthlyRate, months, initial);
+    const finalCapital = calculateFinalCapital(monthlyEffort, monthlyRate, months, initial);
+    const totalPaid = monthlyEffort * months;
+    return {
+      monthlyEffort,
+      totalPaid,
+      interest: Math.max(finalCapital - initial - totalPaid, 0),
+      finalCapital,
+    };
   }, [goal, months, initial, annualRate]);
 
   const handleInputChange =
@@ -188,19 +175,19 @@ const SavingsGoalCalculator: React.FC<SavingsGoalCalculatorProps> = ({ lang = 'f
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" aria-live="polite">
         <div className="rounded-lg bg-blue-100 p-4 shadow">
           <h3 className="font-semibold">{t.monthlyEffort}</h3>
-          <p className="text-2xl">{monthlyEffort.toFixed(2)} €</p>
+          <p className="text-2xl">{result.monthlyEffort.toFixed(2)} €</p>
         </div>
         <div className="rounded-lg bg-green-100 p-4 shadow">
           <h3 className="font-semibold">{t.totalPaid}</h3>
-          <p className="text-2xl">{totalPaid.toFixed(2)} €</p>
+          <p className="text-2xl">{result.totalPaid.toFixed(2)} €</p>
         </div>
         <div className="rounded-lg bg-yellow-100 p-4 shadow">
           <h3 className="font-semibold">{t.estimatedInterest}</h3>
-          <p className="text-2xl">{interest.toFixed(2)} €</p>
+          <p className="text-2xl">{result.interest.toFixed(2)} €</p>
         </div>
         <div className="rounded-lg bg-purple-100 p-4 shadow">
           <h3 className="font-semibold">{t.estimatedFinal}</h3>
-          <p className="text-2xl">{finalCapital.toFixed(2)} €</p>
+          <p className="text-2xl">{result.finalCapital.toFixed(2)} €</p>
         </div>
       </div>
     </div>

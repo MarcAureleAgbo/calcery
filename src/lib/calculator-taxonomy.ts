@@ -1815,6 +1815,23 @@ function getEnCalculatorKeyword(name: string): string {
   return name.replace(/\s+calculator$/i, '').trim();
 }
 
+export function getCategoryMetaTitle(category: CategoryDefinition, locale: Locale): string {
+  if (locale === 'fr') {
+    return clampSeoText(`Calculateurs ${category.name.fr.toLowerCase()} gratuits | Calcery`, 60);
+  }
+  return clampSeoText(`Free ${category.name.en.toLowerCase()} calculators | Calcery`, 60);
+}
+
+export function getCategoryMetaDescription(category: CategoryDefinition, locale: Locale): string {
+  const base = category.description[locale].replace(/\.$/, '');
+  const extension =
+    locale === 'fr'
+      ? ' Comparez vos résultats gratuitement, sans inscription, avec des explications claires et des calculs instantanés.'
+      : ' Compare results for free with no signup, clear explanations, and instant calculations on any device.';
+
+  return ensureMetaDescriptionLength(`${base}.${extension}`, locale);
+}
+
 export function getCategoryByKey(key: CategoryKey): CategoryDefinition {
   const category = CATEGORY_BY_KEY.get(key);
   if (!category) {

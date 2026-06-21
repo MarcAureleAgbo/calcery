@@ -2,10 +2,6 @@
   Content-Type: application/xml; charset=utf-8
   X-Robots-Tag: all
 
-/sitemap-0.xml
-  Content-Type: application/xml; charset=utf-8
-  X-Robots-Tag: all
-
 /robots.txt
   Content-Type: text/plain; charset=utf-8
   X-Robots-Tag: all

@@ -6,8 +6,8 @@ import { siteConfig } from '../../lib/site.ts';
 ---
 
 <BaseLayout
-  title="Contact - Calcery"
-  description="Contact Calcery for support, feedback, partnerships, and GDPR/privacy requests."
+  title="Contact Calcery for support, bugs, and privacy requests"
+  description="Contact the Calcery team with a question, bug report, suggestion, partnership proposal, or GDPR and privacy request."
   lang="en"
 >
   <section class="border-b border-gray-200 bg-white py-20">
@@ -120,7 +120,7 @@ import { siteConfig } from '../../lib/site.ts';
   </Container>
 </BaseLayout>
 
-<script define:vars={{ email: siteConfig.siteEmail }}>
+<script is:inline define:vars={{ email: siteConfig.siteEmail }}>
   const form = document.getElementById('contact-form-en');
 
   if (form) {
