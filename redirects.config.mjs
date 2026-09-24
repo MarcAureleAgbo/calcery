@@ -2,6 +2,8 @@ export const PATH_REDIRECTS = [
   ['/calculateurs', '/fr/calculateurs/'],
   ['/en/calculateurs', '/en/calculators/'],
   ['/blog', '/fr/blog/'],
+  ['/blog/calcul-impot-revenu-sans-stress', '/fr/blog/calcul-impot-revenu-sans-stress/'],
+  ['/blog/optimiser-quotient-familial-legalement', '/fr/blog/optimiser-quotient-familial-legalement/'],
   ['/budget-mensuel', '/fr/finance/budget-mensuel/'],
   ['/epargne-automatique', '/fr/finance/epargne-automatique/'],
   ['/interets-composes', '/fr/finance/interets-composes/'],

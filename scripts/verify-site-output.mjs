@@ -6,6 +6,12 @@ const distDir = path.join(root, 'dist');
 const sitemapPath = path.join(distDir, 'sitemap.xml');
 const siteOrigin = 'https://calcery.com';
 const failures = [];
+const forbiddenPublicText = [
+  'This draft includes a structured',
+  'FAQ JSON-LD readiness',
+  'L’intérêt SEO et pédagogique est double',
+  'From a content-quality perspective',
+];
 
 function walkHtml(directory) {
   const files = [];
@@ -52,6 +58,11 @@ if (!fs.existsSync(distDir) || !fs.existsSync(sitemapPath)) {
 const htmlFiles = walkHtml(distDir);
 const titleUsage = new Map();
 const descriptionUsage = new Map();
+const english404Path = path.join(distDir, 'en', '404', 'index.html');
+
+if (fs.existsSync(english404Path)) {
+  failures.push('Unexpected indexable English 404 route generated at /en/404/.');
+}
 
 for (const filePath of htmlFiles) {
   const html = fs.readFileSync(filePath, 'utf8');
@@ -77,6 +88,23 @@ for (const filePath of htmlFiles) {
   }
   if (/<script\b[^>]*src=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle/i.test(html)) {
     failures.push(`[${route}] AdSense is loaded before consent.`);
+  }
+
+  if (/^\/(fr|en)\/blog\/[^/]+\/$/.test(route)) {
+    const h1Count = (html.match(/<h1\b/gi) ?? []).length;
+    if (h1Count !== 1) {
+      failures.push(`[${route}] Expected exactly one H1, found ${h1Count}.`);
+    }
+  }
+
+  for (const forbiddenText of forbiddenPublicText) {
+    if (html.includes(forbiddenText)) {
+      failures.push(`[${route}] Internal production wording is publicly rendered: "${forbiddenText}".`);
+    }
+  }
+
+  if (route === '/404' && /hreflang=/i.test(html)) {
+    failures.push('[/404] Error page must not declare language alternates.');
   }
 
   addUsage(titleUsage, title, route);
@@ -146,3 +174,5 @@ console.log(`- Sitemap pages matched to canonicals: ${sitemapUrls.length}`);
 console.log('- Duplicate titles and descriptions: 0');
 console.log('- noindex and HTML meta refresh pages: 0');
 console.log('- AdSense static pre-consent loads: 0');
+console.log('- Editorial pages with multiple H1 elements: 0');
+console.log('- Targeted internal production wording: 0');
