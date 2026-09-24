@@ -1,6 +1,6 @@
 # Calcery
 
-Site bilingue de calculateurs pratiques construit avec Astro 6, React 19 et Tailwind CSS.
+Site evergreen bilingue français/anglais centré sur des calculateurs pratiques et les contenus éditoriaux qui les accompagnent. Il est construit avec Astro 6, React 19, TypeScript et Tailwind CSS.
 
 État fonctionnel au 21 juin 2026 :
 
@@ -22,6 +22,16 @@ npm ci
 npm run dev
 ```
 
+Commandes principales :
+
+```bash
+npm run lint
+npm run typecheck
+npm run check
+npm run build
+npm run preview
+```
+
 ## Contrôles
 
 ```bash
@@ -38,6 +48,8 @@ npm run check
 - les canonicals, titres, descriptions, directives d’indexation et garde-fous AdSense.
 
 ## Déploiement Cloudflare Pages
+
+Le dépôt documente une intégration GitHub/Cloudflare Pages avec les paramètres suivants. Cette documentation ne prouve pas à elle seule la branche ou le SHA actuellement déployé.
 
 - Framework preset : `Astro`
 - Build command : `npm run build`
@@ -59,6 +71,13 @@ Le sitemap est généré par `src/pages/sitemap.xml.ts` à l’adresse :
 - `src/lib/calculator-taxonomy.ts` : catégories, routes et métadonnées ;
 - `scripts/` : tests de cohérence SEO et build ;
 - `SEARCH_CONSOLE_RUNBOOK.md` : procédure post-déploiement.
+
+## Documentation de travail
+
+- [`AGENTS.md`](AGENTS.md) : instructions permanentes pour Codex ;
+- [`docs/STATUS.md`](docs/STATUS.md) : état opérationnel courant ;
+- [`docs/DECISIONS.md`](docs/DECISIONS.md) : décisions durables ;
+- [`docs/pilotage/README.md`](docs/pilotage/README.md) : index des audits et plans historiques migrés.
 
 ## Contact
 
