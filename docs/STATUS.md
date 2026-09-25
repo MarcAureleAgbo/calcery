@@ -2,7 +2,7 @@
 
 Date de référence : 25 septembre 2026
 
-Commit applicatif de référence : `59667d7` — `fix: clean SEO content and legacy 404 handling`
+Repère Git connu avant le lot P1.4 : branche `main`, HEAD `ed22e55`, avec `main` en avance de trois commits sur `origin/main`. Le lot P1.4 est présent dans l’arbre de travail et non commité.
 
 Cet état décrit ce qui est prouvé localement. Il ne vaut ni confirmation de déploiement ni validation dans Search Console ou Cloudflare.
 
@@ -16,6 +16,7 @@ Cet état décrit ce qui est prouvé localement. Il ne vaut ni confirmation de d
 
 ## Partiellement traité
 
+- **P1.4 — Calculateur fiscal** : le calculateur FR/EN est présent localement dans l’arbre de travail non commité. Il est limité à l’estimation de l’impôt brut français 2026 sur les revenus 2025, pour les résidents fiscaux français ; les contrôles locaux sont passés, mais le lot reste à intégrer séparément.
 - **P1.2 — Nettoyage éditorial ciblé** : les notes de production FAQ et deux formulations internes ont été retirées ; le premier lot budget mensuel/épargne est terminé localement. Restent les autres clusters répétitifs et une revue éditoriale ciblée avant tout nouveau contenu.
 - **P3.1 — Garde-fous éditoriaux** : des contrôles ciblés couvrent les H1, les formulations connues et la route 404 anglaise. La détection générique des duplications et un contrôle permanent exhaustif des liens restent ouverts.
 
@@ -23,7 +24,7 @@ Cet état décrit ce qui est prouvé localement. Il ne vaut ni confirmation de d
 
 - différencier ou consolider les contenus éditoriaux trop proches hors premier lot budget mensuel/épargne ;
 - définir et appliquer une gouvernance YMYL fondée sur des sources primaires ;
-- fiabiliser et cadrer le calculateur fiscal ;
+- étendre progressivement la gouvernance de sources aux autres calculateurs YMYL ;
 - traiter les vulnérabilités et mises à niveau de dépendances par lots contrôlés ;
 - mesurer puis traiter les sujets de performance ;
 - développer des signaux d'autorité externe légitimes ;

@@ -1,281 +1,32 @@
 import React, { useMemo, useState } from 'react';
+import { estimateFrenchIncomeTax2026 } from '../../lib/french-income-tax';
 
 type Locale = 'fr' | 'en';
-
-interface IncomeCalculatorProps {
-  lang?: Locale;
-}
-
-const TAX_BRACKETS = [
-  { limit: 11294, rate: 0 },
-  { limit: 28797, rate: 0.11 },
-  { limit: 82341, rate: 0.3 },
-  { limit: 177882, rate: 0.41 },
-  { limit: Infinity, rate: 0.45 },
-];
-
+interface IncomeCalculatorProps { lang?: Locale; }
+const officialSimulatorUrl = 'https://simulateur-ir-ifi.impots.gouv.fr/calcul_impot/2026/simplifie/';
+const bofipUrl = 'https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407';
+const economieUrl = 'https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/comment-calculer-votre-impot-dapres-le-bareme-de-limpot-sur-le-revenu';
 const messages = {
-  fr: {
-    grossIncome: 'Revenu annuel brut',
-    taxParts: 'Nombre de parts fiscales',
-    taxPartsHelp: 'Célibataire: 1 | Marié/PACS: 2 | + enfant: +0.5 ou +1',
-    fiscalYear: 'Année fiscale',
-    yearEstimate: 'Estimation',
-    noteTitle: 'Note',
-    note:
-      "Ce calculateur donne une estimation basée sur le barème standard. Votre impôt réel peut varier selon les réductions/crédits d'impôt et autres abattements.",
-    marginalRate: 'Tranche marginale',
-    effectiveRate: 'Taux effectif',
-    taxDue: 'Impôt à payer',
-    socialContributions: 'Cotisations sociales',
-    netIncomeTitle: 'Revenu net après impôts et cotisations',
-    yearly: '/an',
-    monthly: '/mois',
-    breakdown: 'Répartition',
-    gross: 'Revenu brut',
-    incomeTax: 'Impôt sur le revenu',
-    net: 'Revenu net',
-    taxTips: 'Conseils de réduction d’impôts',
-    tips: [
-      'Plan d’épargne retraite (PER): déductible jusqu’à 10% de vos revenus',
-      'Assurance vie: fiscalité allégée après 8 ans',
-      'Investissement immobilier: certaines réductions peuvent s’appliquer',
-      'Dons aux associations: une part peut être déduite',
-    ],
-    copy: 'Copier le résultat',
-    copied: 'Résultat copié.',
-    copyError: 'Copie impossible sur ce navigateur.',
-  },
-  en: {
-    grossIncome: 'Gross annual income',
-    taxParts: 'Tax household shares',
-    taxPartsHelp: 'Single: 1 | Married/civil union: 2 | + child: +0.5 or +1',
-    fiscalYear: 'Tax year',
-    yearEstimate: 'Estimate',
-    noteTitle: 'Note',
-    note:
-      'This calculator provides an estimate based on standard tax brackets. Your actual tax may vary depending on credits, deductions and specific rules.',
-    marginalRate: 'Marginal tax bracket',
-    effectiveRate: 'Effective tax rate',
-    taxDue: 'Estimated tax due',
-    socialContributions: 'Social contributions',
-    netIncomeTitle: 'Net income after tax and contributions',
-    yearly: '/year',
-    monthly: '/month',
-    breakdown: 'Breakdown',
-    gross: 'Gross income',
-    incomeTax: 'Income tax',
-    net: 'Net income',
-    taxTips: 'Tax optimization tips',
-    tips: [
-      'Retirement savings plans can reduce taxable income in many cases.',
-      'Some long-term investment wrappers receive favorable taxation.',
-      'Certain real-estate investments may provide tax incentives.',
-      'Donations can be partially deductible depending on the jurisdiction.',
-    ],
-    copy: 'Copy result',
-    copied: 'Result copied.',
-    copyError: 'Copy is not available in this browser.',
-  },
+  fr: { vintage: 'Impôt 2026 sur les revenus 2025', resident: 'Pour les résidents fiscaux français.', income: 'Revenu net imposable annuel du foyer', incomeHelp: 'Utilisez le revenu net imposable pour le calcul fiscal, et non le salaire brut ou le net à payer.', shares: 'Nombre de parts fiscales', sharesHelp: 'Saisissez un nombre strictement positif, par quarts de part si nécessaire. Vérifiez les situations particulières sur le site officiel.', sharesError: 'Saisissez un nombre de parts strictement positif, par incréments de 0,25.', grossTax: 'Impôt brut estimé', averageRate: 'Taux moyen estimé', marginalRate: 'Taux marginal d’imposition', marginalHelp: 'Il s’applique seulement à la dernière tranche de revenu par part, pas à tout le revenu.', perShare: 'Revenu imposable par part', details: 'Détail par tranche', bracket: 'Tranche par part', portion: 'Part de revenu', rate: 'Taux', tax: 'Impôt', scopeTitle: 'Périmètre et limites de cette estimation', scope: 'Cette estimation applique uniquement le barème progressif de l’impôt sur le revenu au revenu net imposable et au nombre de parts saisi.', limits: 'Elle ne tient notamment pas compte du plafonnement du quotient familial, de la décote, des réductions et crédits d’impôt, du prélèvement à la source ni des situations fiscales particulières.', sourceTitle: 'Références et vérification', jurisdiction: 'Juridiction : France', source: 'Source primaire : barème DGFiP / BOFiP 2026.', checked: 'Dernière vérification : 25 septembre 2026.', official: 'Pour une estimation complète tenant compte de votre situation fiscale, utilisez le simulateur officiel de l’administration fiscale.', copy: 'Copier le résultat', copied: 'Résultat copié.', copyError: 'Copie impossible sur ce navigateur.' },
+  en: { vintage: '2026 tax on 2025 income', resident: 'For French tax residents.', income: 'Household annual net taxable income', incomeHelp: 'Use net taxable income for tax calculation, not gross salary or take-home pay.', shares: 'French tax household shares', sharesHelp: 'Enter a strictly positive number, in quarter-share increments if needed. Check special situations on the official website.', sharesError: 'Enter a strictly positive number of shares in 0.25-share increments.', grossTax: 'Estimated gross income tax', averageRate: 'Estimated average rate', marginalRate: 'Marginal tax rate', marginalHelp: 'It applies only to the last income bracket per share, not to all income.', perShare: 'Taxable income per share', details: 'Bracket breakdown', bracket: 'Bracket per share', portion: 'Income in bracket', rate: 'Rate', tax: 'Tax', scopeTitle: 'Scope and limits of this estimate', scope: 'This estimate applies only the progressive French income-tax scale to entered net taxable income and tax shares.', limits: 'It does not include the family-quotient cap, low-income relief, tax reductions or credits, tax already withheld, or special tax situations.', sourceTitle: 'Sources and review', jurisdiction: 'Jurisdiction: France', source: 'Primary source: DGFiP / BOFiP 2026 tax scale.', checked: 'Last verified: 25 September 2026.', official: 'For a complete estimate that reflects your tax situation, use the official French tax administration simulator.', copy: 'Copy result', copied: 'Result copied.', copyError: 'Copy is not available in this browser.' },
 };
+function formatEuro(value: number, lang: Locale) { return new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value); }
+function formatRange(lower: number, upper: number | null, lang: Locale) { const number = (value: number) => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 0 }).format(value); return upper === null ? `${lang === 'fr' ? 'Au-delà de' : 'Over'} ${number(lower)} €` : `${number(lower)} € – ${number(upper)} €`; }
 
 export default function IncomeCalculator({ lang = 'fr' }: IncomeCalculatorProps) {
-  const [income, setIncome] = useState(40000);
-  const [nbParts, setNbParts] = useState(1);
-  const [year, setYear] = useState(2025);
-  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
-
-  const t = messages[lang];
-
-  const result = useMemo(() => {
-    const incomeTaxed = income / nbParts;
-    let tax = 0;
-    let prevLimit = 0;
-
-    for (const bracket of TAX_BRACKETS) {
-      const taxableInThisBracket = Math.min(incomeTaxed, bracket.limit) - prevLimit;
-      if (taxableInThisBracket > 0) {
-        tax += taxableInThisBracket * bracket.rate;
-      }
-      prevLimit = bracket.limit;
-      if (incomeTaxed <= bracket.limit) break;
-    }
-
-    const totalTax = tax * nbParts;
-    const netAfterTax = income - totalTax;
-    const effectiveRate = income > 0 ? ((totalTax / income) * 100).toFixed(2) : '0.00';
-
-    const socialContribution = income * 0.08;
-    const netIncome = netAfterTax - socialContribution;
-
-    return {
-      taxBracket:
-        incomeTaxed < 11294
-          ? '0%'
-          : incomeTaxed < 28797
-            ? '11%'
-            : incomeTaxed < 82341
-              ? '30%'
-              : incomeTaxed < 177882
-                ? '41%'
-                : '45%',
-      totalTax: totalTax.toFixed(2),
-      socialContribution: socialContribution.toFixed(2),
-      netIncome: netIncome.toFixed(2),
-      effectiveRate,
-    };
-  }, [income, nbParts]);
-
-  const handleExport = async () => {
-    const text =
-      lang === 'fr'
-        ? `Calcul d'impôt\nRevenu brut: ${income}€\nParts: ${nbParts}\nAnnée: ${year}\nImpôt: ${result.totalTax}€\nCotisations: ${result.socialContribution}€\nNet: ${result.netIncome}€\nTaux effectif: ${result.effectiveRate}%`
-        : `Tax estimate\nGross income: ${income}€\nShares: ${nbParts}\nYear: ${year}\nTax: ${result.totalTax}€\nContributions: ${result.socialContribution}€\nNet: ${result.netIncome}€\nEffective rate: ${result.effectiveRate}%`;
-
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopyState('copied');
-    } catch {
-      setCopyState('error');
-    }
-
-    window.setTimeout(() => setCopyState('idle'), 2200);
-  };
-
-  return (
-    <div className="mx-auto max-w-2xl space-y-6">
-      <div className="space-y-6 rounded-lg border border-gray-200 bg-white p-6">
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-gray-900">
-            {t.grossIncome}: <span className="text-black">{income.toLocaleString()}€</span>
-          </label>
-          <input
-            type="range"
-            min="1000"
-            max="500000"
-            step="1000"
-            value={income}
-            onChange={(event) => setIncome(Number(event.target.value))}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200"
-          />
-          <input
-            type="number"
-            onFocus={(event) => event.currentTarget.select()}
-            value={income}
-            min="0"
-            onChange={(event) => setIncome(Math.max(0, Number(event.target.value) || 0))}
-            className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="nb-parts" className="mb-2 block text-sm font-semibold text-gray-900">
-            {t.taxParts}
-          </label>
-          <p className="mb-2 text-sm text-gray-600">{t.taxPartsHelp}</p>
-          <input
-            id="nb-parts"
-            type="number"
-            onFocus={(event) => event.currentTarget.select()}
-            min="0.5"
-            step="0.5"
-            value={nbParts}
-            onChange={(event) => setNbParts(Math.max(0.5, Number(event.target.value) || 0.5))}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="tax-year" className="mb-2 block text-sm font-semibold text-gray-900">
-            {t.fiscalYear}
-          </label>
-          <select
-            id="tax-year"
-            value={year}
-            onChange={(event) => setYear(Number(event.target.value))}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-          >
-            <option value={2024}>2024</option>
-            <option value={2025}>2025 ({t.yearEstimate})</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-        <p className="text-sm text-amber-800">
-          <strong>{t.noteTitle}:</strong> {t.note}
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2" aria-live="polite">
-        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
-          <p className="mb-2 text-sm font-medium text-gray-600">{t.marginalRate}</p>
-          <p className="text-2xl font-bold text-black">{result.taxBracket}</p>
-        </div>
-        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
-          <p className="mb-2 text-sm font-medium text-gray-600">{t.effectiveRate}</p>
-          <p className="text-2xl font-bold text-black">{result.effectiveRate}%</p>
-        </div>
-        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
-          <p className="mb-2 text-sm font-medium text-gray-600">{t.taxDue}</p>
-          <p className="text-2xl font-bold text-black">{result.totalTax}€</p>
-        </div>
-        <div className="rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center">
-          <p className="mb-2 text-sm font-medium text-gray-600">{t.socialContributions}</p>
-          <p className="text-2xl font-bold text-black">{result.socialContribution}€</p>
-        </div>
-      </div>
-
-      <div className="rounded-lg bg-black p-6 text-center text-white">
-        <p className="mb-2 text-sm font-medium text-gray-300">{t.netIncomeTitle}</p>
-        <p className="text-4xl font-bold">{result.netIncome}€</p>
-        <p className="mt-2 text-sm text-gray-400">
-          {t.yearly} | {(parseFloat(result.netIncome) / 12).toFixed(0)}€{t.monthly}
-        </p>
-      </div>
-
-      <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <h3 className="mb-4 font-semibold text-gray-900">{t.breakdown}</h3>
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-gray-700">{t.gross}</span>
-            <span className="font-semibold text-black">{income.toLocaleString()}€</span>
-          </div>
-          <div className="flex items-center justify-between border-t pt-3">
-            <span className="text-gray-700">- {t.incomeTax}</span>
-            <span className="font-semibold text-red-600">-{result.totalTax}€</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-gray-700">- {t.socialContributions}</span>
-            <span className="font-semibold text-red-600">-{result.socialContribution}€</span>
-          </div>
-          <div className="mt-3 flex items-center justify-between border-t-2 pt-3">
-            <span className="font-semibold text-gray-900">= {t.net}</span>
-            <span className="text-lg font-bold text-black">{result.netIncome}€</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
-        <h3 className="mb-3 font-semibold text-gray-900">{t.taxTips}</h3>
-        <ul className="space-y-2 text-sm text-gray-700">
-          {t.tips.map((tip) => (
-            <li key={tip}>✓ {tip}</li>
-          ))}
-        </ul>
-      </div>
-
-      <button
-        type="button"
-        onClick={handleExport}
-        className="w-full rounded-lg bg-black py-3 font-semibold text-white transition-colors hover:bg-gray-900"
-      >
-        {t.copy}
-      </button>
-
-      <p className="text-center text-sm text-gray-600" aria-live="polite">
-        {copyState === 'copied' ? t.copied : copyState === 'error' ? t.copyError : ''}
-      </p>
-    </div>
-  );
+  const [income, setIncome] = useState(40_000); const [shares, setShares] = useState(1); const [sharesError, setSharesError] = useState(false); const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle'); const t = messages[lang];
+  const result = useMemo(() => estimateFrenchIncomeTax2026(income, shares), [income, shares]);
+  const handleIncome = (value: string) => setIncome(Math.max(0, Number(value) || 0));
+  const handleShares = (value: string) => { const parsed = Number(value); const isValid = Number.isFinite(parsed) && parsed > 0 && Number.isInteger(parsed * 4); setSharesError(!isValid); if (isValid) setShares(parsed); };
+  const handleExport = async () => { const text = `${t.vintage}\n${t.income}: ${formatEuro(income, lang)}\n${t.shares}: ${shares}\n${t.grossTax}: ${formatEuro(result.estimatedGrossTax, lang)}\n${t.averageRate}: ${result.averageRate.toFixed(2)}%\n${t.marginalRate}: ${(result.marginalRate * 100).toFixed(0)}%`; try { await navigator.clipboard.writeText(text); setCopyState('copied'); } catch { setCopyState('error'); } window.setTimeout(() => setCopyState('idle'), 2200); };
+  return <div className="mx-auto max-w-3xl space-y-6">
+    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-blue-950"><p className="font-semibold">{t.vintage}</p><p className="text-sm">{t.resident}</p></div>
+    <div className="space-y-6 rounded-lg border border-gray-200 bg-white p-6"><div><label htmlFor="tax-income" className="mb-2 block text-sm font-semibold text-gray-900">{t.income}</label><p className="mb-2 text-sm text-gray-600">{t.incomeHelp}</p><input id="tax-income" type="number" min="0" step="100" value={income} onChange={(event) => handleIncome(event.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black" /></div><div><label htmlFor="tax-shares" className="mb-2 block text-sm font-semibold text-gray-900">{t.shares}</label><p className="mb-2 text-sm text-gray-600">{t.sharesHelp}</p><input id="tax-shares" type="number" min="0.25" step="0.25" value={shares} onChange={(event) => handleShares(event.target.value)} aria-describedby={sharesError ? 'tax-shares-error' : undefined} aria-invalid={sharesError} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black" />{sharesError && <p id="tax-shares-error" className="mt-2 text-sm text-red-700" role="alert">{t.sharesError}</p>}</div></div>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-3" aria-live="polite"><div className="rounded-lg border border-gray-200 bg-gray-50 p-5 text-center"><p className="text-sm text-gray-600">{t.grossTax}</p><p className="mt-2 text-2xl font-bold">{formatEuro(result.estimatedGrossTax, lang)}</p></div><div className="rounded-lg border border-gray-200 bg-gray-50 p-5 text-center"><p className="text-sm text-gray-600">{t.averageRate}</p><p className="mt-2 text-2xl font-bold">{result.averageRate.toFixed(2)}%</p></div><div className="rounded-lg border border-gray-200 bg-gray-50 p-5 text-center"><p className="text-sm text-gray-600">{t.marginalRate}</p><p className="mt-2 text-2xl font-bold">{(result.marginalRate * 100).toFixed(0)}%</p><p className="mt-1 text-xs text-gray-600">{t.marginalHelp}</p></div></div>
+    <p className="text-sm text-gray-700"><strong>{t.perShare}:</strong> {formatEuro(result.taxableIncomePerShare, lang)}</p>
+    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white p-5"><h3 className="mb-4 font-semibold text-gray-900">{t.details}</h3><table className="w-full min-w-[560px] text-left text-sm"><thead><tr className="border-b text-gray-600"><th className="pb-2">{t.bracket}</th><th className="pb-2">{t.portion}</th><th className="pb-2">{t.rate}</th><th className="pb-2">{t.tax}</th></tr></thead><tbody>{result.brackets.map((item) => <tr key={`${item.lowerLimit}-${item.rate}`} className="border-b last:border-0"><td className="py-2">{formatRange(item.lowerLimit, item.upperLimit, lang)}</td><td className="py-2">{formatEuro(item.taxableAmount, lang)}</td><td className="py-2">{(item.rate * 100).toFixed(0)}%</td><td className="py-2">{formatEuro(item.tax * shares, lang)}</td></tr>)}</tbody></table></div>
+    <div className="rounded-lg border border-amber-300 bg-amber-50 p-5 text-sm text-amber-950"><h3 className="mb-2 font-semibold">{t.scopeTitle}</h3><p>{t.scope}</p><p className="mt-2">{t.limits}</p></div>
+    <div className="rounded-lg border border-gray-200 bg-gray-50 p-5 text-sm text-gray-700"><h3 className="mb-2 font-semibold text-gray-900">{t.sourceTitle}</h3><p>{t.jurisdiction}</p><p><a className="underline" href={bofipUrl} target="_blank" rel="noreferrer">{t.source}</a></p><p><a className="underline" href={economieUrl} target="_blank" rel="noreferrer">{lang === 'fr' ? 'Source secondaire : économie.gouv.fr, explication du barème.' : 'Secondary source: economie.gouv.fr, tax-scale explanation.'}</a></p><p>{t.checked}</p><a className="mt-3 inline-block font-medium underline" href={officialSimulatorUrl} target="_blank" rel="noreferrer">{t.official}</a></div>
+    <button type="button" onClick={handleExport} className="w-full rounded-lg bg-black py-3 font-semibold text-white transition-colors hover:bg-gray-900">{t.copy}</button><p className="text-center text-sm text-gray-600" aria-live="polite">{copyState === 'copied' ? t.copied : copyState === 'error' ? t.copyError : ''}</p>
+  </div>;
 }

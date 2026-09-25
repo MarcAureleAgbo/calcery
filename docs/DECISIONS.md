@@ -24,3 +24,8 @@ Ce registre contient uniquement les décisions dont la remise en cause aurait un
 - Les audits historiques sont conservés sans réécriture et ne constituent pas automatiquement l'état courant.
 - [STATUS.md](STATUS.md) est la source de vérité pour l'état opérationnel courant.
 - Un plan ou un audit ne constitue jamais à lui seul une autorisation d'exécution.
+
+## 25 septembre 2026 — Périmètre des calculateurs YMYL
+
+- Les calculateurs YMYL de Calcery privilégient un périmètre limité, explicite, sourcé et maintenable plutôt qu’une simulation exhaustive difficile à garantir.
+- Le calculateur d’impôt sur le revenu est limité au barème progressif français 2026 sur les revenus 2025, appliqué au revenu net imposable et aux parts saisies ; ses mécanismes exclus et ses sources officielles restent visibles dans l’interface FR et EN.

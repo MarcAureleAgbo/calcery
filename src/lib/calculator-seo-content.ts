@@ -592,32 +592,32 @@ const CALCULATOR_DETAILS: Record<CalculatorSlug, CalculatorDetail> = {
   },
   'impot-revenu': {
     variables: {
-      fr: ['revenu imposable', 'parts fiscales', 'situation du foyer'],
-      en: ['taxable income', 'tax shares', 'household status'],
+      fr: ['revenu net imposable annuel du foyer', 'nombre de parts fiscales'],
+      en: ['household annual net taxable income', 'French tax household shares'],
     },
     formula: {
-      fr: 'Estimation par tranches progressives puis ajustement via quotient familial.',
-      en: 'Estimate based on progressive tax brackets, then adjusted through household share logic.',
+      fr: 'Revenu net imposable ÷ parts, application du barème 2026 par tranche, puis multiplication du résultat par les parts.',
+      en: 'Net taxable income ÷ tax shares, apply the 2026 French brackets, then multiply the result by tax shares.',
     },
     numericExample: {
-      fr: 'Exemple : un revenu imposable de 38 000 € avec 2 parts donne un impôt estimé inférieur au même revenu avec 1 part.',
-      en: 'Example: €38,000 taxable income with 2 shares yields lower estimated tax than the same income with 1 share.',
+      fr: 'Exemple : avec 30 000 € et une part, seule la fraction au-dessus de 11 600 € est taxée à 11 % ; les mécanismes correctifs ne sont pas inclus.',
+      en: 'Example: with €30,000 and one share, only income above €11,600 is taxed at 11%; corrective mechanisms are excluded.',
     },
     decisionScenario: {
-      fr: 'Décision : si l’impôt estimé dépasse 1,5 mois de salaire net, vous mettez en place une provision mensuelle dédiée dès le mois suivant.',
-      en: 'Decision: if estimated tax exceeds 1.5 months of net salary, set a dedicated monthly tax reserve immediately.',
+      fr: 'Le taux moyen rapporte l’impôt brut estimé au revenu saisi ; le taux marginal est seulement le taux de la dernière tranche atteinte.',
+      en: 'The average rate divides estimated gross tax by entered income; the marginal rate is only the rate of the last bracket reached.',
     },
     contextualCase: {
-      fr: 'Cas contextualisé : un couple avec garde alternée compare deux hypothèses de parts pour anticiper son budget fiscal annuel.',
-      en: 'Contextualized case: a co-parenting household compares two share assumptions to anticipate annual tax cash flow.',
+      fr: 'La France et le millésime sont fixes : impôt 2026 sur les revenus 2025, pour les résidents fiscaux français.',
+      en: 'France and the tax vintage are fixed: 2026 tax on 2025 income, for French tax residents.',
     },
     thresholds: {
-      fr: ['Confort : provision mensuelle >= impôt annuel / 12.', 'Vigilance : provision inférieure de 20 % à la cible.', 'Alerte : aucune provision alors que l’impôt estimé est significatif.'],
-      en: ['Comfort: monthly provision >= annual tax estimate / 12.', 'Watch: provision sits 20% below target.', 'Alert: no reserve while estimated tax is material.'],
+      fr: ['0 % jusqu’à 11 600 € par part.', '11 %, 30 %, 41 % puis 45 % selon la tranche atteinte.', 'Le taux marginal ne s’applique jamais à tout le revenu.'],
+      en: ['0% up to €11,600 per share.', '11%, 30%, 41%, then 45% according to the bracket reached.', 'The marginal rate never applies to all income.'],
     },
     riskNotice: {
-      fr: 'Cette estimation n’intègre pas toutes les niches ou cas complexes. Validez toujours la déclaration finale avec les documents fiscaux officiels.',
-      en: 'This estimate does not include every advanced tax case. Final filing must be validated against official tax documentation.',
+      fr: 'Cette estimation ne calcule ni plafonnement du quotient familial, ni décote, réductions, crédits d’impôt, prélèvement à la source ou situations particulières. Utilisez le simulateur officiel pour une estimation complète.',
+      en: 'This estimate does not calculate the family-quotient cap, low-income relief, reductions, tax credits, tax withheld, or special situations. Use the official simulator for a complete estimate.',
     },
     relatedCalculators: ['budget-mensuel', 'taux-endettement', 'capacite-epargne-mensuelle'],
     relatedBlogs: ['calcul-impot-revenu-sans-stress', 'optimiser-quotient-familial-legalement'],

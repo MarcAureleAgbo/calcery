@@ -28,6 +28,33 @@ try {
   assert.equal(Math.round(formulas.estimateGrossSalaryFromNet(2340)), 3000);
   assert.equal(Math.round(formulas.calculateTtcFromHt(100, 20)), 120);
   assert.equal(Math.round(formulas.calculateHtFromTtc(120, 20)), 100);
+  const zeroBracket = formulas.estimateFrenchIncomeTax2026(11600, 1);
+  assert.equal(zeroBracket.estimatedGrossTax, 0);
+  assert.equal(zeroBracket.marginalRate, 0);
+  const elevenPercentBracket = formulas.estimateFrenchIncomeTax2026(20000, 1);
+  assert.equal(elevenPercentBracket.estimatedGrossTax, (20000 - 11600) * 0.11);
+  assert.equal(elevenPercentBracket.marginalRate, 0.11);
+  const thirtyPercentBracket = formulas.estimateFrenchIncomeTax2026(30000, 1);
+  assert.equal(thirtyPercentBracket.estimatedGrossTax, (29579 - 11600) * 0.11 + (30000 - 29579) * 0.3);
+  assert.equal(formulas.estimateFrenchIncomeTax2026(90000, 1).marginalRate, 0.41);
+  assert.equal(formulas.estimateFrenchIncomeTax2026(200000, 1).marginalRate, 0.45);
+  const twoShares = formulas.estimateFrenchIncomeTax2026(60000, 2);
+  assert.equal(twoShares.estimatedGrossTax, 2 * ((29579 - 11600) * 0.11 + (30000 - 29579) * 0.3));
+  for (const taxShares of [1.25, 1.5, 2.25]) {
+    const estimate = formulas.estimateFrenchIncomeTax2026(50_000, taxShares);
+    assert.equal(estimate.taxableIncomePerShare, 50_000 / taxShares);
+    assert.ok(estimate.estimatedGrossTax > 0);
+  }
+  for (const threshold of [11600, 29579, 84577, 181917]) {
+    const atThreshold = formulas.estimateFrenchIncomeTax2026(threshold, 1);
+    const aboveThreshold = formulas.estimateFrenchIncomeTax2026(threshold + 1, 1);
+    assert.ok(aboveThreshold.estimatedGrossTax >= atThreshold.estimatedGrossTax);
+  }
+  assert.throws(() => formulas.estimateFrenchIncomeTax2026(-1, 1));
+  assert.throws(() => formulas.estimateFrenchIncomeTax2026(1000, 0));
+  assert.throws(() => formulas.estimateFrenchIncomeTax2026(1000, -1));
+  assert.throws(() => formulas.estimateFrenchIncomeTax2026(1000, 1.1), /0\.25-share increments/);
+  assert.throws(() => formulas.estimateFrenchIncomeTax2026(Number.NaN, 1));
   assert.equal(formulas.calculateMonthlySavingsCapacity(2500, 1900), 600);
   assert.ok(formulas.calculateSavingsGoalDurationMonths(10000, 500, 0, 0) === 20);
   assert.ok(formulas.calculateBodyMassIndex(70, 175) > 20);
