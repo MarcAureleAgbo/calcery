@@ -1,46 +1,19 @@
 ---
-title: "Emergency Fund Guide: How Much to Save for Financial Security"
-description: "Set the right emergency fund target based on fixed costs, income stability, and risk level, then build it steadily with a practical monthly savings plan."
+title: "Emergency Fund: How Much Should You Target?"
+description: "Choose an emergency-fund target from essential costs, income stability, dependants, housing, and your own risks."
 date: 2026-02-04
+updatedDate: 2026-09-25
 category: Savings
-tags:
-  - emergency fund
-  - precaution savings
-  - financial safety
+tags: [emergency fund, precaution savings, financial safety]
 coverImage: /images/blog/savings-cover.svg
 coverAlt: Emergency fund illustration
-slug: "emergency-fund-guide"
+slug: emergency-fund-guide
 ---
 
-An **emergency fund** protects your budget against shocks: repairs, health costs, or temporary income loss.
+An emergency-fund target should protect essential monthly costs, not follow a universal rule. Include housing, food, required transport, insurance, healthcare, and non-negotiable dependant costs.
 
-## How much should you target?
+## Different profiles need different ranges
 
-Simple ranges:
-- 1 to 2 months of fixed costs for very stable income
-- 3 to 4 months for a standard profile
-- 6 months or more for variable income
+A single renter with stable work and €1,200 essential costs may start with €1,200–€2,400. A couple with a child and €2,300 essential costs may need several months of that core amount. A self-employed homeowner with €1,900 essential costs and uneven income may choose a wider range because lower-income months and housing costs create more risk.
 
-## Build the right target
-
-Count only essential costs:
-- housing
-- food
-- transportation
-- insurance
-- healthcare
-- non-negotiable family expenses
-
-Use the [monthly budget calculator](/en/finance/monthly-budget) to isolate that core amount.
-
-## Build steadily
-
-Automate a dedicated monthly transfer. Even small amounts matter when consistent.
-
-## Where to hold it
-
-Keep the fund liquid and low risk. The objective is availability, not maximum return.
-
-## Conclusion
-
-Emergency savings are a financial shock absorber. Start now with a first milestone, then scale.
+These are ranges, not guarantees: job security, insurance, health, family support, and upcoming obligations matter. Once you choose a target, [building an emergency fund through a monthly budget](/en/blog/monthly-budget-and-emergency-fund/) covers the contribution pace. Keep the money liquid and separate from project savings or volatile investments.

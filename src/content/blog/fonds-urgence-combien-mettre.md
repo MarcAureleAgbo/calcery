@@ -1,50 +1,26 @@
 ---
-title: "Fonds d'urgence : combien épargner selon votre situation financière"
-description: "Calculez un fonds d'urgence adapté à vos charges fixes, à la stabilité de vos revenus et à votre niveau de risque pour sécuriser votre budget."
+title: "Fonds d'urgence : combien viser selon votre situation"
+description: "Définissez une cible de fonds d'urgence à partir de vos dépenses essentielles, de vos revenus et des personnes qui dépendent de vous."
 date: 2026-02-04
+updatedDate: 2026-09-25
 category: Epargne
-tags:
-  - fonds urgence
-  - epargne precaution
-  - securite financiere
+tags: [fonds urgence, epargne precaution, securite financiere]
 coverImage: /images/blog/savings-cover.svg
 coverAlt: Illustration fonds d'urgence
 ---
-Un **fonds d'urgence** protège votre budget en cas d'imprévu: panne, frais santé, perte de revenu temporaire. C'est la base de toute stratégie financière solide.
 
-## Combien viser?
+La bonne taille d'un fonds d'urgence dépend de ce qu'il doit protéger. Commencez par les dépenses essentielles mensuelles — logement, alimentation, transport nécessaire, assurances, santé et personnes à charge — plutôt que par une règle universelle.
 
-Repère simple:
-- 1 à 2 mois de charges fixes si revenu très stable
-- 3 à 4 mois pour une situation classique
-- 6 mois ou plus si revenus variables ou charges élevées
+## Trois profils, trois fourchettes
 
-## Calculer le bon montant cible
+- Un locataire seul, en emploi stable, avec 1 200 € de dépenses essentielles peut retenir une première cible entre 1 200 € et 2 400 €.
+- Un couple avec un enfant et 2 300 € de dépenses essentielles peut viser progressivement plusieurs mois de ce socle, car une interruption de revenu touche davantage de personnes.
+- Un indépendant propriétaire avec 1 900 € de dépenses essentielles et des revenus variables a intérêt à prévoir une fourchette plus large : son risque de mois bas et certaines charges de logement demandent une marge supérieure.
 
-Additionnez uniquement les dépenses essentielles:
-- logement
-- alimentation
-- transport
-- assurances
-- santé
-- charges familiales incompressibles
+Ces repères ne remplacent pas votre contexte : aide familiale possible, assurance, santé, échéances ou stabilité professionnelle peuvent les faire varier.
 
-Le [calculateur budget mensuel](/fr/finance/budget-mensuel) aide à isoler ce socle indispensable.
+## Calculer une cible utile
 
-## Construire le fonds sans bloquer sa vie
+Isolez le minimum réellement nécessaire pendant une période difficile, puis choisissez une fourchette de mois que vous pouvez expliquer. Le [calculateur de budget mensuel](/fr/finance/budget-mensuel/) aide à établir ce socle. Ne comptez pas les dépenses discrétionnaires comme obligatoires, mais n'oubliez pas une charge prévisible simplement parce qu'elle n'est pas mensuelle.
 
-Mettez en place un versement automatique dédié. Même 50 à 100 € par mois font la différence si vous restez constant. Simulez votre plan sur le [calculateur d'épargne](/fr/finance/epargne-automatique).
-
-## Où placer ce fonds?
-
-Choisissez un support liquide, sécurisé et disponible rapidement. L'objectif n'est pas la performance maximale, mais l'accès immédiat en cas de besoin.
-
-## Erreurs à éviter
-
-- investir le fonds d'urgence sur des supports volatils
-- mélanger ce fonds avec l'épargne projet
-- attendre "le bon moment" pour commencer
-
-## Conclusion
-
-Votre fonds d'urgence est un amortisseur, pas un luxe. Commencez aujourd'hui avec un objectif minimal, puis montez progressivement vers un niveau de sécurité confortable.
+Une fois la cible choisie, la question devient celle du rythme : [intégrer un fonds d'urgence au budget mensuel](/fr/blog/budget-mensuel-et-fonds-durgence/) traite cette phase de constitution. Le fonds doit rester liquide et distinct d'un placement ou d'une épargne destinée à un projet.

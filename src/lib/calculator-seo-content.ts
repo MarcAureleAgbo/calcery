@@ -14,7 +14,7 @@ type Localized<T> = { fr: T; en: T };
 
 type BlogSlug =
   | 'budget-couple-methode-simple'
-  | 'budget-mensuel-mode-emploi'
+  | 'guide-budget-mensuel-complet'
   | 'calcul-impot-revenu-sans-stress'
   | 'epargne-automatique-strategies'
   | 'fonds-urgence-combien-mettre'
@@ -87,14 +87,14 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
       path: getEnBlogPath('budget-couple-methode-simple'),
     },
   },
-  'budget-mensuel-mode-emploi': {
+  'guide-budget-mensuel-complet': {
     fr: {
-      title: 'Budget mensuel : guide pratique pour mieux gérer son argent au quotidien',
-      path: '/fr/blog/budget-mensuel-mode-emploi',
+      title: 'Guide du budget mensuel : méthode simple, exemples et repères',
+      path: '/fr/blog/guide-budget-mensuel-complet',
     },
     en: {
-      title: 'Monthly Budget Guide: Step-by-Step Method to Manage Money and Save More',
-      path: getEnBlogPath('budget-mensuel-mode-emploi'),
+      title: 'Complete Monthly Budget Guide (Method, Example, Template and Free Tool)',
+      path: getEnBlogPath('guide-budget-mensuel-complet'),
     },
   },
   'calcul-impot-revenu-sans-stress': {
@@ -200,12 +200,12 @@ const BLOG_METADATA: Record<BlogSlug, Localized<{ title: string; path: string }>
 };
 
 const DEFAULT_BLOGS_BY_CATEGORY: Record<CategoryKey, BlogSlug[]> = {
-  finance: ['budget-mensuel-mode-emploi', 'epargne-automatique-strategies', 'calcul-impot-revenu-sans-stress'],
+  finance: ['guide-budget-mensuel-complet', 'epargne-automatique-strategies', 'calcul-impot-revenu-sans-stress'],
   health: ['fonds-urgence-combien-mettre', 'methode-50-30-20', 'petites-depenses-qui-comptent'],
-  realEstate: ['budget-mensuel-mode-emploi', 'calcul-impot-revenu-sans-stress', 'fonds-urgence-combien-mettre'],
+  realEstate: ['guide-budget-mensuel-complet', 'calcul-impot-revenu-sans-stress', 'fonds-urgence-combien-mettre'],
   dailyLife: ['partage-addition-entre-amis-guide', 'pourboire-regles-pratiques-voyage', 'petites-depenses-qui-comptent'],
-  home: ['budget-mensuel-mode-emploi', 'petites-depenses-qui-comptent', 'fonds-urgence-combien-mettre'],
-  education: ['methode-50-30-20', 'budget-mensuel-mode-emploi', 'epargne-automatique-strategies'],
+  home: ['guide-budget-mensuel-complet', 'petites-depenses-qui-comptent', 'fonds-urgence-combien-mettre'],
+  education: ['methode-50-30-20', 'guide-budget-mensuel-complet', 'epargne-automatique-strategies'],
 };
 
 const CROSS_CATEGORY_FALLBACKS: Record<CategoryKey, CalculatorSlug[]> = {
@@ -448,6 +448,48 @@ const FR_CALCULATOR_EDITORIAL_OVERRIDES: Partial<Record<CalculatorSlug, Calculat
         answer:
           'Le total annuel frappe l’esprit, mais le montant mensuel aide à agir. Savoir qu’une habitude vous coûte 45 € par mois rend la correction plus immédiate que de voir simplement un gros chiffre sur douze mois.',
       },
+    ],
+  },
+};
+
+const FR_SAVINGS_CALCULATOR_OVERRIDES: Partial<Record<CalculatorSlug, CalculatorSeoOverride>> = {
+  'capacite-epargne-mensuelle': {
+    introduction: ['Ce calculateur sépare le surplus théorique de l’épargne réellement soutenable : après les dépenses normales, déduisez les provisions annuelles et une marge de sécurité avant d’automatiser.', 'Par exemple, 400 € de reste théorique peuvent devenir 250 € de capacité prudente après dépenses irrégulières, marge de 100 € et variabilité des mois.'],
+    howItWorks: ['Saisissez un mois représentatif, mensualisez assurance et entretien, puis testez un mois plus tendu. Le montant automatique doit tenir dans les deux cas.', 'Le calculateur de budget mensuel repère les postes manquants ; celui-ci répond à la question précise du versement soutenable.'],
+    interpretation: ['Le résultat est un plafond prudent, pas une promesse. Si le virement doit souvent être annulé, baissez-le et préservez le tampon.'],
+  },
+  'objectif-epargne-temps': {
+    introduction: ['Ce calculateur estime le temps nécessaire selon le versement disponible. Il répond à la question inverse de l’épargne automatique, qui part d’une date cible.', 'Sans capital initial ni rendement, 10 000 € demandent environ 40 mois à 250 € par mois, contre environ 29 mois à 350 € par mois.'],
+    howItWorks: ['Renseignez objectif, capital initial et versement soutenable. Testez une interruption temporaire et une hausse du versement.', 'Sur un horizon court, un rendement supposé reste une hypothèse et ne doit pas rendre une échéance artificiellement atteignable.'],
+    interpretation: ['Choisissez entre augmenter le versement, allonger le délai ou réduire un objectif intermédiaire. Après une pause, recalculez simplement la trajectoire.'],
+  },
+};
+
+const EN_CALCULATOR_EDITORIAL_OVERRIDES: Partial<Record<CalculatorSlug, CalculatorSeoOverride>> = {
+  'capacite-epargne-mensuelle': {
+    introduction: [
+      'This calculator distinguishes a theoretical surplus from savings you can actually keep. Start with income minus normal monthly spending, then subtract annual-cost provisions and a safety margin before automating anything.',
+      'For example, a €400 theoretical balance can become a €250 prudent savings capacity once irregular bills, a €100 buffer, and uneven months are allowed for. That smaller number is often the useful one.',
+    ],
+    howItWorks: [
+      'Enter a representative month, including monthly equivalents for insurance, maintenance, and other irregular costs. Run a normal and a tighter-month version; only automate an amount that survives both.',
+      'The monthly budget calculator helps find missing costs. This tool then answers the narrower question: what contribution can remain sustainable?',
+    ],
+    interpretation: [
+      'Treat the result as a ceiling, not a promise. If a transfer repeatedly needs to be reversed, lower it and preserve the buffer. Review it after a change in income, housing, or recurring costs.',
+    ],
+  },
+  'objectif-epargne-temps': {
+    introduction: [
+      'This calculator answers how long a goal may take from the money you can contribute each month. It is the inverse of the automatic-savings calculator, which starts with a deadline and asks for the required contribution.',
+      'For a €10,000 goal with no starting capital, €250 per month takes about 40 months without return assumptions; €350 per month reduces that to about 29 months.',
+    ],
+    howItWorks: [
+      'Enter the target, any starting capital, and a sustainable contribution. Test a temporary pause as well as a higher contribution so the timeline reflects real interruptions.',
+      'For short horizons, a stated return is an assumption rather than a certainty. Do not use a projected yield to make a required date look safe.',
+    ],
+    interpretation: [
+      'Use the result to choose among three levers: increase the contribution, extend the date, or reduce an interim target. Recalculate after a pause instead of treating the original schedule as a failure.',
     ],
   },
 };
@@ -1808,7 +1850,9 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Res
 
 export function getCalculatorSeoContent(calculator: CalculatorDefinition, locale: Locale): CalculatorSeoContent {
   const detail = resolveCalculatorDetail(CALCULATOR_DETAILS[calculator.slug], locale, calculator.slug);
-  const editorialOverride = locale === 'fr' ? FR_CALCULATOR_EDITORIAL_OVERRIDES[calculator.slug] : undefined;
+  const editorialOverride = locale === 'fr'
+    ? FR_SAVINGS_CALCULATOR_OVERRIDES[calculator.slug] ?? FR_CALCULATOR_EDITORIAL_OVERRIDES[calculator.slug]
+    : EN_CALCULATOR_EDITORIAL_OVERRIDES[calculator.slug];
 
   const content: CalculatorSeoContent = {
     introduction: editorialOverride?.introduction ?? buildIntroduction(calculator, locale, detail),

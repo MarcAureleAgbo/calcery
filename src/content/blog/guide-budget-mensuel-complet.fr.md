@@ -126,7 +126,6 @@ Avec ce type de budget, la tentation serait de verser 590 € en épargne. Ce se
 Le bon chiffre n’est donc pas toujours le maximum théorique. C’est souvent le montant que vous pouvez tenir six mois de suite.
 
 Si votre situation est différente, vous pouvez regarder des cas plus ciblés :
-- [Comment faire un budget mensuel efficace](/fr/blog/comment-faire-budget-mensuel-efficace/)
 - [Comment faire un budget mensuel quand on gagne peu](/fr/blog/comment-faire-budget-mensuel-quand-on-gagne-peu/)
 - [Budget mensuel en couple](/fr/blog/budget-mensuel-en-couple-organisation-optimale/)
 - [Budget mensuel vs méthode 50/30/20](/fr/blog/budget-mensuel-vs-methode-50-30-20/)
