@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import type { Locale } from '../../lib/calculator-taxonomy';
+import { calendarCalculatorTexts, formatCalendarDuration, localizeCalendarError } from '../../lib/calendar-localization';
 import type { NewCalculatorSlug } from '../../lib/new-calculator-slugs';
 import {
   calculateActivityCaloriesBurned,
@@ -820,14 +821,14 @@ const calculatorConfigs: Record<NewCalculatorSlug, CalculatorConfig> = {
   },
   'difference-entre-deux-dates': {
     fields: [
-      { key: 'startDate', type: 'date', label: { fr: 'Date de debut', en: 'Start date' }, required: true },
+      { key: 'startDate', type: 'date', label: { fr: 'Date de début', en: 'Start date' }, required: true },
       { key: 'endDate', type: 'date', label: { fr: 'Date de fin', en: 'End date' }, required: true, defaultValue: todayIso() },
     ],
-    calculate: (values) => {
+    calculate: (values, lang) => {
       const diff = calculateDateDifference(values.startDate, values.endDate);
       return {
         rows: [
-          { key: 'duration-ymd', label: { fr: 'Duree calendrier', en: 'Calendar duration' }, value: `${diff.years}y ${diff.months}m ${diff.days}d`, format: 'text' },
+          { key: 'duration-ymd', label: { fr: 'Durée calendaire', en: 'Calendar duration' }, value: formatCalendarDuration(diff, lang), format: 'text' },
           { key: 'duration-days', label: { fr: 'Nombre total de jours', en: 'Total number of days' }, value: diff.totalDays, format: 'integer' },
         ],
       };
@@ -836,13 +837,13 @@ const calculatorConfigs: Record<NewCalculatorSlug, CalculatorConfig> = {
   'age-exact': {
     fields: [
       { key: 'birthDate', type: 'date', label: { fr: 'Date de naissance', en: 'Birth date' }, required: true },
-      { key: 'referenceDate', type: 'date', label: { fr: 'Date de reference', en: 'Reference date' }, required: true, defaultValue: todayIso() },
+      { key: 'referenceDate', type: 'date', label: { fr: 'Date de référence', en: 'Reference date' }, required: true, defaultValue: todayIso() },
     ],
-    calculate: (values) => {
+    calculate: (values, lang) => {
       const age = calculateExactAge(values.birthDate, values.referenceDate);
       return {
         rows: [
-          { key: 'age', label: { fr: 'Age exact', en: 'Exact age' }, value: `${age.years}y ${age.months}m ${age.days}d`, format: 'text' },
+          { key: 'age', label: { fr: 'Âge exact', en: 'Exact age' }, value: formatCalendarDuration(age, lang), format: 'text' },
         ],
       };
     },
@@ -962,7 +963,8 @@ function getDefaultValues(fields: FieldConfig[]): Record<string, string> {
 
 const UnifiedCalculator: React.FC<UnifiedCalculatorProps> = ({ slug, lang = 'fr' }) => {
   const config = calculatorConfigs[slug];
-  const t = texts[lang];
+  const isCalendarCalculator = slug === 'difference-entre-deux-dates' || slug === 'age-exact';
+  const t = isCalendarCalculator ? calendarCalculatorTexts[lang] : texts[lang];
 
   const initialValues = useMemo(() => getDefaultValues(config.fields), [config.fields]);
   const [values, setValues] = useState<Record<string, string>>(initialValues);
@@ -1020,7 +1022,9 @@ const UnifiedCalculator: React.FC<UnifiedCalculatorProps> = ({ slug, lang = 'fr'
       setError(null);
       setResult(computed);
     } catch (calcError) {
-      const message = calcError instanceof Error ? calcError.message : t.calcError;
+      const message = isCalendarCalculator
+        ? localizeCalendarError(calcError, lang)
+        : calcError instanceof Error ? calcError.message : t.calcError;
       setError(message || t.calcError);
       setResult(null);
     }

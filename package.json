@@ -17,7 +17,7 @@
     "generate:redirects": "node scripts/generate-cloudflare-redirects.mjs",
     "test:analytics:dev": "node scripts/check-analytics-dev.mjs",
     "test:adsense:dev": "node scripts/check-adsense-dev.mjs",
-    "test:new-calculators": "node scripts/test-new-calculators.mjs",
+    "test:new-calculators": "node scripts/test-new-calculators.mjs && node scripts/test-calendar-localization.mjs",
     "verify:sitemap": "node scripts/verify-sitemap.mjs",
     "verify:calculator-pages": "node scripts/verify-calculator-pages.mjs",
     "verify:redirects": "node scripts/verify-redirects.mjs",
