@@ -285,9 +285,10 @@ function daysInMonth(year: number, monthIndex: number): number {
   return new Date(Date.UTC(year, monthIndex + 1, 0)).getUTCDate();
 }
 
-export function calculateDateDifference(
+function calculateDateDifferenceWithBorrowing(
   startDateIso: string,
   endDateIso: string,
+  repeatBorrowing: boolean,
 ): { years: number; months: number; days: number; totalDays: number } {
   const start = parseIsoDate(startDateIso);
   const end = parseIsoDate(endDateIso);
@@ -301,11 +302,18 @@ export function calculateDateDifference(
   let months = end.getUTCMonth() - start.getUTCMonth();
   let days = end.getUTCDate() - start.getUTCDate();
 
-  if (days < 0) {
+  let borrowMonth = end.getUTCMonth();
+  let borrowYear = end.getUTCFullYear();
+  while (days < 0) {
     months -= 1;
-    const prevMonth = (end.getUTCMonth() + 11) % 12;
-    const prevMonthYear = prevMonth === 11 ? end.getUTCFullYear() - 1 : end.getUTCFullYear();
-    days += daysInMonth(prevMonthYear, prevMonth);
+    borrowMonth -= 1;
+    if (borrowMonth < 0) {
+      borrowMonth = 11;
+      borrowYear -= 1;
+    }
+    days += daysInMonth(borrowYear, borrowMonth);
+    // Exact age deliberately retains its historical single-borrow behavior.
+    if (!repeatBorrowing) break;
   }
 
   if (months < 0) {
@@ -316,11 +324,26 @@ export function calculateDateDifference(
   return { years, months, days, totalDays };
 }
 
+/**
+ * UTC civil-date subtraction, excluding the end date from totalDays.
+ * Subtract Y/M/D fields and borrow actual month lengths backwards from the end
+ * until days are non-negative, then normalize months to 0..11. No month-end
+ * clamping: Jan 31 -> Feb 28 is 28 days, Jan 31 -> Mar 1 is 29 days (2025).
+ * This extends the historical subtraction convention only where it left negative
+ * days; it is not a duration to apply using clamped calendar-month addition.
+ */
+export function calculateDateDifference(
+  startDateIso: string,
+  endDateIso: string,
+): { years: number; months: number; days: number; totalDays: number } {
+  return calculateDateDifferenceWithBorrowing(startDateIso, endDateIso, true);
+}
+
 export function calculateExactAge(
   birthDateIso: string,
   referenceDateIso: string,
 ): { years: number; months: number; days: number } {
-  const { years, months, days } = calculateDateDifference(birthDateIso, referenceDateIso);
+  const { years, months, days } = calculateDateDifferenceWithBorrowing(birthDateIso, referenceDateIso, false);
   return { years, months, days };
 }
 

@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
+import { testDateDifferences } from './test-date-difference.mjs';
 
 const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'calcery-formulas-'));
 const outfile = path.join(tempDir, 'new-calculator-formulas.mjs');
@@ -20,6 +21,7 @@ try {
   });
 
   const formulas = await import(`${pathToFileURL(outfile).href}?ts=${Date.now()}`);
+  testDateDifferences(formulas);
 
   assert.equal(Math.round(formulas.calculateDebtRatio(3000, 900)), 30);
   assert.ok(formulas.calculateLoanMonthlyPayment(100000, 3, 20) > 500);
