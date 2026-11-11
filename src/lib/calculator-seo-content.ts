@@ -9,6 +9,7 @@ import {
 } from './calculator-taxonomy';
 import { FR_TO_EN_BLOG_SLUG } from './blog-slug-map';
 import type { FAQItem, RelatedLink } from './types';
+import { getP31EditorialPage } from './calculator-editorial-p31';
 
 type Localized<T> = { fr: T; en: T };
 
@@ -54,6 +55,9 @@ export interface CalculatorSeoScenario {
 }
 
 export interface CalculatorSeoContent {
+  replaceSupplementaryContent?: boolean;
+  sectionTitles?: { interpretationTitle?: string };
+  sources?: RelatedLink[];
   introduction: string[];
   howItWorks: string[];
   interpretation: string[];
@@ -1849,6 +1853,11 @@ function buildFaqs(calculator: CalculatorDefinition, locale: Locale, detail: Res
 }
 
 export function getCalculatorSeoContent(calculator: CalculatorDefinition, locale: Locale): CalculatorSeoContent {
+  const editorialPage = getP31EditorialPage(calculator.slug, locale);
+  if (editorialPage) {
+    validateSeoContent(editorialPage.content, calculator.slug, locale);
+    return editorialPage.content;
+  }
   const detail = resolveCalculatorDetail(CALCULATOR_DETAILS[calculator.slug], locale, calculator.slug);
   const editorialOverride = locale === 'fr'
     ? FR_SAVINGS_CALCULATOR_OVERRIDES[calculator.slug] ?? FR_CALCULATOR_EDITORIAL_OVERRIDES[calculator.slug]

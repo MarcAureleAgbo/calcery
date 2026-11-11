@@ -44,6 +44,10 @@ const t = {
       <h2 class="text-3xl font-bold text-gray-900">{t.introTitle}</h2>
       {content.introduction.map((paragraph) => (
         <p class="leading-8 text-gray-700">{paragraph}</p>
+      ))}{content.sources?.map((source) => (
+        <p class="text-sm leading-7 text-gray-700">
+          <a href={source.href} class="underline underline-offset-2">{source.label}</a>
+        </p>
       ))}
     </section>
 
@@ -53,31 +57,31 @@ const t = {
         <p class="leading-8 text-gray-700">{paragraph}</p>
       ))}
 
-      <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+      {content.formula && <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
         <h3 class="mb-2 text-lg font-semibold text-gray-900">{t.formulaTitle}</h3>
         <p class="leading-7 text-gray-700">{content.formula}</p>
-      </div>
+      </div>}
     </section>
 
     <section class="space-y-4">
-      <h2 class="text-3xl font-bold text-gray-900">{t.interpretationTitle}</h2>
+      <h2 class="text-3xl font-bold text-gray-900">{content.sectionTitles?.interpretationTitle ?? t.interpretationTitle}</h2>
       {content.interpretation.map((paragraph) => (
         <p class="leading-8 text-gray-700">{paragraph}</p>
       ))}
 
-      <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+      {content.thresholds.length > 0 && <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
         <h3 class="mb-2 text-lg font-semibold text-gray-900">{t.thresholdsTitle}</h3>
         <ul class="list-disc space-y-2 pl-5 text-gray-700">
           {content.thresholds.map((item) => (
             <li class="leading-7">{item}</li>
           ))}
         </ul>
-      </div>
+      </div>}
 
-      <div class="rounded-xl border border-amber-200 bg-amber-50 p-5">
+      {content.riskNotice && <div class="rounded-xl border border-amber-200 bg-amber-50 p-5">
         <h3 class="mb-2 text-lg font-semibold text-amber-900">{t.riskTitle}</h3>
         <p class="leading-7 text-amber-900">{content.riskNotice}</p>
-      </div>
+      </div>}
     </section>
 
     <section class="space-y-5">
@@ -109,7 +113,7 @@ const t = {
           </ul>
         </div>
 
-        <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+        {content.relatedBlogPosts.length > 0 && <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
           <h3 class="mb-4 text-xl font-semibold text-gray-900">{t.relatedArticles}</h3>
           <ul class="space-y-3">
             {content.relatedBlogPosts.map((link) => (
@@ -121,7 +125,7 @@ const t = {
               </li>
             ))}
           </ul>
-        </div>
+        </div>}
       </div>
     </section>
   </div>

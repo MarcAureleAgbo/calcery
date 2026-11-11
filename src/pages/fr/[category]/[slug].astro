@@ -13,6 +13,7 @@ import {
   getCategoryRoute,
   getCalculatorRoute,
   getCalculatorPageHeading,
+  getCalculatorPageDescription,
   getCalculatorMetaDescription,
   getCalculatorMetaTitle,
   type CategoryDefinition,
@@ -53,7 +54,7 @@ const alternatePaths = {
 
 <CalculatorLayout
   title={pageTitle}
-  description={calculator.description.fr}
+  description={getCalculatorPageDescription(calculator, 'fr')}
   metaTitle={metaTitle}
   metaDescription={metaDescription}
   breadcrumbs={breadcrumbs}

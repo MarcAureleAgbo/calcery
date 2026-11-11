@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "npm run generate:redirects",
     "dev": "astro dev",
-    "build": "astro build && npm run verify:sitemap && npm run verify:calculator-pages && npm run verify:redirects && npm run verify:site-output",
+    "build": "astro build && npm run verify:sitemap && npm run verify:calculator-pages && npm run verify:redirects && npm run verify:site-output && npm run verify:editorial",
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check && tsc --noEmit",
@@ -18,6 +18,8 @@
     "test:analytics:dev": "node scripts/check-analytics-dev.mjs",
     "test:adsense:dev": "node scripts/check-adsense-dev.mjs",
     "test:new-calculators": "node scripts/test-new-calculators.mjs && node scripts/test-calendar-localization.mjs",
+    "test:editorial": "node scripts/test-calculator-editorial.mjs",
+    "verify:editorial": "node scripts/test-calculator-editorial.mjs --built",
     "verify:sitemap": "node scripts/verify-sitemap.mjs",
     "verify:calculator-pages": "node scripts/verify-calculator-pages.mjs",
     "verify:redirects": "node scripts/verify-redirects.mjs",

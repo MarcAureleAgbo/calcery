@@ -156,7 +156,7 @@ const webApplicationSchema = {
 
       {seoContent && <SeoContentBlock content={seoContent} lang={lang} />}
 
-      {tips.length > 0 && (
+      {!seoContent?.replaceSupplementaryContent && tips.length > 0 && (
         <section>
           <h2 class="mb-6 text-center text-3xl font-bold text-gray-900">{t.quickTips}</h2>
           <div class="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-sm">
@@ -190,7 +190,7 @@ const webApplicationSchema = {
         </section>
       )}
 
-      {!disableDisclaimer && (
+      {!disableDisclaimer && !seoContent?.replaceSupplementaryContent && (
         <section>
           <div class="rounded-2xl border border-amber-300 bg-amber-50 p-8">
             <h2 class="mb-3 text-xl font-semibold text-amber-900">{t.warningTitle}</h2>

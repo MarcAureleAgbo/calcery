@@ -1,6 +1,7 @@
 import type { FAQItem } from './types';
 import { getLocalizedCalculatorSlug } from './calculator-route-slugs';
 import { ensureTrailingSlashPath } from './site';
+import { getP31EditorialPage } from './calculator-editorial-p31';
 
 export type Locale = 'fr' | 'en';
 
@@ -1889,6 +1890,8 @@ export function getCalculatorPageHeading(
   calculator: CalculatorDefinition,
   locale: Locale,
 ): string {
+  const editorialPage = getP31EditorialPage(calculator.slug, locale);
+  if (editorialPage) return editorialPage.heading;
   if (locale === 'fr') {
     const override = FR_CALCULATOR_COPY_OVERRIDES[calculator.slug];
     if (override) {
@@ -1903,6 +1906,8 @@ export function getCalculatorMetaTitle(
   calculator: CalculatorDefinition,
   locale: Locale,
 ): string {
+  const editorialPage = getP31EditorialPage(calculator.slug, locale);
+  if (editorialPage) return editorialPage.metaTitle;
   if (locale === 'fr') {
     const override = FR_CALCULATOR_COPY_OVERRIDES[calculator.slug];
     if (override) {
@@ -1934,6 +1939,8 @@ export function getCalculatorMetaDescription(
   calculator: CalculatorDefinition,
   locale: Locale,
 ): string {
+  const editorialPage = getP31EditorialPage(calculator.slug, locale);
+  if (editorialPage) return editorialPage.metaDescription;
   if (locale === 'fr') {
     const override = FR_CALCULATOR_COPY_OVERRIDES[calculator.slug];
     if (override) {
@@ -1949,6 +1956,10 @@ export function getCalculatorMetaDescription(
     `Free online tool with no signup required to ${lowercaseFirstLetter(calculator.description.en).replace(/\.$/, '')}. Run your simulation with Calcery.`,
     'en',
   );
+}
+
+export function getCalculatorPageDescription(calculator: CalculatorDefinition, locale: Locale): string {
+  return getP31EditorialPage(calculator.slug, locale)?.description ?? calculator.description[locale];
 }
 
 export function getCalculatorRoute(locale: Locale, slug: CalculatorSlug): string {
