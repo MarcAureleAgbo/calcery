@@ -312,7 +312,7 @@ function calculateDateDifferenceWithBorrowing(
       borrowYear -= 1;
     }
     days += daysInMonth(borrowYear, borrowMonth);
-    // Exact age deliberately retains its historical single-borrow behavior.
+    // Compatibility mode stops after a single borrow.
     if (!repeatBorrowing) break;
   }
 
@@ -343,7 +343,7 @@ export function calculateExactAge(
   birthDateIso: string,
   referenceDateIso: string,
 ): { years: number; months: number; days: number } {
-  const { years, months, days } = calculateDateDifferenceWithBorrowing(birthDateIso, referenceDateIso, false);
+  const { years, months, days } = calculateDateDifference(birthDateIso, referenceDateIso);
   return { years, months, days };
 }
 
